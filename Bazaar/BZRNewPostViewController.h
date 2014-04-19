@@ -19,5 +19,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *description;
 @property (strong, nonatomic) IBOutlet UITextField *titleField;
 
+@property (strong, nonatomic) IBOutlet UIButton *postButton;
+
 
 @end
