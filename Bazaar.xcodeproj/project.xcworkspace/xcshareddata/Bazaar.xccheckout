@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B7BA7F7A-AF51-4F71-A118-F19F1067798C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Bazaar</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>403C52B6-3961-4FF7-ACB9-6EFE872831DF</key>
+		<string>https://github.com/nshikha/CMU-Bazaar.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Bazaar/Bazaar.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>403C52B6-3961-4FF7-ACB9-6EFE872831DF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nshikha/CMU-Bazaar.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>403C52B6-3961-4FF7-ACB9-6EFE872831DF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>403C52B6-3961-4FF7-ACB9-6EFE872831DF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BazaarCMU</string>
+		</dict>
+	</array>
+</dict>
+</plist>
