@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B7BA7F7A-AF51-4F71-A118-F19F1067798C</string>
+	<string>E56C4748-8E7A-4F2A-8D8A-1656F4D5CE45</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Bazaar</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>403C52B6-3961-4FF7-ACB9-6EFE872831DF</key>
-		<string>https://github.com/nshikha/CMU-Bazaar.git</string>
+		<key>030FC405-C3AA-4BB1-B532-1377DD8BE05E</key>
+		<string>http://github.com/saumyadalal/Bazaar-2.0</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Bazaar/Bazaar.xcodeproj/project.xcworkspace</string>
+	<string>Bazaar.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>403C52B6-3961-4FF7-ACB9-6EFE872831DF</key>
-		<string>../../..</string>
+		<key>030FC405-C3AA-4BB1-B532-1377DD8BE05E</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/nshikha/CMU-Bazaar.git</string>
+	<string>http://github.com/saumyadalal/Bazaar-2.0</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>403C52B6-3961-4FF7-ACB9-6EFE872831DF</string>
+	<string>030FC405-C3AA-4BB1-B532-1377DD8BE05E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>403C52B6-3961-4FF7-ACB9-6EFE872831DF</string>
+			<string>030FC405-C3AA-4BB1-B532-1377DD8BE05E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>BazaarCMU</string>
+			<string>Bazaar-2</string>
 		</dict>
 	</array>
 </dict>

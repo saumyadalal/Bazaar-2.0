@@ -29,8 +29,8 @@
     BZRTabBarController *root = (BZRTabBarController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RootTabController"];
     self.window.rootViewController = root;
     //set up parse
-    [Parse setApplicationId:@"slkWhm7qfg7YlgA4KfhwjcGP0CCk8LHEIt0WcgZu"
-                clientKey:@"3hbcvCKFBhVNinv746qrlH3OgplB5rTarKV6FgFR"];
+    [Parse setApplicationId:@"Xr9bloRdOZWYCBrQjq4QKeYXp5tcYHpY7LYyrutT"
+                  clientKey:@"q8Wec7GNyNppi4BZ1PBNDyMPY09GMYUcly0SlGU4"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     return YES;
