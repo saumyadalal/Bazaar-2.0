@@ -13,6 +13,7 @@
 		22E2C13C19030C9B0098D279 /* crap.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13919030C9B0098D279 /* crap.png */; };
 		22E2C13D19030C9B0098D279 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13A19030C9B0098D279 /* red.png */; };
 		22E2C13E19030C9B0098D279 /* weird.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13B19030C9B0098D279 /* weird.png */; };
+		22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */; };
 		79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */; };
 		79ADDAD218F213400031CA5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ADDAD118F213400031CA5E /* FacebookSDK.framework */; };
 		79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */; };
@@ -71,6 +72,8 @@
 		22E2C13919030C9B0098D279 /* crap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crap.png; sourceTree = "<group>"; };
 		22E2C13A19030C9B0098D279 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		22E2C13B19030C9B0098D279 /* weird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weird.png; sourceTree = "<group>"; };
+		22E2C14319031BFB0098D279 /* BZRFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRFavoritesTableViewController.h; sourceTree = "<group>"; };
+		22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRFavoritesTableViewController.m; sourceTree = "<group>"; };
 		79ADDACE18F212AF0031CA5E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		79ADDAD118F213400031CA5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -187,6 +190,15 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		22E2C13F19031B650098D279 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				22E2C14319031BFB0098D279 /* BZRFavoritesTableViewController.h */,
+				22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
 		A725CD1B18EF415700EC3719 /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +288,7 @@
 			children = (
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				22E2C13819030C8D0098D279 /* images */,
+				22E2C13F19031B650098D279 /* Favorites */,
 				22E2C134190305180098D279 /* Notifications */,
 				22E2C133190302230098D279 /* Trade */,
 				A725CD4B18F0A8EC00EC3719 /* SideBar */,
@@ -449,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */,
 				A7DE718918DDFA1200EE7F9A /* main.m in Sources */,
 				A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */,
 				A725CD1F18EF445C00EC3719 /* BZRUserProfileViewController.m in Sources */,
