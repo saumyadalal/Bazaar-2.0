@@ -14,6 +14,7 @@
 		22E2C13D19030C9B0098D279 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13A19030C9B0098D279 /* red.png */; };
 		22E2C13E19030C9B0098D279 /* weird.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13B19030C9B0098D279 /* weird.png */; };
 		22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */; };
+		22E2C14919032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C14819032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m */; };
 		79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */; };
 		79ADDAD218F213400031CA5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ADDAD118F213400031CA5E /* FacebookSDK.framework */; };
 		79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */; };
@@ -74,6 +75,8 @@
 		22E2C13B19030C9B0098D279 /* weird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weird.png; sourceTree = "<group>"; };
 		22E2C14319031BFB0098D279 /* BZRFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRFavoritesTableViewController.h; sourceTree = "<group>"; };
 		22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRFavoritesTableViewController.m; sourceTree = "<group>"; };
+		22E2C14719032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRBazaarMarketplaceTableViewController.h; sourceTree = "<group>"; };
+		22E2C14819032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRBazaarMarketplaceTableViewController.m; sourceTree = "<group>"; };
 		79ADDACE18F212AF0031CA5E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		79ADDAD118F213400031CA5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -199,6 +202,15 @@
 			name = Favorites;
 			sourceTree = "<group>";
 		};
+		22E2C14619032D4D0098D279 /* Bazaar (Marketplace) */ = {
+			isa = PBXGroup;
+			children = (
+				22E2C14719032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.h */,
+				22E2C14819032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m */,
+			);
+			name = "Bazaar (Marketplace)";
+			sourceTree = "<group>";
+		};
 		A725CD1B18EF415700EC3719 /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
+				22E2C14619032D4D0098D279 /* Bazaar (Marketplace) */,
 				22E2C13819030C8D0098D279 /* images */,
 				22E2C13F19031B650098D279 /* Favorites */,
 				22E2C134190305180098D279 /* Notifications */,
@@ -469,6 +482,7 @@
 				A7DE718D18DDFA1200EE7F9A /* BZRAppDelegate.m in Sources */,
 				79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */,
 				A725CD2718EF5B8600EC3719 /* BZRTabBarController.m in Sources */,
+				22E2C14919032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m in Sources */,
 				A725CD2D18EF6D2E00EC3719 /* BZRMarketPlaceViewController.m in Sources */,
 				22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */,
 				A725CD4E18F0A90D00EC3719 /* BZRFilterViewController.m in Sources */,
