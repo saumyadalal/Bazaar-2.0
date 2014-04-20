@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface BZRBazaarMarketplaceTableViewController : UITableViewController
+@property (strong, nonatomic) NSMutableArray *arr;
+@property (strong, nonatomic) NSMutableArray *imageArr;
 
 @end
