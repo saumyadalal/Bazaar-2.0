@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		222FA5D518F1C66500CE4AA1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222FA5D418F1C66500CE4AA1 /* Parse.framework */; };
+		22A6D71C19044A7D00CE201B /* BZRNewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6D71B19044A7D00CE201B /* BZRNewLoginViewController.m */; };
+		22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6D7271904597300CE201B /* BZRItemViewController.m */; };
 		22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C1311903020F0098D279 /* BZRTradeViewController.m */; };
 		22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C136190305470098D279 /* BZRNotificationTableViewController.m */; };
 		22E2C13C19030C9B0098D279 /* crap.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13919030C9B0098D279 /* crap.png */; };
@@ -66,6 +68,10 @@
 
 /* Begin PBXFileReference section */
 		222FA5D418F1C66500CE4AA1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		22A6D71A19044A7D00CE201B /* BZRNewLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRNewLoginViewController.h; sourceTree = "<group>"; };
+		22A6D71B19044A7D00CE201B /* BZRNewLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRNewLoginViewController.m; sourceTree = "<group>"; };
+		22A6D7261904597300CE201B /* BZRItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRItemViewController.h; sourceTree = "<group>"; };
+		22A6D7271904597300CE201B /* BZRItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRItemViewController.m; sourceTree = "<group>"; };
 		22E2C1301903020F0098D279 /* BZRTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRTradeViewController.h; path = Trade/BZRTradeViewController.h; sourceTree = "<group>"; };
 		22E2C1311903020F0098D279 /* BZRTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BZRTradeViewController.m; path = Trade/BZRTradeViewController.m; sourceTree = "<group>"; };
 		22E2C135190305470098D279 /* BZRNotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRNotificationTableViewController.h; sourceTree = "<group>"; };
@@ -165,6 +171,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22A6D71D19044A8400CE201B /* New Login */ = {
+			isa = PBXGroup;
+			children = (
+				22A6D71A19044A7D00CE201B /* BZRNewLoginViewController.h */,
+				22A6D71B19044A7D00CE201B /* BZRNewLoginViewController.m */,
+			);
+			name = "New Login";
+			sourceTree = "<group>";
+		};
+		22A6D7291904597E00CE201B /* View Item */ = {
+			isa = PBXGroup;
+			children = (
+				22A6D7261904597300CE201B /* BZRItemViewController.h */,
+				22A6D7271904597300CE201B /* BZRItemViewController.m */,
+			);
+			name = "View Item";
+			sourceTree = "<group>";
+		};
 		22E2C133190302230098D279 /* Trade */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +333,7 @@
 				A725CD2918EF6CD600EC3719 /* Marketplace */,
 				A725CD1B18EF415700EC3719 /* User Profile */,
 				A7DE71AC18DDFAB000EE7F9A /* New Post */,
+				22A6D71D19044A8400CE201B /* New Login */,
 				A7DE71AB18DDFA9A00EE7F9A /* Login */,
 				A7DE718B18DDFA1200EE7F9A /* BZRAppDelegate.h */,
 				A7DE718C18DDFA1200EE7F9A /* BZRAppDelegate.m */,
@@ -316,6 +341,7 @@
 				A7DE718318DDFA1200EE7F9A /* Supporting Files */,
 				A725CD2418EF5B8600EC3719 /* BZRTabBarController.h */,
 				A725CD2518EF5B8600EC3719 /* BZRTabBarController.m */,
+				22A6D7291904597E00CE201B /* View Item */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -489,6 +515,8 @@
 				79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */,
 				A725CD5118F0ABE200EC3719 /* BZRFilterCell.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
+				22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */,
+				22A6D71C19044A7D00CE201B /* BZRNewLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
