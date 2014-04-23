@@ -32,13 +32,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setUserInfo];
+
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self setUserInfo];
 }
 
 - (void) setUserInfo {
+    NSLog(@"%@", [PFUser currentUser]);
   //create request for data
   FBRequest *request = [FBRequest requestForMe];
   // Send request to Facebook
@@ -51,8 +54,11 @@
       NSString *name = userData[@"name"];
 
       // Now add the data to the UI elements
-      self.profilePictureView.profileID = facebookID;
-      self.username.text = name;
+      self.fbPic.profileID = facebookID;
+      self.name.text = name;
+    }
+    else{
+        NSLog(@"%@", error);
     }
   }];
 }

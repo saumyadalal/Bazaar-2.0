@@ -11,7 +11,9 @@
 #import "BZRLoginViewController.h"
 #import "BZRMarketPlaceViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
 #import "SWRevealViewController.h"
+#import "BZRNewLoginViewController.h"
 
 @interface BZRTabBarController ()
 @end
@@ -30,9 +32,17 @@
   return self;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+}
+
 //occurs only once
 - (void)viewDidLoad
 {
+
+    
   [super viewDidLoad];
   UIBarButtonItem *newItemButton = [[UIBarButtonItem alloc] initWithTitle:@"New"
       style:UIBarButtonItemStylePlain target:self action:@selector(newItem:)];

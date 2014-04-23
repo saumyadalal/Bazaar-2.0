@@ -8,7 +8,7 @@
 
 #import "BZRAppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "BZRLoginViewController.h"
+#import "BZRNewLoginViewController.h"
 #import "BZRTabBarController.h"
 #import <Parse/Parse.h>
 
@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Parse setApplicationId:@"Xr9bloRdOZWYCBrQjq4QKeYXp5tcYHpY7LYyrutT"
+                  clientKey:@"q8Wec7GNyNppi4BZ1PBNDyMPY09GMYUcly0SlGU4"];
     //load the profilePictureViewClass for interface builder
     [FBProfilePictureView class];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -26,11 +28,11 @@
     [self.window makeKeyAndVisible];
     //set login view controller
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
-    BZRTabBarController *root = (BZRTabBarController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RootTabController"];
+    //BZRTabBarController *root = (BZRTabBarController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RootTabController"];
+    BZRNewLoginViewController *root = (BZRNewLoginViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"InitialLoginScreen"];
     self.window.rootViewController = root;
     //set up parse
-    [Parse setApplicationId:@"Xr9bloRdOZWYCBrQjq4QKeYXp5tcYHpY7LYyrutT"
-                  clientKey:@"q8Wec7GNyNppi4BZ1PBNDyMPY09GMYUcly0SlGU4"];
+    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     return YES;
@@ -45,11 +47,8 @@
          annotation:(id)annotation {
   
   // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-  BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-  
-  // You can add your app-specific url handling code here if needed
-  
-  return wasHandled;
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
   
 }
 

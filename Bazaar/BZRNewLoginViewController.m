@@ -25,31 +25,23 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%@", [PFUser currentUser]);
+	if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]){
+        [self performSegueWithIdentifier:@"RevealTabBarController" sender:self];
+    }
+}
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    [super viewDidLoad];
-    //Front View with tab bar
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: tabBarController];
-    //Rear view (SideBar)
-    UITableViewController *filterTableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:filterTableViewController];
-    //Init reveal controller
-  	//self.tabBarController = [[UIPageViewController alloc] initWithRearViewController:rearNavigationController frontViewController:navigationController];
-    
-    /* After a user logs in, Parse will automatically cache the Facebook and Parse sessions in the currentUser object.
-     By pass login screen */
-     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-     [self presentViewController:self animated:NO completion:nil];
-     }
-}
+   }
 
 - (IBAction)loginUser:(id)sender {
     NSArray *permissionsArray = @[ @"user_about_me"];
@@ -65,10 +57,12 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
-            [self presentViewController:self.tabBarController animated:YES completion:nil];
+            NSLog(@"%@", [PFUser currentUser]);
+            [self performSegueWithIdentifier:@"RevealTabBarController" sender:self];
         } else {
             NSLog(@"User with facebook logged in!");
-            [self presentViewController:self.tabBarController animated:YES completion:nil];
+            NSLog(@"%@", [PFUser currentUser]);
+            [self performSegueWithIdentifier:@"RevealTabBarController" sender:self];
         }
     }];
 
