@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		222FA5D518F1C66500CE4AA1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222FA5D418F1C66500CE4AA1 /* Parse.framework */; };
-		22A6D71C19044A7D00CE201B /* BZRNewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6D71B19044A7D00CE201B /* BZRNewLoginViewController.m */; };
 		22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6D7271904597300CE201B /* BZRItemViewController.m */; };
 		22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C1311903020F0098D279 /* BZRTradeViewController.m */; };
 		22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C136190305470098D279 /* BZRNotificationTableViewController.m */; };
@@ -16,19 +14,12 @@
 		22E2C13D19030C9B0098D279 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13A19030C9B0098D279 /* red.png */; };
 		22E2C13E19030C9B0098D279 /* weird.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13B19030C9B0098D279 /* weird.png */; };
 		22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */; };
-		22E2C14919032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C14819032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m */; };
 		79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */; };
-		79ADDAD218F213400031CA5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ADDAD118F213400031CA5E /* FacebookSDK.framework */; };
 		79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */; };
 		79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79ADDAD618F218730031CA5E /* Storyboard.storyboard */; };
-		A725CD1518EB6D2900EC3719 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A725CD1418EB6D2900EC3719 /* FacebookSDK.framework */; };
 		A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD1718EB6E8400EC3719 /* BZRLoginViewController.m */; };
 		A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A725CD1818EB6E8400EC3719 /* BZRLoginViewController.xib */; };
 		A725CD1F18EF445C00EC3719 /* BZRUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD1D18EF445C00EC3719 /* BZRUserProfileViewController.m */; };
-		A725CD2018EF445C00EC3719 /* BZRUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A725CD1E18EF445C00EC3719 /* BZRUserProfileViewController.xib */; };
-		A725CD2718EF5B8600EC3719 /* BZRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD2518EF5B8600EC3719 /* BZRTabBarController.m */; };
-		A725CD2D18EF6D2E00EC3719 /* BZRMarketPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD2B18EF6D2E00EC3719 /* BZRMarketPlaceViewController.m */; };
-		A725CD2E18EF6D2E00EC3719 /* BZRMarketPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A725CD2C18EF6D2E00EC3719 /* BZRMarketPlaceViewController.xib */; };
 		A725CD3218F0920B00EC3719 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A725CD3118F0920B00EC3719 /* SystemConfiguration.framework */; };
 		A725CD3418F0921F00EC3719 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A725CD3318F0921F00EC3719 /* AudioToolbox.framework */; };
 		A725CD3618F0922A00EC3719 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A725CD3518F0922900EC3719 /* CFNetwork.framework */; };
@@ -41,6 +32,9 @@
 		A725CD4E18F0A90D00EC3719 /* BZRFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD4D18F0A90D00EC3719 /* BZRFilterViewController.m */; };
 		A725CD5118F0ABE200EC3719 /* BZRFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD5018F0ABE200EC3719 /* BZRFilterCell.m */; };
 		A725CD5318F0ABF200EC3719 /* BZRFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A725CD5218F0ABF200EC3719 /* BZRFilterCell.xib */; };
+		A7737AF4190B01F600319AF4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7737AF3190B01F600319AF4 /* Parse.framework */; };
+		A7737AF6190B025000319AF4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7737AF5190B025000319AF4 /* FacebookSDK.framework */; };
+		A7737AFA190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */; };
 		A7DE717D18DDFA1200EE7F9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE717C18DDFA1200EE7F9A /* Foundation.framework */; };
 		A7DE717F18DDFA1200EE7F9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */; };
 		A7DE718118DDFA1200EE7F9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE718018DDFA1200EE7F9A /* UIKit.framework */; };
@@ -53,7 +47,6 @@
 		A7DE719818DDFA1200EE7F9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE718018DDFA1200EE7F9A /* UIKit.framework */; };
 		A7DE71A018DDFA1200EE7F9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7DE719E18DDFA1200EE7F9A /* InfoPlist.strings */; };
 		A7DE71A218DDFA1200EE7F9A /* BazaarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */; };
-		A7DE71AE18DDFB4700EE7F9A /* BZRNewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7DE71AD18DDFB4700EE7F9A /* BZRNewPostViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,9 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		222FA5D418F1C66500CE4AA1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		22A6D71A19044A7D00CE201B /* BZRNewLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRNewLoginViewController.h; sourceTree = "<group>"; };
-		22A6D71B19044A7D00CE201B /* BZRNewLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRNewLoginViewController.m; sourceTree = "<group>"; };
 		22A6D7261904597300CE201B /* BZRItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRItemViewController.h; sourceTree = "<group>"; };
 		22A6D7271904597300CE201B /* BZRItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRItemViewController.m; sourceTree = "<group>"; };
 		22E2C1301903020F0098D279 /* BZRTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRTradeViewController.h; path = Trade/BZRTradeViewController.h; sourceTree = "<group>"; };
@@ -81,27 +71,16 @@
 		22E2C13B19030C9B0098D279 /* weird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weird.png; sourceTree = "<group>"; };
 		22E2C14319031BFB0098D279 /* BZRFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRFavoritesTableViewController.h; sourceTree = "<group>"; };
 		22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRFavoritesTableViewController.m; sourceTree = "<group>"; };
-		22E2C14719032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRBazaarMarketplaceTableViewController.h; sourceTree = "<group>"; };
-		22E2C14819032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRBazaarMarketplaceTableViewController.m; sourceTree = "<group>"; };
 		79ADDACE18F212AF0031CA5E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		79ADDAD118F213400031CA5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		79ADDAD318F216DD0031CA5E /* BZRNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRNewPostViewController.h; sourceTree = "<group>"; };
 		79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRNewPostViewController.m; sourceTree = "<group>"; };
 		79ADDAD618F218730031CA5E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		A725CD1418EB6D2900EC3719 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		A725CD1618EB6E8400EC3719 /* BZRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRLoginViewController.h; sourceTree = "<group>"; };
 		A725CD1718EB6E8400EC3719 /* BZRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRLoginViewController.m; sourceTree = "<group>"; };
 		A725CD1818EB6E8400EC3719 /* BZRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRLoginViewController.xib; sourceTree = "<group>"; };
 		A725CD1C18EF445C00EC3719 /* BZRUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRUserProfileViewController.h; sourceTree = "<group>"; };
 		A725CD1D18EF445C00EC3719 /* BZRUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRUserProfileViewController.m; sourceTree = "<group>"; };
-		A725CD1E18EF445C00EC3719 /* BZRUserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRUserProfileViewController.xib; sourceTree = "<group>"; };
-		A725CD2418EF5B8600EC3719 /* BZRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRTabBarController.h; sourceTree = "<group>"; };
-		A725CD2518EF5B8600EC3719 /* BZRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTabBarController.m; sourceTree = "<group>"; };
-		A725CD2A18EF6D2E00EC3719 /* BZRMarketPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRMarketPlaceViewController.h; sourceTree = "<group>"; };
-		A725CD2B18EF6D2E00EC3719 /* BZRMarketPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRMarketPlaceViewController.m; sourceTree = "<group>"; };
-		A725CD2C18EF6D2E00EC3719 /* BZRMarketPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRMarketPlaceViewController.xib; sourceTree = "<group>"; };
-		A725CD2F18F0918200EC3719 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A725CD3118F0920B00EC3719 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A725CD3318F0921F00EC3719 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A725CD3518F0922900EC3719 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -116,6 +95,10 @@
 		A725CD4F18F0ABE200EC3719 /* BZRFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRFilterCell.h; sourceTree = "<group>"; };
 		A725CD5018F0ABE200EC3719 /* BZRFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRFilterCell.m; sourceTree = "<group>"; };
 		A725CD5218F0ABF200EC3719 /* BZRFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRFilterCell.xib; sourceTree = "<group>"; };
+		A7737AF3190B01F600319AF4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A7737AF5190B025000319AF4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		A7737AF8190B0A1200319AF4 /* BZRUserMarketPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRUserMarketPlaceViewController.h; sourceTree = "<group>"; };
+		A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRUserMarketPlaceViewController.m; sourceTree = "<group>"; };
 		A7DE717918DDFA1200EE7F9A /* Bazaar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bazaar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DE717C18DDFA1200EE7F9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,7 +115,6 @@
 		A7DE719D18DDFA1200EE7F9A /* BazaarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BazaarTests-Info.plist"; sourceTree = "<group>"; };
 		A7DE719F18DDFA1200EE7F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BazaarTests.m; sourceTree = "<group>"; };
-		A7DE71AD18DDFB4700EE7F9A /* BZRNewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRNewPostViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,15 +128,14 @@
 				A725CD3E18F0925B00EC3719 /* QuartzCore.framework in Frameworks */,
 				A725CD3C18F0925300EC3719 /* MobileCoreServices.framework in Frameworks */,
 				A725CD3A18F0924800EC3719 /* libz.dylib in Frameworks */,
+				A7737AF4190B01F600319AF4 /* Parse.framework in Frameworks */,
 				A725CD3818F0923500EC3719 /* CoreLocation.framework in Frameworks */,
 				A7DE717F18DDFA1200EE7F9A /* CoreGraphics.framework in Frameworks */,
 				A725CD3618F0922A00EC3719 /* CFNetwork.framework in Frameworks */,
 				A725CD3418F0921F00EC3719 /* AudioToolbox.framework in Frameworks */,
-				222FA5D518F1C66500CE4AA1 /* Parse.framework in Frameworks */,
-				79ADDAD218F213400031CA5E /* FacebookSDK.framework in Frameworks */,
-				A725CD1518EB6D2900EC3719 /* FacebookSDK.framework in Frameworks */,
 				A7DE718118DDFA1200EE7F9A /* UIKit.framework in Frameworks */,
 				A7DE717D18DDFA1200EE7F9A /* Foundation.framework in Frameworks */,
+				A7737AF6190B025000319AF4 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,15 +152,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22A6D71D19044A8400CE201B /* New Login */ = {
-			isa = PBXGroup;
-			children = (
-				22A6D71A19044A7D00CE201B /* BZRNewLoginViewController.h */,
-				22A6D71B19044A7D00CE201B /* BZRNewLoginViewController.m */,
-			);
-			name = "New Login";
-			sourceTree = "<group>";
-		};
 		22A6D7291904597E00CE201B /* View Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,33 +198,13 @@
 			name = Favorites;
 			sourceTree = "<group>";
 		};
-		22E2C14619032D4D0098D279 /* Bazaar (Marketplace) */ = {
-			isa = PBXGroup;
-			children = (
-				22E2C14719032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.h */,
-				22E2C14819032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m */,
-			);
-			name = "Bazaar (Marketplace)";
-			sourceTree = "<group>";
-		};
 		A725CD1B18EF415700EC3719 /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
 				A725CD1C18EF445C00EC3719 /* BZRUserProfileViewController.h */,
 				A725CD1D18EF445C00EC3719 /* BZRUserProfileViewController.m */,
-				A725CD1E18EF445C00EC3719 /* BZRUserProfileViewController.xib */,
 			);
 			name = "User Profile";
-			sourceTree = "<group>";
-		};
-		A725CD2918EF6CD600EC3719 /* Marketplace */ = {
-			isa = PBXGroup;
-			children = (
-				A725CD2A18EF6D2E00EC3719 /* BZRMarketPlaceViewController.h */,
-				A725CD2B18EF6D2E00EC3719 /* BZRMarketPlaceViewController.m */,
-				A725CD2C18EF6D2E00EC3719 /* BZRMarketPlaceViewController.xib */,
-			);
-			name = Marketplace;
 			sourceTree = "<group>";
 		};
 		A725CD4718F0A20000EC3719 /* Library */ = {
@@ -276,12 +228,18 @@
 			name = SideBar;
 			sourceTree = "<group>";
 		};
+		A7737AF7190B09EE00319AF4 /* User MarketPlace */ = {
+			isa = PBXGroup;
+			children = (
+				A7737AF8190B0A1200319AF4 /* BZRUserMarketPlaceViewController.h */,
+				A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */,
+			);
+			name = "User MarketPlace";
+			sourceTree = "<group>";
+		};
 		A7DE717018DDFA1200EE7F9A = {
 			isa = PBXGroup;
 			children = (
-				79ADDAD118F213400031CA5E /* FacebookSDK.framework */,
-				222FA5D418F1C66500CE4AA1 /* Parse.framework */,
-				A725CD2F18F0918200EC3719 /* Parse.framework */,
 				A7DE718218DDFA1200EE7F9A /* Bazaar */,
 				A7DE719B18DDFA1200EE7F9A /* BazaarTests */,
 				A7DE717B18DDFA1200EE7F9A /* Frameworks */,
@@ -301,6 +259,8 @@
 		A7DE717B18DDFA1200EE7F9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7737AF5190B025000319AF4 /* FacebookSDK.framework */,
+				A7737AF3190B01F600319AF4 /* Parse.framework */,
 				A725CD4118F0926B00EC3719 /* StoreKit.framework */,
 				A725CD3F18F0926300EC3719 /* Security.framework */,
 				A725CD3D18F0925B00EC3719 /* QuartzCore.framework */,
@@ -310,7 +270,6 @@
 				A725CD3518F0922900EC3719 /* CFNetwork.framework */,
 				A725CD3318F0921F00EC3719 /* AudioToolbox.framework */,
 				A725CD3118F0920B00EC3719 /* SystemConfiguration.framework */,
-				A725CD1418EB6D2900EC3719 /* FacebookSDK.framework */,
 				A7DE717C18DDFA1200EE7F9A /* Foundation.framework */,
 				A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */,
 				A7DE718018DDFA1200EE7F9A /* UIKit.framework */,
@@ -322,25 +281,21 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
-				22E2C14619032D4D0098D279 /* Bazaar (Marketplace) */,
 				22E2C13819030C8D0098D279 /* images */,
 				22E2C13F19031B650098D279 /* Favorites */,
 				22E2C134190305180098D279 /* Notifications */,
 				22E2C133190302230098D279 /* Trade */,
 				A725CD4B18F0A8EC00EC3719 /* SideBar */,
 				A725CD4718F0A20000EC3719 /* Library */,
-				A725CD2918EF6CD600EC3719 /* Marketplace */,
 				A725CD1B18EF415700EC3719 /* User Profile */,
 				A7DE71AC18DDFAB000EE7F9A /* New Post */,
-				22A6D71D19044A8400CE201B /* New Login */,
 				A7DE71AB18DDFA9A00EE7F9A /* Login */,
 				A7DE718B18DDFA1200EE7F9A /* BZRAppDelegate.h */,
 				A7DE718C18DDFA1200EE7F9A /* BZRAppDelegate.m */,
 				A7DE718E18DDFA1200EE7F9A /* Images.xcassets */,
 				A7DE718318DDFA1200EE7F9A /* Supporting Files */,
-				A725CD2418EF5B8600EC3719 /* BZRTabBarController.h */,
-				A725CD2518EF5B8600EC3719 /* BZRTabBarController.m */,
 				22A6D7291904597E00CE201B /* View Item */,
 			);
 			path = Bazaar;
@@ -388,7 +343,6 @@
 		A7DE71AC18DDFAB000EE7F9A /* New Post */ = {
 			isa = PBXGroup;
 			children = (
-				A7DE71AD18DDFB4700EE7F9A /* BZRNewPostViewController.xib */,
 				79ADDAD318F216DD0031CA5E /* BZRNewPostViewController.h */,
 				79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */,
 			);
@@ -473,13 +427,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E2C13E19030C9B0098D279 /* weird.png in Resources */,
-				A725CD2018EF445C00EC3719 /* BZRUserProfileViewController.xib in Resources */,
-				A7DE71AE18DDFB4700EE7F9A /* BZRNewPostViewController.xib in Resources */,
 				22E2C13C19030C9B0098D279 /* crap.png in Resources */,
 				22E2C13D19030C9B0098D279 /* red.png in Resources */,
 				79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */,
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
-				A725CD2E18EF6D2E00EC3719 /* BZRMarketPlaceViewController.xib in Resources */,
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				A725CD5318F0ABF200EC3719 /* BZRFilterCell.xib in Resources */,
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,
@@ -504,19 +455,16 @@
 				22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */,
 				A7DE718918DDFA1200EE7F9A /* main.m in Sources */,
 				A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */,
+				A7737AFA190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m in Sources */,
 				A725CD1F18EF445C00EC3719 /* BZRUserProfileViewController.m in Sources */,
 				A7DE718D18DDFA1200EE7F9A /* BZRAppDelegate.m in Sources */,
 				79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */,
-				A725CD2718EF5B8600EC3719 /* BZRTabBarController.m in Sources */,
-				22E2C14919032D7F0098D279 /* BZRBazaarMarketplaceTableViewController.m in Sources */,
-				A725CD2D18EF6D2E00EC3719 /* BZRMarketPlaceViewController.m in Sources */,
 				22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */,
 				A725CD4E18F0A90D00EC3719 /* BZRFilterViewController.m in Sources */,
 				79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */,
 				A725CD5118F0ABE200EC3719 /* BZRFilterCell.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
 				22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */,
-				22A6D71C19044A7D00CE201B /* BZRNewLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,10 +583,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/shikha/Desktop/CMU-Bazaar/Bazaar",
-					/Users/saumyadalal/Documents/Spring,
-					"2014/DHCS/CMU-Bazaar/Bazaar/FacebookSDK",
-					/Users/saumyadalal/Desktop/BazaarCMU/Bazaar,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -656,11 +600,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/shikha/Desktop/CMU-Bazaar/Bazaar",
-					/Users/saumyadalal/Documents/Spring,
-					"2014/DHCS/CMU-Bazaar/Bazaar/FacebookSDK",
-					/Users/saumyadalal/Desktop/BazaarCMU/Bazaar,
 					"$(PROJECT_DIR)",
+					"/Users/shikha/Desktop/Bazaar-2.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bazaar/Bazaar-Prefix.pch";

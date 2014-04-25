@@ -9,18 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface BZRNewPostViewController : UIViewController
-<UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface BZRNewPostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+
 - (IBAction)editPicture:(id)sender;
-@property (strong, nonatomic) IBOutlet UIImageView *itemPic;
-@property (strong, nonatomic) NSArray *categories;
-@property (strong, nonatomic) IBOutlet UITextField *categoryTF;
 - (IBAction)resign:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UITextView *description;
-@property (strong, nonatomic) IBOutlet UITextField *titleField;
+@property (strong, nonatomic) IBOutlet UITextField *itemName;
+@property (strong, nonatomic) IBOutlet UITextField *category;
 
-@property (strong, nonatomic) IBOutlet UIButton *postButton;
-
+- (IBAction)postPressed:(id)sender;
+- (IBAction)cancelPressed:(id)sender;
 
 @end

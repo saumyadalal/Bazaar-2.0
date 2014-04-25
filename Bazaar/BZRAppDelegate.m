@@ -8,9 +8,9 @@
 
 #import "BZRAppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "BZRLoginViewController.h"
-#import "BZRTabBarController.h"
 #import <Parse/Parse.h>
+#import "SWRevealViewController.h"
+#import "BZRLoginViewController.h"
 
 
 @implementation BZRAppDelegate
@@ -24,34 +24,29 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    //set up parse BEFORE the login view controller
+    [Parse setApplicationId:@"slkWhm7qfg7YlgA4KfhwjcGP0CCk8LHEIt0WcgZu"
+                clientKey:@"3hbcvCKFBhVNinv746qrlH3OgplB5rTarKV6FgFR"];
+    //initialize facebook
+    [PFFacebookUtils initializeFacebook];
     //set login view controller
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
-    BZRTabBarController *root = (BZRTabBarController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RootTabController"];
-    self.window.rootViewController = root;
-    //set up parse
-    [Parse setApplicationId:@"Xr9bloRdOZWYCBrQjq4QKeYXp5tcYHpY7LYyrutT"
-                  clientKey:@"q8Wec7GNyNppi4BZ1PBNDyMPY09GMYUcly0SlGU4"];
+    BZRLoginViewController *loginViewController = [[BZRLoginViewController alloc] initWithNibName:@"BZRLoginViewController" bundle:nil];
+    self.window.rootViewController = loginViewController;
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-
     return YES;
 }
 
 
 
-/* Override method in our app delegate to process the response we get from Safari */
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-  
-  // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-  BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-  
-  // You can add your app-specific url handling code here if needed
-  
-  return wasHandled;
-  
+// ****************************************************************************
+// App switching methods to support Facebook Single Sign-On.
+// ****************************************************************************
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  return [FBAppCall handleOpenURL:url
+                sourceApplication:sourceApplication
+                      withSession:[PFFacebookUtils session]];
 }
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -7,16 +7,13 @@
 //
 
 #import "BZRLoginViewController.h"
-#import "BZRTabBarController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import "SWRevealViewController.h"
 #import "BZRFilterViewController.h"
 
-
 @interface BZRLoginViewController () <FBLoginViewDelegate>
 @property (strong, nonatomic) SWRevealViewController *revealController;
-@property BOOL isFirstLoginDone;
 @end
 
 @implementation BZRLoginViewController
@@ -33,22 +30,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //Front View with tab bar
-    BZRTabBarController *tabBarController = [[BZRTabBarController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: tabBarController];
-    //Rear view (SideBar)
-    BZRFilterViewController *filterTableViewController = [[BZRFilterViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:filterTableViewController];
-    //Init reveal controller
-  	self.revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:navigationController];
-  
-    /* After a user logs in, Parse will automatically cache the Facebook and Parse sessions in the currentUser object. 
-       By pass login screen 
-    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-      [self presentViewController:self.nav animated:NO completion:nil];
-    } */
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
+
+    self.revealController = (SWRevealViewController *)[mainStoryboard
+                            instantiateViewControllerWithIdentifier:@"revealViewController"];
 }
 
+//Place this in viewDidAppear since the reveal controller cannot be presented yet in
+//viewDidLoad
+- (void)viewDidAppear:(BOOL)animated {
+  /* After a user logs in, Parse will automatically cache the Facebook and Parse sessions in the currentUser object.
+   By pass login screen if logged in*/
+  if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+    [self presentViewController:self.revealController animated:NO completion:nil];
+  }
+}
 
 
 - (void)didReceiveMemoryWarning

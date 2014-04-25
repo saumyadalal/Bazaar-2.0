@@ -7,7 +7,7 @@
 //
 
 #import "BZRUserProfileViewController.h"
-#import "BZRTabBarController.h"
+#import "SWRevealViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 
@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
+    self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BZRLoginViewController : UIViewController
+
 - (IBAction)loginUser:(id)sender;
 
 @end
