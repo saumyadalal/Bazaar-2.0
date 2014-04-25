@@ -75,8 +75,12 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+<<<<<<< HEAD
+    return 5;
+=======
  //   printf(@"%i", [self.arr count]);
     return [self.arr count];
+>>>>>>> 807482f3b7aa7d52ca5dedd67dada4cccfc7a2bb
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

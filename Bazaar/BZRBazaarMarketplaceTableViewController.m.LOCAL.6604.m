@@ -13,8 +13,6 @@
 @end
 
 @implementation BZRBazaarMarketplaceTableViewController
-@synthesize arr;
-@synthesize imageArr;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,26 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.arr = [[NSMutableArray alloc]init];
-    self.imageArr = [[NSMutableArray alloc]init];
-    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            for (PFObject *object in objects) {
-                [self.arr addObject: object[@"itemName"]];
-               
-                [self.imageArr addObject: object[@"itemImage"]];
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-
-        for (int i = 0; i< 5; i++) {
-             NSLog(@"%@", [self.arr objectAtIndex:i]);
-        }
-    }];
-    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -75,22 +53,14 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
- //   printf(@"%i", [self.arr count]);
-    return [self.arr count];
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    printf("tableView");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    UILabel *label = (UILabel *)[cell.contentView viewWithTag:2];
-    [label setText:[NSString stringWithFormat:@"%@", [arr objectAtIndex: indexPath.row]]];
-    
-//    UIImageView *image = (UIImageView *)[cell.contentView viewWithTag:1];
-//    UIImage *imageName = [UIImage imageNamed:[imageArr objectAtIndex:indexPath.row]];
-//    [image setImage:imageName];
     // Configure the cell...
     
     return cell;

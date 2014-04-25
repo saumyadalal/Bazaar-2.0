@@ -8,7 +8,6 @@
 
 #import "BZRNewPostViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <Parse/Parse.h>
 
 @interface BZRNewPostViewController ()
 @end
@@ -115,7 +114,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
 }
 - (void)postButton:(id)sender {
-    printf("start");
     PFObject *newItem = [PFObject objectWithClassName:@"Item"];
     NSData *imageData = UIImagePNGRepresentation(self.itemPic.image);
     PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
@@ -124,6 +122,5 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     newItem[@"itemCategory"] = self.categoryTF.text;
     newItem[@"itemImage"] = imageFile;
     [newItem saveInBackground];
-    printf("end");
 }
 @end
