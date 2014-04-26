@@ -51,8 +51,8 @@
       NSString *name = userData[@"name"];
 
       // Now add the data to the UI elements
-      self.fbPic.profileID = facebookID;
-      self.name.text = name;
+      self.profilePictureView.profileID = facebookID;
+      self.username.text = name;
     }
     else{
         NSLog(@"%@", error);
