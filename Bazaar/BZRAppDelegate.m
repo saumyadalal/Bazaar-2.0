@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Parse setApplicationId:@"Xr9bloRdOZWYCBrQjq4QKeYXp5tcYHpY7LYyrutT"
+                  clientKey:@"q8Wec7GNyNppi4BZ1PBNDyMPY09GMYUcly0SlGU4"];
     //load the profilePictureViewClass for interface builder
     [FBProfilePictureView class];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -32,10 +34,9 @@
     //set login view controller
     BZRLoginViewController *loginViewController = [[BZRLoginViewController alloc] initWithNibName:@"BZRLoginViewController" bundle:nil];
     self.window.rootViewController = loginViewController;
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+   [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
-
 
 
 // ****************************************************************************
