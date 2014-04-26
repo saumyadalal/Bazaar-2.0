@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E60182D190C1DCB00CA324F /* BZRBazaarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E60182C190C1DCB00CA324F /* BZRBazaarController.m */; };
 		22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6D7271904597300CE201B /* BZRItemViewController.m */; };
 		22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C1311903020F0098D279 /* BZRTradeViewController.m */; };
 		22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C136190305470098D279 /* BZRNotificationTableViewController.m */; };
@@ -60,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E60182B190C1DCB00CA324F /* BZRBazaarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRBazaarController.h; path = ../BZRBazaarController.h; sourceTree = "<group>"; };
+		0E60182C190C1DCB00CA324F /* BZRBazaarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BZRBazaarController.m; path = ../BZRBazaarController.m; sourceTree = "<group>"; };
 		22A6D7261904597300CE201B /* BZRItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRItemViewController.h; sourceTree = "<group>"; };
 		22A6D7271904597300CE201B /* BZRItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRItemViewController.m; sourceTree = "<group>"; };
 		22E2C1301903020F0098D279 /* BZRTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRTradeViewController.h; path = Trade/BZRTradeViewController.h; sourceTree = "<group>"; };
@@ -152,6 +155,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E60182A190C18C900CA324F /* Bazaar */ = {
+			isa = PBXGroup;
+			children = (
+				0E60182B190C1DCB00CA324F /* BZRBazaarController.h */,
+				0E60182C190C1DCB00CA324F /* BZRBazaarController.m */,
+			);
+			name = Bazaar;
+			sourceTree = "<group>";
+		};
 		22A6D7291904597E00CE201B /* View Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +187,7 @@
 			children = (
 				22E2C135190305470098D279 /* BZRNotificationTableViewController.h */,
 				22E2C136190305470098D279 /* BZRNotificationTableViewController.m */,
+				22E2C133190302230098D279 /* Trade */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -281,12 +294,12 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				0E60182A190C18C900CA324F /* Bazaar */,
 				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				22E2C13819030C8D0098D279 /* images */,
 				22E2C13F19031B650098D279 /* Favorites */,
 				22E2C134190305180098D279 /* Notifications */,
-				22E2C133190302230098D279 /* Trade */,
 				A725CD4B18F0A8EC00EC3719 /* SideBar */,
 				A725CD4718F0A20000EC3719 /* Library */,
 				A725CD1B18EF415700EC3719 /* User Profile */,
@@ -465,6 +478,7 @@
 				A725CD5118F0ABE200EC3719 /* BZRFilterCell.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
 				22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */,
+				0E60182D190C1DCB00CA324F /* BZRBazaarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
