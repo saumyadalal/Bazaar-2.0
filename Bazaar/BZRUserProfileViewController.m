@@ -60,7 +60,6 @@
   }];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,7 +69,7 @@
 
 - (IBAction)logout:(id)sender {
   [PFUser logOut];
-  [self.tabBarController.navigationController dismissViewControllerAnimated:YES completion:nil];
+  [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
