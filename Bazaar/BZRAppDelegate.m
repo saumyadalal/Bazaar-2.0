@@ -35,6 +35,21 @@
     BZRLoginViewController *loginViewController = [[BZRLoginViewController alloc] initWithNibName:@"BZRLoginViewController" bundle:nil];
     self.window.rootViewController = loginViewController;
    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:(79/255.0) green:(44/255.0) blue:(112/255.0) alpha:(1)]]; //tab bar background color
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:(247/255.0) green:(248/255.0) blue:(231/255.0) alpha:(1)]]; //tab bar item and font color when selected
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(79/255.0) green:(44/255.0) blue:(112/255.0) alpha:(1)]]; //navigation bar background color
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:(247/255.0) green:(248/255.0) blue:(231/255.0) alpha:(1)]]; //navigation bar side objects and text color
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:247/255.0 green:248/255.0 blue:231/255.0 alpha:1.0],
+      NSForegroundColorAttributeName,
+      nil]]; //navigation bar main title color
+    
+   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //changes status bar style to light, also added a key in .plist file called "view controlled based status bar appearance" and set it to NO
     return YES;
 }
 
