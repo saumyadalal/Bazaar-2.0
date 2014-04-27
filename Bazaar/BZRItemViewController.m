@@ -14,19 +14,48 @@
 
 @implementation BZRItemViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.itemTitle.text = [self.item objectForKey:@"name"];
+    NSLog(@" %@", [self.item objectForKey:@"name"]);
+    //PFUser *user = [self.item objectForKey:@"owner"];
+    self.itemDescription.text = [self.item objectForKey:@"description"];
+    PFFile *imageFile = [self.item objectForKey:@"imageFile"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            NSLog(@"fetched image");
+            self.itemPicture.image = [UIImage imageWithData:data];
+        }
+        else {
+            NSLog(@"error fetching image");
+        }
+    }];
+    
+}
+
+
+- (void) setUserInfo {
+    NSLog(@"%@", [PFUser currentUser]);
+    //create request for data
+    FBRequest *request = [FBRequest requestForMe];
+    // Send request to Facebook
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // result is a dictionary with the user's Facebook data
+            NSDictionary *userData = (NSDictionary *)result;
+            
+            NSString *facebookID = userData[@"id"];
+            NSString *name = userData[@"name"];
+            
+            // Now add the data to the UI elements
+            self.profilePicture.profileID = facebookID;
+            self.userName.text = name;
+        }
+        else{
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +64,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)initiateTrade:(id)sender {
+}
+
+- (IBAction)addToFavorites:(id)sender {
+}
 @end
