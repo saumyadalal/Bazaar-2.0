@@ -457,12 +457,9 @@
 				79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */,
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
-<<<<<<< HEAD
-=======
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
 				A725CD5318F0ABF200EC3719 /* BZRFilterCell.xib in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,
->>>>>>> 717b76d93aba1fe73c314eed00e5eec659e3ded1
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,
 				0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */,
 			);
