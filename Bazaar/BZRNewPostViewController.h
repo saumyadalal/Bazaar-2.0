@@ -21,5 +21,4 @@
 
 - (IBAction)postPressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
-
 @end

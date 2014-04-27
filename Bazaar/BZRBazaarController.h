@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface BZRBazaarController : UIViewController
-
+@interface BZRBazaarController : UICollectionViewController
+@property (nonatomic, strong) NSString *currentFilter;
+- (void)viewDidRequestRefresh;
 @end

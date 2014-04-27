@@ -7,33 +7,24 @@
 //
 
 #import "BZRFilterViewController.h"
-#import "BZRFilterCell.h"
+#import "BZRBazaarController.h"
+#import "SWRevealViewController.h"
 
 @interface BZRFilterViewController ()
 @property (strong, nonatomic) NSArray *filters;
 @end
 
-@implementation BZRFilterViewController
+static NSString * const cellIdentifier = @"filterCell";
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-      self.filters = @[@"Accessories", @"Books", @"Clothes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household"];
-    }
-    return self;
-}
+@implementation BZRFilterViewController
 
 //always register the nib here, not in init
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"BZRFilterCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"FilterCell"];
     //Preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
-    [self.tableView reloadData];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.filters = @[@"Accessories", @"Books", @"Clothes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,11 +49,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  BZRFilterCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FilterCell"];
-  if (!cell) {
-    cell = [[BZRFilterCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FilterCell"];
-  }
-  cell.filterLabel.text = [self.filters objectAtIndex:indexPath.row];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+  UILabel *filterLabel = (UILabel *)[cell viewWithTag:201];
+  filterLabel.text = [self.filters objectAtIndex:indexPath.row];
   return cell;
 }
 
@@ -105,16 +94,45 @@
 }
 */
 
-/*
-#pragma mark - Navigation
+
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    //selected filter
+    NSString *filter = [self.filters objectAtIndex:indexPath.row];
+  // Set the photo if it navigates to the PhotoView
+    if ([segue.identifier isEqualToString:@"showFilter"]) {
+      //throws error with rootViewController
+      BZRBazaarController *bazaarVC = (BZRBazaarController*)[segue.destinationViewController topViewController];
+      bazaarVC.currentFilter = filter;
+      //require this to reload data
+      [bazaarVC viewDidRequestRefresh];
+      /*
+      NSLog(@" %@", bazaarVC.navigationItem.title);
+      NSLog(@" %@", bazaarVC.title);
+      NSLog(@" %@", [[segue.destinationViewController topViewController] class]);
+      bazaarVC.navigationItem.title = filter;
+      bazaarVC.title = filter;
+      
+      [bazaarVC viewDidRequestRefresh];
+      NSLog(@"hi");
+      NSLog(@" %@", bazaarVC.navigationItem.title); */
+    }
+    if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
+      SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
+      swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc,
+                               UIViewController* dvc) {
+          UITabBarController* tabController = (UITabBarController*) self.revealViewController.frontViewController;
+          //loads the view of the respective tab
+          [tabController setSelectedIndex:0];
+          //slide the sidebar back
+          [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
+        };
+    }
 }
 
- */
+
 
 @end

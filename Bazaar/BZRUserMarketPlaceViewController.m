@@ -7,7 +7,6 @@
 //
 
 #import "BZRUserMarketPlaceViewController.h"
-#import "SWRevealViewController.h"
 #import <Parse/Parse.h>
 
 @interface BZRUserMarketPlaceViewController ()
@@ -23,12 +22,8 @@ static NSString * const cellIdentifier = @"UserItemCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    SWRevealViewController *revealController = self.tabBarController.revealViewController;
-    self.navigationItem.leftBarButtonItem.target = revealController;
-    self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
 	// Do any additional setup after loading the view.
-    [self loadMarketPlace];
-    [self.collectionView reloadData];
+    [self viewDidRequestRefresh];
     //[self.collectionView reloadData];
     self.collectionView.backgroundColor = [UIColor whiteColor];
   
@@ -40,7 +35,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)ViewDidRequestRefresh
+- (void)viewDidRequestRefresh
 {
   [self loadMarketPlace];
 }
@@ -84,11 +79,9 @@ static NSString * const cellIdentifier = @"UserItemCell";
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
-      NSLog(@"fetched item");
       PFFile *imageFile = [object objectForKey:@"imageFile"];
       [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
-          NSLog(@"fetched image");
           itemImageView.image = [UIImage imageWithData:data];
           itemName.text = [object objectForKey:@"name"];
         }
