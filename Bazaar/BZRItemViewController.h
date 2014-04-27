@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
 
 @interface BZRItemViewController : UIViewController
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePicture;
+@property (strong, nonatomic) IBOutlet UILabel *userName;
+@property (strong, nonatomic) IBOutlet UIImageView *itemPicture;
+@property (strong, nonatomic) IBOutlet UILabel *itemTitle;
+@property (strong, nonatomic) IBOutlet UILabel *itemDescription;
+@property (strong, nonatomic) PFObject* item;
+- (IBAction)initiateTrade:(id)sender;
+- (IBAction)addToFavorites:(id)sender;
 
 @end

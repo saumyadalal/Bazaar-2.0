@@ -4,11 +4,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="S5b-wj-ISv">
             <objects>
                 <navigationController definesPresentationContext="YES" id="ygV-fs-IWT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="3t3-6r-PhA"/>
+                    <tabBarItem key="tabBarItem" title="" image="ptofile 30.1.png" id="3t3-6r-PhA">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0kz-5O-haI">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -29,7 +31,7 @@
                         <viewControllerLayoutGuide type="bottom" id="i24-9c-WIx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wQL-gx-2Ro">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17U-i4-8fu">
@@ -214,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cu4-CT-4uh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185" y="-977"/>
+            <point key="canvasLocation" x="2173" y="-1077"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="qTZ-BS-TP2">
@@ -225,11 +227,12 @@
                         <viewControllerLayoutGuide type="bottom" id="o4w-jL-005"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="peD-vd-fxb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zbe-JX-b1e"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="C2Y-rJ-ESG" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="Ko6-E5-F1l"/>
                         <segue destination="s6L-CA-pyF" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="VFA-XW-fFX"/>
@@ -274,6 +277,8 @@
                             <outlet property="delegate" destination="C2Y-rJ-ESG" id="Y9I-WT-zBe"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul2-wX-PK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,28 +290,32 @@
                 <tabBarController storyboardIdentifier="rootTabController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s6L-CA-pyF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tp5-FC-ex1"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="1AL-CE-ElH">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="1AL-CE-ElH">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="X0N-c0-bLY" kind="relationship" relationship="viewControllers" id="5fe-k8-efY"/>
-                        <segue destination="gDu-fF-OdH" kind="relationship" relationship="viewControllers" id="GoI-Cm-NXd"/>
-                        <segue destination="ygV-fs-IWT" kind="relationship" relationship="viewControllers" id="HP0-I0-Phh"/>
-                        <segue destination="L0c-tP-lMY" kind="relationship" relationship="viewControllers" id="m7b-Gm-azE"/>
-                        <segue destination="1jm-Yk-Rdk" kind="relationship" relationship="viewControllers" id="Ixr-kR-5IH"/>
+                        <segue destination="X0N-c0-bLY" kind="relationship" relationship="viewControllers" id="5gf-aY-sNS"/>
+                        <segue destination="gDu-fF-OdH" kind="relationship" relationship="viewControllers" id="eyk-xI-aiq"/>
+                        <segue destination="ygV-fs-IWT" kind="relationship" relationship="viewControllers" id="DQn-Aa-zpl"/>
+                        <segue destination="L0c-tP-lMY" kind="relationship" relationship="viewControllers" id="AgH-8g-ipe"/>
+                        <segue destination="1jm-Yk-Rdk" kind="relationship" relationship="viewControllers" id="ouj-sQ-CNV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4R-Yo-7hz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="526" y="-526"/>
         </scene>
-        <!--Navigation Controller - Bazaar-->
+        <!--Navigation Controller-->
         <scene sceneID="RaY-Z8-Fhm">
             <objects>
                 <navigationController definesPresentationContext="YES" id="X0N-c0-bLY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bazaar" id="7ix-Pg-tD9"/>
+                    <tabBarItem key="tabBarItem" title="" image="bazaar30.1.png" id="7ix-Pg-tD9">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3fJ-VJ-jNF">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -323,7 +332,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="6gq-dJ-A7P" customClass="BZRBazaarController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="O5k-wV-1dr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Hn-cX-Bqd">
                             <size key="itemSize" width="109" height="99"/>
@@ -353,6 +362,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="fwj-Ek-5Mt" kind="push" identifier="detailView" id="iu9-k7-5z2"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -366,13 +378,15 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBN-lh-MvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552" y="-1803"/>
+            <point key="canvasLocation" x="1576" y="-1803"/>
         </scene>
         <!--Navigation Controller - Upload-->
         <scene sceneID="gTa-bm-pzt">
             <objects>
                 <navigationController title="Upload" definesPresentationContext="YES" id="gDu-fF-OdH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Upload" id="eyR-RW-P1g"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera30.png" id="eyR-RW-P1g">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="haf-KM-g3f">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -393,49 +407,55 @@
                         <viewControllerLayoutGuide type="bottom" id="Ctx-Md-jMb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Slw-fr-NyV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Ps-ziD">
-                                <rect key="frame" x="35" y="118" width="253" height="253"/>
+                                <rect key="frame" x="35" y="118" width="253" height="204"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECc-0Z-Pji">
-                                <rect key="frame" x="12" y="379" width="303" height="27"/>
+                                <rect key="frame" x="12" y="349" width="303" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="298" translatesAutoresizingMaskIntoConstraints="NO" id="EhB-XS-VWq">
-                                <rect key="frame" x="14" y="414" width="298" height="56"/>
+                                <rect key="frame" x="14" y="374" width="298" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytv-h1-UX2">
-                                <rect key="frame" x="30" y="477" width="115" height="30"/>
+                                <rect key="frame" x="30" y="438" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Trade">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="initiateTrade:" destination="fwj-Ek-5Mt" eventType="touchUpInside" id="1Fb-fs-mJq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQZ-KQ-ah9">
-                                <rect key="frame" x="173" y="477" width="115" height="30"/>
+                                <rect key="frame" x="173" y="438" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Favorite">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToFavorites:" destination="fwj-Ek-5Mt" eventType="touchUpInside" id="dPR-Ja-a9u"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gqC-jn-q3e" customClass="FBProfilePictureView">
                                 <rect key="frame" x="14" y="71" width="43" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epS-O1-AhC">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epS-O1-AhC">
                                 <rect key="frame" x="73" y="82" width="227" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -446,12 +466,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="hVt-TI-5lT"/>
                     <connections>
+                        <outlet property="itemDescription" destination="EhB-XS-VWq" id="TKB-vM-er8"/>
+                        <outlet property="itemPicture" destination="Y9O-Ps-ziD" id="Acm-4c-h69"/>
+                        <outlet property="itemTitle" destination="ECc-0Z-Pji" id="a9Y-aa-SRM"/>
+                        <outlet property="profilePicture" destination="gqC-jn-q3e" id="BuC-et-Rxd"/>
+                        <outlet property="userName" destination="epS-O1-AhC" id="iQ5-Cb-kwz"/>
                         <segue destination="9TQ-gK-KMR" kind="push" id="t6u-ja-2Yh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fu7-EH-ErQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126" y="-1812"/>
+            <point key="canvasLocation" x="2126" y="-1803"/>
         </scene>
         <!--Trade View Controller - Trade-->
         <scene sceneID="QoE-ci-mbI">
@@ -462,11 +487,11 @@
                         <viewControllerLayoutGuide type="bottom" id="whm-zu-1oe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ti0-ey-hBX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZJy-bI-Etp">
-                                <rect key="frame" x="26" y="322" width="94" height="29"/>
+                                <rect key="frame" x="26" y="273" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </stepper>
                         </subviews>
@@ -482,7 +507,9 @@
         <scene sceneID="m56-cN-Saj">
             <objects>
                 <navigationController title="Favorites" definesPresentationContext="YES" id="1jm-Yk-Rdk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="dsC-Dt-anX"/>
+                    <tabBarItem key="tabBarItem" title="" image="favorites30.png" id="dsC-Dt-anX">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="42B-wX-kJR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -499,7 +526,7 @@
             <objects>
                 <tableViewController id="bdf-Zy-4yv" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="116" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ah7-l8-I9t">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -540,7 +567,9 @@
         <scene sceneID="731-pl-HUb">
             <objects>
                 <navigationController title="Notifications" definesPresentationContext="YES" id="L0c-tP-lMY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" id="JDL-G3-Z7Y"/>
+                    <tabBarItem key="tabBarItem" title="" image="notifs30.1.png" id="JDL-G3-Z7Y">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q5b-fV-e7X">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -557,7 +586,7 @@
             <objects>
                 <tableViewController id="kgk-NJ-z4T" customClass="BZRNotificationTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" id="u4m-TC-iXS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -638,9 +667,16 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBQ-od-4Ur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="15"/>
+            <point key="canvasLocation" x="2191" y="19"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bazaar30.1.png" width="26" height="32"/>
+        <image name="camera30.png" width="30" height="22"/>
+        <image name="favorites30.png" width="33" height="27"/>
+        <image name="notifs30.1.png" width="26" height="27"/>
+        <image name="ptofile 30.1.png" width="27" height="27"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
