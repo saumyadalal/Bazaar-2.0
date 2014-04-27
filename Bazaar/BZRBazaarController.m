@@ -8,6 +8,7 @@
 
 #import "BZRBazaarController.h"
 #import "SWRevealViewController.h"
+#import "BZRItemViewController.h"
 
 @interface BZRBazaarController ()
 @property (nonatomic, strong) NSArray *items;
@@ -102,6 +103,17 @@ static NSString * const cellIdentifier = @"ItemCell";
         }
     }];
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  if([[segue identifier] isEqualToString:@"detailView"])
+  {
+    BZRItemViewController *detailView = (BZRItemViewController *) segue.destinationViewController;
+    NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+    PFObject* item = [self.items objectAtIndex:selectedIndexPath.row];
+    detailView.item=item;
+  }
+  
 }
 
 @end
