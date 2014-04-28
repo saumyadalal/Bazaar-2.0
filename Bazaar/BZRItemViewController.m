@@ -17,10 +17,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.itemTitle.text = [self.item objectForKey:@"name"];
+    self.itemTitle.text = [self.item objectForKey:@"name"]; //set item title
     NSLog(@" %@", [self.item objectForKey:@"name"]);
-    //PFUser *user = [self.item objectForKey:@"owner"];
-    self.itemDescription.text = [self.item objectForKey:@"description"];
+    PFUser *user = [self.item objectForKey:@"owner"]; //get user info
+    
+    self.itemDescription.text = [self.item objectForKey:@"description"]; //set item description
     PFFile *imageFile = [self.item objectForKey:@"imageFile"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
@@ -31,12 +32,12 @@
             NSLog(@"error fetching image");
         }
     }];
-    
+    //[self setUserInfo];
 }
 
 
 - (void) setUserInfo {
-    NSLog(@"%@", [PFUser currentUser]);
+//    NSLog(@"%@", [PFUser currentUser]);
     //create request for data
     FBRequest *request = [FBRequest requestForMe];
     // Send request to Facebook
@@ -50,7 +51,7 @@
             
             // Now add the data to the UI elements
             self.profilePicture.profileID = facebookID;
-            self.userName.text = name;
+            //self.userName.text = name;
         }
         else{
             NSLog(@"%@", error);

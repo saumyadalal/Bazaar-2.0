@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ixW-Uc-S9m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ixW-Uc-S9m">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -169,7 +169,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WG5-Yt-Z9o">
-                                <rect key="frame" x="0.0" y="17" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="kWn-bU-vQH">
@@ -216,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cu4-CT-4uh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2173" y="-1077"/>
+            <point key="canvasLocation" x="2172" y="-1077"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="qTZ-BS-TP2">
@@ -363,7 +363,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="fwj-Ek-5Mt" kind="push" identifier="detailView" id="iu9-k7-5z2"/>
+                                    <segue destination="fwj-Ek-5Mt" kind="push" identifier="bazaarView" id="iu9-k7-5z2"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -407,11 +407,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ctx-Md-jMb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Slw-fr-NyV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="306"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Ps-ziD">
-                                <rect key="frame" x="35" y="118" width="253" height="253"/>
+                                <rect key="frame" x="34" y="158" width="246" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECc-0Z-Pji">
@@ -476,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fu7-EH-ErQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126" y="-1803"/>
+            <point key="canvasLocation" x="2842" y="-1291"/>
         </scene>
         <!--Trade View Controller - Trade-->
         <scene sceneID="QoE-ci-mbI">
@@ -487,11 +487,11 @@
                         <viewControllerLayoutGuide type="bottom" id="whm-zu-1oe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ti0-ey-hBX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="306"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZJy-bI-Etp">
-                                <rect key="frame" x="26" y="322" width="94" height="29"/>
+                                <rect key="frame" x="27" y="61" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </stepper>
                         </subviews>
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dK-BO-IUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2579" y="-1803"/>
+            <point key="canvasLocation" x="3439" y="-1291"/>
         </scene>
         <!--Navigation Controller - Favorites-->
         <scene sceneID="m56-cN-Saj">
@@ -657,6 +657,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="fwj-Ek-5Mt" kind="push" identifier="profileView" id="AgD-ED-kSL"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -685,5 +688,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ney-sS-UDE"/>
         <segue reference="AQ0-wf-Ra2"/>
+        <segue reference="AgD-ED-kSL"/>
     </inferredMetricsTieBreakers>
 </document>

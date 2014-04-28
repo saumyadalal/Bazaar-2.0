@@ -106,12 +106,12 @@ static NSString * const cellIdentifier = @"ItemCell";
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-  if([[segue identifier] isEqualToString:@"detailView"])
+  if([[segue identifier] isEqualToString:@"bazaarView"]) //look for specific segue
   {
-    BZRItemViewController *detailView = (BZRItemViewController *) segue.destinationViewController;
-    NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+    BZRItemViewController *detailViewBazaar = (BZRItemViewController *) segue.destinationViewController; //set destination
+    NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected item
     PFObject* item = [self.items objectAtIndex:selectedIndexPath.row];
-    detailView.item=item;
+    detailViewBazaar.item=item; //give item to destination controller
   }
   
 }

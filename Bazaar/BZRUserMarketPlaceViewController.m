@@ -8,6 +8,8 @@
 
 #import "BZRUserMarketPlaceViewController.h"
 #import <Parse/Parse.h>
+#import "BZRItemViewController.h"
+
 
 @interface BZRUserMarketPlaceViewController ()
 @property (nonatomic, strong) NSArray *items;
@@ -97,5 +99,15 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return cell;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"profileView"]) //look for a specific segue
+    {
+        BZRItemViewController *detailViewProfile = (BZRItemViewController *) segue.destinationViewController; //set destination
+        NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected items
+        PFObject* item = [self.items objectAtIndex:selectedIndexPath.row];
+        detailViewProfile.item=item; //give selected item to destination controller
+    }
+    
+}
 
 @end
