@@ -31,7 +31,6 @@
 {
     [super viewDidLoad];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
-
     self.revealController = (SWRevealViewController *)[mainStoryboard
                             instantiateViewControllerWithIdentifier:@"revealViewController"];
 }

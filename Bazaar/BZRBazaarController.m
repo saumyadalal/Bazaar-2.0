@@ -29,8 +29,8 @@ static NSString * const cellIdentifier = @"ItemCell";
     [self viewDidRequestRefresh];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = self.currentFilter;
-    NSLog(@"hi loading marketplace");
-    NSLog(@" %@", self.navigationItem.title);
+   // NSLog(@"hi loading marketplace");
+   // NSLog(@" %@", self.navigationItem.title);
 	// Do any additional setup after loading the view.
 }
 

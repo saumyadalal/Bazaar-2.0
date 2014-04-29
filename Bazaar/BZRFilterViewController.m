@@ -102,7 +102,7 @@ static NSString * const cellIdentifier = @"filterCell";
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     //selected filter
     NSString *filter = [self.filters objectAtIndex:indexPath.row];
-  // Set the photo if it navigates to the PhotoView
+    // Set the filter
     if ([segue.identifier isEqualToString:@"showFilter"]) {
       //throws error with rootViewController
       BZRBazaarController *bazaarVC = (BZRBazaarController*)[segue.destinationViewController topViewController];

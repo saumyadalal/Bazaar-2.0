@@ -99,15 +99,13 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([[segue identifier] isEqualToString:@"profileView"]) //look for a specific segue
-    {
-        BZRItemViewController *detailViewProfile = (BZRItemViewController *) segue.destinationViewController; //set destination
-        NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected items
-        PFObject* item = [self.items objectAtIndex:selectedIndexPath.row];
-        detailViewProfile.item=item; //give selected item to destination controller
-    }
-    
+//instantiate detail view controller here since the segue in storyboard doesn't seem to work
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  BZRItemViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
+                        instantiateViewControllerWithIdentifier:@"itemViewController"];
+  detailView.item = [self.items objectAtIndex:indexPath.row];
+  [self.navigationController pushViewController:detailView animated:YES];
 }
+
 
 @end
