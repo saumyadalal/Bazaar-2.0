@@ -10,7 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface BZRUserProfileViewController : UIViewController
-@property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
+@property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (strong, nonatomic) IBOutlet UILabel *username;
 - (IBAction)logout:(id)sender;
 @end

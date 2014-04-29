@@ -64,11 +64,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rv-pP-t5p" customClass="FBProfilePictureView">
-                                <rect key="frame" x="20" y="88" width="108" height="105"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddl-Dw-Bvd">
                                 <rect key="frame" x="158" y="163" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -87,6 +82,10 @@
                                     <segue destination="GAn-NS-KXG" kind="embed" id="e2z-SB-aSX"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4g4-rA-K2r">
+                                <rect key="frame" x="20" y="77" width="112" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -98,7 +97,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="profilePictureView" destination="7Rv-pP-t5p" id="Xa8-sY-8LT"/>
+                        <outlet property="profilePicture" destination="4g4-rA-K2r" id="j7e-Rm-TDe"/>
                         <outlet property="username" destination="17U-i4-8fu" id="nrd-cb-NJ8"/>
                     </connections>
                 </viewController>
@@ -287,7 +286,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="vDD-no-8l5">
             <objects>
-                <tabBarController storyboardIdentifier="rootTabController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s6L-CA-pyF" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="rootTabController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s6L-CA-pyF" customClass="BZRTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tp5-FC-ex1"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -332,7 +331,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="6gq-dJ-A7P" customClass="BZRBazaarController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="O5k-wV-1dr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Hn-cX-Bqd">
                             <size key="itemSize" width="109" height="99"/>
@@ -408,11 +407,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ctx-Md-jMb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Slw-fr-NyV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Ps-ziD">
-                                <rect key="frame" x="34" y="123" width="254" height="248"/>
+                                <rect key="frame" x="35" y="160" width="254" height="199"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -452,11 +451,17 @@
                                     <action selector="addToFavorites:" destination="fwj-Ek-5Mt" eventType="touchUpInside" id="dPR-Ja-a9u"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gqC-jn-q3e" customClass="FBProfilePictureView">
-                                <rect key="frame" x="14" y="71" width="43" height="44"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehJ-7R-39E">
+                                <rect key="frame" x="35" y="75" width="74" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-p9-D0U">
+                                <rect key="frame" x="130" y="85" width="153" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -465,7 +470,8 @@
                         <outlet property="itemDescription" destination="EhB-XS-VWq" id="TKB-vM-er8"/>
                         <outlet property="itemPicture" destination="Y9O-Ps-ziD" id="Acm-4c-h69"/>
                         <outlet property="itemTitle" destination="ECc-0Z-Pji" id="a9Y-aa-SRM"/>
-                        <outlet property="profilePicture" destination="gqC-jn-q3e" id="BuC-et-Rxd"/>
+                        <outlet property="ownerName" destination="wfI-p9-D0U" id="sbV-u7-PMx"/>
+                        <outlet property="profilePicture" destination="ehJ-7R-39E" id="sZW-YF-5Nb"/>
                         <segue destination="9TQ-gK-KMR" kind="push" id="t6u-ja-2Yh"/>
                     </connections>
                 </viewController>
@@ -481,11 +487,11 @@
                         <viewControllerLayoutGuide type="bottom" id="whm-zu-1oe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ti0-ey-hBX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZJy-bI-Etp">
-                                <rect key="frame" x="29" y="323" width="94" height="29"/>
+                                <rect key="frame" x="29" y="274" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </stepper>
                         </subviews>
@@ -678,7 +684,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ney-sS-UDE"/>
+        <segue reference="5gf-aY-sNS"/>
         <segue reference="AQ0-wf-Ra2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E60182D190C1DCB00CA324F /* BZRBazaarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E60182C190C1DCB00CA324F /* BZRBazaarController.m */; };
 		0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F80190C747900EB4FF6 /* favorites30.png */; };
 		0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F85190C748400EB4FF6 /* camera30.png */; };
 		0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */; };
@@ -40,6 +39,7 @@
 		A7737AF6190B025000319AF4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7737AF5190B025000319AF4 /* FacebookSDK.framework */; };
 		A7737AFA190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */; };
 		A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AFF190C809500319AF4 /* BZRBazaarController.m */; };
+		A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737B06190F37FB00319AF4 /* BZRTabBarController.m */; };
 		A7DE717D18DDFA1200EE7F9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE717C18DDFA1200EE7F9A /* Foundation.framework */; };
 		A7DE717F18DDFA1200EE7F9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */; };
 		A7DE718118DDFA1200EE7F9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE718018DDFA1200EE7F9A /* UIKit.framework */; };
@@ -65,8 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E60182B190C1DCB00CA324F /* BZRBazaarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRBazaarController.h; path = ../BZRBazaarController.h; sourceTree = "<group>"; };
-		0E60182C190C1DCB00CA324F /* BZRBazaarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BZRBazaarController.m; path = ../BZRBazaarController.m; sourceTree = "<group>"; };
 		0EDC7F80190C747900EB4FF6 /* favorites30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites30.png; sourceTree = "<group>"; };
 		0EDC7F85190C748400EB4FF6 /* camera30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera30.png; sourceTree = "<group>"; };
 		0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bazaar30.1.png; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRUserMarketPlaceViewController.m; sourceTree = "<group>"; };
 		A7737AFE190C809500319AF4 /* BZRBazaarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRBazaarController.h; sourceTree = "<group>"; };
 		A7737AFF190C809500319AF4 /* BZRBazaarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRBazaarController.m; sourceTree = "<group>"; };
+		A7737B05190F37FA00319AF4 /* BZRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRTabBarController.h; sourceTree = "<group>"; };
+		A7737B06190F37FB00319AF4 /* BZRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTabBarController.m; sourceTree = "<group>"; };
 		A7DE717918DDFA1200EE7F9A /* Bazaar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bazaar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DE717C18DDFA1200EE7F9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -260,6 +260,15 @@
 			name = "User MarketPlace";
 			sourceTree = "<group>";
 		};
+		A7737B01190F372E00319AF4 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				A7737B05190F37FA00319AF4 /* BZRTabBarController.h */,
+				A7737B06190F37FB00319AF4 /* BZRTabBarController.m */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
 		A7DE717018DDFA1200EE7F9A = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +313,7 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				A7737B01190F372E00319AF4 /* Tabs */,
 				0E60182A190C18C900CA324F /* Bazaar */,
 				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
@@ -458,7 +468,6 @@
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
-				A725CD5318F0ABF200EC3719 /* BZRFilterCell.xib in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,
 				0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */,
@@ -492,6 +501,7 @@
 				79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
 				22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */,
+				A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */,
 				A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

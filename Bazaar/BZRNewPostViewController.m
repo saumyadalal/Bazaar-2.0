@@ -40,7 +40,6 @@
 }
 
 - (IBAction)postPressed:(id)sender {
-  NSLog(@"newpost");
   PFObject *newItem = [PFObject objectWithClassName:@"Item"];
   NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
   PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
@@ -51,7 +50,7 @@
   newItem[@"owner"] = [PFUser currentUser];
   [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
-      NSLog(@"saved item");
+      NSLog(@"saved new item");
     }
     else {
       NSLog(@"error saving item");

@@ -62,7 +62,6 @@ static NSString * const cellIdentifier = @"ItemCell";
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %d items", objects.count);
             self.items = objects;
             [self.collectionView reloadData];
         } else {
@@ -79,7 +78,6 @@ static NSString * const cellIdentifier = @"ItemCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@" items %d", self.items.count);
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     UIImageView *itemImageView = (UIImageView *)[cell viewWithTag:1];
     UILabel *itemName = (UILabel *) [cell viewWithTag:2];

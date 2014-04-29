@@ -2,70 +2,27 @@
 //  BZRTabBarController.m
 //  Bazaar
 //
-//  Created by Shikhara Nalla on 4/4/14.
+//  Created by Shikhara Nalla on 4/28/14.
 //  Copyright (c) 2014 cmu.barter. All rights reserved.
 //
 
 #import "BZRTabBarController.h"
-#import "BZRUserProfileViewController.h"
-#import "BZRLoginViewController.h"
-#import "BZRMarketPlaceViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
-#import <Parse/Parse.h>
-#import "SWRevealViewController.h"
-#import "BZRNewLoginViewController.h"
 
-@interface BZRTabBarController ()
+@interface BZRTabBarController () <UITabBarControllerDelegate>
+
 @end
 
 @implementation BZRTabBarController
 
-- (id) init {
-  self =  [super init];
-  if (self) {
-    BZRUserProfileViewController *userProfileVC = [[BZRUserProfileViewController alloc] initWithNibName:@"BZRUserProfileViewController" bundle:nil];
-    BZRMarketPlaceViewController *marketPlaceVC = [[BZRMarketPlaceViewController alloc]
-                                                   initWithStyle:UITableViewStylePlain];
-    NSArray *tabViewControllers = @[userProfileVC, marketPlaceVC];
-    [self setViewControllers:tabViewControllers];
-  }
-  return self;
+- (void) viewDidLoad {
+  self.delegate = self;
 }
 
-
--(void)viewDidAppear:(BOOL)animated
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController;
 {
-    
-}
-
-//occurs only once
-- (void)viewDidLoad
-{
-
-    
-  [super viewDidLoad];
-  UIBarButtonItem *newItemButton = [[UIBarButtonItem alloc] initWithTitle:@"New"
-      style:UIBarButtonItemStylePlain target:self action:@selector(newItem:)];
-  self.navigationItem.rightBarButtonItem = newItemButton;
-  
-  //Get the Reveal View Controller
-  SWRevealViewController *revealController = [self revealViewController];
-  [revealController panGestureRecognizer];
-  [revealController tapGestureRecognizer];
-  //look for the selector method in the target
-  UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filters"                                                                       style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
-  self.navigationItem.leftBarButtonItem = revealButtonItem;
-}
-
-- (void)newItem:(id)sender{
-  
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  // Reload selected VC's view
+  NSLog(@"hi");
+  [viewController.view setNeedsDisplay];
 }
 
 

@@ -55,7 +55,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       // The find succeeded.
-      NSLog(@"Successfully retrieved %d items", objects.count);
       self.items = objects;
       [self.collectionView reloadData];
     } else {
@@ -68,7 +67,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  NSLog(@" %d", self.items.count);
   return self.items.count;
 }
 

@@ -34,28 +34,20 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
-    [self setUserInfo];
+    [self loadUserInfo];
 }
 
-- (void) setUserInfo {
-    NSLog(@"%@", [PFUser currentUser]);
-  //create request for data
-  FBRequest *request = [FBRequest requestForMe];
-  // Send request to Facebook
-  [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-    if (!error) {
-      // result is a dictionary with the user's Facebook data
-      NSDictionary *userData = (NSDictionary *)result;
-      
-      NSString *facebookID = userData[@"id"];
-      NSString *name = userData[@"name"];
 
-      // Now add the data to the UI elements
-      self.profilePictureView.profileID = facebookID;
-      self.username.text = name;
+- (void) loadUserInfo {
+  PFUser *user = [PFUser currentUser];
+  PFFile *imageFile = [user objectForKey:@"imageFile"];
+  [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+    if (!error) {
+      self.profilePicture.image = [UIImage imageWithData:data];
+      self.username.text = [user objectForKey:@"username"];
     }
-    else{
-        NSLog(@"%@", error);
+    else {
+      NSLog(@"error fetching image");
     }
   }];
 }

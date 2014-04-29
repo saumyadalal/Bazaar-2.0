@@ -11,10 +11,15 @@
 #import <Parse/Parse.h>
 #import "SWRevealViewController.h"
 #import "BZRFilterViewController.h"
+#import "BZRTabBarController.h"
 
-@interface BZRLoginViewController () <FBLoginViewDelegate>
+@interface BZRLoginViewController () <FBLoginViewDelegate, NSURLConnectionDelegate>
 @property (strong, nonatomic) SWRevealViewController *revealController;
+@property (strong, nonatomic) NSMutableData *imageData;
+@property (strong, nonatomic) NSString *username;
 @end
+
+static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1";
 
 @implementation BZRLoginViewController
 
@@ -64,14 +69,65 @@
       } else {
         NSLog(@"An error occurred: %@", error);
       }
-    } else if (user.isNew) {
-      NSLog(@"User with facebook signed up and logged in!");
+    }
+    else {
+      if (user.isNew) {
+        NSLog(@"User with facebook signed up and logged in!");
+      } else {
+        NSLog(@"User with facebook logged in!");
+      }
       [self presentViewController:self.revealController animated:YES completion:nil];
-    } else {
-      NSLog(@"User with facebook logged in!");
-      [self presentViewController:self.revealController animated:YES completion:nil];
+      [self setUserInfo];
     }
   }];
 }
+
+- (void) setUserInfo {
+  //create request for data
+  FBRequest *request = [FBRequest requestForMe];
+  // Send request to Facebook to fetch user data and store into database
+  [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    if (!error) {
+      NSDictionary *userData = (NSDictionary *)result;
+      NSString *facebookID = userData[@"id"];
+      //store name and image data
+      self.username = userData[@"name"];
+      self.imageData = [[NSMutableData alloc] init];
+      NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:URLformat, facebookID]];
+      NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:imageURL
+                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                            timeoutInterval:2.0f];
+      // Run network request asynchronously
+      NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+    }
+    else{
+      NSLog(@"%@", error);
+    }
+  }];
+}
+
+// Called every time a chunk of the data is received
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+  [self.imageData appendData:data]; // Build the image
+}
+
+// Called when the entire image is finished downloading
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+  // Set the image in the header imageView
+  PFUser *user = [PFUser currentUser];
+  PFFile *imageFile = [PFFile fileWithName:@"profilePicture.png" data:self.imageData];
+  user[@"imageFile"] = imageFile;
+  user[@"username"] = self.username;
+  [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (!error) {
+      NSLog(@"successfully saved new user info");
+    }
+    else {
+      NSLog(@"error saving new user info");
+    }
+  }];
+}
+
+
 
 @end

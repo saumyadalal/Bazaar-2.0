@@ -27,12 +27,35 @@
         if (!error) {
           NSLog(@"fetched image");
           self.itemPicture.image = [UIImage imageWithData:data];
+          PFUser* owner = [self.item objectForKey:@"owner"];
+          [self loadUserInfo:owner];
         }
         else {
           NSLog(@"error fetching image");
         }
       }];
     }
+}
+
+- (void) loadUserInfo:(PFUser *) user {
+  [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    if (!error) {
+      PFFile *imageFile = [user objectForKey:@"imageFile"];
+      [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+          self.profilePicture.image = [UIImage imageWithData:data];
+          self.ownerName.text = [user objectForKey:@"username"];
+        }
+        else {
+          NSLog(@"error fetching image");
+        }
+      }];
+    }
+    else {
+      NSLog(@"error fetching user data");
+    }
+  }];
+
 }
 
 - (void)didReceiveMemoryWarning

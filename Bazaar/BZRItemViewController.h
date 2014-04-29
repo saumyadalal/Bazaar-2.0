@@ -11,8 +11,9 @@
 #import <Parse/Parse.h>
 
 @interface BZRItemViewController : UIViewController
-@property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePicture;
-@property (strong, nonatomic) IBOutlet UILabel *userName;
+@property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
+@property (strong, nonatomic) IBOutlet UILabel *ownerName;
+
 @property (strong, nonatomic) IBOutlet UIImageView *itemPicture;
 @property (strong, nonatomic) IBOutlet UILabel *itemTitle;
 @property (strong, nonatomic) IBOutlet UILabel *itemDescription;
