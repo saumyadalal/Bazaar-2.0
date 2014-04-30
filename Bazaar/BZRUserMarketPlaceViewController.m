@@ -42,10 +42,14 @@ static NSString * const cellIdentifier = @"UserItemCell";
   [self loadMarketPlace];
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+  return 0; // This is the minimum inter item spacing, can be more
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return CGSizeMake(120, 120);
+  return CGSizeMake(100, 100);
 }
 
 - (void)loadMarketPlace

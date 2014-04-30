@@ -2,7 +2,6 @@
 //  BZRNewPostViewController.m
 //  Bazaar
 //
-//  Created by Brian Oldak on 4/6/14.
 //  Copyright (c) 2014 cmu.barter. All rights reserved.
 //
 
@@ -32,14 +31,25 @@
     picker.dataSource = self;
     picker.delegate = self;
     self.category.inputView = picker;
-
+    //configure bar button action
+    self.navigationItem.leftBarButtonItem.target = self;
+    self.navigationItem.leftBarButtonItem.action = @selector(clearPressed:);
+    self.navigationItem.rightBarButtonItem.target = self;
+    self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
 }
 
-- (IBAction)cancelPressed:(id)sender{
-  [self dismissViewControllerAnimated:YES completion:nil];
+- (void)clearPressed:(id)sender{
+  [self clearFields];
 }
 
-- (IBAction)postPressed:(id)sender {
+- (void)clearFields {
+  self.itemName.text = @"Name";
+  self.description.text = @"Description";
+  self.category.text = @"Select Category";
+  self.imageView.image = nil;
+}
+
+- (void)postPressed:(id)sender {
   PFObject *newItem = [PFObject objectWithClassName:@"Item"];
   NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
   PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
@@ -51,12 +61,12 @@
   [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
       NSLog(@"saved new item");
+      [self clearFields];
     }
     else {
       NSLog(@"error saving item");
     }
   }];
-  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -109,8 +119,6 @@
     [self.description resignFirstResponder];
     [self.itemName resignFirstResponder];
 }
-
-
 
 
 @end

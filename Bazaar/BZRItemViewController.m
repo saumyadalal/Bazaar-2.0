@@ -25,7 +25,6 @@
       PFFile *imageFile = [self.item objectForKey:@"imageFile"];
       [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
-          NSLog(@"fetched image");
           self.itemPicture.image = [UIImage imageWithData:data];
           PFUser* owner = [self.item objectForKey:@"owner"];
           [self loadUserInfo:owner];

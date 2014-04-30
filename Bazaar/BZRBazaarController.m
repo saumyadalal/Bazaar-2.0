@@ -49,7 +49,11 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(120, 120);
+    return CGSizeMake(100, 100);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+  return 0; // This is the minimum inter item spacing, can be more
 }
 
 //collection view reloads data on fetching objects
