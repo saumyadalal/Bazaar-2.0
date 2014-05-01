@@ -12,6 +12,7 @@
 		0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */; };
 		0EDC7F8B190C762900EB4FF6 /* ptofile 30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F89190C762900EB4FF6 /* ptofile 30.1.png */; };
 		0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F8A190C762900EB4FF6 /* notifs30.1.png */; };
+		0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDF5B96191311300024A9F6 /* bazaar TITLE.png */; };
 		22A6D7281904597300CE201B /* BZRItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6D7271904597300CE201B /* BZRItemViewController.m */; };
 		22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C1311903020F0098D279 /* BZRTradeViewController.m */; };
 		22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C136190305470098D279 /* BZRNotificationTableViewController.m */; };
@@ -70,6 +71,7 @@
 		0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bazaar30.1.png; sourceTree = "<group>"; };
 		0EDC7F89190C762900EB4FF6 /* ptofile 30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptofile 30.1.png"; sourceTree = "<group>"; };
 		0EDC7F8A190C762900EB4FF6 /* notifs30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notifs30.1.png; sourceTree = "<group>"; };
+		0EDF5B96191311300024A9F6 /* bazaar TITLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bazaar TITLE.png"; sourceTree = "<group>"; };
 		22A6D7261904597300CE201B /* BZRItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRItemViewController.h; sourceTree = "<group>"; };
 		22A6D7271904597300CE201B /* BZRItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRItemViewController.m; sourceTree = "<group>"; };
 		22E2C1301903020F0098D279 /* BZRTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRTradeViewController.h; path = Trade/BZRTradeViewController.h; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		22E2C13819030C8D0098D279 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0EDF5B96191311300024A9F6 /* bazaar TITLE.png */,
 				0EDC7F89190C762900EB4FF6 /* ptofile 30.1.png */,
 				0EDC7F8A190C762900EB4FF6 /* notifs30.1.png */,
 				0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */,
@@ -468,6 +471,7 @@
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
+				0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,
 				0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */,

@@ -72,7 +72,18 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?type=
     }
     else {
       if (user.isNew) {
-        NSLog(@"User with facebook signed up and logged in!");
+          NSLog(@"User with facebook signed up and logged in!");
+          user[@"favorites"] = [NSMutableArray array];
+          [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+              if (!error) {
+                  NSLog(@"favorites initialized");
+              }
+              else {
+                  NSLog(@"error initializing favorites");
+              }
+          }];
+          NSLog(@"favorites: %@",user[@"favorites"]);
+          [self presentViewController:self.revealController animated:YES completion:nil];
       } else {
         NSLog(@"User with facebook logged in!");
       }

@@ -7,12 +7,14 @@
 //
 
 #import "BZRFavoritesTableViewController.h"
+#import "BZRItemViewController.h"
 
 @interface BZRFavoritesTableViewController ()
-
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation BZRFavoritesTableViewController
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,12 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    PFUser *user = [PFUser currentUser]; //get current user info
+    self.favoriteArray = user[@"favorites"]; //get current user's favorite's info
+    NSLog(@"favorite array: %@",self.favoriteArray);
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,70 +49,60 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    // NSUInteger count = self.objectIdArray.count;
+    return [self.favoriteArray count];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    if(self.favoriteArray){
+        for (PFObject *item in self.favoriteArray){
+            NSString *objectID = [item objectId];
+            //            NSLog(@"objectID: %@",objectID);
+            PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+            [query getObjectInBackgroundWithId:objectID block:^(PFObject *object, NSError *error) {
+                if (!error) {
+                    
+                    PFFile *imageFile = [object objectForKey:@"imageFile"];
+                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            
+
+                            NSString *name = object[@"name"];
+                            
+                            UILabel *label = (UILabel *)[cell.contentView viewWithTag:104];
+                            [label setText:[NSString stringWithFormat:@"%@", name]];
+                            
+                            UIImageView *imageCell = (UIImageView *)[cell.contentView viewWithTag:103];
+                            imageCell.image = [UIImage imageWithData:data];
+                        }
+                        else {
+                            NSLog(@"error fetching image");
+                        }
+                    }];
+                }
+                else {
+                    NSLog(@"error fetching data");
+                }
+            }];
+        }
+    }
     // Configure the cell...
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+//instantiate detail view controller here since the segue in storyboard doesn't seem to work
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    BZRItemViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
+//                                         instantiateViewControllerWithIdentifier:@"itemViewController"];
+//    detailView.item = [self.favoriteArray objectAtIndex:indexPath.row];
+//    [self.navigationController pushViewController:detailView animated:YES];
+//}
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

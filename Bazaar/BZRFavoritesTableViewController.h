@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface BZRFavoritesTableViewController : UITableViewController
-
+@property (strong, nonatomic) NSMutableArray *favoriteArray;
 @end
