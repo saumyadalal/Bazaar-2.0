@@ -327,12 +327,12 @@
 				A725CD4718F0A20000EC3719 /* Library */,
 				A725CD1B18EF415700EC3719 /* User Profile */,
 				A7DE71AC18DDFAB000EE7F9A /* New Post */,
+				22A6D7291904597E00CE201B /* View Item */,
 				A7DE71AB18DDFA9A00EE7F9A /* Login */,
 				A7DE718B18DDFA1200EE7F9A /* BZRAppDelegate.h */,
 				A7DE718C18DDFA1200EE7F9A /* BZRAppDelegate.m */,
 				A7DE718E18DDFA1200EE7F9A /* Images.xcassets */,
 				A7DE718318DDFA1200EE7F9A /* Supporting Files */,
-				22A6D7291904597E00CE201B /* View Item */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";

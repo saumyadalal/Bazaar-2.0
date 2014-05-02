@@ -64,6 +64,20 @@
 }
 
 - (IBAction)initiateTrade:(id)sender {
+    PFObject *trade = [PFObject objectWithClassName:@"Trade"];
+    trade[@"item"] = self.item.objectId;
+    trade[@"owner"] = [self.item objectForKey:@"owner"];
+    trade[@"initiator"] = [PFUser currentUser];
+    trade[@"status"] = @"initiated";
+    trade[@"returnItems"] = @[];
+    [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"saved new initiated trade");
+        }
+        else {
+            NSLog(@"error setting up trade");
+        }
+    }];
 }
 
 - (IBAction)addToFavorites:(id)sender {
