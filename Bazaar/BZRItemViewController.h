@@ -20,5 +20,6 @@
 @property (strong, nonatomic) PFObject* item;
 - (IBAction)initiateTrade:(id)sender;
 - (IBAction)addToFavorites:(id)sender;
+- (IBAction)swipeItem:(id)sender;
 
 @end

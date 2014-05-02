@@ -68,4 +68,7 @@
 
 - (IBAction)addToFavorites:(id)sender {
 }
+
+- (IBAction)swipeItem:(id)sender {  
+}
 @end
