@@ -81,8 +81,19 @@
 }
 
 - (IBAction)addToFavorites:(id)sender {
+    PFUser *currentUser = [PFUser currentUser]; //get current user's info
+    [currentUser addObject:self.item forKey:@"favorites"]; //add current object to favorites
+    NSLog(@"favorites %@",currentUser[@"favorites"]);
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"favorites added");
+        }
+        else {
+            NSLog(@"error adding favorites");
+        }
+    }];
 }
 
-- (IBAction)swipeItem:(id)sender {  
+- (IBAction)swipeItem:(id)sender {
 }
 @end

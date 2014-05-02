@@ -40,32 +40,14 @@
     self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if ([self.description.text isEqualToString:@"description"]) {
-        self.description.text = @"";
-        self.description.textColor = [UIColor colorWithRed:56 green:50 blue:53 alpha:1]; //color of description field font when user begins typing
-    }
-    [textView becomeFirstResponder];
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    if ([self.description.text isEqualToString:@""]) {
-        self.description.text = @"description";
-        self.description.textColor = [UIColor lightGrayColor]; //color of description field text when user has not entered any text yet
-    }
-    [textView resignFirstResponder];
-}
-
 - (void)clearPressed:(id)sender{
   [self clearFields];
 }
 
 - (void)clearFields {
-  self.itemName.text = @"Name";
+  self.itemName.text = @"";
   self.description.text = @"Description";
-  self.category.text = @"Select Category";
+  self.category.text = @"";
   self.imageView.image = nil;
 }
 
