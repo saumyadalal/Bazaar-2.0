@@ -18,6 +18,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *itemTitle;
 @property (strong, nonatomic) IBOutlet UILabel *itemDescription;
 @property (strong, nonatomic) PFObject* item;
+@property (nonatomic) int alreadyFav;
+@property (strong, nonatomic) IBOutlet UILabel *unfavoriteLabel;
+@property (strong, nonatomic) IBOutlet UILabel *favoriteLabel;
+@property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
+
 - (IBAction)initiateTrade:(id)sender;
 - (IBAction)addToFavorites:(id)sender;
 - (IBAction)swipeItem:(id)sender;
