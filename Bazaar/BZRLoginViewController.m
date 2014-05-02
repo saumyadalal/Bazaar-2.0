@@ -82,8 +82,8 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?type=
                   NSLog(@"error initializing favorites");
               }
           }];
-          NSLog(@"favorites: %@",user[@"favorites"]);
-          [self presentViewController:self.revealController animated:YES completion:nil];
+          //NSLog(@"favorites: %@",user[@"favorites"]);
+          //[self presentViewController:self.revealController animated:YES completion:nil];
       } else {
         NSLog(@"User with facebook logged in!");
       }
