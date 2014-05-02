@@ -10,6 +10,7 @@
 
 @interface BZRNewPostViewController ()
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) UIAlertView *imageSavedView;
 @end
 
 @implementation BZRNewPostViewController
@@ -36,6 +37,25 @@
     self.navigationItem.leftBarButtonItem.action = @selector(clearPressed:);
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
+    self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([self.description.text isEqualToString:@"description"]) {
+        self.description.text = @"";
+        self.description.textColor = [UIColor colorWithRed:56 green:50 blue:53 alpha:1]; //color of description field font when user begins typing
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([self.description.text isEqualToString:@""]) {
+        self.description.text = @"description";
+        self.description.textColor = [UIColor lightGrayColor]; //color of description field text when user has not entered any text yet
+    }
+    [textView resignFirstResponder];
 }
 
 - (void)clearPressed:(id)sender{
@@ -60,6 +80,7 @@
   newItem[@"owner"] = [PFUser currentUser];
   [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
+        [self.imageSavedView show];
       NSLog(@"saved new item");
       [self clearFields];
     }

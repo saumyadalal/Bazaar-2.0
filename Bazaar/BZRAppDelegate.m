@@ -27,8 +27,8 @@
     //set up parse BEFORE the login view controller
 //    [Parse setApplicationId:@"LGQUBVZrjgKe5l0z8C4UykS7TprlttaKsniLh0SN"
 //                clientKey:@"tEMmqDEaOPfyHZV2ml212ssMQrQmUL2kZyVYwR9M"];
-    [Parse setApplicationId:@"AQ8OAKnq2syaVRPjmnriTt10M9HOiWgvq6o9Abrk"
-                  clientKey:@"HxhdP85QpLBHXU0tepoTcS87sd50y8Ua3en7j1IP"];
+    [Parse setApplicationId:@"WCN7MynHZKbbL1j68NCSADuQUaPMc2RJuo51lZ0z"
+                  clientKey:@"2LXyOXR7msuytEPh7X7gsSIxPhnCNk9mc24tasnn"];
     //initialize facebook
     [PFFacebookUtils initializeFacebook];
     //set login view controller
