@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *itemTitle;
 @property (strong, nonatomic) IBOutlet UILabel *itemDescription;
 @property (strong, nonatomic) PFObject* item;
+@property (strong, nonatomic) PFObject* fbAuthData;
 - (IBAction)initiateTrade:(id)sender;
 - (IBAction)addToFavorites:(id)sender;
 

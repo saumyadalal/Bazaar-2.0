@@ -4,6 +4,11 @@
 <dict>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gotham-Book.otf</string>
+		<string>Gotham-Medium.otf</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CFBundleDevelopmentRegion</key>

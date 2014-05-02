@@ -11,6 +11,7 @@
 
 @interface BZRUserProfileViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
+@property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 @property (strong, nonatomic) IBOutlet UILabel *username;
 - (IBAction)logout:(id)sender;
 @end

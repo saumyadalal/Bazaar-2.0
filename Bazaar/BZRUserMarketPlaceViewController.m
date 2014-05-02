@@ -88,6 +88,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
         if (!error) {
           itemImageView.image = [UIImage imageWithData:data];
           itemName.text = [object objectForKey:@"name"];
+            
         }
         else {
           NSLog(@"error fetching image");
