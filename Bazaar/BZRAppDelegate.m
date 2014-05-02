@@ -47,13 +47,9 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor colorWithRed:247/255.0 green:248/255.0 blue:231/255.0 alpha:1.0],
       NSForegroundColorAttributeName,
-      [UIFont fontWithName:@"Gotham-Medium" size:17],
-      NSFontAttributeName,
       nil]]; //navigation bar main title color
     
    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //changes status bar style to light, also added a key in .plist file called "view controlled based status bar appearance" and set it to NO
-    
-    [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]];
     return YES;
 }
 

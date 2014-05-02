@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E060918191327BE006B7CBC /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E060917191327BE006B7CBC /* Gotham-Book.otf */; };
-		0E06091B19132D07006B7CBC /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E06091A19132D07006B7CBC /* Gotham-Medium.otf */; };
 		0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F80190C747900EB4FF6 /* favorites30.png */; };
 		0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F85190C748400EB4FF6 /* camera30.png */; };
 		0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */; };
@@ -68,8 +66,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E060917191327BE006B7CBC /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
-		0E06091A19132D07006B7CBC /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
 		0EDC7F80190C747900EB4FF6 /* favorites30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites30.png; sourceTree = "<group>"; };
 		0EDC7F85190C748400EB4FF6 /* camera30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera30.png; sourceTree = "<group>"; };
 		0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bazaar30.1.png; sourceTree = "<group>"; };
@@ -169,16 +165,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E060919191327CD006B7CBC /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				0E06091A19132D07006B7CBC /* Gotham-Medium.otf */,
-				0E060917191327BE006B7CBC /* Gotham-Book.otf */,
-			);
-			name = Fonts;
-			path = Bazaar;
-			sourceTree = "<group>";
-		};
 		0E60182A190C18C900CA324F /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,7 +275,6 @@
 		A7DE717018DDFA1200EE7F9A = {
 			isa = PBXGroup;
 			children = (
-				0E060919191327CD006B7CBC /* Fonts */,
 				A7DE718218DDFA1200EE7F9A /* Bazaar */,
 				A7DE719B18DDFA1200EE7F9A /* BazaarTests */,
 				A7DE717B18DDFA1200EE7F9A /* Frameworks */,
@@ -486,11 +471,9 @@
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
-				0E06091B19132D07006B7CBC /* Gotham-Medium.otf in Resources */,
 				0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,
-				0E060918191327BE006B7CBC /* Gotham-Book.otf in Resources */,
 				0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,17 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]]; //font of labels
-    self.editButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:14.0]; //font of edit button
-    [self.postButton setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil]
-                              forState:UIControlStateNormal]; //font of post button
-    [self.clearButton setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil]
-                                   forState:UIControlStateNormal]; //font of clear button
-    [self.description setFont:[UIFont fontWithName:@"Gotham-Book" size:14]];
     self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", nil];
     //set category input as picker
     UIPickerView *picker = [[UIPickerView alloc] init];
@@ -51,7 +40,6 @@
 
 - (void)clearPressed:(id)sender{
   [self clearFields];
-    
 }
 
 - (void)clearFields {
@@ -99,7 +87,6 @@
 
 - (IBAction)editPicture:(id)sender {
     UIImagePickerController *imagePicker =[[UIImagePickerController alloc] init];
-    
     imagePicker.delegate = self;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imagePicker.allowsEditing = YES;
