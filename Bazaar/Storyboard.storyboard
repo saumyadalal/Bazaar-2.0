@@ -433,6 +433,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cannot Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31v-3j-lKK">
+                                <rect key="frame" x="174" y="476" width="115" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -442,6 +449,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hVt-TI-5lT"/>
                     <connections>
+                        <outlet property="cannotFavoriteLabel" destination="31v-3j-lKK" id="Z1t-aZ-jtk"/>
                         <outlet property="favoriteButton" destination="hQZ-KQ-ah9" id="FBe-e8-rq0"/>
                         <outlet property="favoriteLabel" destination="4Xs-pI-MAZ" id="YbQ-Wv-r1T"/>
                         <outlet property="itemDescription" destination="EhB-XS-VWq" id="TKB-vM-er8"/>

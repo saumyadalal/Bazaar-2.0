@@ -35,9 +35,14 @@
       }];
         PFUser *user = [PFUser currentUser];
         NSMutableArray *favoriteArray = user[@"favorites"];
+        if([[[self.item objectForKey:@"owner"] objectId] isEqualToString:[user objectId]]){
+            self.alreadyFav = 2; //check is user is the owner of the currently viewed item
+        }
         for(PFObject *item in favoriteArray){
             NSString *itemIdArray = [item objectId]; //get object id of item in favorites array
             NSString *itemId = [self.item objectId]; //get object id of item
+            NSLog(@"item owner: %@",[[self.item objectForKey:@"owner"] objectId]);
+            NSLog(@"user: %@",[user objectId]);
             if([itemIdArray isEqual:itemId]){
                 self.alreadyFav = 1; //check if the item is already in the favorites array
                 break;
@@ -46,13 +51,22 @@
                 self.alreadyFav = 0;
             }
         }
+        NSLog(@"alreadyFav: %d",self.alreadyFav);
         if(self.alreadyFav==0){ //make button a favorite button if it isn't already in favorites
             self.favoriteLabel.hidden = NO;
             self.unfavoriteLabel.hidden = YES;
+            self.cannotFavoriteLabel.hidden = YES;
+        }
+        else if(self.alreadyFav==2){
+            self.favoriteLabel.hidden = YES;
+            self.unfavoriteLabel.hidden = YES;
+            self.cannotFavoriteLabel.hidden = NO;
+            [self.favoriteButton setBackgroundColor:[UIColor redColor]];
         }
         else{ //make button an unfavorite button if it is already in favorites
             self.favoriteLabel.hidden = YES;
             self.unfavoriteLabel.hidden = NO;
+            self.cannotFavoriteLabel.hidden = YES;
            [self.favoriteButton setBackgroundColor:[UIColor lightGrayColor]]; //change background color of button
         }
     }
@@ -119,7 +133,7 @@
         [self.itemAddedView show];
 
     }
-    else{ //take out item from favorites if the "unfavorite" button is clicked
+    else if(self.alreadyFav==1){ //take out item from favorites if the "unfavorite" button is clicked
         NSLog(@"array before: %@",currentUser[@"favorites"]);
         [currentUser removeObject:self.item forKey:@"favorites"];
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

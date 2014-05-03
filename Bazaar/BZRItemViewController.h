@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *unfavoriteLabel;
 @property (strong, nonatomic) IBOutlet UILabel *favoriteLabel;
 @property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (strong, nonatomic) IBOutlet UILabel *cannotFavoriteLabel;
 
 - (IBAction)initiateTrade:(id)sender;
 - (IBAction)addToFavorites:(id)sender;
