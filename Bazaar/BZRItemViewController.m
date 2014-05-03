@@ -7,6 +7,7 @@
 //
 
 #import "BZRItemViewController.h"
+#import "BZRTradeViewController.h"
 
 @interface BZRItemViewController ()
 @property (strong, nonatomic) UIAlertView *itemAddedView;
@@ -101,12 +102,13 @@
 
 - (IBAction)initiateTrade:(id)sender {
     PFObject *trade = [PFObject objectWithClassName:@"Trade"];
-    trade[@"item"] = self.item.objectId;
+    trade[@"item"] = self.item;
     trade[@"owner"] = [self.item objectForKey:@"owner"];
     trade[@"initiator"] = [PFUser currentUser];
     trade[@"status"] = @"initiated";
     trade[@"numItems"] = @1;
     trade[@"returnItems"] = @[];
+    self.trade = trade;
     [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved new initiated trade");
@@ -151,5 +153,14 @@
 }
 
 - (IBAction)swipeItem:(id)sender {
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"initiateTradeView"]) //look for specific segue
+    {
+        BZRTradeViewController *initiateTrade = (BZRTradeViewController *) segue.destinationViewController; //set destination
+        initiateTrade.trade=self.trade; //give item to destination controller
+    }
+    
 }
 @end
