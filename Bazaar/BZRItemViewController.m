@@ -105,6 +105,7 @@
     trade[@"owner"] = [self.item objectForKey:@"owner"];
     trade[@"initiator"] = [PFUser currentUser];
     trade[@"status"] = @"initiated";
+    //trade[@"numItems"] = 1;
     trade[@"returnItems"] = @[];
     [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
