@@ -101,7 +101,7 @@
 
 - (IBAction)initiateTrade:(id)sender {
     PFObject *trade = [PFObject objectWithClassName:@"Trade"];
-    trade[@"item"] = self.item.objectId;
+    trade[@"item"] = self.item;
     trade[@"owner"] = [self.item objectForKey:@"owner"];
     trade[@"initiator"] = [PFUser currentUser];
     trade[@"status"] = @"initiated";

@@ -47,7 +47,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-  NSLog(@"appear");
+  //NSLog(@"appear");
   [super viewWillAppear:animated];
   //[self loadMarketPlace];
 }

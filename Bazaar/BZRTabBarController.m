@@ -21,7 +21,7 @@
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController;
 {
   // Reload selected VC's view
-  NSLog(@"hi");
+  //NSLog(@"hi");
   //[viewController.view setNeedsDisplay];
 }
 

@@ -9,7 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface BZRNotificationTableViewController : UITableViewController
-@property (strong, nonatomic) NSArray *arr;
-@property (strong, nonatomic) NSArray *imageArr;
-
 @end

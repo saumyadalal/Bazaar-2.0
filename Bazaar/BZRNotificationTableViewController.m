@@ -7,14 +7,13 @@
 //
 
 #import "BZRNotificationTableViewController.h"
+#import <Parse/Parse.h>
 
 @interface BZRNotificationTableViewController ()
-
+@property (nonatomic, strong) NSArray* trades;
 @end
 
 @implementation BZRNotificationTableViewController
-@synthesize arr;
-@synthesize imageArr;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,9 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.arr = [NSArray arrayWithObjects:@"Saumya Dalal", @"Brian Oldak", @"Alex Lucena", nil];
-    self.imageArr = [NSArray arrayWithObjects:@"red.png", @"crap.png", @"weird.png", nil];
-
+    [self loadNotifications];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,6 +41,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)loadNotifications
+{
+  PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"Trade"];
+  [initiatorQuery whereKey:@"initiator" equalTo:[PFUser currentUser]];
+  PFQuery *ownerQuery = [PFQuery queryWithClassName:@"Trade"];
+  [ownerQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
+  PFQuery *query = [PFQuery orQueryWithSubqueries:@[initiatorQuery, ownerQuery]];
+  //load item data too
+  [query includeKey:@"item"];
+  [query includeKey:@"owner"];
+  [query includeKey:@"initiator"];
+  [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    if (!error) {
+      self.trades = objects;
+      NSLog(@" %d trades", [self.trades count]);
+      [self.tableView reloadData];
+    } else {
+      // Log details of the failure
+      NSLog(@"Error: %@ %@", error, [error userInfo]);
+    }
+  }];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -55,22 +76,45 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.arr count];
+    return [self.trades count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    UILabel *label = (UILabel *)[cell.contentView viewWithTag:2];
-    [label setText:[NSString stringWithFormat:@"%@", [arr objectAtIndex: indexPath.row]]];
-    
-    UIImageView *image = (UIImageView *)[cell.contentView viewWithTag:1];
-    UIImage *imageName = [UIImage imageNamed:[imageArr objectAtIndex:indexPath.row]];
-    [image setImage:imageName];
-    // Configure the cell...
-    
+  
+    UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:301];
+    UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
+  
+    PFObject* trade = [self.trades objectAtIndex:indexPath.row];
+    PFUser *initiator = [trade objectForKey:@"initiator"];
+    PFUser *receiver = [trade objectForKey:@"owner"];
+    PFUser* user = [PFUser currentUser];
+    PFObject* item = [trade objectForKey:@"item"];
+  
+    //load message
+    NSString *message = @"%@ requested %@ from %@";
+    NSString *messageText = @"";
+    if ([user objectForKey:@"objectId"] == [initiator objectForKey:@"objectId"]) {
+      messageText = [NSString stringWithFormat:message, @"You", [item objectForKey:@"name"],
+                           [receiver objectForKey:@"username"]];
+    } else {
+      messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
+                             [item objectForKey:@"name"], @"you"];
+    }
+    [messageLabel setText:messageText];
+  
+    //load image
+    PFFile *imageFile = [item objectForKey:@"imageFile"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+      if (!error) {
+        itemImageView.image = [UIImage imageWithData:data];
+      }
+      else {
+        NSLog(@"error fetching image");
+      }
+    }];
     return cell;
 }
 
