@@ -197,7 +197,6 @@
 			children = (
 				22E2C135190305470098D279 /* BZRNotificationTableViewController.h */,
 				22E2C136190305470098D279 /* BZRNotificationTableViewController.m */,
-				22E2C133190302230098D279 /* Trade */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -322,6 +321,7 @@
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				22E2C13819030C8D0098D279 /* images */,
 				22E2C13F19031B650098D279 /* Favorites */,
+				22E2C133190302230098D279 /* Trade */,
 				22E2C134190305180098D279 /* Notifications */,
 				A725CD4B18F0A8EC00EC3719 /* SideBar */,
 				A725CD4718F0A20000EC3719 /* Library */,
