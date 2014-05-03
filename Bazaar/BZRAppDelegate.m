@@ -43,7 +43,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:(247/255.0) green:(248/255.0) blue:(231/255.0) alpha:(1)]]; //navigation bar side objects and text color
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:247/255.0 green:248/255.0 blue:231/255.0 alpha:1.0],
+      [UIColor whiteColor],
       NSForegroundColorAttributeName,
       nil]]; //navigation bar main title color
     

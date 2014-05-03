@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *itemTitle;
 @property (strong, nonatomic) IBOutlet UILabel *itemDescription;
 @property (strong, nonatomic) PFObject* item;
+@property (strong, nonatomic) PFObject* trade;
 @property (nonatomic) int alreadyFav;
 @property (strong, nonatomic) IBOutlet UILabel *unfavoriteLabel;
 @property (strong, nonatomic) IBOutlet UILabel *favoriteLabel;

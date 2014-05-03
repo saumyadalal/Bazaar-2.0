@@ -7,6 +7,7 @@
 //
 
 #import "BZRItemViewController.h"
+#import "BZRTradeViewController.h"
 
 @interface BZRItemViewController ()
 @property (strong, nonatomic) UIAlertView *itemAddedView;
@@ -61,7 +62,7 @@
             self.favoriteLabel.hidden = YES;
             self.unfavoriteLabel.hidden = YES;
             self.cannotFavoriteLabel.hidden = NO;
-            [self.favoriteButton setBackgroundColor:[UIColor redColor]];
+            [self.favoriteButton setBackgroundColor:[UIColor whiteColor]];
         }
         else{ //make button an unfavorite button if it is already in favorites
             self.favoriteLabel.hidden = YES;
@@ -107,6 +108,7 @@
     trade[@"status"] = @"initiated";
     trade[@"numItems"] = @1;
     trade[@"returnItems"] = @[];
+    self.trade = trade;
     [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved new initiated trade");
@@ -151,5 +153,14 @@
 }
 
 - (IBAction)swipeItem:(id)sender {
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"initiateTradeView"]) //look for specific segue
+    {
+        BZRTradeViewController *initiateTrade = (BZRTradeViewController *) segue.destinationViewController; //set destination
+        initiateTrade.trade=self.trade; //give item to destination controller
+    }
+    
 }
 @end

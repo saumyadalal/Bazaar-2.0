@@ -26,7 +26,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.numReturn.text = @"1";
+    NSLog(@"%@",self.trade);
+    self.itemTitle.text =[[self.trade objectForKey:@"item"] objectForKey:@"name"];
+    self.itemOwner.text = [[self.trade objectForKey:@"owner"] username];
+    PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            self.itemImage.image = [UIImage imageWithData:data];
+        }
+        else {
+            NSLog(@"error fetching image");
+        }
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +48,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)stepperValueChanged:(id)sender {
+    //self.numReturn1.text = [sender value];
+    double value = [(UIStepper*)sender value];
+    [self.numReturn setText:[NSString stringWithFormat:@"%d", (int)value]];
+}
+
+- (IBAction)sendButton:(id)sender {
+}
 @end
