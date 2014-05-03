@@ -22,7 +22,7 @@
 {
   // Reload selected VC's view
   NSLog(@"hi");
-  [viewController.view setNeedsDisplay];
+  //[viewController.view setNeedsDisplay];
 }
 
 
