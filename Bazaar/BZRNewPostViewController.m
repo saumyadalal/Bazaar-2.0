@@ -10,6 +10,7 @@
 
 @interface BZRNewPostViewController ()
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) UIAlertView *imageSavedView;
 @end
 
 @implementation BZRNewPostViewController
@@ -36,6 +37,7 @@
     self.navigationItem.leftBarButtonItem.action = @selector(clearPressed:);
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
+    self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 }
 
 - (void)clearPressed:(id)sender{
@@ -43,9 +45,9 @@
 }
 
 - (void)clearFields {
-  self.itemName.text = @"Name";
+  self.itemName.text = @"";
   self.description.text = @"Description";
-  self.category.text = @"Select Category";
+  self.category.text = @"";
   self.imageView.image = nil;
 }
 
@@ -60,6 +62,7 @@
   newItem[@"owner"] = [PFUser currentUser];
   [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
+        [self.imageSavedView show];
       NSLog(@"saved new item");
       [self clearFields];
     }

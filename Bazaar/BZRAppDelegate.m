@@ -25,6 +25,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     //set up parse BEFORE the login view controller
+    [Parse setApplicationId:@"6c9l1sdeHO3zCyRj6EonwpLKqo2Tedv23TyMS0mU"
+                  clientKey:@"IRBP4MYHb36uwgnvcYCmP4IIC9KV8UMosddwWJGu"];
     //initialize facebook
     [PFFacebookUtils initializeFacebook];
     //set login view controller
