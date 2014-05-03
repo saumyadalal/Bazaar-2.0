@@ -61,7 +61,7 @@
             self.favoriteLabel.hidden = YES;
             self.unfavoriteLabel.hidden = YES;
             self.cannotFavoriteLabel.hidden = NO;
-            [self.favoriteButton setBackgroundColor:[UIColor redColor]];
+            [self.favoriteButton setBackgroundColor:[UIColor whiteColor]];
         }
         else{ //make button an unfavorite button if it is already in favorites
             self.favoriteLabel.hidden = YES;
