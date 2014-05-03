@@ -26,9 +26,9 @@ static NSString * const cellIdentifier = @"ItemCell";
     SWRevealViewController *revealController = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.target = revealController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
-    [self viewDidRequestRefresh];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = self.currentFilter;
+    [self viewDidRequestRefresh];
    // NSLog(@"hi loading marketplace");
    // NSLog(@" %@", self.navigationItem.title);
 	// Do any additional setup after loading the view.
@@ -46,6 +46,12 @@ static NSString * const cellIdentifier = @"ItemCell";
     [self loadMarketPlace];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+  NSLog(@"appear");
+  [super viewWillAppear:animated];
+  //[self loadMarketPlace];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,6 +65,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 //collection view reloads data on fetching objects
 - (void)loadMarketPlace
 {
+    NSLog(@"hello");
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
     if (self.currentFilter) {
       [query whereKey:@"category" equalTo:self.currentFilter];
