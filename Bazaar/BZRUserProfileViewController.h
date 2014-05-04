@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (strong, nonatomic) IBOutlet UILabel *username;
 @property (strong, nonatomic) PFUser* user;
+@property (nonatomic, assign) BOOL inSelectionMode;
 - (IBAction)logout:(id)sender;
 @end

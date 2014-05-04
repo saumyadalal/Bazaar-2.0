@@ -13,4 +13,6 @@
 @property (strong, nonatomic) NSArray* items;
 @property (strong, nonatomic) NSIndexPath* currentIndexPath;
 - (IBAction)addToFavorites:(id)sender;
+- (IBAction)selectItem:(id)sender;
+@property (nonatomic, assign) BOOL inSelectionMode;
 @end

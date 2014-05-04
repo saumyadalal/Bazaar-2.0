@@ -11,4 +11,5 @@
 
 @interface BZRUserMarketPlaceViewController : UICollectionViewController
 @property (nonatomic, strong) PFUser* user;
+@property (nonatomic, assign) BOOL inSelectionMode;
 @end

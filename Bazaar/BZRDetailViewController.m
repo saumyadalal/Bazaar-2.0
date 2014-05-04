@@ -13,6 +13,7 @@
 @interface BZRDetailViewController ()
 @property (strong, nonatomic) UIButton *favoriteButton;
 @property (strong, nonatomic) UIButton *tradeButton;
+@property (strong, nonatomic) UIButton *selectButton;
 @property (strong, nonatomic) PFObject* item;
 @end
 
@@ -36,14 +37,32 @@ static NSString * const cellIdentifier = @"detailViewCell";
 }
 
 
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self.collectionView reloadData];
+  [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+  if (self.inSelectionMode) {
+    [self disableAndHideTradeButtons];
+  }
+  else {
+    [self.selectButton setEnabled:NO];
+    self.selectButton.hidden = YES;
+  }
+}
+
+
 - (void) configureLabels:(PFObject *)item {
   if ([self userOwnsItem:item]) {
-    self.favoriteButton.hidden = YES;
-    self.tradeButton.hidden = YES;
-    [self.favoriteButton setEnabled:NO];
-    [self.tradeButton setEnabled:NO];
+    [self disableAndHideTradeButtons];
   }
   [self configureFavoriteLabel:item];
+}
+
+- (void) disableAndHideTradeButtons {
+  self.favoriteButton.hidden = YES;
+  self.tradeButton.hidden = YES;
+  [self.favoriteButton setEnabled:NO];
+  [self.tradeButton setEnabled:NO];
 }
 
 - (void) configureFavoriteLabel:(PFObject*) item {
@@ -76,11 +95,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
   return false;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [self.collectionView reloadData];
-  [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-}
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -100,6 +114,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UILabel *itemDescription = (UILabel *) [cell viewWithTag:405];
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
+  self.selectButton = (UIButton *) [cell viewWithTag:408];
 
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   [self configureLabels:item];
@@ -194,6 +209,10 @@ static NSString * const cellIdentifier = @"detailViewCell";
       }
     }];
   }
+}
+
+- (IBAction)selectItem:(id)sender {
+  
 }
 
 

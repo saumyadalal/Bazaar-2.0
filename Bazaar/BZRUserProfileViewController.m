@@ -61,6 +61,7 @@
   if ([[segue identifier] isEqualToString:@"embedMarketPlace"]) {
     BZRUserMarketPlaceViewController *marketPlaceView = segue.destinationViewController;
     marketPlaceView.user = self.user;
+    marketPlaceView.inSelectionMode = self.inSelectionMode;
   }
 }
 

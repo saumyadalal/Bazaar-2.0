@@ -32,6 +32,7 @@
   BZRUserProfileViewController* profileView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
                                          instantiateViewControllerWithIdentifier:@"userProfileView"];
   profileView.user = [self.trade objectForKey:@"initiator"];
+  profileView.inSelectionMode = YES;
   [self.navigationController pushViewController:profileView animated:YES];
   
 }

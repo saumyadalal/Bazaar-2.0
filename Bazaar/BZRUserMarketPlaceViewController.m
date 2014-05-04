@@ -14,6 +14,7 @@
 @interface BZRUserMarketPlaceViewController ()
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
+@property (nonatomic, strong) NSMutableArray *selectedItems;
 @end
 
 static NSString * const cellIdentifier = @"UserItemCell";
@@ -28,7 +29,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
     [self viewDidRequestRefresh];
     //[self.collectionView reloadData];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-  
+    self.selectedItems = [[NSMutableArray alloc] initWithArray:@[]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +53,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return CGSizeMake(100, 100);
 }
 
+
 - (void)loadMarketPlace
 {
   if (self.user == nil) {
@@ -73,6 +75,8 @@ static NSString * const cellIdentifier = @"UserItemCell";
 }
 
 
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
   return self.items.count;
@@ -84,6 +88,12 @@ static NSString * const cellIdentifier = @"UserItemCell";
   UIImageView *itemImageView = (UIImageView *)[cell viewWithTag:101];
   UILabel *itemName = (UILabel *) [cell viewWithTag:102];
   PFObject* item = [self.items objectAtIndex:indexPath.row];
+  
+  //if in selection mode
+  if ([self.selectedItems containsObject:item] && self.inSelectionMode) {
+      cell.backgroundColor = [UIColor grayColor];
+  }
+  
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
@@ -105,12 +115,14 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return cell;
 }
 
+
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   BZRDetailViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
                         instantiateViewControllerWithIdentifier:@"detailViewController"];
   detailView.items = self.items;
   detailView.currentIndexPath = indexPath;
+  detailView.inSelectionMode = self.inSelectionMode;
   [self.navigationController pushViewController:detailView animated:YES];
 }
 
