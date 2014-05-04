@@ -91,6 +91,7 @@ static NSString * const cellIdentifier = @"NotificationCell";
     UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:301];
     UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
   
+
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
     PFUser *initiator = [trade objectForKey:@"initiator"];
     PFUser *receiver = [trade objectForKey:@"owner"];
@@ -126,8 +127,9 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 - (BOOL) isInitiator:(PFObject*)trade {
   PFUser *initiator = [trade objectForKey:@"initiator"];
-  PFUser* user = [PFUser currentUser];
-  if ([[user objectForKey:@"objectId"] isEqualToString:[initiator objectForKey:@"objectId"]]) {
+  PFUser *user = [PFUser currentUser];
+  //[initator objectForKey: objectId does not work
+  if ([[user objectId] isEqualToString:[initiator objectId]]) {
     return YES;
   }
   return NO;
