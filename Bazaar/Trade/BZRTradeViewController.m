@@ -58,13 +58,9 @@
 }
 
 - (IBAction)sendButton:(id)sender {
-  NSLog(@"hi");
   PFObject *trade = [PFObject objectWithClassName:@"Trade"];
-  NSLog(@"hi3");
   trade[@"item"] = self.item;
-  NSLog(@"hi1");
   trade[@"owner"] = [self.item objectForKey:@"owner"];
-  NSLog(@"hi2");
   trade[@"initiator"] = [PFUser currentUser];
   trade[@"status"] = @"initiated";
   trade[@"numItems"] = [NSNumber numberWithInt:self.numItems];

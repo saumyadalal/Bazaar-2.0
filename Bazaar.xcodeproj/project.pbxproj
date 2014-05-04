@@ -353,13 +353,13 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
 				A724FB96191600B300D4120A /* Receiver Trade View */,
 				A724FB921915C49700D4120A /* Detail View  */,
 				A7737B01190F372E00319AF4 /* Tabs */,
 				0E60182A190C18C900CA324F /* Bazaar */,
 				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
-				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				22E2C13819030C8D0098D279 /* images */,
 				22E2C13F19031B650098D279 /* Favorites */,
 				22A6D7291904597E00CE201B /* View Item */,

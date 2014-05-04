@@ -11,5 +11,10 @@
 
 @interface BZRReceiverTradeViewController : UIViewController
 - (IBAction)selectReturnItems:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *itemImage;
+@property (strong, nonatomic) IBOutlet UILabel *initiatorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *itemTitle;
+@property (strong, nonatomic) IBOutlet UILabel *numItems;
 @property (strong, nonatomic) PFObject* trade;
+@property (strong, nonatomic) IBOutlet UILabel *initiatorLabel2;
 @end

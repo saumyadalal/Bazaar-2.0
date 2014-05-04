@@ -152,6 +152,10 @@ static NSString * const cellIdentifier = @"NotificationCell";
         (BZRReceiverTradeViewController *) segue.destinationViewController;
       receiverTradeView.trade = [self.trades objectAtIndex:self.selectedIndexPath.row];
   }
+  else if([segue.identifier isEqualToString:@"initiatorTradeDetail"]) {
+      BZRInitiatorTradeViewController *initiatorTradeView = (BZRInitiatorTradeViewController *) segue.destinationViewController;
+      initiatorTradeView.trade = [self.trades objectAtIndex:self.selectedIndexPath.row];
+  }
 }
 
 

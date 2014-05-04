@@ -19,7 +19,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.itemTitle.text =[[self.trade objectForKey:@"item"] objectForKey:@"name"];
+    self.initiatorLabel.text = [[self.trade objectForKey:@"initiator"] username];
+    self.initiatorLabel2.text = [[self.trade objectForKey:@"initiator"] username];
+    self.numItems.text = [NSString stringWithFormat:@"%@", [self.trade objectForKey:@"numItems"]];
+    PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                self.itemImage.image = [UIImage imageWithData:data];
+            }
+            else {
+                NSLog(@"error fetching image");
+            }
+        }];
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning
