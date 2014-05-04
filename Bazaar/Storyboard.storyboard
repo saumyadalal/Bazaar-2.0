@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ixW-Uc-S9m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ixW-Uc-S9m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -334,14 +334,24 @@
                                                 <action selector="addToFavorites:" destination="iLe-B3-6qf" eventType="touchUpInside" id="zIA-6f-guR"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" tag="408" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjB-sy-2Ud">
-                                            <rect key="frame" x="132" y="392" width="58" height="40"/>
+                                        <button opaque="NO" tag="409" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ge-g8-nmX">
+                                            <rect key="frame" x="198" y="370" width="54" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Select">
+                                            <state key="normal" title="Nah.">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="selectItem:" destination="iLe-B3-6qf" eventType="touchUpInside" id="gYm-Mh-rcr"/>
+                                                <action selector="deselectItem:" destination="iLe-B3-6qf" eventType="touchUpInside" id="MEN-4M-byE"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="408" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKM-ZT-ujf">
+                                            <rect key="frame" x="47" y="370" width="56" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Yeah!">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="selectItem:" destination="iLe-B3-6qf" eventType="touchUpInside" id="taY-CT-QlU"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -727,7 +737,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca8-1w-hP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="374"/>
+            <point key="canvasLocation" x="1576" y="364"/>
         </scene>
         <!--Receiver Trade View Controller - user is receiver-->
         <scene sceneID="JBo-k2-YaY">
@@ -768,7 +778,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectReturnItems:" destination="Chj-kW-B9W" eventType="touchUpInside" id="rD7-aj-Mq8"/>
+                                    <segue destination="cem-yB-5KE" kind="modal" identifier="selectionViewSegue" id="hRy-cn-xb5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGL-ow-6AJ">
@@ -844,7 +854,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vjh-Wa-d3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2254" y="565"/>
+            <point key="canvasLocation" x="2095" y="661"/>
+        </scene>
+        <!--Selection View Controller-->
+        <scene sceneID="JtK-zl-Ddz">
+            <objects>
+                <viewController id="B1J-uv-oe8" customClass="BZRSelectionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ElY-CP-8Yg"/>
+                        <viewControllerLayoutGuide type="bottom" id="0a9-ta-u4E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z1e-mh-FM3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYi-KU-fPx">
+                                <rect key="frame" x="0.0" y="130" width="318" height="325"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="GAn-NS-KXG" kind="embed" identifier="receiverEmbedMarketPlace" id="rNQ-86-kpl"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select upto 3 items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZD-NC-H9B">
+                                <rect key="frame" x="39" y="92" width="202" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E5R-s4-aaO">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ae6-bZ-Ka2">
+                            <connections>
+                                <action selector="cancelPressed:" destination="B1J-uv-oe8" id="Jhd-wW-f2Y"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="win-i9-WMR">
+                            <connections>
+                                <action selector="donePressed:" destination="B1J-uv-oe8" id="Zog-uC-pKL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MmR-9O-Ivr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2325" y="-19"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="shw-Bx-I2o">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="cem-yB-5KE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dk0-0T-tLr">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="B1J-uv-oe8" kind="relationship" relationship="rootViewController" id="PMy-fn-0tr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cay-zL-Sof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="502"/>
         </scene>
         <!--Navigation Controller - Notifications-->
         <scene sceneID="731-pl-HUb">
@@ -912,7 +984,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1i-ii-qpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="1076"/>
+            <point key="canvasLocation" x="1576" y="1146"/>
         </scene>
         <!--Initiator Trade View Controller - user is initiator-->
         <scene sceneID="or4-1B-HRf">
@@ -1019,14 +1091,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fa-1P-B1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2229" y="1252"/>
+            <point key="canvasLocation" x="2095" y="1344"/>
         </scene>
         <!--User Market Place View Controller-->
         <scene sceneID="AIT-Vr-yNa">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="GAn-NS-KXG" customClass="BZRUserMarketPlaceViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="userMarketPlaceSegue" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GAn-NS-KXG" customClass="BZRUserMarketPlaceViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="48z-L4-t1e">
-                        <rect key="frame" x="0.0" y="0.0" width="314" height="306"/>
+                        <rect key="frame" x="0.0" y="0.0" width="318" height="325"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zZF-kX-jPp">
                             <size key="itemSize" width="102" height="97"/>
@@ -1067,7 +1139,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBQ-od-4Ur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126" y="-55"/>
+            <point key="canvasLocation" x="2910" y="-319"/>
         </scene>
     </scenes>
     <resources>
@@ -1084,5 +1156,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="5gf-aY-sNS"/>
+        <segue reference="rNQ-86-kpl"/>
     </inferredMetricsTieBreakers>
 </document>

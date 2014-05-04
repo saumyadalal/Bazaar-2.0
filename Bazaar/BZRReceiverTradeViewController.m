@@ -7,7 +7,7 @@
 //
 
 #import "BZRReceiverTradeViewController.h"
-#import "BZRUserProfileViewController.h"
+#import "BZRSelectionViewController.h"
 
 @interface BZRReceiverTradeViewController ()
 
@@ -32,10 +32,9 @@
                 NSLog(@"error fetching image");
             }
         }];
-    
-    
-
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -43,12 +42,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)selectReturnItems:(id)sender {
-  BZRUserProfileViewController* profileView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
-                                         instantiateViewControllerWithIdentifier:@"userProfileView"];
-  profileView.user = [self.trade objectForKey:@"initiator"];
-  profileView.inSelectionMode = YES;
-  [self.navigationController pushViewController:profileView animated:YES];
-  
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([[segue identifier] isEqualToString:@"selectionViewSegue"]) {
+    UINavigationController* navigationController = (UINavigationController *) segue.destinationViewController;
+    BZRSelectionViewController *selectionView = (BZRSelectionViewController *)navigationController.topViewController;
+    selectionView.user = [self.trade objectForKey:@"initiator"];
+    selectionView.trade = self.trade;
+  }
 }
+
+
 @end

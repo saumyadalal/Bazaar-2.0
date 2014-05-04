@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 
 @interface BZRReceiverTradeViewController : UIViewController
-- (IBAction)selectReturnItems:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 @property (strong, nonatomic) IBOutlet UILabel *initiatorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *itemTitle;

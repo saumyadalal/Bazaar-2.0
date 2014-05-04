@@ -45,6 +45,7 @@
 		A79C876A1916015F00BB0C68 /* BZRReceiverTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */; };
 		A79C876E1916018300BB0C68 /* BZRInitiatorTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C876D1916018300BB0C68 /* BZRInitiatorTradeViewController.m */; };
 		A79C87701916091200BB0C68 /* TagReferences in Resources */ = {isa = PBXBuildFile; fileRef = A79C876F1916091200BB0C68 /* TagReferences */; };
+		A79C87741916D8F000BB0C68 /* BZRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C87731916D8F000BB0C68 /* BZRSelectionViewController.m */; };
 		A7DE717D18DDFA1200EE7F9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE717C18DDFA1200EE7F9A /* Foundation.framework */; };
 		A7DE717F18DDFA1200EE7F9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */; };
 		A7DE718118DDFA1200EE7F9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE718018DDFA1200EE7F9A /* UIKit.framework */; };
@@ -123,6 +124,8 @@
 		A79C876C1916018300BB0C68 /* BZRInitiatorTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRInitiatorTradeViewController.h; sourceTree = "<group>"; };
 		A79C876D1916018300BB0C68 /* BZRInitiatorTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRInitiatorTradeViewController.m; sourceTree = "<group>"; };
 		A79C876F1916091200BB0C68 /* TagReferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TagReferences; sourceTree = "<group>"; };
+		A79C87721916D8F000BB0C68 /* BZRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRSelectionViewController.h; sourceTree = "<group>"; };
+		A79C87731916D8F000BB0C68 /* BZRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRSelectionViewController.m; sourceTree = "<group>"; };
 		A7DE717918DDFA1200EE7F9A /* Bazaar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bazaar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DE717C18DDFA1200EE7F9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7DE717E18DDFA1200EE7F9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -309,6 +312,15 @@
 			name = "Initiator Trade View";
 			sourceTree = "<group>";
 		};
+		A79C87711916D8C900BB0C68 /* Trade Return Item Selection */ = {
+			isa = PBXGroup;
+			children = (
+				A79C87721916D8F000BB0C68 /* BZRSelectionViewController.h */,
+				A79C87731916D8F000BB0C68 /* BZRSelectionViewController.m */,
+			);
+			name = "Trade Return Item Selection";
+			sourceTree = "<group>";
+		};
 		A7DE717018DDFA1200EE7F9A = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +365,7 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				A79C87711916D8C900BB0C68 /* Trade Return Item Selection */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
 				A724FB96191600B300D4120A /* Receiver Trade View */,
@@ -536,6 +549,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79C87741916D8F000BB0C68 /* BZRSelectionViewController.m in Sources */,
 				22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */,
 				A7DE718918DDFA1200EE7F9A /* main.m in Sources */,
 				A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */,

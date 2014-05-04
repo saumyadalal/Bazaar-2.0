@@ -11,25 +11,53 @@
 #import "BZRDetailViewController.h"
 
 
-@interface BZRUserMarketPlaceViewController ()
+@interface BZRUserMarketPlaceViewController () <BZRItemDelegate>
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
-@property (nonatomic, strong) NSMutableArray *selectedItems;
+@property (nonatomic, strong) NSMutableSet *selectedIndexPaths;
 @end
 
 static NSString * const cellIdentifier = @"UserItemCell";
 
 @implementation BZRUserMarketPlaceViewController
 
+- (BOOL) isSelected:(NSIndexPath *)indexPath {
+  NSLog(@" %d he", [self.selectedIndexPaths count]);
+  if ([self.selectedIndexPaths containsObject:indexPath]) {
+    return YES;
+  }
+  return NO;
+}
+
+
+- (void) saveReturnItems:(PFObject*) trade {
+  NSMutableArray* returnItems = [[NSMutableArray alloc] init];
+  for(NSIndexPath* indexPath in self.selectedIndexPaths) {
+    PFObject* item = [self.items objectAtIndex:indexPath.row];
+    [returnItems addObject:item];
+  }
+  trade[@"returnItems"] = returnItems;
+  [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (!error) {
+      NSLog(@"saved return items");
+    }
+    else {
+      NSLog(@"error saving return items");
+    }
+  }];
+}
+
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self viewDidRequestRefresh];
+	// to populate self.items
+    [self loadMarketPlace];
     //[self.collectionView reloadData];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.selectedItems = [[NSMutableArray alloc] initWithArray:@[]];
+    self.selectedIndexPaths = [[NSMutableSet alloc] initWithArray:@[]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +71,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
   [self loadMarketPlace];
 }
 
+
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
   return 0; // This is the minimum inter item spacing, can be more
 }
@@ -53,7 +82,25 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return CGSizeMake(100, 100);
 }
 
+- (void) didSelectItem:(BOOL)selected AtIndexPath:(NSIndexPath *)indexPath {
+  NSLog(@" selected item %hhd", selected);
+  if (selected) {
+    [self.selectedIndexPaths addObject:indexPath];
+  }
+  else {
+    [self.selectedIndexPaths removeObject:indexPath];
+  }
 
+}
+
+- (void) highlightSelectedItems {
+  for (NSIndexPath* indexPath in self.selectedIndexPaths) {
+      UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+      cell.contentView.backgroundColor = [UIColor redColor];
+  }
+}
+
+//load the items owned by the user
 - (void)loadMarketPlace
 {
   if (self.user == nil) {
@@ -91,7 +138,9 @@ static NSString * const cellIdentifier = @"UserItemCell";
   
   //if in selection mode
   if ([self.selectedItems containsObject:item] && self.inSelectionMode) {
-      cell.backgroundColor = [UIColor grayColor];
+      //add object to selected index path
+      [self.selectedIndexPaths addObject:indexPath];
+      itemName.backgroundColor = [UIColor greenColor];
   }
   
   //call this to fetch image data
@@ -123,6 +172,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
   detailView.items = self.items;
   detailView.currentIndexPath = indexPath;
   detailView.inSelectionMode = self.inSelectionMode;
+  [detailView setDelegate:self];
   [self.navigationController pushViewController:detailView animated:YES];
 }
 

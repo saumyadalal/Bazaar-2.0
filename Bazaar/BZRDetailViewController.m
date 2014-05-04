@@ -13,7 +13,8 @@
 @interface BZRDetailViewController ()
 @property (strong, nonatomic) UIButton *favoriteButton;
 @property (strong, nonatomic) UIButton *tradeButton;
-@property (strong, nonatomic) UIButton *selectButton;
+@property (strong, nonatomic) UIButton *yesButton;
+@property (strong, nonatomic) UIButton *noButton;
 @property (strong, nonatomic) PFObject* item;
 @end
 
@@ -34,6 +35,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
     [self.collectionView setShowsHorizontalScrollIndicator:NO];
+    NSLog(@" mode %hhd", self.inSelectionMode);
 }
 
 
@@ -45,11 +47,16 @@ static NSString * const cellIdentifier = @"detailViewCell";
     [self disableAndHideTradeButtons];
   }
   else {
-    [self.selectButton setEnabled:NO];
-    self.selectButton.hidden = YES;
+    [self disableAndHideSelectButtons];
   }
 }
 
+- (void) disableAndHideSelectButtons {
+  [self.yesButton setEnabled:NO];
+  [self.noButton setEnabled:NO];
+  self.yesButton.hidden = YES;
+  self.noButton.hidden = YES;
+}
 
 - (void) configureLabels:(PFObject *)item {
   if ([self userOwnsItem:item]) {
@@ -114,10 +121,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UILabel *itemDescription = (UILabel *) [cell viewWithTag:405];
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
-  self.selectButton = (UIButton *) [cell viewWithTag:408];
-
+  self.yesButton = (UIButton *) [cell viewWithTag:408];
+  self.noButton = (UIButton *) [cell viewWithTag:409];
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   [self configureLabels:item];
+  [self configureSelectButtons:indexPath];
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
@@ -141,6 +149,60 @@ static NSString * const cellIdentifier = @"detailViewCell";
   return cell;
 }
 
+- (void)configureSelectButtons:(NSIndexPath*) currentIndexPath {
+  NSLog(@"hello configuring selected buttons");
+  //the item is selected
+  if ([self.delegate isSelected:currentIndexPath]) {
+    [self toggleSelected:self.yesButton];
+  }
+  else {
+    [self toggleSelected:self.noButton];
+  }
+}
+
+
+
+- (void) toggleSelected: (UIButton*)button {
+  NSLog(@" button %@", [[button titleLabel] text]);
+  //disable the selected button
+  UIButton* disableButton = button;
+  UIButton* enableButton;
+  //yes button is selected
+  if ([button isEqual:self.yesButton]) {
+    enableButton = self.noButton;
+  }
+  else {
+    enableButton = self.yesButton;
+  }
+  [enableButton setEnabled:YES];
+  [enableButton setBackgroundColor:[UIColor whiteColor]];
+  //disabled the selected button and highlight it gray
+  [disableButton setEnabled:NO];
+  [disableButton setBackgroundColor:[UIColor grayColor]];
+}
+
+
+- (IBAction)selectItem:(id)sender {
+  [self toggleSelected:self.yesButton];
+  NSLog(@" %@ delegate", self.delegate);
+  [self.delegate didSelectItem:YES AtIndexPath:self.currentIndexPath];
+}
+
+- (IBAction)deselectItem:(id)sender {
+  [self toggleSelected:self.noButton];
+  [self.delegate didSelectItem:NO AtIndexPath:self.currentIndexPath];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  if([[segue identifier] isEqualToString:@"initiateTradeView"]) //look for specific segue
+  {
+    BZRTradeViewController *tradeViewController
+      = (BZRTradeViewController *) segue.destinationViewController;
+    tradeViewController.item = self.item; //give item to destination controller
+  }
+  
+}
 
 - (void) loadUserInfo:(PFUser *) user onCell:(UICollectionViewCell *)cell {
   [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
@@ -168,17 +230,23 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 //update current index path
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+  NSLog(@"did stop decelrating");
   if ([[self.collectionView visibleCells] count] > 0) {
     UICollectionViewCell *currentCell = [[self.collectionView visibleCells] objectAtIndex:0];
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:currentCell];
-    self.currentIndexPath = indexPath;
-    self.item = [self.items objectAtIndex:self.currentIndexPath.row];
+    //turns out clicking a button calls this method too
+    if (![indexPath isEqual:self.currentIndexPath]) {
+      self.currentIndexPath = indexPath;
+      self.item = [self.items objectAtIndex:self.currentIndexPath.row];
+      [self configureSelectButtons:indexPath];
+    }
+
   }
 }
 
@@ -209,21 +277,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
       }
     }];
   }
-}
-
-- (IBAction)selectItem:(id)sender {
-  
-}
-
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-  if([[segue identifier] isEqualToString:@"initiateTradeView"]) //look for specific segue
-  {
-    BZRTradeViewController *tradeViewController
-      = (BZRTradeViewController *) segue.destinationViewController;
-    tradeViewController.item = self.item; //give item to destination controller
-  }
-  
 }
 
 
