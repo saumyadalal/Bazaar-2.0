@@ -51,4 +51,22 @@
   [self.navigationController pushViewController:profileView animated:YES];
   
 }
+- (IBAction)cancelButton:(id)sender {
+    NSString *objectId = [self.trade objectId];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trade"];
+    [query whereKey:@"objectId" equalTo:objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"canceled trade");
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                [object deleteInBackground];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"error canceling trade");
+        }
+    }];
+}
 @end
