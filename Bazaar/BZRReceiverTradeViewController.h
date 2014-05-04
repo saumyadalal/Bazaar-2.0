@@ -16,4 +16,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *numItems;
 @property (strong, nonatomic) PFObject* trade;
 @property (strong, nonatomic) IBOutlet UILabel *initiatorLabel2;
+- (IBAction)cancelButton:(id)sender;
 @end
