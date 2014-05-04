@@ -17,4 +17,5 @@
 - (IBAction)stepperValueChanged:(id)sender;
 - (IBAction)sendButton:(id)sender;
 @property (strong, nonatomic) PFObject *trade;
+@property (strong, nonatomic) NSNumber *numItems;
 @end

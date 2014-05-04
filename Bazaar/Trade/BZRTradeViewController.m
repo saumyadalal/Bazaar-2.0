@@ -49,11 +49,23 @@
 }
 
 - (IBAction)stepperValueChanged:(id)sender {
-    //self.numReturn1.text = [sender value];
     double value = [(UIStepper*)sender value];
     [self.numReturn setText:[NSString stringWithFormat:@"%d", (int)value]];
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    self.numItems = [f numberFromString:self.numReturn.text];
 }
 
 - (IBAction)sendButton:(id)sender {
+    self.trade[@"numItems"] = self.numItems;
+    [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"Updated numItems in trade");
+        }
+        else {
+            NSLog(@"error updating numItems in trade");
+        }
+    }];
+
 }
 @end
