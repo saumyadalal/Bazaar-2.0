@@ -7,6 +7,7 @@
 //
 
 #import "BZRUserProfileViewController.h"
+#import "BZRUserMarketPlaceViewController.h"
 #import "SWRevealViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
@@ -39,7 +40,10 @@
 
 
 - (void) loadUserInfo {
-  PFUser *user = [PFUser currentUser];
+  if (self.user == nil) {
+    self.user = [PFUser currentUser];
+  }
+  PFUser *user = self.user;
   PFFile *imageFile = [user objectForKey:@"imageFile"];
   [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
     if (!error) {
@@ -50,6 +54,14 @@
       NSLog(@"error fetching image");
     }
   }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([[segue identifier] isEqualToString:@"embedMarketPlace"]) {
+    BZRUserMarketPlaceViewController *marketPlaceView = segue.destinationViewController;
+    marketPlaceView.user = self.user;
+  }
 }
 
 - (void)didReceiveMemoryWarning

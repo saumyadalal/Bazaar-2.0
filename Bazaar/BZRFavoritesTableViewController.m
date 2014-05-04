@@ -57,8 +57,8 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 
 
 - (void)loadItemData: (PFObject*) item forCell:(UITableViewCell*) cell{
-  UILabel *itemName = (UILabel *)[cell.contentView viewWithTag:104];
-  UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:103];
+  UILabel *itemName = (UILabel *)[cell.contentView viewWithTag:502];
+  UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:501];
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
       PFFile *imageFile = [object objectForKey:@"imageFile"];

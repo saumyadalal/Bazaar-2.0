@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface BZRUserMarketPlaceViewController : UICollectionViewController
-
+@property (nonatomic, strong) PFUser* user;
 @end

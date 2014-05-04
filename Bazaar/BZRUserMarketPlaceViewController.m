@@ -54,8 +54,12 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 - (void)loadMarketPlace
 {
+  if (self.user == nil) {
+    self.user = [PFUser currentUser];
+  }
+  PFUser *user = self.user;
   PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-  [query whereKey:@"owner" equalTo:[PFUser currentUser]];
+  [query whereKey:@"owner" equalTo:user];
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       // The find succeeded.

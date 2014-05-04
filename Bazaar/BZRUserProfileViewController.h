@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
 
 @interface BZRUserProfileViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (strong, nonatomic) IBOutlet UILabel *username;
+@property (strong, nonatomic) PFUser* user;
 - (IBAction)logout:(id)sender;
 @end

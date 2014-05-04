@@ -7,11 +7,16 @@
 //
 
 #import "BZRNotificationTableViewController.h"
+#import "BZRReceiverTradeViewController.h"
+#import "BZRInitiatorTradeViewController.h"
 #import <Parse/Parse.h>
 
 @interface BZRNotificationTableViewController ()
 @property (nonatomic, strong) NSArray* trades;
+@property (nonatomic, strong) NSIndexPath* selectedIndexPath;
 @end
+
+static NSString * const cellIdentifier = @"NotificationCell";
 
 @implementation BZRNotificationTableViewController
 
@@ -55,7 +60,7 @@
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       self.trades = objects;
-      NSLog(@" %d trades", [self.trades count]);
+      NSLog(@" %d notification trades", [self.trades count]);
       [self.tableView reloadData];
     } else {
       // Log details of the failure
@@ -81,8 +86,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
   
     UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:301];
     UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
@@ -90,16 +94,18 @@
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
     PFUser *initiator = [trade objectForKey:@"initiator"];
     PFUser *receiver = [trade objectForKey:@"owner"];
-    PFUser* user = [PFUser currentUser];
     PFObject* item = [trade objectForKey:@"item"];
   
     //load message
     NSString *message = @"%@ requested %@ from %@";
     NSString *messageText = @"";
-    if ([user objectForKey:@"objectId"] == [initiator objectForKey:@"objectId"]) {
+    //you initiated the trade
+    if ([self isInitiator:trade]) {
       messageText = [NSString stringWithFormat:message, @"You", [item objectForKey:@"name"],
                            [receiver objectForKey:@"username"]];
-    } else {
+    }
+    //you received the trade
+    else {
       messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
                              [item objectForKey:@"name"], @"you"];
     }
@@ -117,6 +123,35 @@
     }];
     return cell;
 }
+
+- (BOOL) isInitiator:(PFObject*)trade {
+  PFUser *initiator = [trade objectForKey:@"initiator"];
+  PFUser* user = [PFUser currentUser];
+  if ([[user objectForKey:@"objectId"] isEqualToString:[initiator objectForKey:@"objectId"]]) {
+    return YES;
+  }
+  return NO;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+  self.selectedIndexPath = indexPath;
+  PFObject* trade = [self.trades objectAtIndex:indexPath.row];
+  if ([self isInitiator:trade]) {
+      [self performSegueWithIdentifier:@"initiatorTradeDetail" sender:self];
+  }
+  else {
+     [self performSegueWithIdentifier:@"receiverTradeDetail" sender:self];
+  }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"receiverTradeDetail"]) {
+      BZRReceiverTradeViewController *receiverTradeView =
+        (BZRReceiverTradeViewController *) segue.destinationViewController;
+      receiverTradeView.trade = [self.trades objectAtIndex:self.selectedIndexPath.row];
+  }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
