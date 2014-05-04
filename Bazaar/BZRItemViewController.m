@@ -16,9 +16,12 @@
 
 @implementation BZRItemViewController
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  
     if (self.item) {
       self.itemTitle.text = [self.item objectForKey:@"name"]; //set item title
      // PFUser *user = [self.item objectForKey:@"owner"]; //get user info
@@ -153,13 +156,15 @@
 }
 
 - (IBAction)swipeItem:(id)sender {
+  
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"initiateTradeView"]) //look for specific segue
     {
         BZRTradeViewController *initiateTrade = (BZRTradeViewController *) segue.destinationViewController; //set destination
-        initiateTrade.trade=self.trade; //give item to destination controller
+        //initiateTrade.trade=self.trade; //give item to destination controller
     }
     
 }

@@ -8,7 +8,7 @@
 
 #import "BZRUserMarketPlaceViewController.h"
 #import <Parse/Parse.h>
-#import "BZRItemViewController.h"
+#import "BZRDetailViewController.h"
 
 
 @interface BZRUserMarketPlaceViewController ()
@@ -103,9 +103,10 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  BZRItemViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
-                        instantiateViewControllerWithIdentifier:@"itemViewController"];
-  detailView.item = [self.items objectAtIndex:indexPath.row];
+  BZRDetailViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
+                        instantiateViewControllerWithIdentifier:@"detailViewController"];
+  detailView.items = self.items;
+  detailView.currentIndexPath = indexPath;
   [self.navigationController pushViewController:detailView animated:YES];
 }
 

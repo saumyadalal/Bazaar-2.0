@@ -9,6 +9,7 @@
 #import "BZRBazaarController.h"
 #import "SWRevealViewController.h"
 #import "BZRItemViewController.h"
+#import "BZRDetailViewController.h"
 
 @interface BZRBazaarController ()
 @property (nonatomic, strong) NSArray *items;
@@ -115,13 +116,23 @@ static NSString * const cellIdentifier = @"ItemCell";
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  /*
   if([[segue identifier] isEqualToString:@"bazaarView"]) //look for specific segue
   {
     BZRItemViewController *detailViewBazaar = (BZRItemViewController *) segue.destinationViewController; //set destination
     NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected item
     PFObject* item = [self.items objectAtIndex:selectedIndexPath.row];
     detailViewBazaar.item=item; //give item to destination controller
+  } */
+  if([[segue identifier] isEqualToString:@"detailView"]) //look for specific segue
+  {
+    BZRDetailViewController *detailViewBazaar = (BZRDetailViewController *) segue.destinationViewController; //set destination
+    NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected item
+    detailViewBazaar.items = self.items; //give item to destination controller
+    detailViewBazaar.currentIndexPath = selectedIndexPath;
   }
+  
+  
   
 }
 

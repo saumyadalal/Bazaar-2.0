@@ -23,6 +23,7 @@
 		79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */; };
 		79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */; };
 		79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79ADDAD618F218730031CA5E /* Storyboard.storyboard */; };
+		A724FB951915C4B800D4120A /* BZRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A724FB941915C4B800D4120A /* BZRDetailViewController.m */; };
 		A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD1718EB6E8400EC3719 /* BZRLoginViewController.m */; };
 		A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A725CD1818EB6E8400EC3719 /* BZRLoginViewController.xib */; };
 		A725CD1F18EF445C00EC3719 /* BZRUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A725CD1D18EF445C00EC3719 /* BZRUserProfileViewController.m */; };
@@ -88,6 +89,8 @@
 		79ADDAD318F216DD0031CA5E /* BZRNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRNewPostViewController.h; sourceTree = "<group>"; };
 		79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRNewPostViewController.m; sourceTree = "<group>"; };
 		79ADDAD618F218730031CA5E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		A724FB931915C4B800D4120A /* BZRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRDetailViewController.h; sourceTree = "<group>"; };
+		A724FB941915C4B800D4120A /* BZRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRDetailViewController.m; sourceTree = "<group>"; };
 		A725CD1618EB6E8400EC3719 /* BZRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRLoginViewController.h; sourceTree = "<group>"; };
 		A725CD1718EB6E8400EC3719 /* BZRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRLoginViewController.m; sourceTree = "<group>"; };
 		A725CD1818EB6E8400EC3719 /* BZRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRLoginViewController.xib; sourceTree = "<group>"; };
@@ -226,6 +229,15 @@
 			name = Favorites;
 			sourceTree = "<group>";
 		};
+		A724FB921915C49700D4120A /* Detail View  */ = {
+			isa = PBXGroup;
+			children = (
+				A724FB931915C4B800D4120A /* BZRDetailViewController.h */,
+				A724FB941915C4B800D4120A /* BZRDetailViewController.m */,
+			);
+			name = "Detail View ";
+			sourceTree = "<group>";
+		};
 		A725CD1B18EF415700EC3719 /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +327,7 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				A724FB921915C49700D4120A /* Detail View  */,
 				A7737B01190F372E00319AF4 /* Tabs */,
 				0E60182A190C18C900CA324F /* Bazaar */,
 				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
@@ -496,6 +509,7 @@
 				22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */,
 				A7DE718918DDFA1200EE7F9A /* main.m in Sources */,
 				A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */,
+				A724FB951915C4B800D4120A /* BZRDetailViewController.m in Sources */,
 				A7737AFA190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m in Sources */,
 				A725CD1F18EF445C00EC3719 /* BZRUserProfileViewController.m in Sources */,
 				A7DE718D18DDFA1200EE7F9A /* BZRAppDelegate.m in Sources */,

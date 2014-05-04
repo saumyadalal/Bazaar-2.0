@@ -9,37 +9,40 @@
 #import "BZRTradeViewController.h"
 
 @interface BZRTradeViewController ()
-
+@property (nonatomic, assign) NSInteger numItems;
 @end
 
 @implementation BZRTradeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.numReturn.text = @"1";
-    NSLog(@"%@",self.trade);
-    self.itemTitle.text =[[self.trade objectForKey:@"item"] objectForKey:@"name"];
-    self.itemOwner.text = [[self.trade objectForKey:@"owner"] username];
-    PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            self.itemImage.image = [UIImage imageWithData:data];
-        }
-        else {
-            NSLog(@"error fetching image");
-        }
-    }];
+    self.numItems = 1;
+    [self loadTradeData];
+}
 
+- (void) loadTradeData {
+  PFUser* owner = [self.item objectForKey:@"owner"];
+  [owner fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    if (!error) {
+        self.itemOwner.text = [owner objectForKey:@"username"];
+    }
+    else {
+      NSLog(@"item owner fetch error");
+    }
+  }];
+  PFFile* imageFile = [self.item objectForKey:@"imageFile"];
+  [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+    if (!error) {
+      self.itemImage.image = [UIImage imageWithData:data];
+      self.itemTitle.text = [self.item objectForKey:@"name"];
+    }
+    else {
+      NSLog(@"error fetching image");
+    }
+  }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,23 +52,31 @@
 }
 
 - (IBAction)stepperValueChanged:(id)sender {
-    double value = [(UIStepper*)sender value];
-    [self.numReturn setText:[NSString stringWithFormat:@"%d", (int)value]];
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    self.numItems = [f numberFromString:self.numReturn.text];
+    int value = (int) [(UIStepper*)sender value];
+    [self.numReturn setText:[NSString stringWithFormat:@"%d", value]];
+    self.numItems = value;
 }
 
 - (IBAction)sendButton:(id)sender {
-    self.trade[@"numItems"] = self.numItems;
-    [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            NSLog(@"Updated numItems in trade");
-        }
-        else {
-            NSLog(@"error updating numItems in trade");
-        }
-    }];
+  NSLog(@"hi");
+  PFObject *trade = [PFObject objectWithClassName:@"Trade"];
+  NSLog(@"hi3");
+  trade[@"item"] = self.item;
+  NSLog(@"hi1");
+  trade[@"owner"] = [self.item objectForKey:@"owner"];
+  NSLog(@"hi2");
+  trade[@"initiator"] = [PFUser currentUser];
+  trade[@"status"] = @"initiated";
+  trade[@"numItems"] = [NSNumber numberWithInt:self.numItems];
+  trade[@"returnItems"] = @[];
+  [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (!error) {
+      NSLog(@"saved new initiated trade");
+    }
+    else {
+      NSLog(@"error setting up trade");
+    }
+  }];
 
 }
 @end

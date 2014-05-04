@@ -13,24 +13,16 @@
 @property (nonatomic, strong) NSArray *items;
 @end
 
+static NSString * const cellIdentifier = @"favoriteItemCell";
+
 @implementation BZRFavoritesTableViewController
 
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     PFUser *user = [PFUser currentUser]; //get current user info
     self.favoriteArray = user[@"favorites"]; //get current user's favorite's info
-    NSLog(@"favorite array: %@",self.favoriteArray);
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,43 +49,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    if(self.favoriteArray){
-        for (PFObject *item in self.favoriteArray){
-            NSString *objectID = [item objectId];
-            //            NSLog(@"objectID: %@",objectID);
-            PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-            [query getObjectInBackgroundWithId:objectID block:^(PFObject *object, NSError *error) {
-                if (!error) {
-                    
-                    PFFile *imageFile = [object objectForKey:@"imageFile"];
-                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                        if (!error) {
-                            
-
-                            NSString *name = object[@"name"];
-                            
-                            UILabel *label = (UILabel *)[cell.contentView viewWithTag:104];
-                            [label setText:[NSString stringWithFormat:@"%@", name]];
-                            
-                            UIImageView *imageCell = (UIImageView *)[cell.contentView viewWithTag:103];
-                            imageCell.image = [UIImage imageWithData:data];
-                        }
-                        else {
-                            NSLog(@"error fetching image");
-                        }
-                    }];
-                }
-                else {
-                    NSLog(@"error fetching data");
-                }
-            }];
-        }
-    }
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    PFObject* item = [self.favoriteArray objectAtIndex:indexPath.row];
+    [self loadItemData:item forCell:cell];
     return cell;
+}
+
+
+- (void)loadItemData: (PFObject*) item forCell:(UITableViewCell*) cell{
+  UILabel *itemName = (UILabel *)[cell.contentView viewWithTag:104];
+  UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:103];
+  [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    if (!error) {
+      PFFile *imageFile = [object objectForKey:@"imageFile"];
+      [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+          itemImageView.image = [UIImage imageWithData:data];
+          itemName.text = [object objectForKey:@"name"];
+        }
+        else {
+          NSLog(@"error fetching image");
+        }
+      }];
+    }
+    else {
+      NSLog(@"error fetching data");
+    }
+  }];
 }
 
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
