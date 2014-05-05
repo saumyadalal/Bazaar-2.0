@@ -84,6 +84,11 @@ static NSString * const cellIdentifier = @"NotificationCell";
     return [self.trades count];
 }
 
+- (NSString *) getFirstName: (NSString*) name {
+  NSArray *words = [name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+  return [words objectAtIndex:0];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -100,6 +105,7 @@ static NSString * const cellIdentifier = @"NotificationCell";
     //load message
     NSString *message = @"%@ requested %@ from %@";
     NSString *messageText = @"";
+    NSString
     //you initiated the trade
     if ([self isInitiator:trade]) {
       messageText = [NSString stringWithFormat:message, @"You", [item objectForKey:@"name"],
