@@ -35,7 +35,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
     [self.collectionView setShowsHorizontalScrollIndicator:NO];
-    NSLog(@" mode %hhd", self.inSelectionMode);
 }
 
 
@@ -43,6 +42,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [super viewWillAppear:animated];
   [self.collectionView reloadData];
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+  NSLog(@" mode %hhd", self.inSelectionMode);
   if (self.inSelectionMode) {
     [self disableAndHideTradeButtons];
   }
@@ -51,12 +51,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   }
 }
 
-- (void) disableAndHideSelectButtons {
-  [self.yesButton setEnabled:NO];
-  [self.noButton setEnabled:NO];
-  self.yesButton.hidden = YES;
-  self.noButton.hidden = YES;
-}
+/**********************
+ *** Trade-Favorite Buttons
+ **********************/
+
+// Main method: hide labels if the item is owned by user
 
 - (void) configureLabels:(PFObject *)item {
   if ([self userOwnsItem:item]) {
@@ -65,12 +64,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self configureFavoriteLabel:item];
 }
 
-- (void) disableAndHideTradeButtons {
-  self.favoriteButton.hidden = YES;
-  self.tradeButton.hidden = YES;
-  [self.favoriteButton setEnabled:NO];
-  [self.tradeButton setEnabled:NO];
-}
+// individual configuration
 
 - (void) configureFavoriteLabel:(PFObject*) item {
   if ([self isFavorited:item]) {
@@ -82,15 +76,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   }
 }
 
-- (BOOL) isFavorited:(PFObject*) currentItem {
-  PFUser *user = [PFUser currentUser];
-  NSMutableArray *favoritesArray = user[@"favorites"];
-  for(PFObject *item in favoritesArray){
-    if ([currentItem objectId] == [item objectId]) {
-      return YES;
-    }
-  }
-  return NO;
+- (void) disableAndHideTradeButtons {
+  self.favoriteButton.hidden = YES;
+  self.tradeButton.hidden = YES;
+  [self.favoriteButton setEnabled:NO];
+  [self.tradeButton setEnabled:NO];
 }
 
 - (BOOL) userOwnsItem :(PFObject*) item {
@@ -102,6 +92,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
   return false;
 }
 
+/**********************
+ *** Trade-Favorite Buttons
+ **********************/
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -149,6 +142,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   return cell;
 }
 
+
+/**********************
+ *** Select Buttons
+ **********************/
+
 - (void)configureSelectButtons:(NSIndexPath*) currentIndexPath {
   NSLog(@"hello configuring selected buttons");
   //the item is selected
@@ -160,6 +158,12 @@ static NSString * const cellIdentifier = @"detailViewCell";
   }
 }
 
+- (void) disableAndHideSelectButtons {
+  [self.yesButton setEnabled:NO];
+  [self.noButton setEnabled:NO];
+  self.yesButton.hidden = YES;
+  self.noButton.hidden = YES;
+}
 
 
 - (void) toggleSelected: (UIButton*)button {
@@ -181,6 +185,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [disableButton setBackgroundColor:[UIColor grayColor]];
 }
 
+/**********************
+ *** Select Buttons
+ **********************/
 
 - (IBAction)selectItem:(id)sender {
   [self toggleSelected:self.yesButton];
@@ -236,7 +243,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 //update current index path
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-  NSLog(@"did stop decelrating");
+  NSLog(@"did stop decelerating");
   if ([[self.collectionView visibleCells] count] > 0) {
     UICollectionViewCell *currentCell = [[self.collectionView visibleCells] objectAtIndex:0];
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:currentCell];
@@ -244,10 +251,23 @@ static NSString * const cellIdentifier = @"detailViewCell";
     if (![indexPath isEqual:self.currentIndexPath]) {
       self.currentIndexPath = indexPath;
       self.item = [self.items objectAtIndex:self.currentIndexPath.row];
+      [self configureLabels:self.item];
       [self configureSelectButtons:indexPath];
     }
 
   }
+}
+
+
+- (BOOL) isFavorited:(PFObject*) currentItem {
+  PFUser *user = [PFUser currentUser];
+  NSMutableArray *favoritesArray = user[@"favorites"];
+  for(PFObject *item in favoritesArray){
+    if ([[currentItem objectId] isEqual:[item objectId]]) {
+      return YES;
+    }
+  }
+  return NO;
 }
 
 - (IBAction)addToFavorites:(id)sender {
@@ -258,7 +278,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
       if (!error) {
         NSLog(@"favorites added");
-        [self.favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
+        [self.favoriteButton setTitle:@"Unfavorite" forState:UIControlStateNormal];
       }
       else {
         NSLog(@"error adding favorites");
@@ -270,7 +290,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
       if (!error) {
         NSLog(@"favorites removed");
-        [self.favoriteButton setTitle:@"Unfavorite" forState:UIControlStateNormal];
+        [self.favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
       }
       else {
         NSLog(@"error removing favorites");
