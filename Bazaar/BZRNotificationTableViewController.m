@@ -46,6 +46,13 @@ static NSString * const cellIdentifier = @"NotificationCell";
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void) viewWillAppear:(BOOL)animated {
+    //NSLog(@"appear");
+    [super viewWillAppear:animated];
+    [self loadNotifications];
+}
+
 - (void)loadNotifications
 {
   PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"Trade"];

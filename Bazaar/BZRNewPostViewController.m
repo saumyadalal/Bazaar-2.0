@@ -12,6 +12,7 @@
 @interface BZRNewPostViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) UIAlertView *imageSavedView;
+@property (nonatomic) BOOL imagePicked;
 @end
 
 @implementation BZRNewPostViewController
@@ -27,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.imagePicked = NO;
     self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", nil];
     //set category input as picker
     UIPickerView *picker = [[UIPickerView alloc] init];
@@ -119,13 +121,16 @@
   self.imageView.image = image;
   [self dismissViewControllerAnimated:YES completion:nil];
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  self.imagePicked = YES;
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   [self dismissViewControllerAnimated:YES completion:nil];
-  self.addObject.hidden = NO;
+    if (self.imagePicked == NO) {
+        self.addObject.hidden = NO;
+    }
 }
 
 
@@ -164,6 +169,7 @@
     [self.description resignFirstResponder];
     [self.itemName resignFirstResponder];
     self.addObject.hidden = NO;
+    self.imagePicked = NO;
 }
 
 

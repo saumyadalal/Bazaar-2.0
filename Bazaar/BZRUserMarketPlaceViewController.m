@@ -20,6 +20,12 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 @implementation BZRUserMarketPlaceViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    //NSLog(@"appear");
+    [super viewWillAppear:animated];
+    [self loadMarketPlace];
+}
+
 
 - (BOOL) didReachLimit {
   NSUInteger size = [self.selectedIndexPaths count];
