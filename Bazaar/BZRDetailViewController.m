@@ -51,7 +51,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
 // Main method: hide labels if the item is owned by user
 
 - (void) configureLabels:(PFObject *)item {
-  if ([self userOwnsItem:item] || self.inSelectionMode) {
+  if ([self userOwnsItem:item]) {
+    [self disableAndHideTradeButtons];
+    [self disableAndHideSelectButtons];
+  }
+  if (self.inSelectionMode) {
     [self disableAndHideTradeButtons];
   }
   else {
