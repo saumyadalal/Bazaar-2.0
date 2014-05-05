@@ -24,8 +24,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 - (BOOL) didReachLimit {
   NSUInteger size = [self.selectedIndexPaths count];
-  NSLog(@" hi limit is %@ ", self.returnLimit);
-  NSLog(@" current count %@ ", [NSNumber numberWithInt:size]);
   //can compare int values, not NSNumber
   if (size >= [self.returnLimit intValue]) {
     return YES;

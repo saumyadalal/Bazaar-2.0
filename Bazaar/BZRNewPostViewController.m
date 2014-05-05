@@ -8,7 +8,7 @@
 #import "BZRNewPostViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface BZRNewPostViewController ()
+@interface BZRNewPostViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) UIAlertView *imageSavedView;
 @end
@@ -38,7 +38,27 @@
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
     self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    //or this can also be set in the storyboard.
+    self.description.delegate = self;
 }
+
+//accessing self.description.text = @"" does not work
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+  self.description.textColor = [UIColor blackColor];
+  self.description.text = @"";
+  return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+  if ([textView.text length] == 0) {
+    textView.text = @"Description";
+    textView.textColor = [UIColor lightGrayColor];
+    //color of description field text when user has not entered any text yet
+  }
+  [textView resignFirstResponder];
+}
+
 
 - (void)clearPressed:(id)sender{
   [self clearFields];
@@ -47,6 +67,7 @@
 - (void)clearFields {
   self.itemName.text = @"";
   self.description.text = @"Description";
+  self.description.textColor = [UIColor lightGrayColor];
   self.category.text = @"";
   self.imageView.image = nil;
 }
@@ -62,7 +83,7 @@
   newItem[@"owner"] = [PFUser currentUser];
   [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
-        [self.imageSavedView show];
+      [self.imageSavedView show];
       NSLog(@"saved new item");
       [self clearFields];
     }
