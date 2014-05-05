@@ -105,7 +105,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
     //load message
     NSString *message = @"%@ requested %@ from %@";
     NSString *messageText = @"";
-    NSString
     //you initiated the trade
     if ([self isInitiator:trade]) {
       messageText = [NSString stringWithFormat:message, @"You", [item objectForKey:@"name"],

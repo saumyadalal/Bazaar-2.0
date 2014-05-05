@@ -15,9 +15,6 @@
 		0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDF5B96191311300024A9F6 /* bazaar TITLE.png */; };
 		22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C1311903020F0098D279 /* BZRTradeViewController.m */; };
 		22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C136190305470098D279 /* BZRNotificationTableViewController.m */; };
-		22E2C13C19030C9B0098D279 /* crap.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13919030C9B0098D279 /* crap.png */; };
-		22E2C13D19030C9B0098D279 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13A19030C9B0098D279 /* red.png */; };
-		22E2C13E19030C9B0098D279 /* weird.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E2C13B19030C9B0098D279 /* weird.png */; };
 		22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */; };
 		79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */; };
 		79ADDAD518F216DD0031CA5E /* BZRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */; };
@@ -80,9 +77,6 @@
 		22E2C1311903020F0098D279 /* BZRTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BZRTradeViewController.m; path = Trade/BZRTradeViewController.m; sourceTree = "<group>"; };
 		22E2C135190305470098D279 /* BZRNotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRNotificationTableViewController.h; sourceTree = "<group>"; };
 		22E2C136190305470098D279 /* BZRNotificationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRNotificationTableViewController.m; sourceTree = "<group>"; };
-		22E2C13919030C9B0098D279 /* crap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crap.png; sourceTree = "<group>"; };
-		22E2C13A19030C9B0098D279 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
-		22E2C13B19030C9B0098D279 /* weird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weird.png; sourceTree = "<group>"; };
 		22E2C14319031BFB0098D279 /* BZRFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRFavoritesTableViewController.h; sourceTree = "<group>"; };
 		22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRFavoritesTableViewController.m; sourceTree = "<group>"; };
 		79ADDACE18F212AF0031CA5E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -212,9 +206,6 @@
 				0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */,
 				0EDC7F85190C748400EB4FF6 /* camera30.png */,
 				0EDC7F80190C747900EB4FF6 /* favorites30.png */,
-				22E2C13919030C9B0098D279 /* crap.png */,
-				22E2C13A19030C9B0098D279 /* red.png */,
-				22E2C13B19030C9B0098D279 /* weird.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -505,9 +496,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */,
-				22E2C13E19030C9B0098D279 /* weird.png in Resources */,
-				22E2C13C19030C9B0098D279 /* crap.png in Resources */,
-				22E2C13D19030C9B0098D279 /* red.png in Resources */,
 				0EDC7F8B190C762900EB4FF6 /* ptofile 30.1.png in Resources */,
 				79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */,
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
