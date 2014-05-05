@@ -13,6 +13,7 @@
 
 - (void) didSelectItem:(BOOL)selected AtIndexPath:(NSIndexPath *)indexPath;
 - (BOOL) isSelected:(NSIndexPath*) indexPath;
+- (BOOL) didReachLimit;
 
 @end
 

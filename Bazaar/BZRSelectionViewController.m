@@ -43,6 +43,7 @@
     self.marketPlaceView.user = self.user;
     self.marketPlaceView.inSelectionMode = YES;
     self.marketPlaceView.selectedItems = [self.trade objectForKey:@"returnItems"];
+    self.marketPlaceView.returnLimit = [self.trade objectForKey:@"numItems"];
   }
 }
 

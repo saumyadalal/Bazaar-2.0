@@ -21,6 +21,25 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 @implementation BZRUserMarketPlaceViewController
 
+
+- (BOOL) didReachLimit {
+  NSUInteger size = [self.selectedIndexPaths count];
+  NSLog(@" hi limit is %@ ", self.returnLimit);
+  NSLog(@" current count %@ ", [NSNumber numberWithInt:size]);
+  //can compare int values, not NSNumber
+  if (size >= [self.returnLimit intValue]) {
+    return YES;
+  }
+  return NO;
+}
+
+- (void) highlightSelectedItems {
+  for (NSIndexPath* indexPath in self.selectedIndexPaths) {
+    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor redColor];
+  }
+}
+
 - (BOOL) isSelected:(NSIndexPath *)indexPath {
   NSLog(@" %d he", [self.selectedIndexPaths count]);
   if ([self.selectedIndexPaths containsObject:indexPath]) {
@@ -48,8 +67,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
 }
 
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,12 +82,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)viewDidRequestRefresh
-{
-  [self loadMarketPlace];
-}
-
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
   return 0; // This is the minimum inter item spacing, can be more
@@ -93,12 +104,9 @@ static NSString * const cellIdentifier = @"UserItemCell";
 
 }
 
-- (void) highlightSelectedItems {
-  for (NSIndexPath* indexPath in self.selectedIndexPaths) {
-      UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-      cell.contentView.backgroundColor = [UIColor redColor];
-  }
-}
+
+
+
 
 //load the items owned by the user
 - (void)loadMarketPlace

@@ -151,6 +151,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   else {
     [self toggleSelected:self.noButton];
   }
+  if ([self.delegate didReachLimit]) {
+    //disable yes button selection
+    [self.yesButton setEnabled:NO];
+    return;
+  }
 }
 
 - (void) disableAndHideSelectButtons {

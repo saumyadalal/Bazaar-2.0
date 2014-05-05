@@ -13,5 +13,6 @@
 @property (nonatomic, strong) PFUser* user;
 @property (nonatomic, assign) BOOL inSelectionMode;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
+@property (nonatomic, assign) NSNumber *returnLimit;
 - (void) saveReturnItems:(PFObject*) trade;
 @end

@@ -8,7 +8,6 @@
 
 #import "BZRBazaarController.h"
 #import "SWRevealViewController.h"
-#import "BZRItemViewController.h"
 #import "BZRDetailViewController.h"
 
 @interface BZRBazaarController ()

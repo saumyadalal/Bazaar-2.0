@@ -7,7 +7,6 @@
 //
 
 #import "BZRFavoritesTableViewController.h"
-#import "BZRItemViewController.h"
 
 @interface BZRFavoritesTableViewController ()
 @property (nonatomic, strong) NSArray *items;
