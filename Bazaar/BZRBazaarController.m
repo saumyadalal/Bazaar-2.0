@@ -49,7 +49,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (void) viewWillAppear:(BOOL)animated {
   //NSLog(@"appear");
   [super viewWillAppear:animated];
-  //[self loadMarketPlace];
+  [self loadMarketPlace];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView

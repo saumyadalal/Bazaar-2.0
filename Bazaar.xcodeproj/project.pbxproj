@@ -374,8 +374,8 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
-				A79C87711916D8C900BB0C68 /* Trade Return Item Selection */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
+				A79C87711916D8C900BB0C68 /* Trade Return Item Selection */,
 				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
 				A724FB96191600B300D4120A /* Receiver Trade View */,
 				A724FB921915C49700D4120A /* Detail View  */,

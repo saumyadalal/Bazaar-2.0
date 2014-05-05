@@ -54,6 +54,14 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
     return cell;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    //NSLog(@"appear");
+    [super viewWillAppear:animated];
+    PFUser *user = [PFUser currentUser]; //get current user info
+    self.favoriteArray = user[@"favorites"];
+    [self.tableView reloadData];
+}
+
 
 - (void)loadItemData: (PFObject*) item forCell:(UITableViewCell*) cell{
   UILabel *itemName = (UILabel *)[cell.contentView viewWithTag:502];
