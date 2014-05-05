@@ -12,7 +12,6 @@
 
 
 @interface BZRUserMarketPlaceViewController () <BZRItemDelegate>
-@property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
 @property (nonatomic, strong) NSMutableSet *selectedIndexPaths;
 @end
@@ -103,9 +102,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
 }
 
 
-
-
-
 //load the items owned by the user
 - (void)loadMarketPlace
 {
@@ -120,14 +116,13 @@ static NSString * const cellIdentifier = @"UserItemCell";
       // The find succeeded.
       self.items = objects;
       [self.collectionView reloadData];
+      [self.delegate updateNumItems:[self.items count]];
     } else {
       // Log details of the failure
       NSLog(@"Error: %@ %@", error, [error userInfo]);
     }
   }];
 }
-
-
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

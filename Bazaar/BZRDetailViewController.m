@@ -219,6 +219,8 @@ static NSString * const cellIdentifier = @"detailViewCell";
         if (!error) {
           ownerImageView.image = [UIImage imageWithData:data];
           ownerName.text = [user objectForKey:@"username"];
+          ownerImageView.layer.cornerRadius = ownerImageView.frame.size.width / 2;
+          ownerImageView.clipsToBounds = YES;
         }
         else {
           NSLog(@"error fetching image");
@@ -240,12 +242,13 @@ static NSString * const cellIdentifier = @"detailViewCell";
 }
 
 //update current index path
+//**** turns out clicking a button calls this too?
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
   NSLog(@"did stop decelerating");
   if ([[self.collectionView visibleCells] count] > 0) {
     UICollectionViewCell *currentCell = [[self.collectionView visibleCells] objectAtIndex:0];
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:currentCell];
-    //turns out clicking a button calls this method too
+    //update labels
     if (![indexPath isEqual:self.currentIndexPath]) {
       self.currentIndexPath = indexPath;
       self.item = [self.items objectAtIndex:self.currentIndexPath.row];

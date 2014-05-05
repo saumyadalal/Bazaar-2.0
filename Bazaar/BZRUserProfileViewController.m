@@ -13,7 +13,7 @@
 #import <Parse/Parse.h>
 
 
-@interface BZRUserProfileViewController ()
+@interface BZRUserProfileViewController () <BZRUserMarketPlaceDelegate>
 @end
 
 @implementation BZRUserProfileViewController
@@ -49,6 +49,8 @@
     if (!error) {
       self.profilePicture.image = [UIImage imageWithData:data];
       self.username.text = [user objectForKey:@"username"];
+      self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
+      self.profilePicture.clipsToBounds = YES;
     }
     else {
       NSLog(@"error fetching image");
@@ -62,6 +64,7 @@
     BZRUserMarketPlaceViewController *marketPlaceView = segue.destinationViewController;
     marketPlaceView.user = self.user;
     marketPlaceView.inSelectionMode = NO;
+    marketPlaceView.delegate = self;
   }
 }
 
@@ -69,6 +72,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) updateNumItems:(NSUInteger)itemCount {
+  [self.numItems setText:[NSString stringWithFormat:@" %d ", itemCount]];
 }
 
 

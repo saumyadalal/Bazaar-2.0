@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+@protocol BZRUserMarketPlaceDelegate <NSObject>
+
+- (void)updateNumItems:(NSUInteger)itemCount;
+
+@end
+
+
 @interface BZRUserMarketPlaceViewController : UICollectionViewController
 @property (nonatomic, strong) PFUser* user;
 @property (nonatomic, assign) BOOL inSelectionMode;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
 @property (nonatomic, assign) NSNumber *returnLimit;
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) id<BZRUserMarketPlaceDelegate> delegate;
 - (void) saveReturnItems:(PFObject*) trade;
 @end

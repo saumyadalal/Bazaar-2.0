@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString *username;
 @end
 
-static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1";
+static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&height=200&type=normal&width=200";
 
 @implementation BZRLoginViewController
 

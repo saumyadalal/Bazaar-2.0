@@ -15,4 +15,6 @@
 @property (strong, nonatomic) PFUser* user;
 @property (nonatomic, assign) BOOL inSelectionMode;
 - (IBAction)logout:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *numTrades;
+@property (strong, nonatomic) IBOutlet UILabel *numItems;
 @end
