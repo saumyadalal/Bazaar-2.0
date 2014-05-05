@@ -144,7 +144,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
  **********************/
 
 - (void)configureSelectButtons:(NSIndexPath*) currentIndexPath {
-  NSLog(@"hello configuring selected buttons");
   //the item is selected
   if ([self.delegate isSelected:currentIndexPath]) {
     [self toggleSelected:self.yesButton];
@@ -163,7 +162,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 
 - (void) toggleSelected: (UIButton*)button {
-  NSLog(@" button %@", [[button titleLabel] text]);
   //disable the selected button
   UIButton* disableButton = button;
   UIButton* enableButton;
@@ -187,7 +185,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (IBAction)selectItem:(id)sender {
   [self toggleSelected:self.yesButton];
-  NSLog(@" %@ delegate", self.delegate);
   [self.delegate didSelectItem:YES AtIndexPath:self.currentIndexPath];
 }
 
@@ -267,7 +264,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 }
 
 - (IBAction)addToFavorites:(id)sender {
-  NSLog(@" current item %@", [self.item objectForKey:@"name"]);
   PFUser *currentUser = [PFUser currentUser]; //get current user's info
   if(![self isFavorited:self.item]){ //add item only if it isn't already in favorites array
     [currentUser addObject:self.item forKey:@"favorites"]; //add current object to favorites
