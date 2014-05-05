@@ -42,13 +42,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [super viewWillAppear:animated];
   [self.collectionView reloadData];
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-  NSLog(@" mode %hhd", self.inSelectionMode);
-  if (self.inSelectionMode) {
-    [self disableAndHideTradeButtons];
-  }
-  else {
-    [self disableAndHideSelectButtons];
-  }
 }
 
 /**********************
@@ -58,8 +51,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
 // Main method: hide labels if the item is owned by user
 
 - (void) configureLabels:(PFObject *)item {
-  if ([self userOwnsItem:item]) {
+  if ([self userOwnsItem:item] || self.inSelectionMode) {
     [self disableAndHideTradeButtons];
+  }
+  else {
+    [self disableAndHideSelectButtons];
   }
   [self configureFavoriteLabel:item];
 }
