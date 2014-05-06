@@ -86,7 +86,9 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 - (NSString *) getFirstName: (NSString*) name {
   NSArray *words = [name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-  return [words objectAtIndex:0];
+  NSMutableString* firstName = [words objectAtIndex:0];
+  [firstName appendString:@"'s"];
+  return firstName;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

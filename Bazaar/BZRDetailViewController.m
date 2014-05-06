@@ -44,6 +44,10 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
+- (void)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  CGRect screenSize = [[[UIScreen mainScreen] bounds] size];
+}
+
 /**********************
  *** Trade-Favorite Buttons
  **********************/
