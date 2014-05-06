@@ -53,7 +53,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
 - (void) configureLabels:(PFObject *)item {
   if ([self userOwnsItem:item]) {
     [self disableAndHideTradeButtons];
-    [self disableAndHideSelectButtons];
+  }
+  else{
+    [self enableTradeButtons];
   }
   if (self.inSelectionMode) {
     [self disableAndHideTradeButtons];
@@ -81,6 +83,13 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.tradeButton.hidden = YES;
   [self.favoriteButton setEnabled:NO];
   [self.tradeButton setEnabled:NO];
+}
+
+- (void) enableTradeButtons {
+    self.favoriteButton.hidden = NO;
+    self.tradeButton.hidden = NO;
+    [self.favoriteButton setEnabled:YES];
+    [self.tradeButton setEnabled:YES];
 }
 
 - (BOOL) userOwnsItem :(PFObject*) item {
