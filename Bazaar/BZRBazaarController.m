@@ -22,6 +22,9 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.minimumInteritemSpacing = 1;
+    collectionViewLayout.minimumLineSpacing = 1;
     SWRevealViewController *revealController = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.target = revealController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
@@ -94,6 +97,9 @@ static NSString * const cellIdentifier = @"ItemCell";
     UILabel *itemName = (UILabel *) [cell viewWithTag:2];
     [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:13.0]];
     PFObject* item = [self.items objectAtIndex:indexPath.row];
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.minimumInteritemSpacing= 1.0;
+    collectionViewLayout.minimumLineSpacing = 1.0;
     //call this to fetch image data
     [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {
