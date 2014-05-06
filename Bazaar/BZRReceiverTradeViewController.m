@@ -20,11 +20,8 @@
 {
     [super viewDidLoad];
     
-    self.itemTitle.text =[[self.trade objectForKey:@"item"] objectForKey:@"name"];
-    self.initiatorLabel.text = [[self.trade objectForKey:@"initiator"] username];
     self.initiatorLabel2.text = [[self.trade objectForKey:@"initiator"] username];
     NSNumber *numItems = [self.trade objectForKey:@"numItems"];
-    self.numItems.text = [NSString stringWithFormat:@"%@", numItems];
     PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if (!error) {
