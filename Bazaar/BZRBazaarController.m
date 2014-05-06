@@ -11,7 +11,6 @@
 #import "BZRDetailViewController.h"
 
 @interface BZRBazaarController ()
-@property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
 @end
 
@@ -49,7 +48,8 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (void) viewWillAppear:(BOOL)animated {
   //NSLog(@"appear");
   [super viewWillAppear:animated];
-  [self loadMarketPlace];
+  //[self loadMarketPlace];
+  [self.collectionView reloadData];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
