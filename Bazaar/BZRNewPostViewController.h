@@ -19,5 +19,6 @@
 - (IBAction)resign:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *addObject;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *postButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *clearButton;
 
 @end

@@ -94,6 +94,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="APl-Hp-ry9"/>
                     <connections>
+                        <outlet property="logoutButton" destination="ddl-Dw-Bvd" id="8Hq-w9-P1a"/>
                         <outlet property="numItems" destination="0PZ-dT-9aW" id="mXH-Xh-u0a"/>
                         <outlet property="numTrades" destination="Bmx-FT-xfN" id="vAK-Am-Lu0"/>
                         <outlet property="profilePicture" destination="4g4-rA-K2r" id="j7e-Rm-TDe"/>
@@ -465,10 +466,11 @@
                     <connections>
                         <outlet property="addObject" destination="evy-Al-dcW" id="ghY-ls-1HD"/>
                         <outlet property="category" destination="oCv-PE-bcS" id="FtP-sn-1v6"/>
+                        <outlet property="clearButton" destination="8vh-VX-9Yc" id="Y1N-DJ-23K"/>
                         <outlet property="description" destination="JYl-A8-JY3" id="mGj-kz-7w6"/>
                         <outlet property="imageView" destination="1R0-Pr-g68" id="ibh-9L-tW8"/>
                         <outlet property="itemName" destination="qnQ-z9-9uh" id="JYq-Gz-cd2"/>
-                        <outlet property="postButton" destination="xG2-HD-2Iz" id="ipO-W3-XSS"/>
+                        <outlet property="postButton" destination="xG2-HD-2Iz" id="s5O-ho-t4P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpp-zr-VjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
