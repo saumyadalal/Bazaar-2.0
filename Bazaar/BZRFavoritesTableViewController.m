@@ -7,6 +7,7 @@
 //
 
 #import "BZRFavoritesTableViewController.h"
+#import "BZRDetailViewController.h"
 
 @interface BZRFavoritesTableViewController ()
 @property (nonatomic, strong) NSArray *items;
@@ -54,6 +55,14 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
     return cell;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    //NSLog(@"appear");
+    [super viewWillAppear:animated];
+    PFUser *user = [PFUser currentUser]; //get current user info
+    self.favoriteArray = user[@"favorites"];
+    [self.tableView reloadData];
+}
+
 
 - (void)loadItemData: (PFObject*) item forCell:(UITableViewCell*) cell{
   UILabel *itemName = (UILabel *)[cell.contentView viewWithTag:502];
@@ -61,6 +70,7 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
       PFFile *imageFile = [object objectForKey:@"imageFile"];
+        NSLog(@"image: %@",imageFile);
       [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
           itemImageView.image = [UIImage imageWithData:data];
@@ -78,12 +88,15 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 }
 
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    BZRItemViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
-//                                         instantiateViewControllerWithIdentifier:@"itemViewController"];
-//    detailView.item = [self.favoriteArray objectAtIndex:indexPath.row];
-//    [self.navigationController pushViewController:detailView animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BZRDetailViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
+                                         instantiateViewControllerWithIdentifier:@"detailViewController"];
+    detailView.items = self.favoriteArray;
+    detailView.currentIndexPath = indexPath;
+    detailView.inSelectionMode = NO;
+//    [detailView setDelegate:self];
+    [self.navigationController pushViewController:detailView animated:YES];
+}
 
 
 @end

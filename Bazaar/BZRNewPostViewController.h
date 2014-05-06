@@ -17,5 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *itemName;
 @property (strong, nonatomic) IBOutlet UITextField *category;
 - (IBAction)resign:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *addObject;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *postButton;
 
 @end

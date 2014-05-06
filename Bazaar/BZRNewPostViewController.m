@@ -7,10 +7,12 @@
 
 #import "BZRNewPostViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface BZRNewPostViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) UIAlertView *imageSavedView;
+@property (nonatomic) BOOL imagePicked;
 @end
 
 @implementation BZRNewPostViewController
@@ -26,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.imagePicked = NO;
     self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", nil];
     //set category input as picker
     UIPickerView *picker = [[UIPickerView alloc] init];
@@ -38,8 +41,33 @@
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
     self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+
+    //change border color of text boxes
+    self.itemName.layer.cornerRadius=6.0f;
+    self.itemName.layer.masksToBounds=YES;
+    self.itemName.layer.borderColor=[[UIColor grayColor]CGColor];
+    self.itemName.layer.borderWidth= 1.0f;
+    self.category.layer.cornerRadius=6.0f;
+    self.category.layer.masksToBounds=YES;
+    self.category.layer.borderColor=[[UIColor grayColor]CGColor];
+    self.category.layer.borderWidth= 1.0f;
+    self.description.layer.cornerRadius=6.0f;
+    self.description.layer.masksToBounds=YES;
+    self.description.layer.borderColor=[[UIColor grayColor]CGColor];
+    self.description.layer.borderWidth= 1.0f;
+    
     //or this can also be set in the storyboard.
     self.description.delegate = self;
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+     //hide post button if all fiends aren't filled
+    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    else{
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
 
 //accessing self.description.text = @"" does not work
@@ -70,27 +98,32 @@
   self.description.textColor = [UIColor lightGrayColor];
   self.category.text = @"";
   self.imageView.image = nil;
+  self.addObject.hidden = NO;
+  self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)postPressed:(id)sender {
-  PFObject *newItem = [PFObject objectWithClassName:@"Item"];
-  NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
-  PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-  newItem[@"name"] = self.itemName.text;
-  newItem[@"description"] = self.description.text;
-  newItem[@"category"] = self.category.text;
-  newItem[@"imageFile"] = imageFile;
-  newItem[@"owner"] = [PFUser currentUser];
-  [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    if (!error) {
-      [self.imageSavedView show];
-      NSLog(@"saved new item");
-      [self clearFields];
+    if(self.navigationItem.rightBarButtonItem.enabled == YES){
+        PFObject *newItem = [PFObject objectWithClassName:@"Item"];
+        NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
+        PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+        newItem[@"name"] = self.itemName.text;
+        newItem[@"description"] = self.description.text;
+        newItem[@"category"] = self.category.text;
+        newItem[@"imageFile"] = imageFile;
+        newItem[@"owner"] = [PFUser currentUser];
+        [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [self.imageSavedView show];
+                NSLog(@"saved new item");
+                [self clearFields];
+            }
+            else {
+                NSLog(@"error saving item");
+            }
+        }];
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
-    else {
-      NSLog(@"error saving item");
-    }
-  }];
 }
 
 
@@ -101,15 +134,22 @@
   UIImage *image = info[UIImagePickerControllerEditedImage];
   self.imageView.image = image;
   [self dismissViewControllerAnimated:YES completion:nil];
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  self.imagePicked = YES;
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.imagePicked == NO) {
+        self.addObject.hidden = NO;
+    }
 }
 
 
 - (IBAction)editPicture:(id)sender {
+    self.addObject.hidden = YES;
     UIImagePickerController *imagePicker =[[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -142,6 +182,7 @@
     [self.category resignFirstResponder];
     [self.description resignFirstResponder];
     [self.itemName resignFirstResponder];
+    self.imagePicked = NO;
 }
 
 
