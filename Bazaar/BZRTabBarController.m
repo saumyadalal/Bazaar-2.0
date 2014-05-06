@@ -7,6 +7,8 @@
 //
 
 #import "BZRTabBarController.h"
+#import "BZRBazaarController.h"
+#import "BZRUserMarketPlaceViewController.h"
 
 @interface BZRTabBarController () <UITabBarControllerDelegate>
 
@@ -23,6 +25,9 @@
   // Reload selected VC's view
   //NSLog(@"hi");
   //[viewController.view setNeedsDisplay];
+//    if (![viewController isKindOfClass:[BZRBazaarController class]]) {
+//        ((BZRBazaarController*) viewController).items = [NSArray array];
+//    }
 }
 
 

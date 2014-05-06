@@ -60,6 +60,16 @@
     self.description.delegate = self;
 }
 
+-(void) viewDidAppear:(BOOL)animated{
+     //hide post button if all fiends aren't filled
+    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    else{
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
+}
+
 //accessing self.description.text = @"" does not work
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
   self.description.textColor = [UIColor blackColor];
@@ -89,27 +99,31 @@
   self.category.text = @"";
   self.imageView.image = nil;
   self.addObject.hidden = NO;
+  self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)postPressed:(id)sender {
-  PFObject *newItem = [PFObject objectWithClassName:@"Item"];
-  NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
-  PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-  newItem[@"name"] = self.itemName.text;
-  newItem[@"description"] = self.description.text;
-  newItem[@"category"] = self.category.text;
-  newItem[@"imageFile"] = imageFile;
-  newItem[@"owner"] = [PFUser currentUser];
-  [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    if (!error) {
-      [self.imageSavedView show];
-      NSLog(@"saved new item");
-      [self clearFields];
+    if(self.navigationItem.rightBarButtonItem.enabled == YES){
+        PFObject *newItem = [PFObject objectWithClassName:@"Item"];
+        NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
+        PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+        newItem[@"name"] = self.itemName.text;
+        newItem[@"description"] = self.description.text;
+        newItem[@"category"] = self.category.text;
+        newItem[@"imageFile"] = imageFile;
+        newItem[@"owner"] = [PFUser currentUser];
+        [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [self.imageSavedView show];
+                NSLog(@"saved new item");
+                [self clearFields];
+            }
+            else {
+                NSLog(@"error saving item");
+            }
+        }];
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
-    else {
-      NSLog(@"error saving item");
-    }
-  }];
 }
 
 
@@ -168,7 +182,6 @@
     [self.category resignFirstResponder];
     [self.description resignFirstResponder];
     [self.itemName resignFirstResponder];
-    self.addObject.hidden = NO;
     self.imagePicked = NO;
 }
 
