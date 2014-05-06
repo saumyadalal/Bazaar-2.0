@@ -58,7 +58,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
+    return CGSizeMake(103,103);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
@@ -85,6 +85,15 @@ static NSString * const cellIdentifier = @"ItemCell";
     }];
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout*)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section {
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(3,3,3,3);
+    
+    return insets;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.items.count;
@@ -97,9 +106,6 @@ static NSString * const cellIdentifier = @"ItemCell";
     UILabel *itemName = (UILabel *) [cell viewWithTag:2];
     [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:13.0]];
     PFObject* item = [self.items objectAtIndex:indexPath.row];
-    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    collectionViewLayout.minimumInteritemSpacing= 1.0;
-    collectionViewLayout.minimumLineSpacing = 1.0;
     //call this to fetch image data
     [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {
