@@ -45,7 +45,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 }
 
 - (void)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  CGRect screenSize = [[[UIScreen mainScreen] bounds] size];
+  //CGRect screenSize = [[[UIScreen mainScreen] bounds] size];
 }
 
 /**********************

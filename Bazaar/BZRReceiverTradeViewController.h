@@ -11,10 +11,8 @@
 
 @interface BZRReceiverTradeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
-@property (strong, nonatomic) IBOutlet UILabel *initiatorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *itemTitle;
-@property (strong, nonatomic) IBOutlet UILabel *numItems;
 @property (strong, nonatomic) PFObject* trade;
-@property (strong, nonatomic) IBOutlet UILabel *initiatorLabel2;
 - (IBAction)cancelButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) IBOutlet UILabel *bidMessage;
 @end

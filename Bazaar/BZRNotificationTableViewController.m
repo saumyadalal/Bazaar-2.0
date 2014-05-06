@@ -93,9 +93,9 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 - (NSString *) getFirstName: (NSString*) name {
   NSArray *words = [name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-  NSMutableString* firstName = [words objectAtIndex:0];
-  [firstName appendString:@"'s"];
-  return firstName;
+  NSString* firstName = [words objectAtIndex:0];
+  NSString* firstNameFormatted = [NSString stringWithFormat:@"%@'s", firstName];
+  return firstNameFormatted;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,27 +112,27 @@ static NSString * const cellIdentifier = @"NotificationCell";
     PFObject* item = [trade objectForKey:@"item"];
   
     //load message
-    NSString *message = @"%@ requested %@ from %@";
+    NSString *message = @"%@ requested %@ %@";
     NSString *messageText = @"";
     //you initiated the trade
     if ([self isInitiator:trade]) {
-      messageText = [NSString stringWithFormat:message, @"You", [item objectForKey:@"name"],
-                           [receiver objectForKey:@"username"]];
+      messageText = [NSString stringWithFormat:message, @"You",
+                            [self getFirstName:[receiver objectForKey:@"username"]],
+                           [item objectForKey:@"name"]];
     }
     //you received the trade
     else {
       messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
-                             [item objectForKey:@"name"], @"you"];
+                             @"your", [item objectForKey:@"name"]];
     }
     [messageLabel setText:messageText];
   
     //load image
     PFFile *imageFile = [item objectForKey:@"imageFile"];
-    NSLog(@"image: %@",imageFile);
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
       if (!error) {
         UIImage *itemImage = [UIImage imageWithData:data];
-          [itemImageView setImage:itemImage];
+        [itemImageView setImage:itemImage];
       }
       else {
         NSLog(@"error fetching image");

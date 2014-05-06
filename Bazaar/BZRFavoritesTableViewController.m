@@ -90,11 +90,10 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BZRDetailViewController* detailView = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil]
-                                         instantiateViewControllerWithIdentifier:@"detailViewController"];
+                                      instantiateViewControllerWithIdentifier:@"detailViewController"];
     detailView.items = self.favoriteArray;
     detailView.currentIndexPath = indexPath;
     detailView.inSelectionMode = NO;
-//    [detailView setDelegate:self];
     [self.navigationController pushViewController:detailView animated:YES];
 }
 
