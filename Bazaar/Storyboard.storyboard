@@ -306,7 +306,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="405" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="W0d-rS-aiQ">
-                                            <rect key="frame" x="43" y="347" width="227" height="34"/>
+                                            <rect key="frame" x="43" y="338" width="227" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
@@ -468,6 +468,7 @@
                         <outlet property="description" destination="JYl-A8-JY3" id="mGj-kz-7w6"/>
                         <outlet property="imageView" destination="1R0-Pr-g68" id="ibh-9L-tW8"/>
                         <outlet property="itemName" destination="qnQ-z9-9uh" id="JYq-Gz-cd2"/>
+                        <outlet property="postButton" destination="xG2-HD-2Iz" id="ipO-W3-XSS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpp-zr-VjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
