@@ -8,7 +8,7 @@
         <scene sceneID="S5b-wj-ISv">
             <objects>
                 <navigationController definesPresentationContext="YES" id="ygV-fs-IWT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="line_profilewithcircle.png" id="3t3-6r-PhA">
+                    <tabBarItem key="tabBarItem" title="Profile" image="user_male2-25.png" id="3t3-6r-PhA">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0kz-5O-haI">
@@ -381,7 +381,7 @@
         <scene sceneID="gTa-bm-pzt">
             <objects>
                 <navigationController title="Upload" definesPresentationContext="YES" id="gDu-fF-OdH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Upload" image="line_camera.png" id="eyR-RW-P1g">
+                    <tabBarItem key="tabBarItem" title="Upload" image="1399426832_icon-camera.png" id="eyR-RW-P1g">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="haf-KM-g3f">
@@ -428,6 +428,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="titleField:" destination="jy5-bs-R24" eventType="editingDidEnd" id="1IT-Ru-saE"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="601" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" keyboardDismissMode="interactive" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="JYl-A8-JY3">
                                 <rect key="frame" x="29" y="196" width="257" height="80"/>
@@ -442,6 +445,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="categoryField:" destination="jy5-bs-R24" eventType="editingDidEnd" id="23W-NF-9hu"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f8-Xq-9RI">
                                 <rect key="frame" x="0.0" y="284" width="320" height="103"/>
@@ -965,11 +971,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1399426832_icon-camera.png" width="32" height="32"/>
         <image name="bazaar30.1.png" width="26" height="32"/>
         <image name="camera30.png" width="30" height="22"/>
-        <image name="line_camera.png" width="24" height="24"/>
-        <image name="line_profilewithcircle.png" width="24" height="24"/>
         <image name="line_trade.png" width="24" height="24"/>
+        <image name="user_male2-25.png" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

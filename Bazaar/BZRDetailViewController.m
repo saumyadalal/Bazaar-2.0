@@ -45,7 +45,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
-//- (void)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//- (void):(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 //  //CGRect screenSize = [[[UIScreen mainScreen] bounds] size];
 //}
 
@@ -99,11 +99,12 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (BOOL) userOwnsItem :(PFObject*) item {
   PFUser* owner = [item objectForKey:@"owner"];
-  PFUser* user = [PFUser currentUser];
+    NSLog(@"owner: %@",owner);
+    PFUser* user = [PFUser currentUser];
   if([[owner objectId] isEqualToString:[user objectId]]){
-    return true;
+    return YES;
   }
-  return false;
+  return NO;
 }
 
 /**********************

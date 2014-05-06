@@ -76,6 +76,8 @@
     else{
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
+    NSLog(@"view did appear");
+    
 }
 
 //accessing self.description.text = @"" does not work
@@ -92,7 +94,12 @@
     textView.textColor = [UIColor lightGrayColor];
     //color of description field text when user has not entered any text yet
   }
+       NSLog(@"end edit text view");
   [textView resignFirstResponder];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    NSLog(@"end edit field view");
 }
 
 
@@ -194,4 +201,10 @@
 }
 
 
+- (IBAction)titleField:(id)sender {
+    
+}
+
+- (IBAction)categoryField:(id)sender {
+}
 @end

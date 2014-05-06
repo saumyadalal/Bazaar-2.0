@@ -38,6 +38,8 @@
     
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:(79/255.0) green:(44/255.0) blue:(112/255.0) alpha:(1)]]; //tab bar background color
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]]; //tab bar item and font color when selected
+    [[UITabBarItem appearanceWhenContainedIn:[UITabBar class], nil] setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Book" size:10]}forState:UIControlStateNormal];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(79/255.0) green:(44/255.0) blue:(112/255.0) alpha:(1)]]; //navigation bar background color
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]]; //navigation bar side objects and text color
@@ -50,7 +52,7 @@
      @{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Medium" size:15]}forState:UIControlStateNormal];
     
    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //changes status bar style to light, also added a key in .plist file called "view controlled based status bar appearance" and set it to NO
-    [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]];
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:13.0]];
     return YES;
 }
 
