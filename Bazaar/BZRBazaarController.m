@@ -92,6 +92,7 @@ static NSString * const cellIdentifier = @"ItemCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     UIImageView *itemImageView = (UIImageView *)[cell viewWithTag:1];
     UILabel *itemName = (UILabel *) [cell viewWithTag:2];
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]];
     PFObject* item = [self.items objectAtIndex:indexPath.row];
     //call this to fetch image data
     [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {

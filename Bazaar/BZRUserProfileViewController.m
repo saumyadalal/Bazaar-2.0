@@ -32,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:14]; //make font of username bold
+    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:14]; //logout button font
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);

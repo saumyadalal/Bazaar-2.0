@@ -28,6 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+  [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]]; //font of labels
+  [self.postButton setTitleTextAttributes:
+  [NSDictionary dictionaryWithObjectsAndKeys:
+  [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil] forState:UIControlStateNormal]; //font of post button
+  [self.clearButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil] forState:UIControlStateNormal]; //font of clear button
+  [self.description setFont:[UIFont fontWithName:@"Gotham-Book" size:14]];
+    
     self.imagePicked = NO;
     self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", nil];
     //set category input as picker

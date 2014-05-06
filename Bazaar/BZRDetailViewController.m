@@ -27,12 +27,13 @@ static NSString * const cellIdentifier = @"detailViewCell";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  
+    NSLog(@"here");
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.pagingEnabled = YES;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     //set the intitial current item
+    NSLog(@"item: %@",self.items);
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
     [self.collectionView setShowsHorizontalScrollIndicator:NO];
 }
@@ -44,9 +45,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
-- (void)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  //CGRect screenSize = [[[UIScreen mainScreen] bounds] size];
-}
+//- (void)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//  //CGRect screenSize = [[[UIScreen mainScreen] bounds] size];
+//}
 
 /**********************
  *** Trade-Favorite Buttons
