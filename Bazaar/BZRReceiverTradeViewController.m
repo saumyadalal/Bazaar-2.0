@@ -108,4 +108,15 @@
         }
     }];
 }
+- (IBAction)sendBid:(id)sender {
+    self.trade[@"status"] = @"responded";
+    [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"saved updated trade status");
+        }
+        else {
+            NSLog(@"error changing trade status");
+        }
+    }];
+}
 @end
