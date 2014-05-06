@@ -12,6 +12,7 @@
 @interface BZRNewPostViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) UIAlertView *imageSavedView;
+@property (strong, nonatomic) UIAlertView *incompleteView;
 @property (nonatomic) BOOL imagePicked;
 @end
 
@@ -49,7 +50,7 @@
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
     self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-
+    self.incompleteView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Please complete all fields!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     //change border color of text boxes
     self.itemName.layer.cornerRadius=6.0f;
     self.itemName.layer.masksToBounds=YES;
@@ -70,12 +71,6 @@
 
 -(void) viewDidAppear:(BOOL)animated{
      //hide post button if all fiends aren't filled
-    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-    else{
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
     NSLog(@"view did appear");
     
 }
@@ -83,7 +78,9 @@
 //accessing self.description.text = @"" does not work
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
   self.description.textColor = [UIColor blackColor];
-  self.description.text = @"";
+  if ([self.description.text isEqual:@"Description"]) {
+      self.description.text = @"";
+  }
   return YES;
 }
 
@@ -98,11 +95,6 @@
   [textView resignFirstResponder];
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"end edit field view");
-}
-
-
 - (void)clearPressed:(id)sender{
   [self clearFields];
 }
@@ -114,11 +106,13 @@
   self.category.text = @"";
   self.imageView.image = nil;
   self.addObject.hidden = NO;
-  self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)postPressed:(id)sender {
-    if(self.navigationItem.rightBarButtonItem.enabled == YES){
+    if([self.itemName.text isEqual:@""] || [self.description.text isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil || [self.description.text  isEqual: @""]){
+        [self.incompleteView show];
+    }
+    else {
         PFObject *newItem = [PFObject objectWithClassName:@"Item"];
         NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
         PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
@@ -137,7 +131,6 @@
                 NSLog(@"error saving item");
             }
         }];
-        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
 }
 
@@ -202,20 +195,8 @@
 
 
 - (IBAction)titleField:(id)sender {
-    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-    else{
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
 }
 
 - (IBAction)categoryField:(id)sender {
-    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-    else{
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
 }
 @end
