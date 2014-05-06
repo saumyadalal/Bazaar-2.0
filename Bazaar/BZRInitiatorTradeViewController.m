@@ -19,10 +19,6 @@
 {
     [super viewDidLoad];
     NSLog(@"trade: %@",self.trade);
-    self.itemTitle.text =[[self.trade objectForKey:@"item"] objectForKey:@"name"];
-    self.ownerLabel1.text = [[self.trade objectForKey:@"owner"] username];
-    self.ownerLabel2.text = [[self.trade objectForKey:@"owner"] username];
-    self.numItems.text = [NSString stringWithFormat:@"%@", [self.trade objectForKey:@"numItems"]];
     PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
