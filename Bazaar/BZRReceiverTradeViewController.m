@@ -19,10 +19,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.itemTitle.text =[[self.trade objectForKey:@"item"] objectForKey:@"name"];
     self.initiatorLabel.text = [[self.trade objectForKey:@"initiator"] username];
     self.initiatorLabel2.text = [[self.trade objectForKey:@"initiator"] username];
-    self.numItems.text = [NSString stringWithFormat:@"%@", [self.trade objectForKey:@"numItems"]];
+    NSNumber *numItems = [self.trade objectForKey:@"numItems"];
+    self.numItems.text = [NSString stringWithFormat:@"%@", numItems];
     PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if (!error) {
@@ -32,6 +34,44 @@
                 NSLog(@"error fetching image");
             }
         }];
+    self.itemImage1.backgroundColor = [UIColor grayColor];
+    if([numItems isEqual:@2]) {
+        self.itemImage2.backgroundColor = [UIColor grayColor];
+    }
+    else if([numItems isEqual:@2]) {
+        self.itemImage2.backgroundColor = [UIColor grayColor];
+        self.itemImage3.backgroundColor = [UIColor grayColor];
+    }
+    NSArray *items = [self.trade objectForKey:@"returnItems"];;
+    if(sizeof(items) > 0)
+    {
+        for (PFObject* item in items) {
+            //call this to fetch image data
+            [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                if (!error) {
+                    PFFile *imageFile = [item objectForKey:@"imageFile"];
+                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            if(self.itemImage1.image == nil) {
+                                self.itemImage1.image = [UIImage imageWithData:data];
+                            }
+                            else if(self.itemImage2.image == nil) {
+                                self.itemImage2.image = [UIImage imageWithData:data];
+                            }
+                            else if(self.itemImage3.image == nil) {
+                                self.itemImage3.image = [UIImage imageWithData:data];
+                            }
+                        }
+                        else {
+                            NSLog(@"error fetching image");
+                        }
+                    }];
+                }
+                else {
+                    NSLog(@"error fetching data");
+                }
+            }];        }
+    }
 }
 
 

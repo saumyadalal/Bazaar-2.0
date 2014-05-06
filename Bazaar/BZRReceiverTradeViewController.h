@@ -16,5 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *numItems;
 @property (strong, nonatomic) PFObject* trade;
 @property (strong, nonatomic) IBOutlet UILabel *initiatorLabel2;
+@property (strong, nonatomic) IBOutlet UIImageView *itemImage1;
+@property (strong, nonatomic) IBOutlet UIImageView *itemImage2;
+@property (strong, nonatomic) IBOutlet UIImageView *itemImage3;
 - (IBAction)cancelButton:(id)sender;
 @end
