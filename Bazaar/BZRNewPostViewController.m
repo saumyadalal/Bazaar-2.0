@@ -202,9 +202,20 @@
 
 
 - (IBAction)titleField:(id)sender {
-    
+    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    else{
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
 
 - (IBAction)categoryField:(id)sender {
+    if([self.itemName.text isEqual:@""] || [self.description.text  isEqual: @"Description"] || [self.category.text  isEqual: @""] || self.imageView.image == nil){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    else{
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
 @end
