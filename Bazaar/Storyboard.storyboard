@@ -339,9 +339,11 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="409" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ge-g8-nmX">
-                                            <rect key="frame" x="190" y="400" width="60" height="30"/>
+                                            <rect key="frame" x="177" y="398" width="88" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Nah.">
+                                            <color key="backgroundColor" red="0.30980392159999998" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="No">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -349,9 +351,11 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="408" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKM-ZT-ujf">
-                                            <rect key="frame" x="61" y="398" width="56" height="30"/>
+                                            <rect key="frame" x="43" y="398" width="92" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Yeah!">
+                                            <color key="backgroundColor" red="0.30980392159999998" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Yes">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -701,6 +705,7 @@
                                 <rect key="frame" x="15" y="336" width="85" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Select Items">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -712,6 +717,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="user is receiver" id="E9k-Wj-Uhz"/>
                     <connections>
+                        <outlet property="cancelTradeButton" destination="7ih-F1-TJr" id="t27-rG-mqq"/>
                         <outlet property="itemImage" destination="acI-6S-zTQ" id="c5Y-1Y-mdx"/>
                         <outlet property="itemImage1" destination="Lac-ma-1WB" id="5kt-xs-7es"/>
                         <outlet property="itemImage2" destination="BA4-L8-FUv" id="IIY-M8-PiW"/>
@@ -737,7 +743,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYi-KU-fPx">
-                                <rect key="frame" x="0.0" y="130" width="318" height="325"/>
+                                <rect key="frame" x="0.0" y="121" width="320" height="405"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -745,7 +751,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select upto 3 items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZD-NC-H9B">
-                                <rect key="frame" x="58" y="92" width="202" height="21"/>
+                                <rect key="frame" x="59" y="92" width="202" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -921,7 +927,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="user is initiator" id="mEh-8F-efR"/>
                     <connections>
+                        <outlet property="acceptButton" destination="lFU-W9-Vf5" id="QJ8-0G-vta"/>
                         <outlet property="bigMessage" destination="A6c-Z9-nQQ" id="ADF-aL-p1e"/>
+                        <outlet property="cancelTradeButton" destination="qwb-tl-D1E" id="2yI-wT-HYE"/>
                         <outlet property="itemImage" destination="cLT-Nv-Axb" id="5cO-wB-vHN"/>
                         <outlet property="itemImage1" destination="k7f-El-PYP" id="fKS-jJ-heO"/>
                         <outlet property="itemImage2" destination="HJ0-ZV-rpi" id="kJG-Ro-fth"/>
@@ -995,7 +1003,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e2z-SB-aSX"/>
         <segue reference="5gf-aY-sNS"/>
+        <segue reference="e2z-SB-aSX"/>
     </inferredMetricsTieBreakers>
 </document>

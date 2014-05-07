@@ -17,5 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage1;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage2;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage3;
+@property (strong, nonatomic) IBOutlet UIButton *cancelTradeButton;
+@property (strong, nonatomic) IBOutlet UIButton *acceptButton;
 @property (strong, nonatomic) IBOutlet UILabel *bigMessage;
 @end

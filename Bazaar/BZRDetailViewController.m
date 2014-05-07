@@ -165,9 +165,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
 - (void)configureSelectButtons:(NSIndexPath*) currentIndexPath {
   //the item is selected
   if ([self.delegate isSelected:currentIndexPath]) {
+      NSLog(@"yes");
     [self toggleSelected:self.yesButton];
   }
   else {
+      NSLog(@"no");
     [self toggleSelected:self.noButton];
   }
   if ([self.delegate didReachLimit]) {
@@ -191,16 +193,19 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UIButton* enableButton;
   //yes button is selected
   if ([button isEqual:self.yesButton]) {
+      NSLog(@"YES");
     enableButton = self.noButton;
+      self.yesButton.backgroundColor = [UIColor grayColor];
+      self.noButton.backgroundColor = [UIColor purpleColor];
   }
   else {
+      NSLog(@"NO");
     enableButton = self.yesButton;
+      self.noButton.backgroundColor = [UIColor grayColor];
+      self.yesButton.backgroundColor = [UIColor purpleColor];
   }
   [enableButton setEnabled:YES];
-  [enableButton setBackgroundColor:[UIColor whiteColor]];
-  //disabled the selected button and highlight it gray
   [disableButton setEnabled:NO];
-  [disableButton setBackgroundColor:[UIColor grayColor]];
 }
 
 /**********************

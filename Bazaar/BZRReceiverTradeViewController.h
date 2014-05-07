@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage3;
 - (IBAction)cancelButton:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) IBOutlet UIButton *cancelTradeButton;
 @property (strong, nonatomic) IBOutlet UILabel *bidMessage;
 - (IBAction)sendBid:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;

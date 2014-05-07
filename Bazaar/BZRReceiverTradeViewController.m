@@ -35,7 +35,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //cancel trade button font
+    self.sendButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //send bid button font
+    self.selectButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //select items label font
     self.initiatorLabel2.text = [[self.trade objectForKey:@"initiator"] username];
     NSNumber *numItems = [self.trade objectForKey:@"numItems"];
     PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];

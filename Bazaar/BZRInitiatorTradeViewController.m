@@ -18,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //cancel trade button font
+    self.acceptButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //accept button font
     NSLog(@"trade: %@",self.trade);
     PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
