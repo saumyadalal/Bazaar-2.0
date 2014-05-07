@@ -289,13 +289,13 @@
 			name = Library;
 			sourceTree = "<group>";
 		};
-		A725CD4B18F0A8EC00EC3719 /* SideBar */ = {
+		A725CD4B18F0A8EC00EC3719 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
 				A725CD4C18F0A90D00EC3719 /* BZRFilterViewController.h */,
 				A725CD4D18F0A90D00EC3719 /* BZRFilterViewController.m */,
 			);
-			name = SideBar;
+			name = Filters;
 			sourceTree = "<group>";
 		};
 		A7737AF7190B09EE00319AF4 /* User MarketPlace */ = {
@@ -390,7 +390,7 @@
 				22E2C13F19031B650098D279 /* Favorites */,
 				22E2C133190302230098D279 /* Send Trade */,
 				22E2C134190305180098D279 /* Notifications */,
-				A725CD4B18F0A8EC00EC3719 /* SideBar */,
+				A725CD4B18F0A8EC00EC3719 /* Filters */,
 				A725CD4718F0A20000EC3719 /* Library */,
 				A725CD1B18EF415700EC3719 /* User Profile */,
 				A7DE71AC18DDFAB000EE7F9A /* New Post */,

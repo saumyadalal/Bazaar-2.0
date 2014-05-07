@@ -12,7 +12,7 @@
 @interface BZRBazaarController : UICollectionViewController
 @property (nonatomic, strong) NSString *currentFilter;
 @property (nonatomic, strong) NSArray *items;
-- (void)viewDidRequestRefresh;
+- (void) loadMarketPlace;
 - (void) viewWillAppear:(BOOL)animated;
 
 @end
