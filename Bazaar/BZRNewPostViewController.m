@@ -64,6 +64,8 @@
     self.description.layer.masksToBounds=YES;
     self.description.layer.borderColor=[[UIColor grayColor]CGColor];
     self.description.layer.borderWidth= 1.0f;
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.navigationItem.leftBarButtonItem.enabled = YES;
     
     //or this can also be set in the storyboard.
     self.description.delegate = self;
@@ -91,7 +93,6 @@
     textView.textColor = [UIColor lightGrayColor];
     //color of description field text when user has not entered any text yet
   }
-       NSLog(@"end edit text view");
   [textView resignFirstResponder];
 }
 
@@ -106,6 +107,8 @@
   self.category.text = @"";
   self.imageView.image = nil;
   self.addObject.hidden = NO;
+  self.navigationItem.leftBarButtonItem.enabled = YES;
+  self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 - (void)postPressed:(id)sender {
@@ -131,6 +134,8 @@
                 NSLog(@"error saving item");
             }
         }];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
 }
 
