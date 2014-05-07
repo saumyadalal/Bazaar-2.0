@@ -11,6 +11,8 @@
 		0E1F0C8F191956D500124864 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E1F0C8D191956D500124864 /* Gotham-Book.otf */; };
 		0E1F0C96191980CF00124864 /* user_male2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1F0C95191980CF00124864 /* user_male2-32.png */; };
 		0E1F0C981919811D00124864 /* user_male2-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1F0C971919811D00124864 /* user_male2-25.png */; };
+		0E4E2A89191A9DA8005161C8 /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E2A87191A9DA8005161C8 /* Gotham-Light.otf */; };
+		0E4E2A8A191A9DA8005161C8 /* Gotham-XLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E2A88191A9DA8005161C8 /* Gotham-XLight.otf */; };
 		0E6927BA19199B6000B9BA6F /* trade.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E6927B919199B6000B9BA6F /* trade.png */; };
 		0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F80190C747900EB4FF6 /* favorites30.png */; };
 		0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F85190C748400EB4FF6 /* camera30.png */; };
@@ -80,6 +82,8 @@
 		0E1F0C8D191956D500124864 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
 		0E1F0C95191980CF00124864 /* user_male2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male2-32.png"; sourceTree = "<group>"; };
 		0E1F0C971919811D00124864 /* user_male2-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male2-25.png"; sourceTree = "<group>"; };
+		0E4E2A87191A9DA8005161C8 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
+		0E4E2A88191A9DA8005161C8 /* Gotham-XLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight.otf"; sourceTree = "<group>"; };
 		0E6927B919199B6000B9BA6F /* trade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trade.png; sourceTree = "<group>"; };
 		0EDC7F80190C747900EB4FF6 /* favorites30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites30.png; sourceTree = "<group>"; };
 		0EDC7F85190C748400EB4FF6 /* camera30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera30.png; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		0E1F0C90191956D800124864 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0E4E2A87191A9DA8005161C8 /* Gotham-Light.otf */,
+				0E4E2A88191A9DA8005161C8 /* Gotham-XLight.otf */,
 				0E1F0C8C191956D500124864 /* Gotham-Medium.otf */,
 				0E1F0C8D191956D500124864 /* Gotham-Book.otf */,
 			);
@@ -543,10 +549,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4E2A8A191A9DA8005161C8 /* Gotham-XLight.otf in Resources */,
 				0EFF9BD91919A6A8005B49B1 /* 1399426766_icon-camera.png in Resources */,
 				0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */,
 				0E1F0C8F191956D500124864 /* Gotham-Book.otf in Resources */,
 				0E1F0C8E191956D500124864 /* Gotham-Medium.otf in Resources */,
+				0E4E2A89191A9DA8005161C8 /* Gotham-Light.otf in Resources */,
 				0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */,
 				0EDC7F8B190C762900EB4FF6 /* ptofile 30.1.png in Resources */,
 				79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */,
