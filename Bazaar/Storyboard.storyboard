@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6RM-cb-zMr">
-                                <rect key="frame" x="3" y="213" width="314" height="306"/>
+                                <rect key="frame" x="0.0" y="224" width="320" height="295"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -936,28 +936,28 @@
             <objects>
                 <collectionViewController storyboardIdentifier="userMarketPlaceSegue" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GAn-NS-KXG" customClass="BZRUserMarketPlaceViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="48z-L4-t1e">
-                        <rect key="frame" x="0.0" y="0.0" width="314" height="306"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="295"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zZF-kX-jPp">
-                            <size key="itemSize" width="102" height="97"/>
+                            <size key="itemSize" width="103" height="103"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserItemCell" id="Us1-g1-QHg">
-                                <rect key="frame" x="0.0" y="0.0" width="102" height="97"/>
+                                <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="102" height="97"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEc-6V-ehe">
-                                            <rect key="frame" x="0.0" y="0.0" width="102" height="97"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8l-4x-OXk">
-                                            <rect key="frame" x="0.0" y="66" width="102" height="31"/>
+                                            <rect key="frame" x="0.0" y="72" width="103" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.92573879076086962" green="0.92573879076086962" blue="0.92573879076086962" alpha="0.82000000000000006" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -993,7 +993,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5gf-aY-sNS"/>
         <segue reference="e2z-SB-aSX"/>
+        <segue reference="5gf-aY-sNS"/>
     </inferredMetricsTieBreakers>
 </document>

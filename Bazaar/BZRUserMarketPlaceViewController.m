@@ -93,7 +93,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return CGSizeMake(100, 100);
+  return CGSizeMake(103, 103);
 }
 
 - (void) didSelectItem:(BOOL)selected AtIndexPath:(NSIndexPath *)indexPath {
@@ -130,6 +130,14 @@ static NSString * const cellIdentifier = @"UserItemCell";
   }];
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout*)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section {
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(3,3,3,3);
+    
+    return insets;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
