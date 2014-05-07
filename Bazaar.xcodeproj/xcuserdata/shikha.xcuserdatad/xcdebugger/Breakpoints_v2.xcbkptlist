@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bazaar/BZRUserMarketPlaceViewController.m"
-            timestampString = "421143636.849537"
+            timestampString = "421145214.685186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -150,11 +150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bazaar/BZRUserMarketPlaceViewController.m"
-            timestampString = "421143636.849537"
+            timestampString = "421145406.25126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-loadMarketPlace"
             landmarkType = "5">
          </BreakpointContent>
@@ -188,6 +188,22 @@
             startingLineNumber = "203"
             endingLineNumber = "203"
             landmarkName = "-selectItem:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bazaar/BZRUserMarketPlaceViewController.m"
+            timestampString = "421145406.25126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-removeReturnItem:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

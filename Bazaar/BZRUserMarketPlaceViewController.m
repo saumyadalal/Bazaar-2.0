@@ -18,18 +18,20 @@
 
 static NSString * const cellIdentifier = @"UserItemCell";
 
+//currently items are loaded only the first time in viewDidLoad
+//and the collection view is refreshed when self.selectedItems has changed.
 @implementation BZRUserMarketPlaceViewController
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //allow for multiple refresh only when not in selection mode
+    /*
     if (self.inSelectionMode) {
-      NSLog(@"here reloading");
       [self.collectionView reloadData];
     }
     else {
       [self loadMarketPlace];
-    }
+    } */
 }
 
 /********************
@@ -63,11 +65,14 @@ static NSString * const cellIdentifier = @"UserItemCell";
 //Temporary fix for [self.selectedItems removeObject:item]
 //doesn't work for items populated from self.returns.
 - (void) removeReturnItem:(PFObject*) item {
+  PFObject* removeItem = nil;
   for (PFObject* currentItem in self.selectedItems) {
     if ([[currentItem objectId] isEqualToString:[item objectId]]) {
-      [self.selectedItems removeObject:currentItem];
+      removeItem = currentItem;
+      break;
     }
   }
+  [self.selectedItems removeObject:removeItem];
 }
 
 - (BOOL) didReachLimit {
@@ -174,11 +179,9 @@ static NSString * const cellIdentifier = @"UserItemCell";
   
   //if in selection mode
   if (self.inSelectionMode && [self isSelected:item]) {
-    NSLog(@" highlight");
       cell.alpha = 0.3;
   }
   else {
-    NSLog(@"dee highlight");
       cell.alpha = 1.0;
   }
   //call this to fetch image data

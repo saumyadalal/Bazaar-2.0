@@ -31,9 +31,24 @@
 
 + (void) loadReturnItemImages:(NSArray*)imageViews forTrade:(PFObject *)trade {
   NSArray *items = [trade objectForKey:@"returnItems"];
-  for (int i = 0; i < [items count]; i++) {
-    PFObject* item = [items objectAtIndex:i];
-    [self loadImage:[imageViews objectAtIndex:i] fromItem:item];
+  NSUInteger limit = [[trade objectForKey:@"numItems"] intValue];
+  NSUInteger size = [items count];
+  for (int i = 0; i < [imageViews count]; i++) {
+    UIImageView* imageView = [imageViews objectAtIndex:i];
+    if (i < size) {
+      PFObject* item = [items objectAtIndex:i];
+      [self loadImage:imageView fromItem:item];
+    }
+    //clear all previous images!!
+    else {
+      [imageView setImage:nil];
+      if (i < limit) {
+        [imageView setBackgroundColor:[UIColor lightGrayColor]];
+      }
+      else {
+        [imageView setBackgroundColor:[UIColor clearColor]];
+      }
+    }
   }
 }
 

@@ -36,6 +36,7 @@
 - (void) updateContent {
   [self.tradeLabel setText:self.tradeMessage];
   //load return item images
+  NSLog(@"record changes");
   [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
 }
 
@@ -69,7 +70,7 @@
 
 
 /******************
- *** Update content
+ *** End: Update content
  ******************/
 
 - (void) setFont {
@@ -77,6 +78,29 @@
   self.sendButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
   self.selectButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
 }
+
+/*
+- (void) uploadGesture {
+  UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+  singleTap.numberOfTapsRequired = 1;
+  for (int i = 0; i < [self.itemImageViews count]; i++) {
+    UIImageView* imageView = [self.itemImageViews objectAtIndex:i];
+    if (imageView.image != nil) {
+      [imageView removeGestureRecognizer:singleTap];
+    }
+    else {
+      imageView.userInteractionEnabled = YES;
+      [imageView addGestureRecognizer:singleTap];
+      break;
+    }
+  }
+}
+
+- (void) tapDetected{
+  NSLog(@"single Tap on imageview");
+  
+} */
+
 
 
 - (void)didReceiveMemoryWarning
