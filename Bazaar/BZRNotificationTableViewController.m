@@ -176,6 +176,7 @@ static NSString * const cellIdentifier = @"NotificationCell";
     else if([segue.identifier isEqualToString:@"successfulTradeDetail"]) {
         BZRSuccessfulTradeViewController *successfulTradeView = (BZRSuccessfulTradeViewController *) segue.destinationViewController;
         successfulTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
+        self.title = @"Back";
     }
 }
 

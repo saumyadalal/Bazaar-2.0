@@ -138,6 +138,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
   PFUser *user = self.user;
   PFQuery *query = [PFQuery queryWithClassName:@"Item"];
   [query whereKey:@"owner" equalTo:user];
+  [query whereKey:@"status" equalTo:@"available"];
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       // The find succeeded.
