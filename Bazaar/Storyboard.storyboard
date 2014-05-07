@@ -568,6 +568,7 @@
                         <outlet property="itemOwner" destination="8ZU-Vc-zXz" id="MoQ-pQ-J8C"/>
                         <outlet property="itemTitle" destination="tZa-x1-yFx" id="OVx-yP-G22"/>
                         <outlet property="numReturn" destination="TU5-IK-jWw" id="eQc-vb-x5E"/>
+                        <outlet property="sendButtonItem" destination="c83-MP-W8B" id="Ind-2o-cnV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dK-BO-IUH" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *numReturn;
 - (IBAction)stepperValueChanged:(id)sender;
 - (IBAction)sendButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *sendButtonItem;
 @property (strong, nonatomic) PFObject *item;
 @end

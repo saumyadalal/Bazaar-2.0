@@ -49,6 +49,8 @@
   if ([status isEqualToString:@"responded"]) {
     [self.bidMessageLabel setText:@"Bid request sent"];
     [self.sendButton setHidden:YES];
+    self.selectButton.enabled = false;
+    self.selectButton.hidden = true;
   }
   // *** initiated status
   else if ([status isEqualToString:@"initiated"]) {
@@ -146,6 +148,8 @@
     }];
     self.sendButton.enabled = false;
     self.sendButton.hidden = true;
+    self.selectButton.enabled = false;
+    self.selectButton.hidden = true;
     self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [self.sentBidView show];
 }
