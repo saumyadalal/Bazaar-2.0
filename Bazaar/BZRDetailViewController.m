@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UIButton *yesButton;
 @property (strong, nonatomic) UIButton *noButton;
 @property (strong, nonatomic) PFObject* item;
+@property (nonatomic, strong) NSArray* trades;
 @end
 
 static NSString * const cellIdentifier = @"detailViewCell";
@@ -70,6 +71,27 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self configureFavoriteLabel:item];
 }
 
+- (void) loadTrades: (PFObject*) item{
+    PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"Trade"];
+    [initiatorQuery whereKey:@"initiator" equalTo:[PFUser currentUser]];
+    [initiatorQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.trades = objects;
+            for (PFObject *tradeItems in self.trades){
+                NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
+                NSLog(@"current item: %@",[item objectId]);
+                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]]){
+                    NSLog(@"here");
+                    self.tradeButton.hidden = YES;
+                    [self.tradeButton setEnabled:NO];
+                }
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
 // individual configuration
 
 - (void) configureFavoriteLabel:(PFObject*) item {
@@ -185,7 +207,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   }
   else {
     otherButton = self.yesButton;
-  }
+ }
   [otherButton setBackgroundColor:[UIColor grayColor]];
   [otherButton setEnabled:YES];
   //disable the selected button

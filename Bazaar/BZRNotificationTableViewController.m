@@ -102,7 +102,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
   
     UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:301];
     UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
-  
 
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
     PFUser *initiator = [trade objectForKey:@"initiator"];
