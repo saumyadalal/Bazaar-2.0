@@ -75,6 +75,7 @@
       NSLog(@"error setting up trade");
     }
   }];
+  [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
 @end
