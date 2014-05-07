@@ -87,6 +87,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [UIColor lightGrayColor];
                     [self.tradeButton setEnabled:NO];
+                    break;
                 }
                 else{
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
