@@ -9,6 +9,7 @@
 #import "BZRReceiverTradeViewController.h"
 #import "BZRSelectionViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRNotificationTableViewController.h"
 
 @interface BZRReceiverTradeViewController ()
 @property (strong, nonatomic) UIAlertView *sentBidView;
@@ -134,6 +135,8 @@
 
 - (IBAction)cancelTrade:(id)sender {
   [BZRTradeUtils cancelTrade:self.trade];
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
+  [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (IBAction)sendBid:(id)sender {
 

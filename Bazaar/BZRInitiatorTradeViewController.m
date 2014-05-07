@@ -8,6 +8,7 @@
 
 #import "BZRInitiatorTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRNotificationTableViewController.h"
 
 @interface BZRInitiatorTradeViewController ()
 @property (nonatomic, strong) NSArray* itemImageViews;
@@ -93,6 +94,8 @@
 
 - (IBAction)cancelTrade:(id)sender {
   [BZRTradeUtils cancelTrade:self.trade];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+   [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
 }
 - (IBAction)acceptTrade:(id)sender {
     self.trade[@"status"] = @"complete";
