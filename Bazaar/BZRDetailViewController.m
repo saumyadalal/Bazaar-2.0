@@ -219,25 +219,15 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self toggleSelected:self.yesButton];
   PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
   [self.delegate editReturnWithItem:item isSelected:YES];
-  [self showNextItem];
 }
 
 - (IBAction)deselectItem:(id)sender {
   [self toggleSelected:self.noButton];
   PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
   [self.delegate editReturnWithItem:item isSelected:NO];
-  [self showNextItem];
 }
 
-- (void) showNextItem {
-  NSInteger index = self.currentIndexPath.item;
-  NSUInteger size = [self.items count];
-  if (index < size) {
-    self.currentIndexPath = [NSIndexPath indexPathForRow:index+1 inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-  }
 
-}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
