@@ -82,8 +82,14 @@ static NSString * const cellIdentifier = @"detailViewCell";
                 NSLog(@"current item: %@",[item objectId]);
                 if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]]){
                     NSLog(@"here");
-                    self.tradeButton.hidden = YES;
+                    [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
+                    self.tradeButton.backgroundColor = [UIColor lightGrayColor];
                     [self.tradeButton setEnabled:NO];
+                }
+                else{
+                    [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
+                    self.tradeButton.backgroundColor = [UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1];
+                    [self.tradeButton setEnabled:YES];
                 }
             }
         } else {
@@ -145,6 +151,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   [self configureLabels:item];
   [self configureSelectButtons:item];
+  [self loadTrades:item]; //hide trade buttons if already trading for item
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
@@ -200,7 +207,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [otherButton setBackgroundColor:[UIColor grayColor]];
   [otherButton setEnabled:YES];
   //disable the selected button
-  [selectedButton setBackgroundColor:[UIColor purpleColor]];
+  [selectedButton setBackgroundColor:[UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1]];
   [selectedButton setEnabled:NO];
 }
 

@@ -36,7 +36,7 @@
   else if ([status isEqualToString:@"initiated"]) {
     [self.bidStatusLabel setHidden:NO];
     NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
-    NSString* firstName = [BZRTradeUtils getFirstName:[self.trade objectForKey:@"initiator"]];
+    NSString* firstName = [BZRTradeUtils getFirstName:[self.trade objectForKey:@"owner"]];
     NSString* baseStr = @"%@ can choose upto %d items from your marketplace";
     [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, firstName, limit]];
     [self.acceptButton setHidden:YES];

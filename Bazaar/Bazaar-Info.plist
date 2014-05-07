@@ -6,11 +6,6 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Gotham-Book.otf</string>
-		<string>Gotham-Medium.otf</string>
-	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
@@ -44,6 +39,13 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gotham-Book.otf</string>
+		<string>Gotham-Medium.otf</string>
+		<string>Gotham-Light.otf</string>
+		<string>Gotham-XLight.otf</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
