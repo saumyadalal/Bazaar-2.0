@@ -74,8 +74,8 @@
       //display no images yet
       self.acceptButton.enabled = false;
       self.acceptButton.hidden = true;
-      self.cancelTradeButton.enabled = false;
-      self.cancelTradeButton.hidden = true;
+//      self.cancelTradeButton.enabled = false;
+//      self.cancelTradeButton.hidden = true;
   }
 }
 
@@ -109,6 +109,15 @@
     self.acceptButton.hidden = true;
     self.cancelTradeButton.hidden = true;
     self.cancelTradeButton.enabled = false;
+    PFObject* item = self.trade[@"item"];
+    item[@"status"] = @"traded";
+    [item saveInBackground];
+    NSArray *items = self.trade[@"returnItems"];
+    for (PFObject* item in items) {
+        item[@"status"] = @"traded";
+        [item saveInBackground];
+    }
+    
     
     
 }

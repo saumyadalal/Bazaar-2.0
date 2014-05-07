@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol BZRFilterViewControllerDelegate <NSObject>
 
-@interface BZRFilterViewController : UITableViewController
+- (void)setFilter:(NSString *)filter;
 
 @end
+
+@interface BZRFilterViewController : UITableViewController
+@property (nonatomic, strong) id<BZRFilterViewControllerDelegate> delegate;
+@end
+
+
+
