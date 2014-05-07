@@ -107,6 +107,8 @@
     }];
     self.acceptButton.enabled = false;
     self.acceptButton.hidden = true;
+    self.cancelTradeButton.hidden = true;
+    self.cancelTradeButton.enabled = false;
     
     
 }
