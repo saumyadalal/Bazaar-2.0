@@ -124,6 +124,7 @@
         newItem[@"category"] = self.category.text;
         newItem[@"imageFile"] = imageFile;
         newItem[@"owner"] = [PFUser currentUser];
+        newItem[@"status"] = @"available";
         [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 [self.imageSavedView show];

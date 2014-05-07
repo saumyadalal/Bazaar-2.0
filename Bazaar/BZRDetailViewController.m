@@ -35,7 +35,8 @@ static NSString * const cellIdentifier = @"detailViewCell";
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
-    [self.collectionView setShowsHorizontalScrollIndicator:NO];
+    [self.collectionView setShowsHorizontalScrollIndicator:YES];
+
 }
 
 
@@ -43,6 +44,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [super viewWillAppear:animated];
   [self.collectionView reloadData];
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+
 }
 
 //- (void):(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -136,7 +138,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
   return self.items.count;
 }
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
