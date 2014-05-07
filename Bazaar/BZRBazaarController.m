@@ -70,12 +70,12 @@ static NSString * const cellIdentifier = @"ItemCell";
 //collection view reloads data on fetching objects
 - (void)loadMarketPlace
 {
-      NSLog(@"item count before query %d", [self.items count]);
-    NSLog(@"hi loading");
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+    NSLog(@"item count before query %d", [self.items count]);
     if (self.currentFilter) {
-      [query whereKey:@"category" equalTo:self.currentFilter];
+        [query whereKey:@"category" equalTo:self.currentFilter];
     }
+    [query whereKey:@"status" equalTo:@"available"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -107,7 +107,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"checking");
+    //NSLog(@"checking");
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     UIImageView *itemImageView = (UIImageView *)[cell viewWithTag:1];
     UILabel *itemName = (UILabel *) [cell viewWithTag:2];
