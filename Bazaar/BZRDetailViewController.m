@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIButton *yesButton;
 @property (strong, nonatomic) UIButton *noButton;
 @property (strong, nonatomic) PFObject* item;
+@property (nonatomic, strong) NSArray* trades;
 @end
 
 static NSString * const cellIdentifier = @"detailViewCell";
@@ -27,13 +28,12 @@ static NSString * const cellIdentifier = @"detailViewCell";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"here");
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.pagingEnabled = YES;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     //set the intitial current item
-    NSLog(@"item: %@",self.items);
+//    NSLog(@"item: %@",self.items);
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
     [self.collectionView setShowsHorizontalScrollIndicator:NO];
 }
@@ -71,6 +71,27 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self configureFavoriteLabel:item];
 }
 
+- (void) loadTrades: (PFObject*) item{
+    PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"Trade"];
+    [initiatorQuery whereKey:@"initiator" equalTo:[PFUser currentUser]];
+    [initiatorQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.trades = objects;
+            for (PFObject *tradeItems in self.trades){
+                NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
+                NSLog(@"current item: %@",[item objectId]);
+                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]]){
+                    NSLog(@"here");
+                    self.tradeButton.hidden = YES;
+                    [self.tradeButton setEnabled:NO];
+                }
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
 // individual configuration
 
 - (void) configureFavoriteLabel:(PFObject*) item {
@@ -99,7 +120,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (BOOL) userOwnsItem :(PFObject*) item {
   PFUser* owner = [item objectForKey:@"owner"];
-    NSLog(@"owner: %@",owner);
     PFUser* user = [PFUser currentUser];
   if([[owner objectId] isEqualToString:[user objectId]]){
     return YES;
@@ -134,6 +154,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   [self configureLabels:item];
   [self configureSelectButtons:indexPath];
+    [self loadTrades:item];
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
@@ -165,11 +186,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
 - (void)configureSelectButtons:(NSIndexPath*) currentIndexPath {
   //the item is selected
   if ([self.delegate isSelected:currentIndexPath]) {
-      NSLog(@"yes");
     [self toggleSelected:self.yesButton];
   }
   else {
-      NSLog(@"no");
     [self toggleSelected:self.noButton];
   }
   if ([self.delegate didReachLimit]) {
@@ -193,13 +212,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UIButton* enableButton;
   //yes button is selected
   if ([button isEqual:self.yesButton]) {
-      NSLog(@"YES");
     enableButton = self.noButton;
       self.yesButton.backgroundColor = [UIColor grayColor];
       self.noButton.backgroundColor = [UIColor purpleColor];
   }
   else {
-      NSLog(@"NO");
     enableButton = self.yesButton;
       self.noButton.backgroundColor = [UIColor grayColor];
       self.yesButton.backgroundColor = [UIColor purpleColor];
@@ -278,6 +295,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
       self.item = [self.items objectAtIndex:self.currentIndexPath.row];
       [self configureLabels:self.item];
       [self configureSelectButtons:indexPath];
+        [self loadTrades:self.item];
     }
 
   }
