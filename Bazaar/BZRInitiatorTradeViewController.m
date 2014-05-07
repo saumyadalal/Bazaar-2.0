@@ -67,8 +67,15 @@
   if ([self.trade[@"status"] isEqualToString:@"responded"]) {
       [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
   }
+  else if ([self.trade[@"status"] isEqualToString:@"complete"]) {
+      
+  }
   else {
-    //display no images yet.
+      //display no images yet
+      self.acceptButton.enabled = false;
+      self.acceptButton.hidden = true;
+      self.cancelTradeButton.enabled = false;
+      self.cancelTradeButton.hidden = true;
   }
 }
 
@@ -87,5 +94,20 @@
 
 - (IBAction)cancelTrade:(id)sender {
   [BZRTradeUtils cancelTrade:self.trade];
+}
+- (IBAction)acceptTrade:(id)sender {
+    self.trade[@"status"] = @"complete";
+    [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"saved updated trade status");
+        }
+        else {
+            NSLog(@"error changing trade status");
+        }
+    }];
+    self.acceptButton.enabled = false;
+    self.acceptButton.hidden = true;
+    
+    
 }
 @end

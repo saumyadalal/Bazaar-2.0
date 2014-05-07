@@ -20,6 +20,7 @@
 		0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDF5B96191311300024A9F6 /* bazaar TITLE.png */; };
 		0EFF9BD91919A6A8005B49B1 /* 1399426766_icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2205168D1919A30200119B92 /* 1399426766_icon-camera.png */; };
 		0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2205168E1919A30200119B92 /* 1399426832_icon-camera.png */; };
+		22051693191A9DB800119B92 /* BZRSuccessfulTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22051692191A9DB800119B92 /* BZRSuccessfulTradeViewController.m */; };
 		2210F18F19182FBF0018E0FC /* line_trade.png in Resources */ = {isa = PBXBuildFile; fileRef = 2210F18E19182FBF0018E0FC /* line_trade.png */; };
 		22E2C1321903020F0098D279 /* BZRTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C1311903020F0098D279 /* BZRTradeViewController.m */; };
 		22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2C136190305470098D279 /* BZRNotificationTableViewController.m */; };
@@ -89,6 +90,8 @@
 		0EDF5B96191311300024A9F6 /* bazaar TITLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bazaar TITLE.png"; sourceTree = "<group>"; };
 		2205168D1919A30200119B92 /* 1399426766_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426766_icon-camera.png"; sourceTree = "<group>"; };
 		2205168E1919A30200119B92 /* 1399426832_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426832_icon-camera.png"; sourceTree = "<group>"; };
+		22051691191A9DB800119B92 /* BZRSuccessfulTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRSuccessfulTradeViewController.h; sourceTree = "<group>"; };
+		22051692191A9DB800119B92 /* BZRSuccessfulTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRSuccessfulTradeViewController.m; sourceTree = "<group>"; };
 		2210F18E19182FBF0018E0FC /* line_trade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_trade.png; sourceTree = "<group>"; };
 		22E2C1301903020F0098D279 /* BZRTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZRTradeViewController.h; path = Trade/BZRTradeViewController.h; sourceTree = "<group>"; };
 		22E2C1311903020F0098D279 /* BZRTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BZRTradeViewController.m; path = Trade/BZRTradeViewController.m; sourceTree = "<group>"; };
@@ -205,6 +208,15 @@
 				A7737AFF190C809500319AF4 /* BZRBazaarController.m */,
 			);
 			name = Bazaar;
+			sourceTree = "<group>";
+		};
+		22051694191A9DC500119B92 /* Successful Trade */ = {
+			isa = PBXGroup;
+			children = (
+				22051691191A9DB800119B92 /* BZRSuccessfulTradeViewController.h */,
+				22051692191A9DB800119B92 /* BZRSuccessfulTradeViewController.m */,
+			);
+			name = "Successful Trade";
 			sourceTree = "<group>";
 		};
 		22E2C133190302230098D279 /* Send Trade */ = {
@@ -400,6 +412,7 @@
 				A7DE718E18DDFA1200EE7F9A /* Images.xcassets */,
 				A7DE718318DDFA1200EE7F9A /* Supporting Files */,
 				A79C876F1916091200BB0C68 /* TagReferences */,
+				22051694191A9DC500119B92 /* Successful Trade */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -594,6 +607,7 @@
 				A725CD4E18F0A90D00EC3719 /* BZRFilterViewController.m in Sources */,
 				A79C876A1916015F00BB0C68 /* BZRReceiverTradeViewController.m in Sources */,
 				79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */,
+				22051693191A9DB800119B92 /* BZRSuccessfulTradeViewController.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
 				A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */,
 				A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */,
