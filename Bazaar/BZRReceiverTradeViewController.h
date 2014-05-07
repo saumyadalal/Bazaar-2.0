@@ -20,4 +20,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *message;
 @property (strong, nonatomic) IBOutlet UILabel *bidMessage;
 - (IBAction)sendBid:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @end

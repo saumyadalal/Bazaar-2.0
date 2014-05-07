@@ -10,11 +10,23 @@
 #import "BZRSelectionViewController.h"
 
 @interface BZRReceiverTradeViewController ()
-
+@property (strong, nonatomic) UIAlertView *sentBidView;
 @end
 
 @implementation BZRReceiverTradeViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSString *status = [self.trade objectForKey:@"status"];
+    if([status isEqualToString:(@"responded")]) {
+        self.sendButton.enabled = false;
+        self.sendButton.hidden = true;
+    }
+    else {
+        self.sendButton.enabled = true;
+        self.sendButton.hidden = false;
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -118,5 +130,9 @@
             NSLog(@"error changing trade status");
         }
     }];
+    self.sendButton.enabled = false;
+    self.sendButton.hidden = true;
+    self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [self.sentBidView show];
 }
 @end
