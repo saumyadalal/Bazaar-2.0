@@ -7,9 +7,10 @@
 //
 
 #import "BZRInitiatorTradeViewController.h"
+#import "BZRTradeUtils.h"
 
 @interface BZRInitiatorTradeViewController ()
-
+@property (nonatomic, strong) NSArray* itemImageViews;
 @end
 
 @implementation BZRInitiatorTradeViewController
@@ -18,51 +19,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //cancel trade button font
-    self.acceptButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //accept button font
-    NSLog(@"trade: %@",self.trade);
-    PFFile *imageFile = [[self.trade objectForKey:@"item"] objectForKey:@"imageFile"];
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            self.itemImage.image = [UIImage imageWithData:data];
-        }
-        else {
-            NSLog(@"error fetching image");
-        }
-    }];
-    NSString *status = [self.trade objectForKey:@"status"];
-    NSArray *items = [self.trade objectForKey:@"returnItems"];
-    if([status isEqualToString:(@"responded")] && (sizeof(items) > 0))
-    {
-        for (PFObject* item in items) {
-            //call this to fetch image data
-            [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                if (!error) {
-                    PFFile *imageFile = [item objectForKey:@"imageFile"];
-                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                        if (!error) {
-                            if(self.itemImage1.image == nil) {
-                                self.itemImage1.image = [UIImage imageWithData:data];
-                            }
-                            else if(self.itemImage2.image == nil) {
-                                self.itemImage2.image = [UIImage imageWithData:data];
-                            }
-                            else if(self.itemImage3.image == nil) {
-                                self.itemImage3.image = [UIImage imageWithData:data];
-                            }
-                        }
-                        else {
-                            NSLog(@"error fetching image");
-                        }
-                    }];
-                }
-                else {
-                    NSLog(@"error fetching data");
-                }
-            }];        }
-    }
-
+    self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
+    //load item image the first time
+    [BZRTradeUtils loadImage:self.itemImage fromItem:[self.trade objectForKey:@"item"]];
+    [self setFont];
 }
+
+
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self updateContent];
+}
+
+
+- (void) updateContent {
+  [self.tradeLabel setText:self.tradeMessage];
+  //load return item images
+  if ([self.trade[@"status"] isEqualToString:@"responded"]) {
+      [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
+  }
+  else {
+    //display no images yet.
+  }
+}
+
+- (void) setFont {
+  self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+  self.acceptButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -71,21 +57,6 @@
 }
 
 - (IBAction)cancelTrade:(id)sender {
-    NSString *objectId = [self.trade objectId];
-    PFQuery *query = [PFQuery queryWithClassName:@"Trade"];
-    [query whereKey:@"objectId" equalTo:objectId];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"canceled trade");
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                [object deleteInBackground];
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"error canceling trade");
-        }
-    }];
+  [BZRTradeUtils cancelTrade:self.trade];
 }
 @end

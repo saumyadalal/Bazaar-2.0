@@ -21,8 +21,6 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    PFUser *user = [PFUser currentUser]; //get current user info
-    self.favoriteArray = user[@"favorites"]; //get current user's favorite's info
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,9 +56,13 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 - (void) viewWillAppear:(BOOL)animated {
     //NSLog(@"appear");
     [super viewWillAppear:animated];
-    PFUser *user = [PFUser currentUser]; //get current user info
-    self.favoriteArray = user[@"favorites"];
-    [self.tableView reloadData];
+    [self refreshData];
+}
+
+- (void) refreshData {
+  PFUser *user = [PFUser currentUser]; //get current user info
+  self.favoriteArray = user[@"favorites"];
+  [self.tableView reloadData];
 }
 
 

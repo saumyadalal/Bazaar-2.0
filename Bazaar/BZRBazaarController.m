@@ -30,10 +30,9 @@ static NSString * const cellIdentifier = @"ItemCell";
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = self.currentFilter;
-    [self viewDidRequestRefresh];
-   // NSLog(@"hi loading marketplace");
-   // NSLog(@" %@", self.navigationItem.title);
-	// Do any additional setup after loading the view.
+   //NSLog(@"hi loading marketplace");
+   //NSLog(@" %@", self.navigationItem.title);
+   //Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,17 +41,10 @@ static NSString * const cellIdentifier = @"ItemCell";
     // Dispose of any resources that can be recreated.
 }
 
-//reload from database and reload view
-- (void)viewDidRequestRefresh
-{
-    [self loadMarketPlace];
-}
 
 - (void) viewWillAppear:(BOOL)animated {
-  //NSLog(@"appear");
   [super viewWillAppear:animated];
   [self loadMarketPlace];
-  //[self.collectionView reloadData];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -88,9 +80,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
                         layout:(UICollectionViewLayout*)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section {
-    
     UIEdgeInsets insets = UIEdgeInsetsMake(3,3,3,3);
-    
     return insets;
 }
 
@@ -128,14 +118,6 @@ static NSString * const cellIdentifier = @"ItemCell";
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-  /*
-  if([[segue identifier] isEqualToString:@"bazaarView"]) //look for specific segue
-  {
-    BZRItemViewController *detailViewBazaar = (BZRItemViewController *) segue.destinationViewController; //set destination
-    NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected item
-    PFObject* item = [self.items objectAtIndex:selectedIndexPath.row];
-    detailViewBazaar.item=item; //give item to destination controller
-  } */
   if([[segue identifier] isEqualToString:@"detailView"]) //look for specific segue
   {
     BZRDetailViewController *detailViewBazaar = (BZRDetailViewController *) segue.destinationViewController; //set destination

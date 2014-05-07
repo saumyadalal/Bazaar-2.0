@@ -11,6 +11,7 @@
 
 @protocol BZRUserMarketPlaceDelegate <NSObject>
 
+//used for current user profile view number of items
 - (void)updateNumItems:(NSUInteger)itemCount;
 
 @end
@@ -21,7 +22,7 @@
 @property (nonatomic, assign) BOOL inSelectionMode;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
 @property (nonatomic, assign) NSNumber *returnLimit;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) id<BZRUserMarketPlaceDelegate> delegate;
 - (void) saveReturnItems:(PFObject*) trade;
 @end

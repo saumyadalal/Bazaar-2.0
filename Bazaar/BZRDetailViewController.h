@@ -11,8 +11,8 @@
 
 @protocol BZRItemDelegate <NSObject>
 
-- (void) didSelectItem:(BOOL)selected AtIndexPath:(NSIndexPath *)indexPath;
-- (BOOL) isSelected:(NSIndexPath*) indexPath;
+- (void) editReturnWithItem:(PFObject*)item isSelected:(BOOL)selected;
+- (BOOL) isSelected:(PFObject*) item;
 - (BOOL) didReachLimit;
 
 @end

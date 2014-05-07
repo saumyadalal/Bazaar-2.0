@@ -62,6 +62,7 @@
 		A7DE719818DDFA1200EE7F9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE718018DDFA1200EE7F9A /* UIKit.framework */; };
 		A7DE71A018DDFA1200EE7F9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7DE719E18DDFA1200EE7F9A /* InfoPlist.strings */; };
 		A7DE71A218DDFA1200EE7F9A /* BazaarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */; };
+		A7F6694B1919EF7A00A06FBB /* BZRTradeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		A7DE719D18DDFA1200EE7F9A /* BazaarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BazaarTests-Info.plist"; sourceTree = "<group>"; };
 		A7DE719F18DDFA1200EE7F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BazaarTests.m; sourceTree = "<group>"; };
+		A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRTradeUtils.h; sourceTree = "<group>"; };
+		A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTradeUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,13 +207,13 @@
 			name = Bazaar;
 			sourceTree = "<group>";
 		};
-		22E2C133190302230098D279 /* Trade */ = {
+		22E2C133190302230098D279 /* Send Trade */ = {
 			isa = PBXGroup;
 			children = (
 				22E2C1301903020F0098D279 /* BZRTradeViewController.h */,
 				22E2C1311903020F0098D279 /* BZRTradeViewController.m */,
 			);
-			name = Trade;
+			name = "Send Trade";
 			sourceTree = "<group>";
 		};
 		22E2C134190305180098D279 /* Notifications */ = {
@@ -376,17 +379,16 @@
 			isa = PBXGroup;
 			children = (
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
+				A7F669481919EEFC00A06FBB /* Trade Detail Views */,
 				0E1F0C90191956D800124864 /* Fonts */,
 				A79C87711916D8C900BB0C68 /* Trade Return Item Selection */,
-				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
-				A724FB96191600B300D4120A /* Receiver Trade View */,
 				A724FB921915C49700D4120A /* Detail View  */,
 				A7737B01190F372E00319AF4 /* Tabs */,
 				0E60182A190C18C900CA324F /* Bazaar */,
 				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
 				22E2C13819030C8D0098D279 /* images */,
 				22E2C13F19031B650098D279 /* Favorites */,
-				22E2C133190302230098D279 /* Trade */,
+				22E2C133190302230098D279 /* Send Trade */,
 				22E2C134190305180098D279 /* Notifications */,
 				A725CD4B18F0A8EC00EC3719 /* SideBar */,
 				A725CD4718F0A20000EC3719 /* Library */,
@@ -448,6 +450,17 @@
 				79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */,
 			);
 			name = "New Post";
+			sourceTree = "<group>";
+		};
+		A7F669481919EEFC00A06FBB /* Trade Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */,
+				A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */,
+				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
+				A724FB96191600B300D4120A /* Receiver Trade View */,
+			);
+			name = "Trade Detail Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -568,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79C87741916D8F000BB0C68 /* BZRSelectionViewController.m in Sources */,
+				A7F6694B1919EF7A00A06FBB /* BZRTradeUtils.m in Sources */,
 				22E2C14519031BFB0098D279 /* BZRFavoritesTableViewController.m in Sources */,
 				A7DE718918DDFA1200EE7F9A /* main.m in Sources */,
 				A725CD1918EB6E8400EC3719 /* BZRLoginViewController.m in Sources */,

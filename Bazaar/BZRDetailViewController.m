@@ -8,6 +8,7 @@
 
 #import "BZRDetailViewController.h"
 #import "BZRTradeViewController.h"
+#import "BZRTradeUtils.h"
 #import <Parse/Parse.h>
 
 @interface BZRDetailViewController ()
@@ -27,13 +28,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"here");
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.pagingEnabled = YES;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     //set the intitial current item
-    NSLog(@"item: %@",self.items);
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
     [self.collectionView setShowsHorizontalScrollIndicator:NO];
 }
@@ -99,8 +98,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (BOOL) userOwnsItem :(PFObject*) item {
   PFUser* owner = [item objectForKey:@"owner"];
-    NSLog(@"owner: %@",owner);
-    PFUser* user = [PFUser currentUser];
+  PFUser* user = [PFUser currentUser];
   if([[owner objectId] isEqualToString:[user objectId]]){
     return YES;
   }
@@ -133,22 +131,14 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.noButton = (UIButton *) [cell viewWithTag:409];
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   [self configureLabels:item];
-  [self configureSelectButtons:indexPath];
+  [self configureSelectButtons:item];
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
-      PFFile *imageFile = [object objectForKey:@"imageFile"];
-      [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-          itemImageView.image = [UIImage imageWithData:data];
-          itemName.text = [object objectForKey:@"name"];
-          itemDescription.text = [object objectForKey:@"description"];
-          [self loadUserInfo:[item objectForKey:@"owner"] onCell:cell];
-        }
-        else {
-          NSLog(@"error fetching image");
-        }
-      }];
+      itemName.text = [object objectForKey:@"name"];
+      itemDescription.text = [object objectForKey:@"description"];
+      [self loadUserInfo:[item objectForKey:@"owner"] onCell:cell];
+      [BZRTradeUtils loadImage:itemImageView fromItem:item];
     }
     else {
       NSLog(@"error fetching data");
@@ -162,14 +152,12 @@ static NSString * const cellIdentifier = @"detailViewCell";
  *** Select Buttons
  **********************/
 
-- (void)configureSelectButtons:(NSIndexPath*) currentIndexPath {
+- (void)configureSelectButtons:(PFObject*) item {
   //the item is selected
-  if ([self.delegate isSelected:currentIndexPath]) {
-      NSLog(@"yes");
+  if ([self.delegate isSelected:item]) {
     [self toggleSelected:self.yesButton];
   }
   else {
-      NSLog(@"no");
     [self toggleSelected:self.noButton];
   }
   if ([self.delegate didReachLimit]) {
@@ -189,23 +177,20 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (void) toggleSelected: (UIButton*)button {
   //disable the selected button
-  UIButton* disableButton = button;
-  UIButton* enableButton;
+  UIButton* selectedButton = button;
+  UIButton* otherButton;
   //yes button is selected
   if ([button isEqual:self.yesButton]) {
-      NSLog(@"YES");
-    enableButton = self.noButton;
-      self.yesButton.backgroundColor = [UIColor grayColor];
-      self.noButton.backgroundColor = [UIColor purpleColor];
+    otherButton = self.noButton;
   }
   else {
-      NSLog(@"NO");
-    enableButton = self.yesButton;
-      self.noButton.backgroundColor = [UIColor grayColor];
-      self.yesButton.backgroundColor = [UIColor purpleColor];
+    otherButton = self.yesButton;
   }
-  [enableButton setEnabled:YES];
-  [disableButton setEnabled:NO];
+  [otherButton setBackgroundColor:[UIColor grayColor]];
+  [otherButton setEnabled:YES];
+  //disable the selected button
+  [selectedButton setBackgroundColor:[UIColor purpleColor]];
+  [selectedButton setEnabled:NO];
 }
 
 /**********************
@@ -214,12 +199,14 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (IBAction)selectItem:(id)sender {
   [self toggleSelected:self.yesButton];
-  [self.delegate didSelectItem:YES AtIndexPath:self.currentIndexPath];
+  PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
+  [self.delegate editReturnWithItem:item isSelected:YES];
 }
 
 - (IBAction)deselectItem:(id)sender {
   [self toggleSelected:self.noButton];
-  [self.delegate didSelectItem:NO AtIndexPath:self.currentIndexPath];
+  PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
+  [self.delegate editReturnWithItem:item isSelected:NO];
 }
 
 
@@ -268,7 +255,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 //update current index path
 //**** turns out clicking a button calls this too?
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-  NSLog(@"did stop decelerating");
   if ([[self.collectionView visibleCells] count] > 0) {
     UICollectionViewCell *currentCell = [[self.collectionView visibleCells] objectAtIndex:0];
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:currentCell];
@@ -277,9 +263,8 @@ static NSString * const cellIdentifier = @"detailViewCell";
       self.currentIndexPath = indexPath;
       self.item = [self.items objectAtIndex:self.currentIndexPath.row];
       [self configureLabels:self.item];
-      [self configureSelectButtons:indexPath];
+      [self configureSelectButtons:self.item];
     }
-
   }
 }
 

@@ -13,11 +13,12 @@
 @property (strong, nonatomic) PFObject* trade;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 - (IBAction)cancelTrade:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) IBOutlet UILabel *tradeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage1;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage2;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage3;
 @property (strong, nonatomic) IBOutlet UIButton *cancelTradeButton;
 @property (strong, nonatomic) IBOutlet UIButton *acceptButton;
-@property (strong, nonatomic) IBOutlet UILabel *bigMessage;
+@property (strong, nonatomic) IBOutlet UILabel *bidMessageLabel;
+@property (strong, nonatomic) NSString* tradeMessage;
 @end

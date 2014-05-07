@@ -13,7 +13,6 @@
 
 @interface BZRNotificationTableViewController ()
 @property (nonatomic, strong) NSArray* trades;
-@property (nonatomic, strong) NSIndexPath* selectedIndexPath;
 @end
 
 static NSString * const cellIdentifier = @"NotificationCell";
@@ -67,7 +66,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       self.trades = objects;
-      NSLog(@" %d notification trades", [self.trades count]);
       [self.tableView reloadData];
     } else {
       // Log details of the failure
@@ -152,7 +150,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  self.selectedIndexPath = indexPath;
   PFObject* trade = [self.trades objectAtIndex:indexPath.row];
   if ([self isInitiator:trade]) {
       [self performSegueWithIdentifier:@"initiatorTradeDetail" sender:self];
@@ -163,14 +160,19 @@ static NSString * const cellIdentifier = @"NotificationCell";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  NSIndexPath *selectedIndexPath = [[self.tableView indexPathsForSelectedRows] objectAtIndex:0];
+  UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+  UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
   if ([segue.identifier isEqualToString:@"receiverTradeDetail"]) {
       BZRReceiverTradeViewController *receiverTradeView =
         (BZRReceiverTradeViewController *) segue.destinationViewController;
-      receiverTradeView.trade = [self.trades objectAtIndex:self.selectedIndexPath.row];
+      receiverTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
+      receiverTradeView.tradeMessage = [messageLabel text];
   }
   else if([segue.identifier isEqualToString:@"initiatorTradeDetail"]) {
       BZRInitiatorTradeViewController *initiatorTradeView = (BZRInitiatorTradeViewController *) segue.destinationViewController;
-      initiatorTradeView.trade = [self.trades objectAtIndex:self.selectedIndexPath.row];
+      initiatorTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
+      initiatorTradeView.tradeMessage = [messageLabel text];
   }
 }
 

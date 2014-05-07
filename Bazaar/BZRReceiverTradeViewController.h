@@ -12,15 +12,15 @@
 @interface BZRReceiverTradeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 @property (strong, nonatomic) PFObject* trade;
-@property (strong, nonatomic) IBOutlet UILabel *initiatorLabel2;
 @property (strong, nonatomic) IBOutlet UIButton *selectButton;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage1;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage2;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage3;
-- (IBAction)cancelButton:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *message;
+- (IBAction)cancelTrade:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *tradeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *cancelTradeButton;
-@property (strong, nonatomic) IBOutlet UILabel *bidMessage;
+@property (strong, nonatomic) IBOutlet UILabel *bidMessageLabel;
 - (IBAction)sendBid:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
+@property (strong, nonatomic) NSString* tradeMessage;
 @end

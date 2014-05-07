@@ -9,11 +9,11 @@
 #import "BZRUserMarketPlaceViewController.h"
 #import <Parse/Parse.h>
 #import "BZRDetailViewController.h"
+#import "BZRTradeUtils.h"
 
 
 @interface BZRUserMarketPlaceViewController () <BZRItemDelegate>
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
-@property (nonatomic, strong) NSMutableSet *selectedIndexPaths;
 @end
 
 static NSString * const cellIdentifier = @"UserItemCell";
@@ -21,14 +21,57 @@ static NSString * const cellIdentifier = @"UserItemCell";
 @implementation BZRUserMarketPlaceViewController
 
 - (void) viewWillAppear:(BOOL)animated {
-    //NSLog(@"appear");
     [super viewWillAppear:animated];
-    [self loadMarketPlace];
+    //allow for multiple refresh only when not in selection mode
+    if (self.inSelectionMode) {
+      NSLog(@"here reloading");
+      [self.collectionView reloadData];
+    }
+    else {
+      [self loadMarketPlace];
+    }
 }
 
+/********************
+ *** Selection Mode : Start
+ *********************/
+
+//this method doesn't run perfectly if you've exceeded th
+- (void)editReturnWithItem:(PFObject *)item isSelected:(BOOL)selected {
+  NSLog(@" count before %d", [self.selectedItems count]);
+  if (selected) {
+    [self.selectedItems addObject:item];
+  }
+  else {
+    NSLog(@" is present %hhd ", [self isSelected:item]);
+    [self removeReturnItem:item];
+  }
+  NSLog(@" count after %d", [self.selectedItems count]);
+  [self.collectionView reloadData];
+}
+
+- (BOOL) isSelected:(PFObject *)item {
+  //***** [self.selectedItems containsObject:item] does not work
+  for (PFObject* currentItem in self.selectedItems) {
+    if ([[currentItem objectId] isEqualToString:[item objectId]]) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
+//Temporary fix for [self.selectedItems removeObject:item]
+//doesn't work for items populated from self.returns.
+- (void) removeReturnItem:(PFObject*) item {
+  for (PFObject* currentItem in self.selectedItems) {
+    if ([[currentItem objectId] isEqualToString:[item objectId]]) {
+      [self.selectedItems removeObject:currentItem];
+    }
+  }
+}
 
 - (BOOL) didReachLimit {
-  NSUInteger size = [self.selectedIndexPaths count];
+  NSUInteger size = [self.selectedItems count];
   //can compare int values, not NSNumber
   if (size >= [self.returnLimit intValue]) {
     return YES;
@@ -36,29 +79,11 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return NO;
 }
 
-- (void) highlightSelectedItems {
-  for (NSIndexPath* indexPath in self.selectedIndexPaths) {
-    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor redColor];
-  }
-}
 
-- (BOOL) isSelected:(NSIndexPath *)indexPath {
-  NSLog(@" %d he", [self.selectedIndexPaths count]);
-  if ([self.selectedIndexPaths containsObject:indexPath]) {
-    return YES;
-  }
-  return NO;
-}
 
 
 - (void) saveReturnItems:(PFObject*) trade {
-  NSMutableArray* returnItems = [[NSMutableArray alloc] init];
-  for(NSIndexPath* indexPath in self.selectedIndexPaths) {
-    PFObject* item = [self.items objectAtIndex:indexPath.row];
-    [returnItems addObject:item];
-  }
-  trade[@"returnItems"] = returnItems;
+  trade[@"returnItems"] = self.selectedItems;
   [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
       NSLog(@"saved return items");
@@ -69,15 +94,16 @@ static NSString * const cellIdentifier = @"UserItemCell";
   }];
 }
 
+/********************
+ *** Selection Mode : End
+ *********************/
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// to populate self.items
     [self loadMarketPlace];
-    //[self.collectionView reloadData];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.selectedIndexPaths = [[NSMutableSet alloc] initWithArray:@[]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,16 +122,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
   return CGSizeMake(103, 103);
 }
 
-- (void) didSelectItem:(BOOL)selected AtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@" selected item %hhd", selected);
-  if (selected) {
-    [self.selectedIndexPaths addObject:indexPath];
-  }
-  else {
-    [self.selectedIndexPaths removeObject:indexPath];
-  }
-
-}
 
 
 //load the items owned by the user
@@ -120,8 +136,13 @@ static NSString * const cellIdentifier = @"UserItemCell";
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       // The find succeeded.
-      self.items = objects;
-      [self.collectionView reloadData];
+      NSUInteger oldCount = [self.items count];
+      //refresh only if new items have been added
+      if ([objects count] > oldCount) {
+        self.items = [[NSMutableArray alloc] initWithArray:objects];
+        [self.collectionView reloadData];
+      }
+      //to udpate number of items on profile
       [self.delegate updateNumItems:[self.items count]];
     } else {
       // Log details of the failure
@@ -152,25 +173,19 @@ static NSString * const cellIdentifier = @"UserItemCell";
   PFObject* item = [self.items objectAtIndex:indexPath.row];
   
   //if in selection mode
-  if ([self.selectedItems containsObject:item] && self.inSelectionMode) {
-      //add object to selected index path
-      [self.selectedIndexPaths addObject:indexPath];
-      itemName.backgroundColor = [UIColor greenColor];
+  if (self.inSelectionMode && [self isSelected:item]) {
+    NSLog(@" highlight");
+      cell.alpha = 0.3;
   }
-  
+  else {
+    NSLog(@"dee highlight");
+      cell.alpha = 1.0;
+  }
   //call this to fetch image data
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
-      PFFile *imageFile = [object objectForKey:@"imageFile"];
-      [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-          itemImageView.image = [UIImage imageWithData:data];
-          itemName.text = [object objectForKey:@"name"];
-        }
-        else {
-          NSLog(@"error fetching image");
-        }
-      }];
+      itemName.text = [object objectForKey:@"name"];
+      [BZRTradeUtils loadImage:itemImageView fromItem:item];
     }
     else {
       NSLog(@"error fetching data");
@@ -178,6 +193,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
   }];
   return cell;
 }
+
 
 
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
