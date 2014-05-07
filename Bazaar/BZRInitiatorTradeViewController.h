@@ -21,4 +21,5 @@
 @property (strong, nonatomic) IBOutlet UIButton *acceptButton;
 @property (strong, nonatomic) IBOutlet UILabel *bidMessageLabel;
 @property (strong, nonatomic) NSString* tradeMessage;
+@property (strong, nonatomic) IBOutlet UILabel *bidStatusLabel;
 @end

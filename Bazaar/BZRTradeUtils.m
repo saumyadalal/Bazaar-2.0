@@ -71,6 +71,16 @@
   }];
 }
 
++ (NSString *) getFirstNameOwnerFormat: (PFUser*) user {
+  return [NSString stringWithFormat:@"%@'s", [self getFirstName:user]];
+}
+
++ (NSString *) getFirstName: (PFUser*) user {
+  NSString* name = [user objectForKey:@"username"];
+  NSArray* words = [name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+  NSString* firstName = [words objectAtIndex:0];
+  return firstName;
+}
 
 
 

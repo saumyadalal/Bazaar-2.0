@@ -25,6 +25,34 @@
     [self setFont];
 }
 
+- (void) setBidMessage {
+  NSString* status = [self.trade objectForKey:@"status"];
+  // *** responded status
+  if ([status isEqualToString:@"responded"]) {
+    [self.bidStatusLabel setHidden:YES];
+    [self.bidMessageLabel setText:@"Bid request received"];
+  }
+  // *** initiated status
+  else if ([status isEqualToString:@"initiated"]) {
+    [self.bidStatusLabel setHidden:NO];
+    NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
+    NSString* firstName = [BZRTradeUtils getFirstName:[self.trade objectForKey:@"initiator"]];
+    NSString* baseStr = @"%@ can choose upto %d items from your marketplace";
+    [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, firstName, limit]];
+    [self.acceptButton setHidden:YES];
+  }
+  else {
+    [self.acceptButton setEnabled:NO];
+    [self.cancelTradeButton setHidden:YES];
+    if ([status isEqualToString:@"accepted"]) {
+      [self.acceptButton setTitle:@"Trade Success!" forState:UIControlStateDisabled];
+    }
+    else {
+      [self.acceptButton setTitle:@"Trade Cancelled" forState:UIControlStateDisabled];
+    }
+  }
+}
+
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -34,6 +62,7 @@
 
 - (void) updateContent {
   [self.tradeLabel setText:self.tradeMessage];
+  [self setBidMessage];
   //load return item images
   if ([self.trade[@"status"] isEqualToString:@"responded"]) {
       [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];

@@ -57,16 +57,16 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (void) configureLabels:(PFObject *)item {
   if ([self userOwnsItem:item]) {
-    [self disableAndHideTradeButtons];
+    [self hideTradeButtons:YES];
   }
   else{
-    [self enableTradeButtons];
+    [self hideTradeButtons:NO];
   }
   if (self.inSelectionMode) {
-    [self disableAndHideTradeButtons];
+    [self hideTradeButtons:YES];
   }
   else {
-    [self disableAndHideSelectButtons];
+    [self hideSelectButtons:YES];
   }
   [self configureFavoriteLabel:item];
 }
@@ -104,18 +104,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
   }
 }
 
-- (void) disableAndHideTradeButtons {
-  self.favoriteButton.hidden = YES;
-  self.tradeButton.hidden = YES;
-  [self.favoriteButton setEnabled:NO];
-  [self.tradeButton setEnabled:NO];
-}
-
-- (void) enableTradeButtons {
-    self.favoriteButton.hidden = NO;
-    self.tradeButton.hidden = NO;
-    [self.favoriteButton setEnabled:YES];
-    [self.tradeButton setEnabled:YES];
+- (void) hideTradeButtons:(BOOL)isHidden {
+  [self.favoriteButton setHidden:isHidden];
+  [self.tradeButton setHidden:isHidden];
 }
 
 - (BOOL) userOwnsItem :(PFObject*) item {
@@ -189,11 +180,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
   }
 }
 
-- (void) disableAndHideSelectButtons {
-  [self.yesButton setEnabled:NO];
-  [self.noButton setEnabled:NO];
-  self.yesButton.hidden = YES;
-  self.noButton.hidden = YES;
+- (void) hideSelectButtons:(BOOL)isHidden {
+  [self.yesButton setHidden:isHidden];
+  [self.noButton setHidden:isHidden];
 }
 
 

@@ -14,4 +14,6 @@
 + (void) cancelTrade:(PFObject*) trade;
 + (void) loadReturnItemImages:(NSArray*)imageViews forTrade:(PFObject *)trade;
 + (void) loadImage:(UIImageView*)imageView fromItem:(PFObject*)item;
++ (NSString *) getFirstName: (PFUser *) user;
++ (NSString *) getFirstNameOwnerFormat: (PFUser*) user;
 @end

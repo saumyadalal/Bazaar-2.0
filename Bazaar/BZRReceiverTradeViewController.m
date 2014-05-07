@@ -23,20 +23,20 @@
     self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
     //load item image the first time
     [BZRTradeUtils loadImage:self.itemImage fromItem:[self.trade objectForKey:@"item"]];
+    [self setBidMessage];
     [self setFont];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  [self configureButtons];
   [self updateContent];
 }
 
 - (void) updateContent {
   [self.tradeLabel setText:self.tradeMessage];
   //load return item images
-  NSLog(@"record changes");
+  [self setBidMessage];
   [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
 }
 
@@ -44,29 +44,39 @@
  *** Update content
  ******************/
 
-
-- (void) configureButtons {
-  NSUInteger returnItemCount = [self.trade[@"returnItems"] count];
-  if (returnItemCount == 0) {
+- (void) setBidMessage {
+  NSString* status = [self.trade objectForKey:@"status"];
+  if ([status isEqualToString:@"responded"]) {
+    [self.bidMessageLabel setText:@"Bid request sent"];
+    [self.sendButton setHidden:YES];
+  }
+  // *** initiated status
+  else if ([status isEqualToString:@"initiated"]) {
+    NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
+    NSString* firstName = [BZRTradeUtils getFirstNameOwnerFormat:[self.trade objectForKey:@"initiator"]];
+    NSString* baseStr = @"You can choose upto %d items from %@ marketplace";
+    [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, limit, firstName]];
+    //configure send button
+    [self.sendButton setHidden:NO];
+    if ([self.trade[@"returnItems"] count] == 0) {
+      [self.sendButton setEnabled:NO];
+    }
+    else {
+      [self.sendButton setEnabled:YES];
+    }
+  }
+  else {
+    [self.sendButton setHidden:NO];
     [self.sendButton setEnabled:NO];
-  }
-  else {
-    [self.sendButton setEnabled:YES];
-  }
-  NSString *status = [self.trade objectForKey:@"status"];
-  if([status isEqualToString:(@"responded")]) {
-    self.sendButton.enabled = false;
-    self.sendButton.hidden = true;
-    self.selectButton.enabled = false;
-    self.selectButton.hidden = true;
-  }
-  else {
-    self.sendButton.enabled = true;
-    self.sendButton.hidden = false;
-    self.selectButton.enabled = true;
-    self.selectButton.hidden = false;
+    if ([status isEqualToString:@"accepted"]) {
+      [self.sendButton setTitle:@"Trade Success!" forState:UIControlStateDisabled];
+    }
+    else {
+      [self.sendButton setTitle:@"Trade Cancelled" forState:UIControlStateDisabled];
+    }
   }
 }
+
 
 
 /******************

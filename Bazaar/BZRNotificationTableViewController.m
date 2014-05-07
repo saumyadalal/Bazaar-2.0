@@ -9,6 +9,7 @@
 #import "BZRNotificationTableViewController.h"
 #import "BZRReceiverTradeViewController.h"
 #import "BZRInitiatorTradeViewController.h"
+#import "BZRTradeUtils.h"
 #import <Parse/Parse.h>
 
 @interface BZRNotificationTableViewController ()
@@ -89,12 +90,7 @@ static NSString * const cellIdentifier = @"NotificationCell";
     return [self.trades count];
 }
 
-- (NSString *) getFirstName: (NSString*) name {
-  NSArray *words = [name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-  NSString* firstName = [words objectAtIndex:0];
-  NSString* firstNameFormatted = [NSString stringWithFormat:@"%@'s", firstName];
-  return firstNameFormatted;
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -104,38 +100,33 @@ static NSString * const cellIdentifier = @"NotificationCell";
     UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
 
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
-    PFUser *initiator = [trade objectForKey:@"initiator"];
-    PFUser *receiver = [trade objectForKey:@"owner"];
     PFObject* item = [trade objectForKey:@"item"];
   
-    //load message
-    NSString *message = @"%@ requested %@ %@";
-    NSString *messageText = @"";
-    //you initiated the trade
-    if ([self isInitiator:trade]) {
-      messageText = [NSString stringWithFormat:message, @"You",
-                            [self getFirstName:[receiver objectForKey:@"username"]],
-                           [item objectForKey:@"name"]];
-    }
-    //you received the trade
-    else {
-      messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
-                             @"your", [item objectForKey:@"name"]];
-    }
-    [messageLabel setText:messageText];
+    [self setMessage:messageLabel forTrade:trade];
+    [BZRTradeUtils loadImage:itemImageView fromItem:item];
   
-    //load image
-    PFFile *imageFile = [item objectForKey:@"imageFile"];
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-      if (!error) {
-        UIImage *itemImage = [UIImage imageWithData:data];
-        [itemImageView setImage:itemImage];
-      }
-      else {
-        NSLog(@"error fetching image");
-      }
-    }];
     return cell;
+}
+
+- (void) setMessage:(UILabel*) messageLabel forTrade:(PFObject*)trade {
+  PFUser *initiator = [trade objectForKey:@"initiator"];
+  PFUser *receiver = [trade objectForKey:@"owner"];
+  PFObject* item = [trade objectForKey:@"item"];
+  
+  NSString *message = @"%@ requested %@ %@";
+  NSString *messageText = @"";
+  //you initiated the trade
+  if ([self isInitiator:trade]) {
+    messageText = [NSString stringWithFormat:message, @"You",
+                   [BZRTradeUtils getFirstNameOwnerFormat:receiver],
+                   [item objectForKey:@"name"]];
+  }
+  //you received the trade
+  else {
+    messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
+                   @"your", [item objectForKey:@"name"]];
+  }
+  [messageLabel setText:messageText];
 }
 
 - (BOOL) isInitiator:(PFObject*)trade {
