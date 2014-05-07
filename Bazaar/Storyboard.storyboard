@@ -716,6 +716,7 @@
                         <outlet property="itemImage1" destination="Lac-ma-1WB" id="5kt-xs-7es"/>
                         <outlet property="itemImage2" destination="BA4-L8-FUv" id="IIY-M8-PiW"/>
                         <outlet property="itemImage3" destination="XhJ-7K-o5g" id="pgX-bk-4Ro"/>
+                        <outlet property="selectButton" destination="3S1-HD-gqL" id="JrK-Ct-hwM"/>
                         <outlet property="sendButton" destination="aGL-ow-6AJ" id="SYD-Ye-ncX"/>
                     </connections>
                 </viewController>

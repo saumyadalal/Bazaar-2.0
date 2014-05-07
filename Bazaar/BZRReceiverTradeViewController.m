@@ -21,10 +21,14 @@
     if([status isEqualToString:(@"responded")]) {
         self.sendButton.enabled = false;
         self.sendButton.hidden = true;
+        self.selectButton.enabled = false;
+        self.selectButton.hidden = true;
     }
     else {
         self.sendButton.enabled = true;
         self.sendButton.hidden = false;
+        self.selectButton.enabled = true;
+        self.selectButton.hidden = false;
     }
 }
 
@@ -43,14 +47,19 @@
                 NSLog(@"error fetching image");
             }
         }];
-    self.itemImage1.backgroundColor = [UIColor grayColor];
-    if([numItems isEqual:@2]) {
-        self.itemImage2.backgroundColor = [UIColor grayColor];
+     NSString *status = [self.trade objectForKey:@"status"];
+    if([status isEqualToString:(@"initiated")]) {
+        self.itemImage1.backgroundColor = [UIColor grayColor];
+        if([numItems isEqual:@2]) {
+            self.itemImage2.backgroundColor = [UIColor grayColor];
+        }
+        else if([numItems isEqual:@2]) {
+            self.itemImage2.backgroundColor = [UIColor grayColor];
+            self.itemImage3.backgroundColor = [UIColor grayColor];
+        }
+        
     }
-    else if([numItems isEqual:@2]) {
-        self.itemImage2.backgroundColor = [UIColor grayColor];
-        self.itemImage3.backgroundColor = [UIColor grayColor];
-    }
+    
     NSArray *items = [self.trade objectForKey:@"returnItems"];;
     if(sizeof(items) > 0)
     {
