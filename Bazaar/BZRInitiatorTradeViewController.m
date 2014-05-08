@@ -51,6 +51,9 @@
     self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
     [self setUsersLabel];
     [self setFont];
+    self.greyOverlay.hidden = true;
+    self.greyOverlay.backgroundColor = [[UIColor alloc] initWithRed:0 green:0
+                                                               blue:0 alpha:0.5];
 }
 
 - (void) setUsersLabel {
@@ -92,6 +95,7 @@
   [super viewWillAppear:animated];
   [self updateContent];
     if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
+        self.greyOverlay.hidden = false;
         UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [cancelledView show];
     }
@@ -130,8 +134,9 @@
 }
 
 - (IBAction)cancelTrade:(id)sender {
+  self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
-        [self.navigationController popViewControllerAnimated:YES];
+  [self.navigationController popViewControllerAnimated:YES];
    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
 }
 - (IBAction)acceptTrade:(id)sender {
@@ -147,6 +152,26 @@
     }];
     [self.acceptButton setHidden:YES];
     [self.cancelTradeButton setHidden:YES];
+    
+    PFUser* owner = [self.trade objectForKey:@"owner"];
+    PFUser *initiator = [self.trade objectForKey:@"initiator"];
+    //Updating the numTrades for the owner (but i can't save for the user that's not logged in)
+    /*
+    NSNumber *numTradesOwner = [owner objectForKey:@"numTrades"];
+    NSLog(@"Owner numTrades before: %@", numTradesOwner);
+    int valueOwner = [numTradesOwner intValue];
+    numTradesOwner = [NSNumber numberWithInt:valueOwner + 1];
+    NSLog(@"Owner numTrades now: %@", numTradesOwner);
+    owner[@"numTrades"] = numTradesOwner;
+    [owner saveInBackground]; */
+    //Updating the numTrades for the initiator
+    NSNumber *numTradesInitiator = [owner objectForKey:@"numTrades"];
+    NSLog(@"Initiator numTrades before: %@", numTradesInitiator);
+    int valueInitiator = [numTradesInitiator intValue];
+    numTradesInitiator = [NSNumber numberWithInt:valueInitiator + 1];
+    NSLog(@"Initiator numTrades now: %@", numTradesInitiator);
+    initiator[@"numTrades"] = numTradesInitiator;
+    [initiator saveInBackground];
     //Reference to navigation controller. Since if you use self.navigationController in popToRootViewController call it sets self.navigationController to nil.
     UINavigationController *navController = self.navigationController;
     [navController popViewControllerAnimated:NO];

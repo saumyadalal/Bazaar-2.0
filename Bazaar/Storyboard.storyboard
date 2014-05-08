@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17U-i4-8fu">
-                                <rect key="frame" x="100" y="74" width="206" height="36"/>
+                                <rect key="frame" x="97" y="74" width="206" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -258,14 +258,14 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Hfv-cK-89d">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="WQs-ye-yYO"/>
+                        <barButtonItem key="leftBarButtonItem" image="1399586289_menu-alt.png" id="WQs-ye-yYO"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBN-lh-MvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576" y="-1803"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail View Controller - Title-->
         <scene sceneID="3QO-AK-hlo">
             <objects>
                 <collectionViewController storyboardIdentifier="detailViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLe-B3-6qf" customClass="BZRDetailViewController" sceneMemberID="viewController">
@@ -361,6 +361,14 @@
                                                 <segue destination="gTf-xS-0qu" kind="push" identifier="viewUserProfile" id="pk8-C4-UF8"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" tag="409" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1399583194_back.png" translatesAutoresizingMaskIntoConstraints="NO" id="OVX-hX-W84">
+                                            <rect key="frame" x="12" y="185" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="410" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1399583194_forward.png" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-vQ-kuF">
+                                            <rect key="frame" x="287" y="185" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -372,9 +380,7 @@
                             <outlet property="delegate" destination="iLe-B3-6qf" id="Aek-ST-Nao"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="gvD-xa-v13">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="nvm-d0-qEj"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="9nO-Y9-cDp"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fF4-7q-zCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -747,6 +753,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RG7-f5-6nJ">
+                                <rect key="frame" x="0.0" y="61" width="325" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -755,6 +767,7 @@
                         <outlet property="bidLabel" destination="KYv-cK-DRA" id="leA-5N-FLR"/>
                         <outlet property="bidMessageLabel" destination="U7N-0P-yZd" id="B05-nU-z1j"/>
                         <outlet property="cancelTradeButton" destination="7ih-F1-TJr" id="t27-rG-mqq"/>
+                        <outlet property="greyOverlay" destination="RG7-f5-6nJ" id="3y5-Ci-Zer"/>
                         <outlet property="initiatorImage" destination="JxG-kh-MZK" id="4d9-Dm-j7G"/>
                         <outlet property="itemImage" destination="acI-6S-zTQ" id="c5Y-1Y-mdx"/>
                         <outlet property="itemImage1" destination="Lac-ma-1WB" id="5kt-xs-7es"/>
@@ -1087,6 +1100,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvv-DT-DOz">
+                                <rect key="frame" x="0.0" y="61" width="320" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1097,6 +1116,7 @@
                         <outlet property="bidMessageLabel" destination="A6c-Z9-nQQ" id="pJx-nO-zOy"/>
                         <outlet property="bidStatusLabel" destination="auM-TG-nEk" id="Ltn-gM-aff"/>
                         <outlet property="cancelTradeButton" destination="qwb-tl-D1E" id="2yI-wT-HYE"/>
+                        <outlet property="greyOverlay" destination="nvv-DT-DOz" id="UxO-jf-iYr"/>
                         <outlet property="initiatorImage" destination="pLs-m1-uWK" id="dCd-Xo-9B9"/>
                         <outlet property="itemImage" destination="cLT-Nv-Axb" id="5cO-wB-vHN"/>
                         <outlet property="itemImage1" destination="k7f-El-PYP" id="fKS-jJ-heO"/>
@@ -1116,7 +1136,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="userMarketPlaceSegue" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GAn-NS-KXG" customClass="BZRUserMarketPlaceViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="48z-L4-t1e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zZF-kX-jPp">
                             <size key="itemSize" width="103" height="103"/>
@@ -1162,6 +1182,9 @@
     </scenes>
     <resources>
         <image name="1399426832_icon-camera.png" width="32" height="32"/>
+        <image name="1399583194_back.png" width="20" height="20"/>
+        <image name="1399583194_forward.png" width="42" height="41"/>
+        <image name="1399586289_menu-alt.png" width="20" height="20"/>
         <image name="bazaar30.1.png" width="26" height="32"/>
         <image name="camera30.png" width="30" height="22"/>
         <image name="trade.png" width="35" height="31"/>
@@ -1173,8 +1196,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5gf-aY-sNS"/>
+        <segue reference="ney-sS-UDE"/>
         <segue reference="pk8-C4-UF8"/>
-        <segue reference="rNQ-86-kpl"/>
+        <segue reference="e2z-SB-aSX"/>
     </inferredMetricsTieBreakers>
 </document>

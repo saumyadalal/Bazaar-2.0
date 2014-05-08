@@ -27,5 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) NSString* tradeMessage;
 @property (strong, nonatomic) IBOutlet UILabel *bidLabel;
+@property (strong, nonatomic) IBOutlet UILabel *greyOverlay;
 
 @end

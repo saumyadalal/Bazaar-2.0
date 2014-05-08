@@ -28,6 +28,9 @@
     return self;
 }
 
+-(void) viewWillAppear:(BOOL)animated {
+    [self loadUserInfo];
+}
 
 - (void)viewDidLoad
 {
@@ -57,6 +60,8 @@
       self.username.text = [user objectForKey:@"username"];
       self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
       self.profilePicture.clipsToBounds = YES;
+      NSString *numOfTrades = [[user objectForKey:@"numTrades"] stringValue];
+        self.numTrades.text = numOfTrades;
     }
     else {
       NSLog(@"error fetching image");
@@ -83,7 +88,6 @@
 - (void) updateNumItems:(NSUInteger)itemCount {
   [self.numItems setText:[NSString stringWithFormat:@" %d ", itemCount]];
 }
-
 
 - (IBAction)logout:(id)sender {
   [PFUser logOut];

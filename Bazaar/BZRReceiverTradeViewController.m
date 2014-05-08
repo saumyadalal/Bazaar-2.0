@@ -52,6 +52,9 @@
     [self setUsersLabel];
     [self setBidMessage];
     [self setFont];
+    self.greyOverlay.hidden = true;
+    self.greyOverlay.backgroundColor = [[UIColor alloc] initWithRed:0 green:0
+                                                               blue:0 alpha:0.5];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,6 +62,7 @@
   [super viewWillAppear:animated];
   [self updateContent];
     if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
+        self.greyOverlay.hidden = false;
         UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [cancelledView show];
     }
@@ -172,6 +176,7 @@
 
 
 - (IBAction)cancelTrade:(id)sender {
+  self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
   [self.navigationController popToRootViewControllerAnimated:YES];

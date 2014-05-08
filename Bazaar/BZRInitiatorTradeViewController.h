@@ -27,4 +27,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *bidLabel;
 @property (strong, nonatomic) NSString* tradeMessage;
 @property (strong, nonatomic) IBOutlet UILabel *bidStatusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *greyOverlay;
 @end

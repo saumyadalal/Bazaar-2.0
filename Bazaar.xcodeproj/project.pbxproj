@@ -14,6 +14,9 @@
 		0E4E2A89191A9DA8005161C8 /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E2A87191A9DA8005161C8 /* Gotham-Light.otf */; };
 		0E4E2A8A191A9DA8005161C8 /* Gotham-XLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E2A88191A9DA8005161C8 /* Gotham-XLight.otf */; };
 		0E6927BA19199B6000B9BA6F /* trade.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E6927B919199B6000B9BA6F /* trade.png */; };
+		0E7A5C7D191BE3920015F60E /* 1399583194_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A5C7C191BE3920015F60E /* 1399583194_back.png */; };
+		0E7A5C7F191BE6080015F60E /* 1399583194_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A5C7E191BE6080015F60E /* 1399583194_forward.png */; };
+		0E7A5C81191BEF4C0015F60E /* 1399586289_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A5C80191BEF4C0015F60E /* 1399586289_menu-alt.png */; };
 		0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F80190C747900EB4FF6 /* favorites30.png */; };
 		0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F85190C748400EB4FF6 /* camera30.png */; };
 		0EDC7F88190C75E900EB4FF6 /* bazaar30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */; };
@@ -86,6 +89,9 @@
 		0E4E2A87191A9DA8005161C8 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		0E4E2A88191A9DA8005161C8 /* Gotham-XLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight.otf"; sourceTree = "<group>"; };
 		0E6927B919199B6000B9BA6F /* trade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trade.png; sourceTree = "<group>"; };
+		0E7A5C7C191BE3920015F60E /* 1399583194_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1399583194_back.png; sourceTree = "<group>"; };
+		0E7A5C7E191BE6080015F60E /* 1399583194_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1399583194_forward.png; sourceTree = "<group>"; };
+		0E7A5C80191BEF4C0015F60E /* 1399586289_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399586289_menu-alt.png"; sourceTree = "<group>"; };
 		0EDC7F80190C747900EB4FF6 /* favorites30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites30.png; sourceTree = "<group>"; };
 		0EDC7F85190C748400EB4FF6 /* camera30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera30.png; sourceTree = "<group>"; };
 		0EDC7F87190C75E900EB4FF6 /* bazaar30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bazaar30.1.png; sourceTree = "<group>"; };
@@ -246,6 +252,9 @@
 		22E2C13819030C8D0098D279 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0E7A5C80191BEF4C0015F60E /* 1399586289_menu-alt.png */,
+				0E7A5C7E191BE6080015F60E /* 1399583194_forward.png */,
+				0E7A5C7C191BE3920015F60E /* 1399583194_back.png */,
 				2205168D1919A30200119B92 /* 1399426766_icon-camera.png */,
 				2205168E1919A30200119B92 /* 1399426832_icon-camera.png */,
 				0E6927B919199B6000B9BA6F /* trade.png */,
@@ -564,6 +573,7 @@
 			files = (
 				0E4E2A8A191A9DA8005161C8 /* Gotham-XLight.otf in Resources */,
 				0EFF9BD91919A6A8005B49B1 /* 1399426766_icon-camera.png in Resources */,
+				0E7A5C7F191BE6080015F60E /* 1399583194_forward.png in Resources */,
 				0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */,
 				0E1F0C8F191956D500124864 /* Gotham-Book.otf in Resources */,
 				0E1F0C8E191956D500124864 /* Gotham-Medium.otf in Resources */,
@@ -577,7 +587,9 @@
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				0E1F0C981919811D00124864 /* user_male2-25.png in Resources */,
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
+				0E7A5C81191BEF4C0015F60E /* 1399586289_menu-alt.png in Resources */,
 				0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */,
+				0E7A5C7D191BE3920015F60E /* 1399583194_back.png in Resources */,
 				2210F18F19182FBF0018E0FC /* line_trade.png in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,
