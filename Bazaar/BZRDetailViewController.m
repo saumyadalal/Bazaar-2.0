@@ -158,6 +158,10 @@ static NSString * const cellIdentifier = @"detailViewCell";
     else if(indexPath.item == self.items.count-1){
         forwardArrow.hidden = YES;
     }
+    else {
+        backArrow.hidden = NO;
+        forwardArrow.hidden = NO;
+    }
   //does initial configure for the current buttons stored on the object
   [self configureLabels:self.item];
   [self configureSelectButton:self.selectButton forItem:self.item];
