@@ -9,6 +9,7 @@
 #import "BZRReceiverTradeViewController.h"
 #import "BZRSelectionViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRNotificationTableViewController.h"
 
 @interface BZRReceiverTradeViewController ()
 @property (strong, nonatomic) UIAlertView *sentBidView;
@@ -31,6 +32,10 @@
 {
   [super viewWillAppear:animated];
   [self updateContent];
+    if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
+        UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [cancelledView show];
+    }
 }
 
 - (void) updateContent {
@@ -49,6 +54,8 @@
   if ([status isEqualToString:@"responded"]) {
     [self.bidMessageLabel setText:@"Bid request sent"];
     [self.sendButton setHidden:YES];
+    self.selectButton.enabled = false;
+    self.selectButton.hidden = true;
   }
   // *** initiated status
   else if ([status isEqualToString:@"initiated"]) {
@@ -132,7 +139,10 @@
 
 - (IBAction)cancelTrade:(id)sender {
   [BZRTradeUtils cancelTrade:self.trade];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
+  [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
 - (IBAction)sendBid:(id)sender {
 
     self.trade[@"status"] = @"responded";
@@ -146,7 +156,10 @@
     }];
     self.sendButton.enabled = false;
     self.sendButton.hidden = true;
+    self.selectButton.enabled = false;
+    self.selectButton.hidden = true;
     self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [self.sentBidView show];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

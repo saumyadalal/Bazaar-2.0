@@ -34,6 +34,7 @@ static NSString * const cellIdentifier = @"NotificationCell";
 {
     [super viewDidLoad];
     [self loadNotifications];
+    self.title = @"Notifications";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -49,9 +50,11 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 
 - (void) viewWillAppear:(BOOL)animated {
-    //NSLog(@"appear");
+    NSLog(@"appear");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNotifications) name:@"updateParent" object:nil];
     [super viewWillAppear:animated];
     [self loadNotifications];
+    self.title = @"Notifications";
 }
 
 - (void)loadNotifications
@@ -163,15 +166,18 @@ static NSString * const cellIdentifier = @"NotificationCell";
         (BZRReceiverTradeViewController *) segue.destinationViewController;
       receiverTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
       receiverTradeView.tradeMessage = [messageLabel text];
+      self.title = @"Back";
   }
   else if([segue.identifier isEqualToString:@"initiatorTradeDetail"]) {
       BZRInitiatorTradeViewController *initiatorTradeView = (BZRInitiatorTradeViewController *) segue.destinationViewController;
       initiatorTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
       initiatorTradeView.tradeMessage = [messageLabel text];
+      self.title = @"Back";
   }
     else if([segue.identifier isEqualToString:@"successfulTradeDetail"]) {
         BZRSuccessfulTradeViewController *successfulTradeView = (BZRSuccessfulTradeViewController *) segue.destinationViewController;
         successfulTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
+        self.title = @"Back";
     }
 }
 

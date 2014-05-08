@@ -33,20 +33,23 @@
 {
     [super viewDidLoad];
     
-    self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:14]; //make font of username bold
+    self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:15]; //make font of username bold
     self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //logout button font
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
+    NSLog(@"before load user: %@",self.user);
     [self loadUserInfo];
 }
 
 
 - (void) loadUserInfo {
+    NSLog(@"user before: %@",self.user);
   if (self.user == nil) {
     self.user = [PFUser currentUser];
   }
   PFUser *user = self.user;
+    NSLog(@"user: %@",self.user);
   PFFile *imageFile = [user objectForKey:@"imageFile"];
   [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
     if (!error) {
