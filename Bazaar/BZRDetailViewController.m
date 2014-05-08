@@ -16,7 +16,7 @@
 @interface BZRDetailViewController ()
 @property (strong, nonatomic) UIButton *favoriteButton;
 @property (strong, nonatomic) UIButton *tradeButton;
-@property (strong, nonatomic) UIButton *yesButton;
+@property (strong, nonatomic) UIButton *selectButton;
 @property (strong, nonatomic) UIButton *noButton;
 @property (strong, nonatomic) PFObject* item;
 @property (nonatomic, strong) NSArray* trades;
@@ -85,7 +85,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
                 NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
                 NSLog(@"current item: %@",[item objectId]);
                 if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
-                    NSLog(@"here");
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [UIColor lightGrayColor];
                     [self.tradeButton setEnabled:NO];
@@ -150,12 +149,21 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UILabel *itemDescription = (UILabel *) [cell viewWithTag:405];
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
+<<<<<<< HEAD
+  self.selectButton = (UIButton *) [cell viewWithTag:408];
+  PFObject* item = [self.items objectAtIndex:indexPath.item];
+  //does initial configure for the current buttons stored on the object
+  [self configureLabels:item];
+  [self configureSelectButton:self.selectButton forItem:item];
+  [self loadTrades:item]; //hide trade buttons if already trading for item
+=======
   self.yesButton = (UIButton *) [cell viewWithTag:408];
   self.noButton = (UIButton *) [cell viewWithTag:409];
   self.item = [self.items objectAtIndex:indexPath.item];
   [self configureLabels:self.item];
   [self configureSelectButtons:self.item];
   [self loadTrades:self.item]; //hide trade buttons if already trading for item
+>>>>>>> 09f55ce05588a7bbca36100321fa076665d609df
   //call this to fetch image data
   [self.item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
@@ -176,52 +184,51 @@ static NSString * const cellIdentifier = @"detailViewCell";
  *** Select Buttons
  **********************/
 
-- (void)configureSelectButtons:(PFObject*) item {
-  //the item is selected
-  if ([self.delegate isSelected:item]) {
-    [self toggleSelected:self.yesButton];
+//called in didStopScrolling
+- (void)configureSelectButton:(UIButton*) button forItem:(PFObject*) item {
+  BOOL isSelected = [self.delegate isSelected:item];
+  //return early if limit has been reached since button should not
+  //be toggled.
+  if ([self.delegate didReachLimit] && !isSelected) {
+    [button setEnabled:NO];
+    [button setBackgroundColor:[UIColor grayColor]];
+    return;
   }
   else {
-    [self toggleSelected:self.noButton];
-  }
-  if ([self.delegate didReachLimit]) {
-    //disable yes button selection
-    [self.yesButton setEnabled:NO];
-    return;
+    [button setEnabled:YES];
+    [self toggleButton:button onSelection:isSelected];
   }
 }
 
 - (void) hideSelectButtons:(BOOL)isHidden {
-  [self.yesButton setHidden:isHidden];
-  [self.noButton setHidden:isHidden];
+  [self.selectButton setHidden:isHidden];
 }
 
-
-- (void) toggleSelected: (UIButton*)button {
-  //disable the selected button
-  UIButton* selectedButton = button;
-  UIButton* otherButton;
-  //yes button is selected
-  if ([button isEqual:self.yesButton]) {
-    otherButton = self.noButton;
+- (void) toggleButton:(UIButton*)button onSelection:(BOOL)isSelected  {
+  [button setBackgroundColor:[UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1]];
+  if (isSelected) {
+    [button setTitle:@"Added to Bid" forState:UIControlStateNormal];
   }
   else {
-    otherButton = self.yesButton;
- }
-  [otherButton setBackgroundColor:[UIColor grayColor]];
-  [otherButton setEnabled:YES];
-  //disable the selected button
-  [selectedButton setBackgroundColor:[UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1]];
-  [selectedButton setEnabled:NO];
+    [button setTitle:@"Select Item" forState:UIControlStateNormal];
+  }
 }
 
-/**********************
- *** Select Buttons
- **********************/
 
 - (IBAction)selectItem:(id)sender {
-  [self toggleSelected:self.yesButton];
   PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
+<<<<<<< HEAD
+  BOOL isSelected = [self.delegate editReturnWithItem:item];
+  //to see immediate change
+  [self toggleButton:self.selectButton onSelection:isSelected];
+}
+
+
+/**********************
+ *** Select Buttons end
+ **********************/
+
+=======
   [self.delegate editReturnWithItem:item isSelected:YES];
 }
 
@@ -234,6 +241,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 - (IBAction)goToProfileView:(id)sender {
 //    [self performSegueWithIdentifier:@"viewUserProfile" sender:self];
 }
+>>>>>>> 09f55ce05588a7bbca36100321fa076665d609df
 
 
 
@@ -297,8 +305,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
     if (![indexPath isEqual:self.currentIndexPath]) {
       self.currentIndexPath = indexPath;
       self.item = [self.items objectAtIndex:self.currentIndexPath.row];
+      //set the current select button and favorite buttons
+      self.selectButton = (UIButton*) [currentCell viewWithTag:408];
+      self.favoriteButton = (UIButton*)[currentCell viewWithTag:407];
       [self configureLabels:self.item];
-      [self configureSelectButtons:self.item];
+      [self configureSelectButton:(UIButton*)self.selectButton forItem:self.item];
     }
   }
 }
