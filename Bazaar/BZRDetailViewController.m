@@ -150,11 +150,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
   self.selectButton = (UIButton *) [cell viewWithTag:408];
-  PFObject* item = [self.items objectAtIndex:indexPath.item];
+  self.item = [self.items objectAtIndex:indexPath.item];
   //does initial configure for the current buttons stored on the object
-  [self configureLabels:item];
-  [self configureSelectButton:self.selectButton forItem:item];
-  [self loadTrades:item]; //hide trade buttons if already trading for item
+  [self configureLabels:self.item];
+  [self configureSelectButton:self.selectButton forItem:self.item];
+  [self loadTrades:self.item]; //hide trade buttons if already trading for item
   //call this to fetch image data
   [self.item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
