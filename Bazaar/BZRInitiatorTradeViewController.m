@@ -165,6 +165,8 @@
     [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
         for (PFObject *user in users) {
             [user incrementKey:@"numTrades"];
+            [user saveInBackground];
+            NSLog(@"new numtrades: %@", [user objectForKey:@"numTrades"]);
         }
     }];
     
@@ -175,28 +177,29 @@
     PFObject *item = self.trade[@"item"];
     NSArray *returnItems = self.trade[@"returnItems"];
     PFQuery *query = [PFQuery queryWithClassName:@"Trade"];
-    [query whereKey:@"objectId" notEqualTo:self.trade[@"objectId"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *otherTrades, NSError *error) {
         if (!error) {
             for (PFObject *otherTrade in otherTrades) {
                 PFObject *tradeItem = otherTrade[@"item"];
                 NSArray *tradeReturnItems = otherTrade[@"returnItems"];
-                if ([tradeItem isEqual: item]) {
-                    otherTrade[@"status"] = @"unavailable";
-                }
-                else {
-                    for (PFObject* returnItem in returnItems) {
-                        if ([returnItem isEqual:tradeItem]) {
-                            otherTrade[@"status"] = @"unavailable";
-                        }
-                        for (PFObject* tradeReturnItem in tradeReturnItems) {
-                            if ([returnItem isEqual:tradeReturnItem]) {
+                if (![[otherTrade objectId] isEqualToString:[self.trade objectId]]) {
+                    if ([tradeItem isEqual: item]) {
+                        otherTrade[@"status"] = @"unavailable";
+                    }
+                    else {
+                        for (PFObject* returnItem in returnItems) {
+                            if ([returnItem isEqual:tradeItem]) {
                                 otherTrade[@"status"] = @"unavailable";
+                            }
+                            for (PFObject* tradeReturnItem in tradeReturnItems) {
+                                if ([returnItem isEqual:tradeReturnItem]) {
+                                    otherTrade[@"status"] = @"unavailable";
+                                }
                             }
                         }
                     }
+                    [otherTrade saveInBackground];
                 }
-                [otherTrade saveInBackground];
             }
         } else {
             // Log details of the failure
