@@ -258,14 +258,14 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Hfv-cK-89d">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="WQs-ye-yYO"/>
+                        <barButtonItem key="leftBarButtonItem" image="1399586289_menu-alt.png" id="WQs-ye-yYO"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBN-lh-MvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576" y="-1803"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail View Controller - Title-->
         <scene sceneID="3QO-AK-hlo">
             <objects>
                 <collectionViewController storyboardIdentifier="detailViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLe-B3-6qf" customClass="BZRDetailViewController" sceneMemberID="viewController">
@@ -361,6 +361,14 @@
                                                 <segue destination="gTf-xS-0qu" kind="push" identifier="viewUserProfile" id="pk8-C4-UF8"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" tag="409" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1399583194_back.png" translatesAutoresizingMaskIntoConstraints="NO" id="OVX-hX-W84">
+                                            <rect key="frame" x="12" y="185" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="410" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1399583194_forward.png" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-vQ-kuF">
+                                            <rect key="frame" x="287" y="185" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -372,9 +380,7 @@
                             <outlet property="delegate" destination="iLe-B3-6qf" id="Aek-ST-Nao"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="gvD-xa-v13">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="nvm-d0-qEj"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="9nO-Y9-cDp"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fF4-7q-zCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1162,6 +1168,9 @@
     </scenes>
     <resources>
         <image name="1399426832_icon-camera.png" width="32" height="32"/>
+        <image name="1399583194_back.png" width="20" height="20"/>
+        <image name="1399583194_forward.png" width="42" height="41"/>
+        <image name="1399586289_menu-alt.png" width="20" height="20"/>
         <image name="bazaar30.1.png" width="26" height="32"/>
         <image name="camera30.png" width="30" height="22"/>
         <image name="trade.png" width="35" height="31"/>
