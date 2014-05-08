@@ -34,12 +34,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
 {
     [super viewDidLoad];
     [self loadNotifications];
-    self.title = @"Notifications";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +48,7 @@ static NSString * const cellIdentifier = @"NotificationCell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNotifications) name:@"updateParent" object:nil];
     [super viewWillAppear:animated];
     [self loadNotifications];
-    self.title = @"Notifications";
+    self.title = @"Trades";
 }
 
 - (void)loadNotifications
@@ -166,18 +160,15 @@ static NSString * const cellIdentifier = @"NotificationCell";
         (BZRReceiverTradeViewController *) segue.destinationViewController;
       receiverTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
       receiverTradeView.tradeMessage = [messageLabel text];
-      self.title = @"Back";
   }
   else if([segue.identifier isEqualToString:@"initiatorTradeDetail"]) {
       BZRInitiatorTradeViewController *initiatorTradeView = (BZRInitiatorTradeViewController *) segue.destinationViewController;
       initiatorTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
       initiatorTradeView.tradeMessage = [messageLabel text];
-      self.title = @"Back";
   }
     else if([segue.identifier isEqualToString:@"successfulTradeDetail"]) {
         BZRSuccessfulTradeViewController *successfulTradeView = (BZRSuccessfulTradeViewController *) segue.destinationViewController;
         successfulTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
-        self.title = @"Back";
     }
 }
 

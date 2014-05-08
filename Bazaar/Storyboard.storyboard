@@ -644,7 +644,7 @@
             </objects>
             <point key="canvasLocation" x="1576" y="364"/>
         </scene>
-        <!--Receiver Trade View Controller - user is receiver-->
+        <!--Receiver Trade View Controller-->
         <scene sceneID="JBo-k2-YaY">
             <objects>
                 <viewController id="Chj-kW-B9W" customClass="BZRReceiverTradeViewController" sceneMemberID="viewController">
@@ -750,7 +750,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="user is receiver" id="E9k-Wj-Uhz"/>
+                    <navigationItem key="navigationItem" id="E9k-Wj-Uhz"/>
                     <connections>
                         <outlet property="bidMessageLabel" destination="U7N-0P-yZd" id="B05-nU-z1j"/>
                         <outlet property="cancelTradeButton" destination="7ih-F1-TJr" id="t27-rG-mqq"/>
@@ -897,6 +897,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemSelectionMessage" destination="gZD-NC-H9B" id="gUA-t5-Sbd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MmR-9O-Ivr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -979,7 +982,7 @@
             </objects>
             <point key="canvasLocation" x="1576" y="1146"/>
         </scene>
-        <!--Initiator Trade View Controller - user is initiator-->
+        <!--Initiator Trade View Controller-->
         <scene sceneID="or4-1B-HRf">
             <objects>
                 <viewController id="0E2-wD-L21" customClass="BZRInitiatorTradeViewController" sceneMemberID="viewController">
@@ -1076,7 +1079,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="user is initiator" id="mEh-8F-efR"/>
+                    <navigationItem key="navigationItem" id="mEh-8F-efR"/>
                     <connections>
                         <outlet property="acceptButton" destination="lFU-W9-Vf5" id="QJ8-0G-vta"/>
                         <outlet property="bidMessageLabel" destination="A6c-Z9-nQQ" id="pJx-nO-zOy"/>
@@ -1101,7 +1104,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="userMarketPlaceSegue" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GAn-NS-KXG" customClass="BZRUserMarketPlaceViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="48z-L4-t1e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="331"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zZF-kX-jPp">
                             <size key="itemSize" width="103" height="103"/>
@@ -1158,8 +1161,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e2z-SB-aSX"/>
-        <segue reference="pk8-C4-UF8"/>
         <segue reference="ney-sS-UDE"/>
+        <segue reference="rNQ-86-kpl"/>
+        <segue reference="pk8-C4-UF8"/>
     </inferredMetricsTieBreakers>
 </document>
