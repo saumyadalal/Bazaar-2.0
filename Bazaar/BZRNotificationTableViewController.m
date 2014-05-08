@@ -44,7 +44,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 
 - (void) viewWillAppear:(BOOL)animated {
-    NSLog(@"appear");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNotifications) name:@"updateParent" object:nil];
     [super viewWillAppear:animated];
     [self loadNotifications];

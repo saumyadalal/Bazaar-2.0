@@ -71,11 +71,6 @@
     self.description.delegate = self;
 }
 
--(void) viewDidAppear:(BOOL)animated{
-     //hide post button if all fiends aren't filled
-    NSLog(@"view did appear");
-    
-}
 
 //accessing self.description.text = @"" does not work
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
