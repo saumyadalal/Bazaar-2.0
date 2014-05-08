@@ -93,7 +93,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"checking");
+    //NSLog(@"checking");
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     UIImageView *itemImageView = (UIImageView *)[cell viewWithTag:1];
     UILabel *itemName = (UILabel *) [cell viewWithTag:2];

@@ -25,31 +25,28 @@ static NSString * const cellIdentifier = @"UserItemCell";
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //allow for multiple refresh only when not in selection mode
-    /*
     if (self.inSelectionMode) {
       [self.collectionView reloadData];
     }
     else {
       [self loadMarketPlace];
-    } */
+    }
 }
 
 /********************
  *** Selection Mode : Start
  *********************/
 
-//this method doesn't run perfectly if you've exceeded th
-- (void)editReturnWithItem:(PFObject *)item isSelected:(BOOL)selected {
-  NSLog(@" count before %d", [self.selectedItems count]);
-  if (selected) {
-    [self.selectedItems addObject:item];
-  }
-  else {
-    NSLog(@" is present %hhd ", [self isSelected:item]);
+- (BOOL)editReturnWithItem:(PFObject *)item {
+  BOOL isSelected = [self isSelected:item];
+  if (isSelected) {
     [self removeReturnItem:item];
   }
-  NSLog(@" count after %d", [self.selectedItems count]);
-  [self.collectionView reloadData];
+  else {
+    [self.selectedItems addObject:item];
+  }
+  return !isSelected;
+  //reload data is called in view did appear anyway
 }
 
 - (BOOL) isSelected:(PFObject *)item {
@@ -83,8 +80,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
   }
   return NO;
 }
-
-
 
 
 - (void) saveReturnItems:(PFObject*) trade {

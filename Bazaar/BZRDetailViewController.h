@@ -11,7 +11,7 @@
 
 @protocol BZRItemDelegate <NSObject>
 
-- (void) editReturnWithItem:(PFObject*)item isSelected:(BOOL)selected;
+- (BOOL) editReturnWithItem:(PFObject*)item;
 - (BOOL) isSelected:(PFObject*) item;
 - (BOOL) didReachLimit;
 
@@ -23,6 +23,5 @@
 - (IBAction)addToFavorites:(id)sender;
 @property (nonatomic, assign) BOOL inSelectionMode;
 - (IBAction)selectItem:(id)sender;
-- (IBAction)deselectItem:(id)sender;
 @property (nonatomic, strong) id<BZRItemDelegate> delegate;
 @end
