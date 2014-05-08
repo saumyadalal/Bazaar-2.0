@@ -160,5 +160,6 @@
     self.selectButton.hidden = true;
     self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [self.sentBidView show];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

@@ -9,6 +9,8 @@
 #import "BZRDetailViewController.h"
 #import "BZRTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRUserMarketPlaceViewController.h"
+#import "BZRUserProfileViewController.h"
 #import <Parse/Parse.h>
 
 @interface BZRDetailViewController ()
@@ -150,17 +152,17 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
   self.yesButton = (UIButton *) [cell viewWithTag:408];
   self.noButton = (UIButton *) [cell viewWithTag:409];
-  PFObject* item = [self.items objectAtIndex:indexPath.item];
-  [self configureLabels:item];
-  [self configureSelectButtons:item];
-  [self loadTrades:item]; //hide trade buttons if already trading for item
+  self.item = [self.items objectAtIndex:indexPath.item];
+  [self configureLabels:self.item];
+  [self configureSelectButtons:self.item];
+  [self loadTrades:self.item]; //hide trade buttons if already trading for item
   //call this to fetch image data
-  [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+  [self.item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
       itemName.text = [object objectForKey:@"name"];
       itemDescription.text = [object objectForKey:@"description"];
-      [self loadUserInfo:[item objectForKey:@"owner"] onCell:cell];
-      [BZRTradeUtils loadImage:itemImageView fromItem:item];
+      [self loadUserInfo:[self.item objectForKey:@"owner"] onCell:cell];
+      [BZRTradeUtils loadImage:itemImageView fromItem:self.item];
     }
     else {
       NSLog(@"error fetching data");
@@ -229,6 +231,10 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self.delegate editReturnWithItem:item isSelected:NO];
 }
 
+- (IBAction)goToProfileView:(id)sender {
+//    [self performSegueWithIdentifier:@"viewUserProfile" sender:self];
+}
+
 
 
 
@@ -238,6 +244,13 @@ static NSString * const cellIdentifier = @"detailViewCell";
     BZRTradeViewController *tradeViewController
       = (BZRTradeViewController *) segue.destinationViewController;
     tradeViewController.item = self.item; //give item to destination controller
+  }
+  else if([[segue identifier] isEqualToString:@"viewUserProfile"]){
+    BZRUserMarketPlaceViewController *marketplaceView = (BZRUserMarketPlaceViewController *) segue.destinationViewController;
+      marketplaceView.user = [self.item objectForKey:@"owner"];
+    BZRUserProfileViewController *profileView = (BZRUserProfileViewController *) segue.destinationViewController;
+      profileView.user = [self.item objectForKey:@"owner"];
+      NSLog(@"user from detail: %@",profileView.user);
   }
   
 }

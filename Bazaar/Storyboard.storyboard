@@ -29,7 +29,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eNe-jm-DN0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wQL-gx-2Ro">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17U-i4-8fu">
@@ -348,6 +348,17 @@
                                             </state>
                                             <connections>
                                                 <action selector="selectItem:" destination="iLe-B3-6qf" eventType="touchUpInside" id="taY-CT-QlU"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHI-J2-hHE">
+                                            <rect key="frame" x="45" y="13" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="goToProfileView:" destination="iLe-B3-6qf" eventType="touchUpInside" id="K0N-uM-srj"/>
+                                                <segue destination="gTf-xS-0qu" kind="push" identifier="viewUserProfile" id="pk8-C4-UF8"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1107,7 +1118,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ney-sS-UDE"/>
         <segue reference="e2z-SB-aSX"/>
+        <segue reference="pk8-C4-UF8"/>
+        <segue reference="ney-sS-UDE"/>
     </inferredMetricsTieBreakers>
 </document>
