@@ -23,5 +23,6 @@
 - (IBAction)addToFavorites:(id)sender;
 @property (nonatomic, assign) BOOL inSelectionMode;
 - (IBAction)selectItem:(id)sender;
+- (IBAction)goToProfileView:(id)sender;
 @property (nonatomic, strong) id<BZRItemDelegate> delegate;
 @end

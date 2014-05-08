@@ -65,6 +65,8 @@
   trade[@"status"] = @"initiated";
   trade[@"numItems"] = [NSNumber numberWithInt:self.numItems];
   trade[@"returnItems"] = @[];
+  self.sendButtonItem.hidden = true;
+  self.sendButtonItem.enabled = false;
   [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
       NSLog(@"saved new initiated trade");
@@ -73,6 +75,7 @@
       NSLog(@"error setting up trade");
     }
   }];
+  [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
 @end

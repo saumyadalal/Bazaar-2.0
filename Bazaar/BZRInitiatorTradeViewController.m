@@ -8,6 +8,7 @@
 
 #import "BZRInitiatorTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRNotificationTableViewController.h"
 
 @interface BZRInitiatorTradeViewController ()
 @property (nonatomic, strong) NSArray* itemImageViews;
@@ -57,6 +58,10 @@
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self updateContent];
+    if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
+        UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [cancelledView show];
+    }
 }
 
 
@@ -67,8 +72,15 @@
   if ([self.trade[@"status"] isEqualToString:@"responded"]) {
       [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
   }
+  else if ([self.trade[@"status"] isEqualToString:@"complete"]) {
+      
+  }
   else {
-    //display no images yet.
+      //display no images yet
+      self.acceptButton.enabled = false;
+      self.acceptButton.hidden = true;
+//      self.cancelTradeButton.enabled = false;
+//      self.cancelTradeButton.hidden = true;
   }
 }
 
@@ -76,7 +88,6 @@
   self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
   self.acceptButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -87,5 +98,33 @@
 
 - (IBAction)cancelTrade:(id)sender {
   [BZRTradeUtils cancelTrade:self.trade];
+        [self.navigationController popViewControllerAnimated:YES];
+   [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
+}
+- (IBAction)acceptTrade:(id)sender {
+    self.trade[@"status"] = @"complete";
+    [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"saved updated trade status");
+        }
+        else {
+            NSLog(@"error changing trade status");
+        }
+    }];
+    self.acceptButton.enabled = false;
+    self.acceptButton.hidden = true;
+    self.cancelTradeButton.hidden = true;
+    self.cancelTradeButton.enabled = false;
+    PFObject* item = self.trade[@"item"];
+    item[@"status"] = @"traded";
+    [item saveInBackground];
+    NSArray *items = self.trade[@"returnItems"];
+    for (PFObject* item in items) {
+        item[@"status"] = @"traded";
+        [item saveInBackground];
+    }
+    
+    
+    
 }
 @end

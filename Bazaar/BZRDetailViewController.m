@@ -9,6 +9,8 @@
 #import "BZRDetailViewController.h"
 #import "BZRTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRUserMarketPlaceViewController.h"
+#import "BZRUserProfileViewController.h"
 #import <Parse/Parse.h>
 
 @interface BZRDetailViewController ()
@@ -35,7 +37,8 @@ static NSString * const cellIdentifier = @"detailViewCell";
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
-    [self.collectionView setShowsHorizontalScrollIndicator:NO];
+    [self.collectionView setShowsHorizontalScrollIndicator:YES];
+
 }
 
 
@@ -43,6 +46,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [super viewWillAppear:animated];
   [self.collectionView reloadData];
   [self.collectionView scrollToItemAtIndexPath:self.currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+
 }
 
 //- (void):(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,13 +82,13 @@ static NSString * const cellIdentifier = @"detailViewCell";
         if (!error) {
             self.trades = objects;
             for (PFObject *tradeItems in self.trades){
-                //NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
-                //NSLog(@"current item: %@",[item objectId]);
-                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]]){
-                    NSLog(@"here");
+                NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
+                NSLog(@"current item: %@",[item objectId]);
+                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [UIColor lightGrayColor];
                     [self.tradeButton setEnabled:NO];
+                    break;
                 }
                 else{
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
@@ -137,7 +141,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
   return self.items.count;
 }
 
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -146,19 +149,28 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UILabel *itemDescription = (UILabel *) [cell viewWithTag:405];
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
+<<<<<<< HEAD
   self.selectButton = (UIButton *) [cell viewWithTag:408];
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   //does initial configure for the current buttons stored on the object
   [self configureLabels:item];
   [self configureSelectButton:self.selectButton forItem:item];
   [self loadTrades:item]; //hide trade buttons if already trading for item
+=======
+  self.yesButton = (UIButton *) [cell viewWithTag:408];
+  self.noButton = (UIButton *) [cell viewWithTag:409];
+  self.item = [self.items objectAtIndex:indexPath.item];
+  [self configureLabels:self.item];
+  [self configureSelectButtons:self.item];
+  [self loadTrades:self.item]; //hide trade buttons if already trading for item
+>>>>>>> 09f55ce05588a7bbca36100321fa076665d609df
   //call this to fetch image data
-  [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+  [self.item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
       itemName.text = [object objectForKey:@"name"];
       itemDescription.text = [object objectForKey:@"description"];
-      [self loadUserInfo:[item objectForKey:@"owner"] onCell:cell];
-      [BZRTradeUtils loadImage:itemImageView fromItem:item];
+      [self loadUserInfo:[self.item objectForKey:@"owner"] onCell:cell];
+      [BZRTradeUtils loadImage:itemImageView fromItem:self.item];
     }
     else {
       NSLog(@"error fetching data");
@@ -205,6 +217,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (IBAction)selectItem:(id)sender {
   PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
+<<<<<<< HEAD
   BOOL isSelected = [self.delegate editReturnWithItem:item];
   //to see immediate change
   [self toggleButton:self.selectButton onSelection:isSelected];
@@ -215,6 +228,22 @@ static NSString * const cellIdentifier = @"detailViewCell";
  *** Select Buttons end
  **********************/
 
+=======
+  [self.delegate editReturnWithItem:item isSelected:YES];
+}
+
+- (IBAction)deselectItem:(id)sender {
+  [self toggleSelected:self.noButton];
+  PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
+  [self.delegate editReturnWithItem:item isSelected:NO];
+}
+
+- (IBAction)goToProfileView:(id)sender {
+//    [self performSegueWithIdentifier:@"viewUserProfile" sender:self];
+}
+>>>>>>> 09f55ce05588a7bbca36100321fa076665d609df
+
+
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -223,6 +252,13 @@ static NSString * const cellIdentifier = @"detailViewCell";
     BZRTradeViewController *tradeViewController
       = (BZRTradeViewController *) segue.destinationViewController;
     tradeViewController.item = self.item; //give item to destination controller
+  }
+  else if([[segue identifier] isEqualToString:@"viewUserProfile"]){
+    BZRUserMarketPlaceViewController *marketplaceView = (BZRUserMarketPlaceViewController *) segue.destinationViewController;
+      marketplaceView.user = [self.item objectForKey:@"owner"];
+    BZRUserProfileViewController *profileView = (BZRUserProfileViewController *) segue.destinationViewController;
+      profileView.user = [self.item objectForKey:@"owner"];
+      NSLog(@"user from detail: %@",profileView.user);
   }
   
 }

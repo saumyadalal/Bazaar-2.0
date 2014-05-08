@@ -10,7 +10,7 @@
 #import "BZRBazaarController.h"
 #import "SWRevealViewController.h"
 
-@interface BZRFilterViewController ()
+@interface BZRFilterViewController () 
 @property (strong, nonatomic) NSArray *filters;
 @end
 
@@ -25,6 +25,14 @@ static NSString * const cellIdentifier = @"filterCell";
     //Preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     self.filters = @[@"Accessories", @"Books", @"Clothes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    //selected filter
+    NSString *filter = [self.filters objectAtIndex:indexPath.row];
+    // Set the filter
+    [self.delegate setFilter:filter];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,8 +76,7 @@ static NSString * const cellIdentifier = @"filterCell";
       BZRBazaarController *bazaarVC = (BZRBazaarController*)[segue.destinationViewController topViewController];
       bazaarVC.currentFilter = filter;
       //require this to reload data
-      [bazaarVC loadMarketPlace];
-      /*
+            /*
       NSLog(@" %@", bazaarVC.navigationItem.title);
       NSLog(@" %@", bazaarVC.title);
       NSLog(@" %@", [[segue.destinationViewController topViewController] class]);

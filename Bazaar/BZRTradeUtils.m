@@ -20,7 +20,9 @@
       NSLog(@"canceled trade");
       // Do something with the found objects
       for (PFObject *object in objects) {
-        [object deleteInBackground];
+//        [object deleteInBackground];
+          object[@"status"] = @"cancelled";
+          [object saveInBackground];
       }
     } else {
       // Log details of the failure
