@@ -714,10 +714,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.4089140094" green="0.68045605279999999" blue="0.95017408290000005" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S1-HD-gqL">
-                                <rect key="frame" x="17" y="360" width="90" height="94"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S1-HD-gqL">
+                                <rect key="frame" x="15" y="360" width="94" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Items">
+                                <state key="normal" image="1399586533_icon-ios7-plus-empty.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1186,6 +1186,7 @@
         <image name="1399583194_back.png" width="20" height="20"/>
         <image name="1399583194_forward.png" width="42" height="41"/>
         <image name="1399586289_menu-alt.png" width="20" height="20"/>
+        <image name="1399586533_icon-ios7-plus-empty.png" width="48" height="48"/>
         <image name="bazaar30.1.png" width="26" height="32"/>
         <image name="camera30.png" width="30" height="22"/>
         <image name="trade.png" width="35" height="31"/>
