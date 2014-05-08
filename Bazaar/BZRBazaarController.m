@@ -11,7 +11,7 @@
 #import "BZRDetailViewController.h"
 #import "BZRFilterViewController.h"
 
-@interface BZRBazaarController () <BZRFilterViewControllerDelegate>
+@interface BZRBazaarController ()
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
 @end
 
@@ -30,12 +30,10 @@ static NSString * const cellIdentifier = @"ItemCell";
     self.navigationItem.leftBarButtonItem.target = revealController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     self.navigationItem.title = self.currentFilter;
-//    BZRFilterViewController *filterView = [[BZRFilterViewController alloc] init];
-//    filterView.delegate = self;
-   //NSLog(@"hi loading marketplace");
-   //NSLog(@" %@", self.navigationItem.title);
-   //Do any additional setup after loading the view.
+    self.currentFilter = @"Bazaar";
 }
 
 
@@ -45,8 +43,7 @@ static NSString * const cellIdentifier = @"ItemCell";
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setFilter:(NSString *)filter {
-    NSLog(@"filter set");
+- (void) changeFilter:(NSString *)filter {
     self.currentFilter = filter;
     [self loadMarketPlace];
 }
@@ -54,7 +51,6 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self loadMarketPlace];
-    NSLog(@"appear");
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -71,26 +67,23 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (void)loadMarketPlace
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    NSLog(@"item count before query %d", [self.items count]);
-    if (self.currentFilter) {
+    if (![self.currentFilter isEqualToString:@"Bazaar"]) {
         [query whereKey:@"category" equalTo:self.currentFilter];
     }
+    [self.navigationController.navigationBar.topItem setTitle:self.currentFilter];
     [query whereKey:@"status" equalTo:@"available"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             self.items = objects;
-            NSLog(@"got the results %d", [self.items count]);
             [self.collectionView reloadData];
-            NSLog(@"item count after query %d", [self.items count]);
-            NSLog(@"filter: %@", self.currentFilter);
             
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-     }
+}
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
                         layout:(UICollectionViewLayout*)collectionViewLayout
@@ -101,7 +94,6 @@ static NSString * const cellIdentifier = @"ItemCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"checking collection view reload");
     return self.items.count;
 }
 

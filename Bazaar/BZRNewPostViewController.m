@@ -38,7 +38,7 @@
   [self.description setFont:[UIFont fontWithName:@"Gotham-Book" size:14]];
     
     self.imagePicked = NO;
-    self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", nil];
+    self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", @"Other", nil];
     //set category input as picker
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.dataSource = self;

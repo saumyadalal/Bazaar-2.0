@@ -9,6 +9,7 @@
 #import "BZRFilterViewController.h"
 #import "BZRBazaarController.h"
 #import "SWRevealViewController.h"
+#import "BZRTabBarController.h"
 
 @interface BZRFilterViewController () 
 @property (strong, nonatomic) NSArray *filters;
@@ -24,16 +25,9 @@ static NSString * const cellIdentifier = @"filterCell";
     [super viewDidLoad];
     //Preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
-    self.filters = @[@"Accessories", @"Books", @"Clothes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household"];
+    self.filters = @[@"Bazaar", @"Accessories", @"Books", @"Clothes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household", @"Other"];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    //selected filter
-    NSString *filter = [self.filters objectAtIndex:indexPath.row];
-    // Set the filter
-    [self.delegate setFilter:filter];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -60,45 +54,22 @@ static NSString * const cellIdentifier = @"filterCell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
   UILabel *filterLabel = (UILabel *)[cell viewWithTag:201];
   filterLabel.text = [self.filters objectAtIndex:indexPath.row];
+  if (indexPath.row == 0) {
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+  }
   return cell;
 }
 
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    //selected filter
-    NSString *filter = [self.filters objectAtIndex:indexPath.row];
-    // Set the filter
-    if ([segue.identifier isEqualToString:@"showFilter"]) {
-      //throws error with rootViewController
-      BZRBazaarController *bazaarVC = (BZRBazaarController*)[segue.destinationViewController topViewController];
-      bazaarVC.currentFilter = filter;
-      //require this to reload data
-            /*
-      NSLog(@" %@", bazaarVC.navigationItem.title);
-      NSLog(@" %@", bazaarVC.title);
-      NSLog(@" %@", [[segue.destinationViewController topViewController] class]);
-      bazaarVC.navigationItem.title = filter;
-      bazaarVC.title = filter;
-      
-      [bazaarVC viewDidRequestRefresh];
-      NSLog(@"hi");
-      NSLog(@" %@", bazaarVC.navigationItem.title); */
-    }
-    if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
-      SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
-      swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc,
-                               UIViewController* dvc) {
-          UITabBarController* tabController = (UITabBarController*) self.revealViewController.frontViewController;
-          //loads the view of the respective tab
-          [tabController setSelectedIndex:0];
-          //slide the sidebar back
-          [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
-        };
-    }
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:NO];
+  BZRTabBarController* tabBarController = (BZRTabBarController*) [self.revealViewController frontViewController];
+  UINavigationController* navController = [tabBarController.viewControllers objectAtIndex:0];
+  BZRBazaarController* bazaarController = (BZRBazaarController*)[navController topViewController];
+  NSString *filter = [self.filters objectAtIndex:indexPath.row];
+  [bazaarController changeFilter:filter];
+  [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
 }
+
 
 
 
