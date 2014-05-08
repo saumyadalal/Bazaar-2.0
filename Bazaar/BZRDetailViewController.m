@@ -82,8 +82,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
         if (!error) {
             self.trades = objects;
             for (PFObject *tradeItems in self.trades){
-                NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
-                NSLog(@"current item: %@",[item objectId]);
                 if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [UIColor lightGrayColor];
@@ -150,7 +148,17 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
   self.selectButton = (UIButton *) [cell viewWithTag:408];
+    UIImageView *backArrow = (UIImageView *)[cell viewWithTag:409];
+    UIImageView *forwardArrow = (UIImageView *)[cell viewWithTag:410];
   self.item = [self.items objectAtIndex:indexPath.item];
+    NSLog(@"index: %ld",(long)indexPath.item);
+    NSLog(@"count: %lu",(unsigned long)self.items.count);
+    if(indexPath.item == 0){
+        backArrow.hidden = YES;
+    }
+    else if(indexPath.item == self.items.count-1){
+        forwardArrow.hidden = YES;
+    }
   //does initial configure for the current buttons stored on the object
   [self configureLabels:self.item];
   [self configureSelectButton:self.selectButton forItem:self.item];
