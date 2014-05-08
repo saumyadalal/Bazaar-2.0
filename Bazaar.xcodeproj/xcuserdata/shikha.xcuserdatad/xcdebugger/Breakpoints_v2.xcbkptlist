@@ -166,11 +166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bazaar/BZRDetailViewController.m"
-            timestampString = "421212572.144055"
+            timestampString = "421214979.591688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-configureSelectButton:forItem:"
             landmarkType = "5">
          </BreakpointContent>
@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bazaar/BZRDetailViewController.m"
-            timestampString = "421212442.949434"
+            timestampString = "421214979.591688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-loadUserInfo:onCell:"
             landmarkType = "5">
          </BreakpointContent>

@@ -66,6 +66,7 @@
   NSString* status = [self.trade objectForKey:@"status"];
   // *** responded status
   if ([status isEqualToString:@"responded"]) {
+    [self.acceptButton setHidden:NO];
     [self.bidStatusLabel setHidden:YES];
     [self.bidMessageLabel setText:@"Bid request received"];
   }
@@ -78,15 +79,10 @@
     [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, firstName, limit]];
     [self.acceptButton setHidden:YES];
   }
+  // trade is complete or cancelled, irrelevant
   else {
-    [self.acceptButton setEnabled:NO];
     [self.cancelTradeButton setHidden:YES];
-    if ([status isEqualToString:@"accepted"]) {
-      [self.acceptButton setTitle:@"Trade Success!" forState:UIControlStateDisabled];
-    }
-    else {
-      [self.acceptButton setTitle:@"Trade Cancelled" forState:UIControlStateDisabled];
-    }
+    [self.acceptButton setHidden:YES];
   }
 }
 

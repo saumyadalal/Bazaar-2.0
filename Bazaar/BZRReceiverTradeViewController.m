@@ -93,30 +93,28 @@
     self.selectButton.enabled = false;
     self.selectButton.hidden = true;
   }
-  // *** initiated status
   else if ([status isEqualToString:@"initiated"]) {
     NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
     NSString* firstName = [BZRTradeUtils getFirstNameOwnerFormat:[self.trade objectForKey:@"initiator"]];
     NSString* baseStr = @"You can choose upto %d items from %@ marketplace";
     [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, limit, firstName]];
-    //configure send button
-    [self.sendButton setHidden:NO];
-    if ([self.trade[@"returnItems"] count] == 0) {
-      [self.sendButton setEnabled:NO];
-    }
-    else {
-      [self.sendButton setEnabled:YES];
-    }
+    [self configureSendButton];
+  }
+  //hide the send button since trade is completed or cancelled
+  else {
+    [self.sendButton setHidden:YES];
+  }
+}
+
+- (void) configureSendButton {
+  [self.sendButton setHidden:NO];
+  if ([self.trade[@"returnItems"] count] == 0) {
+    [self.sendButton setEnabled:NO];
+    [self.sendButton setBackgroundColor:[UIColor grayColor]];
   }
   else {
-    [self.sendButton setHidden:NO];
-    [self.sendButton setEnabled:NO];
-    if ([status isEqualToString:@"accepted"]) {
-      [self.sendButton setTitle:@"Trade Success!" forState:UIControlStateDisabled];
-    }
-    else {
-      [self.sendButton setTitle:@"Trade Cancelled" forState:UIControlStateDisabled];
-    }
+    [self.sendButton setEnabled:YES];
+    [self.sendButton setBackgroundColor:[UIColor purpleColor]];
   }
 }
 
@@ -180,7 +178,6 @@
 }
 
 - (IBAction)sendBid:(id)sender {
-
     self.trade[@"status"] = @"responded";
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
