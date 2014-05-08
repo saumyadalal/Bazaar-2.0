@@ -175,6 +175,41 @@
     //Reference to navigation controller. Since if you use self.navigationController in popToRootViewController call it sets self.navigationController to nil.
     UINavigationController *navController = self.navigationController;
     [navController popViewControllerAnimated:NO];
+    
+    //cancel all trades involving traded items
+    PFObject *item = self.trade[@"item"];
+    NSArray *returnItems = self.trade[@"returnItems"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trade"];
+    [query whereKey:@"objectId" notEqualTo:self.trade[@"objectId"]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *otherTrades, NSError *error) {
+        if (!error) {
+            for (PFObject *otherTrade in otherTrades) {
+                PFObject *tradeItem = otherTrade[@"item"];
+                NSArray *tradeReturnItems = otherTrade[@"returnItems"];
+                if ([tradeItem isEqual: item]) {
+                    otherTrade[@"status"] = @"unavailable";
+                }
+                else {
+                    for (PFObject* returnItem in returnItems) {
+                        if ([returnItem isEqual:tradeItem]) {
+                            otherTrade[@"status"] = @"unavailable";
+                        }
+                        for (PFObject* tradeReturnItem in tradeReturnItems) {
+                            if ([returnItem isEqual:tradeReturnItem]) {
+                                otherTrade[@"status"] = @"unavailable";
+                            }
+                        }
+                    }
+                }
+                [otherTrade saveInBackground];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"error cancelling other trades after accept");
+        }
+    }];
+
+    
     //create the trade complete view
     BZRSuccessfulTradeViewController* tradeCompleteView = (BZRSuccessfulTradeViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"tradeCompleteView"];
     tradeCompleteView.trade = self.trade;
