@@ -10,6 +10,9 @@
 #import <Parse/Parse.h>
 
 @interface BZRReceiverTradeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *initiatorImage;
+@property (strong, nonatomic) IBOutlet UIImageView *ownerImage;
+@property (strong, nonatomic) IBOutlet UILabel *usersLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 @property (strong, nonatomic) PFObject* trade;
 @property (strong, nonatomic) IBOutlet UIButton *selectButton;

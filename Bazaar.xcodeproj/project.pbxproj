@@ -418,7 +418,6 @@
 				A7DE718E18DDFA1200EE7F9A /* Images.xcassets */,
 				A7DE718318DDFA1200EE7F9A /* Supporting Files */,
 				A79C876F1916091200BB0C68 /* TagReferences */,
-				22051694191A9DC500119B92 /* Successful Trade */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -478,6 +477,7 @@
 				A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */,
 				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
 				A724FB96191600B300D4120A /* Receiver Trade View */,
+				22051694191A9DC500119B92 /* Successful Trade */,
 			);
 			name = "Trade Detail Views";
 			sourceTree = "<group>";

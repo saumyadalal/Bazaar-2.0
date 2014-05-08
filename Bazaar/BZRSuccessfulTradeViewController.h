@@ -10,11 +10,13 @@
 #import <Parse/Parse.h>
 
 @interface BZRSuccessfulTradeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *ownerImage;
+@property (strong, nonatomic) IBOutlet UIImageView *initiatorImage;
+@property (strong, nonatomic) IBOutlet UILabel *usersLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *successLabel;
 @property (strong, nonatomic) IBOutlet UILabel *tradedLabel;
 @property (strong, nonatomic) PFObject* trade;
-@property (strong, nonatomic) IBOutlet UILabel *ownerLabel;
-@property (strong, nonatomic) IBOutlet UILabel *initiatorLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *keyItemImage;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage2_1;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage2_2;

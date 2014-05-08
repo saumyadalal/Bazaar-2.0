@@ -23,7 +23,43 @@
     self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
     //load item image the first time
     [BZRTradeUtils loadImage:self.itemImage fromItem:[self.trade objectForKey:@"item"]];
+    PFUser* owner = [self.trade objectForKey:@"owner"];
+    PFUser *initiator = [self.trade objectForKey:@"initiator"];
+    PFFile *ownerImageFile = [owner objectForKey:@"imageFile"];
+    PFFile *initiatorImageFile = [initiator objectForKey:@"imageFile"];
+    [ownerImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            self.ownerImage.image = [UIImage imageWithData:data];
+            self.ownerImage.layer.cornerRadius = self.ownerImage.frame.size.width / 2;
+            self.ownerImage.clipsToBounds = YES;
+        }
+        else {
+            NSLog(@"error fetching owner image");
+        }
+    }];
+    [initiatorImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            self.initiatorImage.image = [UIImage imageWithData:data];
+            self.initiatorImage.layer.cornerRadius = self.initiatorImage.frame.size.width / 2;
+            self.initiatorImage.clipsToBounds = YES;
+        }
+        else {
+            NSLog(@"error fetching initiator image");
+        }
+    }];
+    
+    [self setUsersLabel];
     [self setFont];
+}
+
+- (void) setUsersLabel {
+    PFUser* owner = [self.trade objectForKey:@"owner"];
+    PFUser *initiator = [self.trade objectForKey:@"initiator"];
+    NSString *ownerName = [BZRTradeUtils getFirstName:owner];
+    NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
+    NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
+    self.usersLabel.text = combined;
+    self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
 }
 
 - (void) setBidMessage {

@@ -12,6 +12,9 @@
 @interface BZRInitiatorTradeViewController : UIViewController
 @property (strong, nonatomic) PFObject* trade;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
+@property (strong, nonatomic) IBOutlet UIImageView *initiatorImage;
+@property (strong, nonatomic) IBOutlet UIImageView *ownerImage;
+@property (strong, nonatomic) IBOutlet UILabel *usersLabel;
 - (IBAction)cancelTrade:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *tradeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage1;

@@ -30,8 +30,6 @@
     [super viewDidLoad];
     PFUser* owner = [self.trade objectForKey:@"owner"];
     PFUser *initiator = [self.trade objectForKey:@"initiator"];
-    self.ownerLabel.text = [BZRTradeUtils getFirstName:owner];
-    self.initiatorLabel.text = [BZRTradeUtils getFirstName:initiator];
     NSNumber *numItems = [self.trade objectForKey:@"numItems"];
     if([numItems isEqualToNumber:@1])
         self.itemImageViews = @[self.itemImage2];
@@ -41,12 +39,45 @@
         self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
     [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
     [BZRTradeUtils loadImage:self.keyItemImage fromItem:[self.trade objectForKey:@"item"]];
-    self.ownerLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:23];
-    self.initiatorLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:23];
     self.successLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:35];
     self.tradedLabel.font = [UIFont fontWithName:@"Gotham-Book" size:20];
+    //set user profile pictures
+    PFFile *ownerImageFile = [owner objectForKey:@"imageFile"];
+    PFFile *initiatorImageFile = [initiator objectForKey:@"imageFile"];
+    [ownerImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            self.ownerImage.image = [UIImage imageWithData:data];
+            self.ownerImage.layer.cornerRadius = self.ownerImage.frame.size.width / 2;
+            self.ownerImage.clipsToBounds = YES;
+        }
+        else {
+            NSLog(@"error fetching owner image");
+        }
+    }];
+    [initiatorImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            self.initiatorImage.image = [UIImage imageWithData:data];
+            self.initiatorImage.layer.cornerRadius = self.initiatorImage.frame.size.width / 2;
+            self.initiatorImage.clipsToBounds = YES;
+        }
+        else {
+            NSLog(@"error fetching initiator image");
+        }
+    }];
+    
+    [self setUsersLabel];
     
     
+}
+
+- (void) setUsersLabel {
+    PFUser* owner = [self.trade objectForKey:@"owner"];
+    PFUser *initiator = [self.trade objectForKey:@"initiator"];
+    NSString *ownerName = [BZRTradeUtils getFirstName:owner];
+    NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
+    NSString *combined = [NSString stringWithFormat:@"%@ & %@", ownerName, initiatorName];
+    self.usersLabel.text = combined;
+    self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
 }
 
 
