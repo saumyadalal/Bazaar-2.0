@@ -72,7 +72,6 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
       PFFile *imageFile = [object objectForKey:@"imageFile"];
-        NSLog(@"image: %@",imageFile);
       [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
           itemImageView.image = [UIImage imageWithData:data];

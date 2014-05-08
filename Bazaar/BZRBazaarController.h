@@ -14,5 +14,5 @@
 @property (nonatomic, strong) NSArray *items;
 - (void) loadMarketPlace;
 - (void) viewWillAppear:(BOOL)animated;
-
+- (void) changeFilter:(NSString*) filter;
 @end

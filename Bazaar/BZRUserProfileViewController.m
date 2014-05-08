@@ -41,18 +41,15 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
-    NSLog(@"before load user: %@",self.user);
     [self loadUserInfo];
 }
 
 
 - (void) loadUserInfo {
-    NSLog(@"user before: %@",self.user);
   if (self.user == nil) {
     self.user = [PFUser currentUser];
   }
   PFUser *user = self.user;
-    NSLog(@"user: %@",self.user);
   PFFile *imageFile = [user objectForKey:@"imageFile"];
   [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
     if (!error) {
