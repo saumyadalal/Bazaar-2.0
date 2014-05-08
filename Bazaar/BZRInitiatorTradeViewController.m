@@ -9,6 +9,7 @@
 #import "BZRInitiatorTradeViewController.h"
 #import "BZRTradeUtils.h"
 #import "BZRNotificationTableViewController.h"
+#import "BZRSuccessfulTradeViewController.h"
 
 @interface BZRInitiatorTradeViewController ()
 @property (nonatomic, strong) NSArray* itemImageViews;
@@ -138,25 +139,34 @@
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved updated trade status");
+            [self changeTradedItemsStatus];
         }
         else {
             NSLog(@"error changing trade status");
         }
     }];
-    self.acceptButton.enabled = false;
-    self.acceptButton.hidden = true;
-    self.cancelTradeButton.hidden = true;
-    self.cancelTradeButton.enabled = false;
-    PFObject* item = self.trade[@"item"];
+    [self.acceptButton setHidden:YES];
+    [self.cancelTradeButton setHidden:YES];
+    //Reference to navigation controller. Since if you use self.navigationController in popToRootViewController call it sets self.navigationController to nil.
+    UINavigationController *navController = self.navigationController;
+    [navController popViewControllerAnimated:NO];
+    //create the trade complete view
+    BZRSuccessfulTradeViewController* tradeCompleteView = (BZRSuccessfulTradeViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"tradeCompleteView"];
+    tradeCompleteView.trade = self.trade;
+    [navController pushViewController:tradeCompleteView animated:YES];
+}
+
+
+- (void) changeTradedItemsStatus {
+  PFObject* item = self.trade[@"item"];
+  item[@"status"] = @"traded";
+  [item saveInBackground];
+  NSArray *items = self.trade[@"returnItems"];
+  for (PFObject* item in items) {
     item[@"status"] = @"traded";
     [item saveInBackground];
-    NSArray *items = self.trade[@"returnItems"];
-    for (PFObject* item in items) {
-        item[@"status"] = @"traded";
-        [item saveInBackground];
-    }
-    
-    
-    
+  }
 }
+
+
 @end

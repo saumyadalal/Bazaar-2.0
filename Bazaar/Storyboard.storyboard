@@ -773,7 +773,7 @@
         <!--Successful Trade View Controller - Trade Complete-->
         <scene sceneID="9VC-Ik-7oB">
             <objects>
-                <viewController id="Imc-up-SA2" customClass="BZRSuccessfulTradeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tradeCompleteView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Imc-up-SA2" customClass="BZRSuccessfulTradeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3rN-R0-Cdb"/>
                         <viewControllerLayoutGuide type="bottom" id="Yyu-2Q-7SC"/>
