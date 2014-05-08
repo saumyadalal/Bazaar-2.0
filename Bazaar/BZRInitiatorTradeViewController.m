@@ -153,26 +153,21 @@
     [self.acceptButton setHidden:YES];
     [self.cancelTradeButton setHidden:YES];
     
-    PFUser* owner = [self.trade objectForKey:@"owner"];
+    //Updating the numTrades for owner and initiator
+    PFUser *owner = [self.trade objectForKey:@"owner"];
     PFUser *initiator = [self.trade objectForKey:@"initiator"];
-    //Updating the numTrades for the owner (but i can't save for the user that's not logged in)
-    /*
-    NSNumber *numTradesOwner = [owner objectForKey:@"numTrades"];
-    NSLog(@"Owner numTrades before: %@", numTradesOwner);
-    int valueOwner = [numTradesOwner intValue];
-    numTradesOwner = [NSNumber numberWithInt:valueOwner + 1];
-    NSLog(@"Owner numTrades now: %@", numTradesOwner);
-    owner[@"numTrades"] = numTradesOwner;
-    [owner saveInBackground]; */
-    //Updating the numTrades for the initiator
-    NSNumber *numTradesInitiator = [owner objectForKey:@"numTrades"];
-    NSLog(@"Initiator numTrades before: %@", numTradesInitiator);
-    int valueInitiator = [numTradesInitiator intValue];
-    numTradesInitiator = [NSNumber numberWithInt:valueInitiator + 1];
-    NSLog(@"Initiator numTrades now: %@", numTradesInitiator);
-    initiator[@"numTrades"] = numTradesInitiator;
-    [initiator saveInBackground];
-    //Reference to navigation controller. Since if you use self.navigationController in popToRootViewController call it sets self.navigationController to nil.
+    
+    PFQuery *ownerQuery = [PFQuery queryWithClassName:@"numTrades"];
+    [ownerQuery whereKey:@"user" equalTo:owner];
+    PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"numTrades"];
+    [initiatorQuery whereKey:@"user" equalTo:initiator];
+    PFQuery *numTradesQuery = [PFQuery orQueryWithSubqueries:@[initiatorQuery, ownerQuery]];
+    [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+        for (PFObject *user in users) {
+            [user incrementKey:@"numTrades"];
+        }
+    }];
+    
     UINavigationController *navController = self.navigationController;
     [navController popViewControllerAnimated:NO];
     

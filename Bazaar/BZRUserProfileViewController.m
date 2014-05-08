@@ -57,8 +57,17 @@
       self.username.text = [user objectForKey:@"username"];
       self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
       self.profilePicture.clipsToBounds = YES;
-      NSString *numOfTrades = [[user objectForKey:@"numTrades"] stringValue];
-        self.numTrades.text = numOfTrades;
+      PFQuery *numTradesQuery = [PFQuery queryWithClassName:@"numTrades"];
+      [numTradesQuery whereKey:@"user" equalTo:self.user];
+      [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+          for (PFObject *user in users) {
+              
+              self.numTrades.text = [user[@"numTrades"] stringValue];
+              NSLog(@"user: %@", user);
+              NSLog(@"numTrades: %@", self.numTrades.text);
+          }
+      }];
+
     }
     else {
       NSLog(@"error fetching image");
