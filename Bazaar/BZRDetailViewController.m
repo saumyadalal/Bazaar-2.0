@@ -82,7 +82,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
             for (PFObject *tradeItems in self.trades){
                 NSLog(@"trade items: %@",[[tradeItems objectForKey:@"item"] objectId]);
                 NSLog(@"current item: %@",[item objectId]);
-                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]]){
+                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
                     NSLog(@"here");
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [UIColor lightGrayColor];

@@ -32,6 +32,10 @@
 {
   [super viewWillAppear:animated];
   [self updateContent];
+    if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
+        UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [cancelledView show];
+    }
 }
 
 - (void) updateContent {
@@ -135,9 +139,10 @@
 
 - (IBAction)cancelTrade:(id)sender {
   [BZRTradeUtils cancelTrade:self.trade];
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
 - (IBAction)sendBid:(id)sender {
 
     self.trade[@"status"] = @"responded";
