@@ -98,4 +98,12 @@
 }
 */
 
+- (IBAction)launchMessenger:(id)sender {
+ // NSString* url = "fb-messenger://user-thread/{user-id}
+  NSLog(@"launch messenger");
+  NSURL *url = [NSURL URLWithString:@"fb://messaging/compose"];
+  [[UIApplication sharedApplication] openURL:url];
+}
+
+
 @end

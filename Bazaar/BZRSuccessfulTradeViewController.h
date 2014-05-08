@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface BZRSuccessfulTradeViewController : UIViewController
+- (IBAction)launchMessenger:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *ownerImage;
 @property (strong, nonatomic) IBOutlet UIImageView *initiatorImage;
 @property (strong, nonatomic) IBOutlet UILabel *usersLabel;
