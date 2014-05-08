@@ -17,6 +17,7 @@
 @property (strong, nonatomic) SWRevealViewController *revealController;
 @property (strong, nonatomic) NSMutableData *imageData;
 @property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *facebookID;
 @end
 
 static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&height=200&type=normal&width=200";
@@ -98,11 +99,11 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
   [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
     if (!error) {
       NSDictionary *userData = (NSDictionary *)result;
-      NSString *facebookID = userData[@"id"];
       //store name and image data
       self.username = userData[@"name"];
+      self.facebookID = userData[@"id"];
       self.imageData = [[NSMutableData alloc] init];
-      NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:URLformat, facebookID]];
+      NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:URLformat, self.facebookID]];
       NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:imageURL
                                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                             timeoutInterval:2.0f];
@@ -127,6 +128,7 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
   PFFile *imageFile = [PFFile fileWithName:@"profilePicture.png" data:self.imageData];
   user[@"imageFile"] = imageFile;
   user[@"username"] = self.username;
+  user[@"facebookID"] = self.facebookID;
   [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
       NSLog(@"successfully saved new user info");

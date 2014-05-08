@@ -21,6 +21,21 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  NSInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
+  NSInteger currentSize = [[self.trade objectForKey:@"returnItems"] count];
+  NSString* baseStr = @"You can pick %d more %@";
+  NSInteger diff = limit - currentSize;
+  NSString* itemStr = @"items";
+  if (diff == 1) {
+    itemStr = @"item";
+  }
+  NSString* message = [NSString stringWithFormat:baseStr, diff, itemStr];
+  [self.itemSelectionMessage setText:message];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
