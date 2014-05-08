@@ -84,8 +84,96 @@
   return firstName;
 }
 
++ (NSString *) getStatusMessage:(PFObject*)trade forUser:(PFUser*)user {
+  NSString* status = [trade objectForKey:@"status"];
+  if ([status isEqualToString:@"initiated"]) {
+    return [self getTradeInitiatedMessage:trade forUser:user];
+  }
+  else if ([status isEqualToString:@"responded"]) {
+    return [self getTradeRespondedMessage:trade forUser:user];
+  }
+  else if ([status isEqualToString:@"complete"]) {
+    return [self getTradeCompleteMessage:trade forUser:user];
+  }
+  else if ([status isEqualToString:@"cancelled"]) {
+    return [self getTradeCancelledMessage:trade forUser:user];
+  }
+  else if ([status isEqualToString:@"unavailable"]) {
+    return [self getTradeUnavailableMessage:trade forUser:user];
+  }
+  return nil;
+}
+
++ (NSString*) getTradeUnavailableMessage:(PFObject*) trade forUser:(PFUser*) user {
+  return @"This item is no longer unavailable";
+}
+
++ (NSString*) getTradeCancelledMessage:(PFObject*) trade forUser:(PFUser*) user {
+  return @"This trade has been cancelled";
+}
+
++ (NSString*) getTradeCompleteMessage:(PFObject*) trade forUser:(PFUser*) user {
+  PFUser *initiator = [trade objectForKey:@"initiator"];
+  NSString *message = @"%@ accepted %@ bid";
+  NSString *messageText = @"";
+  if ([self isInitiator:user forTrade:trade]) {
+    messageText = @"Success: Trade Complete!";
+  }
+  else {
+    //message shown to receiver
+    messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"], @"your"];
+  }
+  return messageText;
+}
 
 
++ (NSString*) getTradeRespondedMessage:(PFObject*) trade forUser:(PFUser*) user {
+  PFUser *initiator = [trade objectForKey:@"initiator"];
+  PFUser *receiver = [trade objectForKey:@"owner"];
+  
+  NSString *message = @"%@ sent %@ a bid";
+  NSString *messageText = @"";
+  //receiver sends initiator a bid
+  if ([self isInitiator:user forTrade:trade]) {
+    //Shikha sent you a bid
+    messageText = [NSString stringWithFormat:message, [self getFirstNameOwnerFormat:receiver], @"you"];
+  }
+  else {
+    //message shown to receiver
+    messageText = [NSString stringWithFormat:message, "You", [initiator objectForKey:@"username"]];
+  }
+  return messageText;
+}
+
++ (NSString *) getTradeInitiatedMessage: (PFObject*) trade forUser:(PFUser*) user {
+  PFUser *initiator = [trade objectForKey:@"initiator"];
+  PFUser *receiver = [trade objectForKey:@"owner"];
+  PFObject* item = [trade objectForKey:@"item"];
+  
+  NSString *message = @"%@ requested %@ %@";
+  NSString *messageText = @"";
+  //you initiated the trade
+  if ([self isInitiator:user forTrade:trade]) {
+    messageText = [NSString stringWithFormat:message, @"You",
+                   [BZRTradeUtils getFirstNameOwnerFormat:receiver],
+                   [item objectForKey:@"name"]];
+  }
+  //you received the trade
+  else {
+    messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
+                   @"your", [item objectForKey:@"name"]];
+  }
+  return messageText;
+}
+
++ (BOOL) isInitiator:(PFUser*)user forTrade:(PFObject*)trade {
+  PFUser *initiator = [trade objectForKey:@"initiator"];
+  //[initator objectForKey: objectId does not work
+  if ([[user objectId] isEqualToString:[initiator objectId]]) {
+    return YES;
+  }
+  return NO;
+}
 
 
 

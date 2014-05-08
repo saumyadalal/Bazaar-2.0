@@ -16,4 +16,7 @@
 + (void) loadImage:(UIImageView*)imageView fromItem:(PFObject*)item;
 + (NSString *) getFirstName: (PFUser *) user;
 + (NSString *) getFirstNameOwnerFormat: (PFUser*) user;
++ (NSString *) getStatusMessage:(PFObject*)trade forUser:(PFUser*)user;
++ (NSString *) getTradeInitiatedMessage: (PFObject*) trade forUser:(PFUser*) user;
++ (BOOL) isInitiator:(PFUser*)user forTrade:(PFObject*)trade;
 @end

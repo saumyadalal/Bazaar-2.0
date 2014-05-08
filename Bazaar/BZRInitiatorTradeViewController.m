@@ -66,7 +66,7 @@
     self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
 }
 
-- (void) setBidMessage {
+- (void) updateDisplay {
   NSString* status = [self.trade objectForKey:@"status"];
   // *** responded status
   if ([status isEqualToString:@"responded"]) {
@@ -87,6 +87,11 @@
   else {
     [self.cancelTradeButton setHidden:YES];
     [self.acceptButton setHidden:YES];
+    if ([status isEqualToString: @"cancelled"]) {
+      [self.greyOverlay setHidden:NO];
+      [self.greyOverlay setText:@"This trade has been cancelled"];
+      [self.view setUserInteractionEnabled:NO];
+    }
   }
 }
 
@@ -94,17 +99,12 @@
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self updateContent];
-    if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
-        self.greyOverlay.hidden = false;
-        UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [cancelledView show];
-    }
 }
 
 
 - (void) updateContent {
   [self.tradeLabel setText:self.tradeMessage];
-  [self setBidMessage];
+  [self updateDisplay];
   //load return item images
   if ([self.trade[@"status"] isEqualToString:@"responded"]) {
       [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];

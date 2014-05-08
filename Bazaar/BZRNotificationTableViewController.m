@@ -21,20 +21,6 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 @implementation BZRNotificationTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self loadNotifications];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -105,44 +91,21 @@ static NSString * const cellIdentifier = @"NotificationCell";
     return cell;
 }
 
+
 - (void) setMessage:(UILabel*) messageLabel forTrade:(PFObject*)trade {
-  PFUser *initiator = [trade objectForKey:@"initiator"];
-  PFUser *receiver = [trade objectForKey:@"owner"];
-  PFObject* item = [trade objectForKey:@"item"];
-  
-  NSString *message = @"%@ requested %@ %@";
-  NSString *messageText = @"";
-  //you initiated the trade
-  if ([self isInitiator:trade]) {
-    messageText = [NSString stringWithFormat:message, @"You",
-                   [BZRTradeUtils getFirstNameOwnerFormat:receiver],
-                   [item objectForKey:@"name"]];
-  }
-  //you received the trade
-  else {
-    messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
-                   @"your", [item objectForKey:@"name"]];
-  }
-  [messageLabel setText:messageText];
+  PFUser* user = [PFUser currentUser];
+  NSString* message = [BZRTradeUtils getStatusMessage:trade forUser:user];
+  [messageLabel setText:message];
 }
 
-- (BOOL) isInitiator:(PFObject*)trade {
-  PFUser *initiator = [trade objectForKey:@"initiator"];
-  PFUser *user = [PFUser currentUser];
-  //[initator objectForKey: objectId does not work
-  if ([[user objectId] isEqualToString:[initiator objectId]]) {
-    return YES;
-  }
-  return NO;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  PFObject* trade = [self.trades objectAtIndex:indexPath.row];
+    PFObject* trade = [self.trades objectAtIndex:indexPath.row];
     NSString *status = [trade objectForKey:@"status"];
     if([status isEqualToString:@"complete"]) {
         [self performSegueWithIdentifier:@"successfulTradeDetail" sender:self];
     }
-  else if ([self isInitiator:trade]) {
+  else if ([BZRTradeUtils isInitiator:[PFUser currentUser] forTrade:trade]) {
       [self performSegueWithIdentifier:@"initiatorTradeDetail" sender:self];
   }
   else {
@@ -152,18 +115,18 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   NSIndexPath *selectedIndexPath = [[self.tableView indexPathsForSelectedRows] objectAtIndex:0];
-  UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
-  UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
+  PFObject* trade = [self.trades objectAtIndex:selectedIndexPath.row];
+  PFUser* user = [PFUser currentUser];
   if ([segue.identifier isEqualToString:@"receiverTradeDetail"]) {
       BZRReceiverTradeViewController *receiverTradeView =
         (BZRReceiverTradeViewController *) segue.destinationViewController;
       receiverTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
-      receiverTradeView.tradeMessage = [messageLabel text];
+      receiverTradeView.tradeMessage = [BZRTradeUtils getTradeInitiatedMessage:trade forUser:user];
   }
   else if([segue.identifier isEqualToString:@"initiatorTradeDetail"]) {
       BZRInitiatorTradeViewController *initiatorTradeView = (BZRInitiatorTradeViewController *) segue.destinationViewController;
       initiatorTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
-      initiatorTradeView.tradeMessage = [messageLabel text];
+      initiatorTradeView.tradeMessage = [BZRTradeUtils getTradeInitiatedMessage:trade forUser:user];
   }
     else if([segue.identifier isEqualToString:@"successfulTradeDetail"]) {
         BZRSuccessfulTradeViewController *successfulTradeView = (BZRSuccessfulTradeViewController *) segue.destinationViewController;
