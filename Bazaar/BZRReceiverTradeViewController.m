@@ -50,29 +50,23 @@
     }];
     self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
     [self setUsersLabel];
-    [self setBidMessage];
     [self setFont];
     self.greyOverlay.hidden = true;
     self.greyOverlay.backgroundColor = [[UIColor alloc] initWithRed:0 green:0
-                                                               blue:0 alpha:0.5];
+                                                               blue:0 alpha:0.8];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
   [self updateContent];
-    if ([[self.trade objectForKey:@"status"] isEqual: @"cancelled"]) {
-        self.greyOverlay.hidden = false;
-        UIAlertView* cancelledView = [[UIAlertView alloc] initWithTitle:@"Trade Cancelled" message:@"This trade has been cancelled." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [cancelledView show];
-    }
 }
 
 - (void) updateContent {
   
   [self.tradeLabel setText:self.tradeMessage];
   //load return item images
-  [self setBidMessage];
+  [self updateDisplay];
   [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
 }
 
@@ -89,7 +83,8 @@
     self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
 }
 
-- (void) setBidMessage {
+//update bid message and button display
+- (void) updateDisplay {
   NSString* status = [self.trade objectForKey:@"status"];
   if ([status isEqualToString:@"responded"]) {
     [self.bidMessageLabel setText:@"Bid request sent"];
@@ -97,7 +92,7 @@
     self.selectButton.enabled = false;
     self.selectButton.hidden = true;
   }
-  else if ([status isEqualToString:@"initiated"]) {
+  else {
     NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
     NSString* firstName = [BZRTradeUtils getFirstNameOwnerFormat:[self.trade objectForKey:@"initiator"]];
     NSString* baseStr = @"You can choose upto %d items from %@ marketplace";
@@ -105,9 +100,17 @@
     [self configureSendButton];
   }
   //hide the send button since trade is completed or cancelled
-  else {
-    [self.sendButton setHidden:YES];
+  if ([status isEqualToString:@"cancelled"]) {
+    [self inactivateTrade];
   }
+}
+
+- (void) inactivateTrade {
+  [self.sendButton setHidden:YES];
+  [self.cancelTradeButton setHidden:YES];
+  [self.greyOverlay setHidden:NO];
+  [self.greyOverlay setText:@"This trade has been cancelled"];
+  [self.view setUserInteractionEnabled:NO];
 }
 
 - (void) configureSendButton {
@@ -192,9 +195,7 @@
             NSLog(@"error changing trade status");
         }
     }];
-    self.sendButton.enabled = false;
     self.sendButton.hidden = true;
-    self.selectButton.enabled = false;
     self.selectButton.hidden = true;
     self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [self.sentBidView show];
