@@ -258,7 +258,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Hfv-cK-89d">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="WQs-ye-yYO"/>
+                        <barButtonItem key="leftBarButtonItem" image="1399586289_menu-alt.png" id="WQs-ye-yYO"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBN-lh-MvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1170,6 +1170,7 @@
         <image name="1399426832_icon-camera.png" width="32" height="32"/>
         <image name="1399583194_back.png" width="20" height="20"/>
         <image name="1399583194_forward.png" width="42" height="41"/>
+        <image name="1399586289_menu-alt.png" width="20" height="20"/>
         <image name="bazaar30.1.png" width="26" height="32"/>
         <image name="camera30.png" width="30" height="22"/>
         <image name="trade.png" width="35" height="31"/>
