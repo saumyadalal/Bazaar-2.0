@@ -35,10 +35,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
     self.collectionView.pagingEnabled = YES;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
     [self.collectionView setShowsHorizontalScrollIndicator:YES];
-
 }
 
 
@@ -151,8 +152,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
     UIImageView *backArrow = (UIImageView *)[cell viewWithTag:409];
     UIImageView *forwardArrow = (UIImageView *)[cell viewWithTag:410];
   self.item = [self.items objectAtIndex:indexPath.item];
-    NSLog(@"index: %ld",(long)indexPath.item);
-    NSLog(@"count: %lu",(unsigned long)self.items.count);
     if(indexPath.item == 0){
         backArrow.hidden = YES;
     }
@@ -180,7 +179,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 
 /**********************
- *** Select Buttons
+ *** Select Buttons start
  **********************/
 
 //called in didStopScrolling
@@ -221,6 +220,11 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self toggleButton:self.selectButton onSelection:isSelected];
 }
 
+/**********************
+ *** Select Buttons end
+ **********************/
+
+
 
 
 - (IBAction)goToProfileView:(id)sender {
@@ -240,7 +244,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
       marketplaceView.user = [self.item objectForKey:@"owner"];
     BZRUserProfileViewController *profileView = (BZRUserProfileViewController *) segue.destinationViewController;
       profileView.user = [self.item objectForKey:@"owner"];
-      NSLog(@"user from detail: %@",profileView.user);
   }
   
 }

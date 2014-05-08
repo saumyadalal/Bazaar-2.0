@@ -131,7 +131,6 @@ static NSString * const cellIdentifier = @"ItemCell";
   {
     BZRDetailViewController *detailViewBazaar = (BZRDetailViewController *) segue.destinationViewController; //set destination
     NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected item
-      NSLog(@"items passed to detail view %d", [self.items count]);
     detailViewBazaar.items = self.items; //give item to destination controller
       
     detailViewBazaar.currentIndexPath = selectedIndexPath;
