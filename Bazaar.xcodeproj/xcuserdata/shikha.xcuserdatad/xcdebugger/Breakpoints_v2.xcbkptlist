@@ -171,7 +171,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
             endingLineNumber = "192"
-            landmarkName = "-hideSelectButtons:"
+            landmarkName = "-configureSelectButton:forItem:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -235,7 +235,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "273"
             endingLineNumber = "273"
-            landmarkName = "-scrollViewDidEndDecelerating:"
+            landmarkName = "-loadUserInfo:onCell:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

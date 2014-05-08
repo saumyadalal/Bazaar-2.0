@@ -149,21 +149,12 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UILabel *itemDescription = (UILabel *) [cell viewWithTag:405];
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
-<<<<<<< HEAD
   self.selectButton = (UIButton *) [cell viewWithTag:408];
   PFObject* item = [self.items objectAtIndex:indexPath.item];
   //does initial configure for the current buttons stored on the object
   [self configureLabels:item];
   [self configureSelectButton:self.selectButton forItem:item];
   [self loadTrades:item]; //hide trade buttons if already trading for item
-=======
-  self.yesButton = (UIButton *) [cell viewWithTag:408];
-  self.noButton = (UIButton *) [cell viewWithTag:409];
-  self.item = [self.items objectAtIndex:indexPath.item];
-  [self configureLabels:self.item];
-  [self configureSelectButtons:self.item];
-  [self loadTrades:self.item]; //hide trade buttons if already trading for item
->>>>>>> 09f55ce05588a7bbca36100321fa076665d609df
   //call this to fetch image data
   [self.item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
@@ -217,33 +208,16 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 - (IBAction)selectItem:(id)sender {
   PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
-<<<<<<< HEAD
   BOOL isSelected = [self.delegate editReturnWithItem:item];
   //to see immediate change
   [self toggleButton:self.selectButton onSelection:isSelected];
 }
 
 
-/**********************
- *** Select Buttons end
- **********************/
-
-=======
-  [self.delegate editReturnWithItem:item isSelected:YES];
-}
-
-- (IBAction)deselectItem:(id)sender {
-  [self toggleSelected:self.noButton];
-  PFObject* item = [self.items objectAtIndex:self.currentIndexPath.item];
-  [self.delegate editReturnWithItem:item isSelected:NO];
-}
 
 - (IBAction)goToProfileView:(id)sender {
 //    [self performSegueWithIdentifier:@"viewUserProfile" sender:self];
 }
->>>>>>> 09f55ce05588a7bbca36100321fa076665d609df
-
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
