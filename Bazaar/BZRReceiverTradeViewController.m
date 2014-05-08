@@ -48,7 +48,7 @@
             NSLog(@"error fetching initiator image");
         }
     }];
-    
+    self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
     [self setUsersLabel];
     [self setBidMessage];
     [self setFont];

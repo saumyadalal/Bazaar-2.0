@@ -216,7 +216,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
 
 
 - (IBAction)goToProfileView:(id)sender {
-//    [self performSegueWithIdentifier:@"viewUserProfile" sender:self];
+    //[self performSegueWithIdentifier:@"viewUserProfile" sender:self];
 }
 
 

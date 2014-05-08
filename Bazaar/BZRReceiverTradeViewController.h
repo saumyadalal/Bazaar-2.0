@@ -26,5 +26,6 @@
 - (IBAction)sendBid:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) NSString* tradeMessage;
+@property (strong, nonatomic) IBOutlet UILabel *bidLabel;
 
 @end
