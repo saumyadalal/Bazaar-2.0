@@ -105,8 +105,8 @@ static NSString * const cellIdentifier = @"UserItemCell";
 	// to populate self.items
     [self loadMarketPlace];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    [self.noItemsLabel setTextColor:[BZRDesignUtils placeHolderLightGrey]];
-    [self.noItemsLabel setFont:[UIFont fontWithName:@"Gotham-Book" size:16]];
+    [self.noItemsLabel setTextColor:[BZRDesignUtils placeHolderColor]];
+    [self.noItemsLabel setFont:[UIFont fontWithName:@"Gotham-Book" size:17]];
 }
 
 - (void)didReceiveMemoryWarning
