@@ -17,5 +17,6 @@
 + (UIColor*) dateTimeColor;
 + (UIColor*) profileBackgroundColor;
 + (UIColor*) placeHolderColor;
++ (UIColor*) placeHolderLightGrey;
 + (void) showSeenStatus:(BOOL)isNew forCell:(UITableViewCell*) cell;
 @end
