@@ -87,12 +87,14 @@ static NSString * const cellIdentifier = @"detailViewCell";
                 if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
+                    self.tradeButton.titleLabel.textColor = [UIColor darkGrayColor];
                     [self.tradeButton setEnabled:NO];
                     break;
                 }
                 else {
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [BZRDesignUtils purpleColor];
+                    self.tradeButton.titleLabel.textColor = [UIColor whiteColor];
                     [self.tradeButton setEnabled:YES];
                 }
             }

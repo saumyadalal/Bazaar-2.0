@@ -26,7 +26,7 @@
 }
 
 + (UIColor*) newNotificationColor {
-  return [UIColor colorWithRed:151/255.0 green:157/255.0 blue:230/255.0 alpha:0.1];
+  return [UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:0.05];
 }
 
 + (void) showSeenStatus:(BOOL)seen forCell:(UITableViewCell*) cell {
@@ -39,15 +39,15 @@
 }
 
 + (UIColor*) dateTimeColor {
-  return [UIColor grayColor];
+  return [UIColor darkGrayColor];
 }
 
 + (UIColor*) placeHolderColor {
-  return [UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:0.9];
+  return [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1];
 }
 
 + (UIColor*) profileBackgroundColor {
-  return [UIColor colorWithRed:237/255.0 green:232/255.0 blue:228/255.0 alpha:0.9];
+  return [UIColor colorWithRed:0/255.0 green:221/255.0 blue:221/255.0 alpha:0.8];
 }
 
 

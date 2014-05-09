@@ -46,7 +46,7 @@
   [self.numTrades setFont:[UIFont fontWithName:fontName size:14]];
   self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
   self.logoutButton.titleLabel.font = [UIFont fontWithName:fontName size:13];
-  [self.view setBackgroundColor:[BZRDesignUtils profileBackgroundColor]];
+    self.behindProfileColor.backgroundColor = [UIColor colorWithRed:216/255.0 green:216/255.0 blue:216/255.0 alpha:0.5];
   //[self.containerView.layer setShadowOffset:CGSizeMake(5, 5)];
   //[self.containerView.layer setShadowColor:[[UIColor grayColor] CGColor]];
 }
