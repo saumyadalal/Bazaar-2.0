@@ -136,11 +136,13 @@
 - (IBAction)cancelTrade:(id)sender {
   self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
+  [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
   [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)acceptTrade:(id)sender {
     self.trade[@"status"] = @"complete";
+    [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved updated trade status");

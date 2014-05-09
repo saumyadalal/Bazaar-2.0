@@ -7,6 +7,7 @@
 //
 
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 
 @implementation BZRTradeUtils
 
@@ -181,6 +182,35 @@
   return NO;
 }
 
++ (void) updateSeenStatus:(BOOL)wasSeen forTrade:(PFObject*)trade forSelf:(BOOL)userSelf {
+  PFUser* user;
+  if (userSelf) {
+    user = [PFUser currentUser];
+  }
+  else {
+    user = [self getReceiverUser:trade];
+  }
+  NSDictionary* seen = trade[@"seen"];
+  if (wasSeen) {
+      [seen setValue:@"yes" forKey:[user objectId]];
+  }
+  else {
+    [seen setValue:@"no" forKey:[user objectId]];
+  }
+  [trade saveInBackground];
+}
+
++ (PFUser*) getReceiverUser:(PFObject*)trade {
+  PFUser* initiator = [trade objectForKey:@"initiator"];
+  PFUser* receiver = [trade objectForKey:@"owner"];
+  PFUser* currentUser = [PFUser currentUser];
+  if ([[currentUser objectId] isEqualToString:[initiator objectId]]) {
+    return receiver;
+  }
+  else {
+    return initiator;
+  }
+}
 
 
 @end

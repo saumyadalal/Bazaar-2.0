@@ -11,6 +11,7 @@
 #import "BZRSuccessfulTradeViewController.h"
 #import "BZRInitiatorTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 #import <Parse/Parse.h>
 
 @interface BZRNotificationTableViewController ()
@@ -84,13 +85,16 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
     PFObject* item = [trade objectForKey:@"item"];
-  
+    NSDictionary* seen = [trade objectForKey:@"seen"];
+    NSString* wasSeen = [seen objectForKey:[[PFUser currentUser] objectId]];
+    if ([wasSeen isEqualToString:@"no"]) {
+      [BZRDesignUtils showSeenStatus:NO forCell:cell];
+    }
     [self setMessage:messageLabel forTrade:trade];
     [BZRTradeUtils loadImage:itemImageView fromItem:item];
   
     return cell;
 }
-
 
 - (void) setMessage:(UILabel*) messageLabel forTrade:(PFObject*)trade {
   PFUser* user = [PFUser currentUser];
@@ -101,16 +105,20 @@ static NSString * const cellIdentifier = @"NotificationCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    //notification has been read
+    [BZRTradeUtils updateSeenStatus:YES forTrade:trade forSelf:YES];
+    [BZRDesignUtils showSeenStatus:YES forCell:cell];
     NSString *status = [trade objectForKey:@"status"];
     if([status isEqualToString:@"complete"]) {
         [self performSegueWithIdentifier:@"successfulTradeDetail" sender:self];
     }
-  else if ([BZRTradeUtils isInitiator:[PFUser currentUser] forTrade:trade]) {
+    else if ([BZRTradeUtils isInitiator:[PFUser currentUser] forTrade:trade]) {
       [self performSegueWithIdentifier:@"initiatorTradeDetail" sender:self];
-  }
-  else {
+    }
+    else {
      [self performSegueWithIdentifier:@"receiverTradeDetail" sender:self];
-  }
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -9,6 +9,7 @@
 #import "BZRDetailViewController.h"
 #import "BZRTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 #import "BZRUserMarketPlaceViewController.h"
 #import "BZRUserProfileViewController.h"
 #import <Parse/Parse.h>
@@ -89,9 +90,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
                     [self.tradeButton setEnabled:NO];
                     break;
                 }
-                else{
+                else {
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
-                    self.tradeButton.backgroundColor = [UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1];
+                    self.tradeButton.backgroundColor = [BZRDesignUtils purpleColor];
                     [self.tradeButton setEnabled:YES];
                 }
             }

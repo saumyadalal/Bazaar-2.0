@@ -182,12 +182,14 @@
 - (IBAction)cancelTrade:(id)sender {
   self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
+  [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)sendBid:(id)sender {
     self.trade[@"status"] = @"responded";
+    [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved updated trade status");

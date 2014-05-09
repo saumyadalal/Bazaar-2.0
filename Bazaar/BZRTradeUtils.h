@@ -20,4 +20,6 @@
 + (NSString *) getStatusMessage:(PFObject*)trade forUser:(PFUser*)user;
 + (NSString *) getTradeInitiatedMessage: (PFObject*) trade forUser:(PFUser*) user;
 + (BOOL) isInitiator:(PFUser*)user forTrade:(PFObject*)trade;
++ (void) updateSeenStatus:(BOOL)wasSeen forTrade:(PFObject*)trade forSelf:(BOOL)userSelf;
++ (PFUser*) getReceiverUser:(PFObject*)trade;
 @end
