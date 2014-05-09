@@ -10,6 +10,7 @@
 #import "BZRUserMarketPlaceViewController.h"
 #import "SWRevealViewController.h"
 #import "BZRDesignUtils.h"
+#import "BZRTradeUtils.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
@@ -56,27 +57,19 @@
     self.user = [PFUser currentUser];
   }
   PFUser *user = self.user;
-  PFFile *imageFile = [user objectForKey:@"imageFile"];
-  [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-    if (!error) {
-      self.profilePicture.image = [UIImage imageWithData:data];
-      self.username.text = [user objectForKey:@"username"];
-      self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
-      self.profilePicture.clipsToBounds = YES;
-      PFQuery *numTradesQuery = [PFQuery queryWithClassName:@"numTrades"];
-      [numTradesQuery whereKey:@"user" equalTo:self.user];
-      [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-          for (PFObject *user in users) {
-              
-              self.numTrades.text = [user[@"numTrades"] stringValue];
-              NSLog(@"user: %@", user);
-              NSLog(@"numTrades: %@", self.numTrades.text);
-          }
-      }];
+  self.username.text = [user objectForKey:@"username"];
+  [BZRTradeUtils loadCircularImage:self.profilePicture fromObject:user];
+  [self loadNumTrades];
+}
 
-    }
-    else {
-      NSLog(@"error fetching image");
+- (void) loadNumTrades {
+  PFQuery *numTradesQuery = [PFQuery queryWithClassName:@"TradeUser"];
+  [numTradesQuery whereKey:@"user" equalTo:self.user];
+  [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+    for (PFObject *user in users) {
+      self.numTrades.text = [user[@"numTrades"] stringValue];
+      NSLog(@"user: %@", user);
+      NSLog(@"numTrades: %@", self.numTrades.text);
     }
   }];
 }

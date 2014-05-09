@@ -14,6 +14,7 @@
 
 @interface BZRReceiverTradeViewController ()
 @property (strong, nonatomic) UIAlertView *sentBidView;
+@property (strong, nonatomic) UIAlertView *validBidView;
 @property (nonatomic, strong) NSArray* itemImageViews;
 @end
 
@@ -26,7 +27,8 @@
     [self loadContent];
     [self.itemImage1.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.itemImage1 setTintColor:[UIColor grayColor]];
-
+    self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    self.validBidView = [[UIAlertView alloc] initWithTitle:@"Please edit your bid" message:@"One or more items are no longer available for trade" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 }
 
 /******************
@@ -81,7 +83,6 @@
 }
 
 - (void) updateContent {
-  
   [self.tradeLabel setText:self.tradeMessage];
   //load return item images
   [self updateDisplay];
@@ -110,17 +111,20 @@
   }
   //hide the send button since trade is completed or cancelled
   if ([status isEqualToString:@"cancelled"]) {
-    [self inactivateTrade];
+    [self inactivateTrade:@"Trade has been cancelled"];
+  }
+  else if ([status isEqualToString:@"unavailable"]) {
+    [self inactivateTrade:@"Items no longer available"];
   }
 }
 
-- (void) inactivateTrade {
+- (void) inactivateTrade:(NSString*)message {
   [self.sendButton setHidden:YES];
   [self.cancelTradeButton setHidden:YES];
   [self.selectButton setHidden:YES];
   [self.greyOverlay setHidden:NO];
   [self.greyOverlay setBackgroundColor:[BZRDesignUtils greyOverlayColor]];
-  [self.greyOverlay setText:@"This trade has been cancelled"];
+  [self.greyOverlay setText:message];
   [self.view setUserInteractionEnabled:NO];
 }
 
@@ -128,12 +132,10 @@
   [self.sendButton setHidden:NO];
   if ([self.trade[@"returnItems"] count] == 0) {
     [self.sendButton setEnabled:NO];
-    [self.selectButton setImage:[UIImage imageNamed:@"add_icon.png"] forState:UIControlStateNormal];
     [self.sendButton setBackgroundColor:[BZRDesignUtils buttonDisabledColor]];
   }
   else {
     [self.sendButton setEnabled:YES];
-    [self.selectButton setImage:nil forState:UIControlStateNormal];
     [self.sendButton setBackgroundColor:[BZRDesignUtils purpleColor]];
   }
 }
@@ -190,25 +192,50 @@
   self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
   [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
-  [self.navigationController popToRootViewControllerAnimated:YES];
+  [self inactivateTrade:@"Trade has been cancelled"];
 }
 
 - (IBAction)sendBid:(id)sender {
-    self.trade[@"status"] = @"responded";
-    [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
-    [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            NSLog(@"saved updated trade status");
-        }
-        else {
-            NSLog(@"error changing trade status");
-        }
-    }];
-    self.sendButton.hidden = true;
-    self.selectButton.hidden = true;
-    self.sentBidView = [[UIAlertView alloc] initWithTitle:@"Bid Sent" message:@"You have sent your bid!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [self.sentBidView show];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    BOOL isAvailable = [self isAvailableReturnItems];
+    if (isAvailable) {
+      [self sendSuccessfulBid];
+    }
+    else {
+      [self.validBidView show];
+      [self updateContent];
+    }
 }
+
+- (void) sendSuccessfulBid {
+  self.trade[@"status"] = @"responded";
+  [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
+  [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (!error) {
+      NSLog(@"saved updated trade status");
+    }
+    else {
+      NSLog(@"error changing trade status");
+    }
+  }];
+  self.sendButton.hidden = true;
+  self.selectButton.hidden = true;
+
+  [self.sentBidView show];
+  [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (BOOL) isAvailableReturnItems {
+  BOOL available = YES;
+  NSMutableArray* returnItems = self.trade[@"returnItems"];
+  for (PFObject* item in returnItems) {
+    if ([item[@"status"] isEqualToString:@"traded"]) {
+      [returnItems removeObject:item];
+      available = NO;
+    }
+  }
+  return available;
+}
+
+
+
 @end

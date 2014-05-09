@@ -31,15 +31,22 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)changeSection:(id)sender {
+  if ([self.segment selectedSegmentIndex] == 0) {
+    [self loadNotificationsByStatus:nil];
+  }
+  else {
+    [self loadNotificationsByStatus:@"complete"];
+  }
+}
 
 - (void) viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNotifications) name:@"updateParent" object:nil];
     [super viewWillAppear:animated];
-    [self loadNotifications];
+    [self loadNotificationsByStatus:nil];
     self.title = @"Trades";
 }
 
-- (void)loadNotifications
+- (void)loadNotificationsByStatus:(NSString*)status
 {
   PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"Trade"];
   [initiatorQuery whereKey:@"initiator" equalTo:[PFUser currentUser]];
@@ -50,6 +57,9 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
   [query includeKey:@"item"];
   [query includeKey:@"owner"];
   [query includeKey:@"initiator"];
+  if (status) {
+      [query whereKey:@"status" equalTo:status];
+  }
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
       self.trades = [[NSMutableArray alloc] initWithArray:objects];
@@ -158,5 +168,6 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
         successfulTradeView.trade = [self.trades objectAtIndex:selectedIndexPath.row];
     }
 }
+
 
 @end

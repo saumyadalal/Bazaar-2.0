@@ -24,14 +24,6 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
 
 @implementation BZRLoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
-
 
 - (void)viewDidLoad
 {
@@ -114,10 +106,10 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
       NSLog(@"%@", error);
     }
   }];
-    PFObject *numTrades = [PFObject objectWithClassName:@"numTrades"];
-    numTrades[@"user"]=[PFUser currentUser];
-    numTrades[@"numTrades"]=@0;
-    [numTrades saveInBackground];
+  PFObject *numTrades = [PFObject objectWithClassName:@"TradeUser"];
+  numTrades[@"user"]=[PFUser currentUser];
+  numTrades[@"numTrades"]=@0;
+  [numTrades saveInBackground];
 }
 
 // Called every time a chunk of the data is received

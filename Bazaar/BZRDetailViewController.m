@@ -153,9 +153,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.selectButton = (UIButton *) [cell viewWithTag:408];
     UIImageView *backArrow = (UIImageView *)[cell viewWithTag:409];
     UIImageView *forwardArrow = (UIImageView *)[cell viewWithTag:410];
-  self.item = [self.items objectAtIndex:indexPath.item];
-    NSLog(@"count: %lu",(unsigned long)self.items.count);
-    NSLog(@"index: %ld",(long)indexPath.item);
+    self.item = [self.items objectAtIndex:indexPath.item];
     if(indexPath.item == 0){
         backArrow.hidden = YES;
         forwardArrow.hidden = NO;
