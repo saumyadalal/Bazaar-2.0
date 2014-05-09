@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BZRLoginViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
 - (IBAction)loginUser:(id)sender;
 
