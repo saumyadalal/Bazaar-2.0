@@ -86,7 +86,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
             for (PFObject *tradeItems in self.trades){
                 if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
-                    self.tradeButton.backgroundColor = [UIColor lightGrayColor];
+                    self.tradeButton.backgroundColor = [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
                     [self.tradeButton setEnabled:NO];
                     break;
                 }
