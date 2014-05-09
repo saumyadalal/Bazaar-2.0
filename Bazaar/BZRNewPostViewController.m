@@ -104,7 +104,7 @@
   self.description.text = @"Description";
   self.description.textColor = [UIColor lightGrayColor];
   self.category.text = @"";
-  self.imageView.image = [UIImage imageNamed:@"upload_placeholder.jpeg"];
+  self.imageView.image = [UIImage imageNamed:@"camera placeholder.png"];
   self.addObject.hidden = NO;
   self.navigationItem.leftBarButtonItem.enabled = YES;
   self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -129,6 +129,7 @@
                 [self.imageSavedView show];
                 NSLog(@"saved new item");
                 [self clearFields];
+                [self resignKeyboard];
             }
             else {
                 NSLog(@"error saving item");
@@ -192,12 +193,15 @@
 }
 
 - (IBAction)resign:(id)sender {
-    [self.category resignFirstResponder];
-    [self.description resignFirstResponder];
-    [self.itemName resignFirstResponder];
-    self.imagePicked = NO;
+  [self resignKeyboard];
 }
 
+- (void) resignKeyboard {
+  [self.category resignFirstResponder];
+  [self.description resignFirstResponder];
+  [self.itemName resignFirstResponder];
+   self.imagePicked = NO;
+}
 
 - (IBAction)titleField:(id)sender {
 }
