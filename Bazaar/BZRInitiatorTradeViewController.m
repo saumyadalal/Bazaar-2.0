@@ -25,7 +25,6 @@
   [self loadContent];
   [self.itemImage1.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   [self.itemImage1 setTintColor:[UIColor grayColor]];
-  
 }
 
 /******************
@@ -66,6 +65,10 @@
  *** Load content end
  ******************/
 
+
+/******************
+ *** Start: Update content
+ ******************/
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -119,6 +122,10 @@
   [self.view setUserInteractionEnabled:NO];
 }
 
+
+/******************
+ *** End: Update content
+ ******************/
 
 - (void)didReceiveMemoryWarning
 {

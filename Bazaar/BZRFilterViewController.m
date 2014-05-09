@@ -25,7 +25,7 @@ static NSString * const cellIdentifier = @"filterCell";
     [super viewDidLoad];
     //Preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
-    self.filters = @[@"Bazaar", @"Accessories", @"Books", @"Clothes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household", @"Other"];
+    self.filters = @[@"Bazaar", @"Accessories", @"Books", @"Clothes & Shoes", @"Electronics", @"Entertainment", @"Food", @"Furniture", @"Household", @"Other"];
 }
 
 
