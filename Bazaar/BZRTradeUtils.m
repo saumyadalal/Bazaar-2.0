@@ -146,7 +146,7 @@
   }
   else {
     //message shown to receiver
-    messageText = [NSString stringWithFormat:message, "You", [initiator objectForKey:@"username"]];
+    messageText = [NSString stringWithFormat:message, @"You", [initiator objectForKey:@"username"]];
   }
   return messageText;
 }
@@ -161,12 +161,12 @@
   //you initiated the trade
   if ([self isInitiator:user forTrade:trade]) {
     messageText = [NSString stringWithFormat:message, @"You",
-                   [BZRTradeUtils getFirstNameOwnerFormat:receiver],
+                   [self getFirstNameOwnerFormat:receiver],
                    [item objectForKey:@"name"]];
   }
   //you received the trade
   else {
-    messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"],
+    messageText = [NSString stringWithFormat:message, [self getFirstName:initiator],
                    @"your", [item objectForKey:@"name"]];
   }
   return messageText;

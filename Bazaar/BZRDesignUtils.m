@@ -18,7 +18,7 @@
 }
 
 + (UIColor*) greyOverlayColor {
-  return [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0.8];
+  return [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
 }
 
 + (UIColor*) buttonDisabledColor {

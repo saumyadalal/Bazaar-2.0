@@ -54,6 +54,7 @@
 		A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AFF190C809500319AF4 /* BZRBazaarController.m */; };
 		A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737B06190F37FB00319AF4 /* BZRTabBarController.m */; };
 		A7851C96191C4E550087C5BE /* BZRDesignUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7851C95191C4E550087C5BE /* BZRDesignUtils.m */; };
+		A7851C98191C5AF10087C5BE /* add_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7851C97191C5AF10087C5BE /* add_icon.png */; };
 		A79C876A1916015F00BB0C68 /* BZRReceiverTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */; };
 		A79C876E1916018300BB0C68 /* BZRInitiatorTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C876D1916018300BB0C68 /* BZRInitiatorTradeViewController.m */; };
 		A79C87701916091200BB0C68 /* TagReferences in Resources */ = {isa = PBXBuildFile; fileRef = A79C876F1916091200BB0C68 /* TagReferences */; };
@@ -145,6 +146,7 @@
 		A7737B06190F37FB00319AF4 /* BZRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTabBarController.m; sourceTree = "<group>"; };
 		A7851C94191C4E550087C5BE /* BZRDesignUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRDesignUtils.h; sourceTree = "<group>"; };
 		A7851C95191C4E550087C5BE /* BZRDesignUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRDesignUtils.m; sourceTree = "<group>"; };
+		A7851C97191C5AF10087C5BE /* add_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_icon.png; path = ../../add_icon.png; sourceTree = "<group>"; };
 		A79C87681916015F00BB0C68 /* BZRReceiverTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRReceiverTradeViewController.h; sourceTree = "<group>"; };
 		A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRReceiverTradeViewController.m; sourceTree = "<group>"; };
 		A79C876C1916018300BB0C68 /* BZRInitiatorTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRInitiatorTradeViewController.h; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		22E2C13819030C8D0098D279 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A7851C97191C5AF10087C5BE /* add_icon.png */,
 				0E7A5C82191BF3D20015F60E /* 1399586533_icon-ios7-plus-empty.png */,
 				0E7A5C80191BEF4C0015F60E /* 1399586289_menu-alt.png */,
 				0E7A5C7E191BE6080015F60E /* 1399583194_forward.png */,
@@ -607,6 +610,7 @@
 				0E7A5C81191BEF4C0015F60E /* 1399586289_menu-alt.png in Resources */,
 				0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */,
 				0E7A5C7D191BE3920015F60E /* 1399583194_back.png in Resources */,
+				A7851C98191C5AF10087C5BE /* add_icon.png in Resources */,
 				2210F18F19182FBF0018E0FC /* line_trade.png in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,
 				A7DE718F18DDFA1200EE7F9A /* Images.xcassets in Resources */,

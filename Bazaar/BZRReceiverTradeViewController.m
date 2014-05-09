@@ -23,7 +23,9 @@
 {
     [super viewDidLoad];
     self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
-        //load item image the first time
+    [self loadContent];
+    [self.itemImage1.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.itemImage1 setTintColor:[UIColor grayColor]];
 
 }
 
@@ -36,7 +38,7 @@
   PFUser* owner = [self.trade objectForKey:@"owner"];
   PFUser *initiator = [self.trade objectForKey:@"initiator"];
   [BZRTradeUtils loadCircularImage:self.ownerImage fromObject:owner];
-  [BZRTradeUtils loadCircularImage:self.ownerImage fromObject:initiator];
+  [BZRTradeUtils loadCircularImage:self.initiatorImage fromObject:initiator];
   [self setUsersLabel];
   [self setFont];
 
@@ -47,8 +49,9 @@
   self.sendButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
   self.selectButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
   self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
+  self.greyOverlay.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
   [self.greyOverlay setHidden: YES];
-  [self.greyOverlay setBackgroundColor:[BZRDesignUtils greyOverlayColor]];
 }
 
 - (void) setUsersLabel {
@@ -57,8 +60,7 @@
   NSString *ownerName = [BZRTradeUtils getFirstName:owner];
   NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
   NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
-  self.usersLabel.text = combined;
-  self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  [self.usersLabel setText:combined];
 }
 
 /******************
@@ -97,7 +99,7 @@
     NSString* firstName = [BZRTradeUtils getFirstNameOwnerFormat:[self.trade objectForKey:@"initiator"]];
     NSString* baseStr = @"You can choose upto %d items from %@ marketplace";
     [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, limit, firstName]];
-    [self configureSendButton];
+    [self configureSendAndSelectButton];
   }
   //hide the send button since trade is completed or cancelled
   if ([status isEqualToString:@"cancelled"]) {
@@ -108,19 +110,23 @@
 - (void) inactivateTrade {
   [self.sendButton setHidden:YES];
   [self.cancelTradeButton setHidden:YES];
+  [self.selectButton setHidden:YES];
   [self.greyOverlay setHidden:NO];
+  [self.greyOverlay setBackgroundColor:[BZRDesignUtils greyOverlayColor]];
   [self.greyOverlay setText:@"This trade has been cancelled"];
   [self.view setUserInteractionEnabled:NO];
 }
 
-- (void) configureSendButton {
+- (void) configureSendAndSelectButton {
   [self.sendButton setHidden:NO];
   if ([self.trade[@"returnItems"] count] == 0) {
     [self.sendButton setEnabled:NO];
+    [self.selectButton setImage:[UIImage imageNamed:@"add_icon.png"] forState:UIControlStateNormal];
     [self.sendButton setBackgroundColor:[BZRDesignUtils buttonDisabledColor]];
   }
   else {
     [self.sendButton setEnabled:YES];
+    [self.selectButton setImage:nil forState:UIControlStateNormal];
     [self.sendButton setBackgroundColor:[BZRDesignUtils purpleColor]];
   }
 }

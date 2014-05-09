@@ -8,6 +8,7 @@
 
 #import "BZRInitiatorTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 #import "BZRNotificationTableViewController.h"
 #import "BZRSuccessfulTradeViewController.h"
 
@@ -17,83 +18,53 @@
 
 @implementation BZRInitiatorTradeViewController
 
-
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
-    //load item image the first time
-    [BZRTradeUtils loadImage:self.itemImage fromItem:[self.trade objectForKey:@"item"]];
-    PFUser* owner = [self.trade objectForKey:@"owner"];
-    PFUser *initiator = [self.trade objectForKey:@"initiator"];
-    PFFile *ownerImageFile = [owner objectForKey:@"imageFile"];
-    PFFile *initiatorImageFile = [initiator objectForKey:@"imageFile"];
-    [ownerImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            self.ownerImage.image = [UIImage imageWithData:data];
-            self.ownerImage.layer.cornerRadius = self.ownerImage.frame.size.width / 2;
-            self.ownerImage.clipsToBounds = YES;
-        }
-        else {
-            NSLog(@"error fetching owner image");
-        }
-    }];
-    [initiatorImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            self.initiatorImage.image = [UIImage imageWithData:data];
-            self.initiatorImage.layer.cornerRadius = self.initiatorImage.frame.size.width / 2;
-            self.initiatorImage.clipsToBounds = YES;
-        }
-        else {
-            NSLog(@"error fetching initiator image");
-        }
-    }];
-    self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
-    [self setUsersLabel];
-    [self setFont];
-    self.greyOverlay.hidden = true;
-    self.greyOverlay.backgroundColor = [[UIColor alloc] initWithRed:0 green:0
-                                                               blue:0 alpha:0.5];
+  [super viewDidLoad];
+  self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
+  [self loadContent];
+  [self.itemImage1.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  [self.itemImage1 setTintColor:[UIColor grayColor]];
+  
+}
+
+/******************
+ *** Load content start
+ ******************/
+
+- (void) loadContent {
+  [BZRTradeUtils loadImage:self.itemImage fromItem:[self.trade objectForKey:@"item"]];
+  PFUser* owner = [self.trade objectForKey:@"owner"];
+  PFUser *initiator = [self.trade objectForKey:@"initiator"];
+  [BZRTradeUtils loadCircularImage:self.ownerImage fromObject:owner];
+  [BZRTradeUtils loadCircularImage:self.initiatorImage fromObject:initiator];
+  [self setUsersLabel];
+  [self setFont];
+  
+}
+
+- (void) setFont {
+  self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+  self.acceptButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+  self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
+  self.bidStatusLabel.font = [UIFont fontWithName:@"Gotham-Book" size:14];
+  self.greyOverlay.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  [self.greyOverlay setHidden: YES];
 }
 
 - (void) setUsersLabel {
-    PFUser* owner = [self.trade objectForKey:@"owner"];
-    PFUser *initiator = [self.trade objectForKey:@"initiator"];
-    NSString *ownerName = [BZRTradeUtils getFirstName:owner];
-    NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
-    NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
-    self.usersLabel.text = combined;
-    self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  PFUser* owner = [self.trade objectForKey:@"owner"];
+  PFUser *initiator = [self.trade objectForKey:@"initiator"];
+  NSString *ownerName = [BZRTradeUtils getFirstName:owner];
+  NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
+  NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
+  [self.usersLabel setText:combined];
 }
 
-- (void) updateDisplay {
-  NSString* status = [self.trade objectForKey:@"status"];
-  // *** responded status
-  if ([status isEqualToString:@"responded"]) {
-    [self.acceptButton setHidden:NO];
-    [self.bidStatusLabel setHidden:YES];
-    [self.bidMessageLabel setText:@"Bid request received"];
-  }
-  // *** initiated status
-  else if ([status isEqualToString:@"initiated"]) {
-    [self.bidStatusLabel setHidden:NO];
-    NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
-    NSString* firstName = [BZRTradeUtils getFirstName:[self.trade objectForKey:@"owner"]];
-    NSString* baseStr = @"%@ can choose upto %d items from your marketplace";
-    [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, firstName, limit]];
-    [self.acceptButton setHidden:YES];
-  }
-  // trade is complete or cancelled, irrelevant
-  else {
-    [self.cancelTradeButton setHidden:YES];
-    [self.acceptButton setHidden:YES];
-    if ([status isEqualToString: @"cancelled"]) {
-      [self.greyOverlay setHidden:NO];
-      [self.greyOverlay setText:@"This trade has been cancelled"];
-      [self.view setUserInteractionEnabled:NO];
-    }
-  }
-}
+/******************
+ *** Load content end
+ ******************/
 
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -107,23 +78,45 @@
   [self updateDisplay];
   //load return item images
   if ([self.trade[@"status"] isEqualToString:@"responded"]) {
-      [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
-  }
-  else if ([self.trade[@"status"] isEqualToString:@"complete"]) {
-      
+    [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
   }
   else {
-      //display no images yet
-      self.acceptButton.enabled = false;
-      self.acceptButton.hidden = true;
-//      self.cancelTradeButton.enabled = false;
-//      self.cancelTradeButton.hidden = true;
+    //display no images yet
+    [self.acceptButton setHidden:YES];
   }
 }
 
-- (void) setFont {
-  self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
-  self.acceptButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+- (void) updateDisplay {
+  NSString* status = [self.trade objectForKey:@"status"];
+  if ([status isEqualToString:@"responded"]) {
+    [self.acceptButton setHidden:NO];
+    [self.bidStatusLabel setHidden:YES];
+    [self.bidMessageLabel setText:@"Bid request received"];
+  }
+  else {
+    //no bids available yet
+    [self.bidStatusLabel setHidden:NO];
+    NSUInteger limit = [[self.trade objectForKey:@"numItems"] intValue];
+    NSString* firstName = [BZRTradeUtils getFirstName:[self.trade objectForKey:@"owner"]];
+    NSString* baseStr = @"%@ can choose upto %d items from your marketplace";
+    [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, firstName, limit]];
+    [self.acceptButton setHidden:YES];
+  }
+  // trade is cancelled
+  if ([status isEqualToString:@"cancelled"]) {
+    [self inactivateTrade];
+  }
+}
+
+
+- (void) inactivateTrade {
+  [self.bidStatusLabel setHidden:YES];
+  [self.acceptButton setHidden:YES];
+  [self.cancelTradeButton setHidden:YES];
+  [self.greyOverlay setHidden:NO];
+  [self.greyOverlay setBackgroundColor:[BZRDesignUtils greyOverlayColor]];
+  [self.greyOverlay setText:@"This trade has been cancelled"];
+  [self.view setUserInteractionEnabled:NO];
 }
 
 
