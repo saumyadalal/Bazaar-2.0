@@ -31,6 +31,15 @@
 		0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDF5B96191311300024A9F6 /* bazaar TITLE.png */; };
 		0EF2673B191D484000E92ED6 /* facebook button-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26739191D484000E92ED6 /* facebook button-22.png */; };
 		0EF2673F191D49BC00E92ED6 /* camera placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF2673E191D49BC00E92ED6 /* camera placeholder.png */; };
+		0EF26741191D4F7100E92ED6 /* newfb-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26740191D4F7100E92ED6 /* newfb-23.png */; };
+		0EF26743191D50AA00E92ED6 /* facebookfinal-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26742191D50AA00E92ED6 /* facebookfinal-23.png */; };
+		0EF26745191D519400E92ED6 /* appstuf-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26744191D519400E92ED6 /* appstuf-23.png */; };
+		0EF26749191D572E00E92ED6 /* icons-27.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26746191D572E00E92ED6 /* icons-27.png */; };
+		0EF2674A191D572E00E92ED6 /* icons-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26747191D572E00E92ED6 /* icons-26.png */; };
+		0EF2674B191D572E00E92ED6 /* icons-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26748191D572E00E92ED6 /* icons-25.png */; };
+		0EF2674E191D59F100E92ED6 /* new icons-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF2674C191D59F100E92ED6 /* new icons-30.png */; };
+		0EF2674F191D59F100E92ED6 /* new icons-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF2674D191D59F100E92ED6 /* new icons-29.png */; };
+		0EF26751191D5DF800E92ED6 /* new icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26750191D5DF800E92ED6 /* new icon.png */; };
 		0EFF9BD91919A6A8005B49B1 /* 1399426766_icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2205168D1919A30200119B92 /* 1399426766_icon-camera.png */; };
 		0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2205168E1919A30200119B92 /* 1399426832_icon-camera.png */; };
 		22051693191A9DB800119B92 /* BZRSuccessfulTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22051692191A9DB800119B92 /* BZRSuccessfulTradeViewController.m */; };
@@ -122,6 +131,15 @@
 		0EDF5B96191311300024A9F6 /* bazaar TITLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bazaar TITLE.png"; sourceTree = "<group>"; };
 		0EF26739191D484000E92ED6 /* facebook button-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook button-22.png"; sourceTree = "<group>"; };
 		0EF2673E191D49BC00E92ED6 /* camera placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera placeholder.png"; sourceTree = "<group>"; };
+		0EF26740191D4F7100E92ED6 /* newfb-23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newfb-23.png"; sourceTree = "<group>"; };
+		0EF26742191D50AA00E92ED6 /* facebookfinal-23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebookfinal-23.png"; sourceTree = "<group>"; };
+		0EF26744191D519400E92ED6 /* appstuf-23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appstuf-23.png"; sourceTree = "<group>"; };
+		0EF26746191D572E00E92ED6 /* icons-27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-27.png"; sourceTree = "<group>"; };
+		0EF26747191D572E00E92ED6 /* icons-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-26.png"; sourceTree = "<group>"; };
+		0EF26748191D572E00E92ED6 /* icons-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-25.png"; sourceTree = "<group>"; };
+		0EF2674C191D59F100E92ED6 /* new icons-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new icons-30.png"; sourceTree = "<group>"; };
+		0EF2674D191D59F100E92ED6 /* new icons-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new icons-29.png"; sourceTree = "<group>"; };
+		0EF26750191D5DF800E92ED6 /* new icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new icon.png"; sourceTree = "<group>"; };
 		2205168D1919A30200119B92 /* 1399426766_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426766_icon-camera.png"; sourceTree = "<group>"; };
 		2205168E1919A30200119B92 /* 1399426832_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426832_icon-camera.png"; sourceTree = "<group>"; };
 		22051691191A9DB800119B92 /* BZRSuccessfulTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRSuccessfulTradeViewController.h; sourceTree = "<group>"; };
@@ -288,6 +306,16 @@
 			children = (
 				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
 				A7E25A5A191D594E00DB63EE /* send message-24.png */,
+				0EF26750191D5DF800E92ED6 /* new icon.png */,
+				0EF2674C191D59F100E92ED6 /* new icons-30.png */,
+				0EF2674D191D59F100E92ED6 /* new icons-29.png */,
+				0EF26746191D572E00E92ED6 /* icons-27.png */,
+				0EF26747191D572E00E92ED6 /* icons-26.png */,
+				0EF26748191D572E00E92ED6 /* icons-25.png */,
+				0EF26744191D519400E92ED6 /* appstuf-23.png */,
+				0EF26742191D50AA00E92ED6 /* facebookfinal-23.png */,
+				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
+				0EF26740191D4F7100E92ED6 /* newfb-23.png */,
 				0EF26739191D484000E92ED6 /* facebook button-22.png */,
 				A7851CA3191CEAEA0087C5BE /* facebook.png */,
 				A7851CA1191CC23E0087C5BE /* upload_placeholder.jpeg */,
@@ -470,9 +498,9 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A7851C99191CA3AA0087C5BE /* Date Formatter */,
 				A7851C93191C4E400087C5BE /* Design Utils */,
-				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A7F669481919EEFC00A06FBB /* Trade Detail Views */,
 				0E1F0C90191956D800124864 /* Fonts */,
 				A79C87711916D8C900BB0C68 /* Trade Return Item Selection */,
@@ -640,13 +668,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4E2A8A191A9DA8005161C8 /* Gotham-XLight.otf in Resources */,
+				0EF26741191D4F7100E92ED6 /* newfb-23.png in Resources */,
 				0EFF9BD91919A6A8005B49B1 /* 1399426766_icon-camera.png in Resources */,
+				0EF26749191D572E00E92ED6 /* icons-27.png in Resources */,
 				0E7A5C7F191BE6080015F60E /* 1399583194_forward.png in Resources */,
 				0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */,
 				0E1F0C8F191956D500124864 /* Gotham-Book.otf in Resources */,
+				0EF2674F191D59F100E92ED6 /* new icons-29.png in Resources */,
+				0EF26745191D519400E92ED6 /* appstuf-23.png in Resources */,
 				A7851CA4191CEAEA0087C5BE /* facebook.png in Resources */,
 				0EAFF898191C6D9C00C35AD8 /* bazaarhomepng-20.png in Resources */,
 				0EF2673F191D49BC00E92ED6 /* camera placeholder.png in Resources */,
+				0EF26743191D50AA00E92ED6 /* facebookfinal-23.png in Resources */,
 				A7851CA0191CC0DE0087C5BE /* camera.png in Resources */,
 				A7851CA6191D3F050087C5BE /* Trade Object Model in Resources */,
 				0EF2673B191D484000E92ED6 /* facebook button-22.png in Resources */,
@@ -659,9 +692,12 @@
 				0E7A5C83191BF3D20015F60E /* 1399586533_icon-ios7-plus-empty.png in Resources */,
 				A7E25A5B191D594E00DB63EE /* send message-24.png in Resources */,
 				0EAFF895191C6CB200C35AD8 /* bazaarb-19.png in Resources */,
+				0EF2674B191D572E00E92ED6 /* icons-25.png in Resources */,
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
 				A79C87701916091200BB0C68 /* TagReferences in Resources */,
 				0E6927BA19199B6000B9BA6F /* trade.png in Resources */,
+				0EF26751191D5DF800E92ED6 /* new icon.png in Resources */,
+				0EF2674A191D572E00E92ED6 /* icons-26.png in Resources */,
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				0E1F0C981919811D00124864 /* user_male2-25.png in Resources */,
 				0EAFF899191C6D9C00C35AD8 /* new trade icon-21.png in Resources */,
@@ -671,6 +707,7 @@
 				0EAFF894191C6CB200C35AD8 /* bazaar icon-19.png in Resources */,
 				0EAFF89B191C6E9600C35AD8 /* new trade icon-21-21.png in Resources */,
 				0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */,
+				0EF2674E191D59F100E92ED6 /* new icons-30.png in Resources */,
 				0E7A5C7D191BE3920015F60E /* 1399583194_back.png in Resources */,
 				2210F18F19182FBF0018E0FC /* line_trade.png in Resources */,
 				0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */,

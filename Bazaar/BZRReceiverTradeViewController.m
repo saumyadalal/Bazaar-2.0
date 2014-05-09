@@ -125,6 +125,7 @@
   if ([self.trade[@"returnItems"] count] == 0) {
     [self.sendButton setEnabled:NO];
     [self.sendButton setBackgroundColor:[BZRDesignUtils buttonDisabledColor]];
+
   }
   else {
     [self.sendButton setEnabled:YES];

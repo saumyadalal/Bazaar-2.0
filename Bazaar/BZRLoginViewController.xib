@@ -16,9 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j11-TQ-KfW">
-                    <rect key="frame" x="43" y="371" width="233" height="35"/>
+                    <rect key="frame" x="44" y="348" width="232" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="facebook button-22.png">
+                    <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                    <state key="normal" image="appstuf-23.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -37,7 +38,7 @@
         </view>
     </objects>
     <resources>
+        <image name="appstuf-23.png" width="970" height="178"/>
         <image name="bazaarhomepng-20.png" width="750" height="338"/>
-        <image name="facebook button-22.png" width="298" height="47"/>
     </resources>
 </document>
