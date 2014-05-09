@@ -145,6 +145,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
   UIImageView *itemImageView = (UIImageView *)[cell viewWithTag:403];
   UILabel *itemName = (UILabel *) [cell viewWithTag:404];
+  itemName.font = [UIFont fontWithName:@"Gotham-Medium" size:14];
   UILabel *itemDescription = (UILabel *) [cell viewWithTag:405];
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
@@ -266,6 +267,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
         if (!error) {
           ownerImageView.image = [UIImage imageWithData:data];
           ownerName.text = [user objectForKey:@"username"];
+            ownerName.font = [UIFont fontWithName:@"Gotham-Medium" size:14];
           ownerImageView.layer.cornerRadius = ownerImageView.frame.size.width / 2;
           ownerImageView.clipsToBounds = YES;
         }

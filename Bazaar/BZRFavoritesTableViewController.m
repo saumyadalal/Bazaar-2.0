@@ -54,7 +54,7 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    //NSLog(@"appear");
+    NSLog(@"appear");
     [super viewWillAppear:animated];
     [self refreshData];
 }
