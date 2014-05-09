@@ -67,6 +67,10 @@
  ******************/
 
 
+/******************
+ *** Start: Update content
+ ******************/
+
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self updateContent];
@@ -119,6 +123,10 @@
   [self.view setUserInteractionEnabled:NO];
 }
 
+
+/******************
+ *** End: Update content
+ ******************/
 
 - (void)didReceiveMemoryWarning
 {

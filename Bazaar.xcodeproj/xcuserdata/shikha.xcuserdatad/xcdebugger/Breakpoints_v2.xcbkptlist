@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bazaar/BZRInitiatorTradeViewController.m"
-            timestampString = "421292057.83769"
+            timestampString = "421295714.958632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-acceptTrade:"
             landmarkType = "5">
          </BreakpointContent>

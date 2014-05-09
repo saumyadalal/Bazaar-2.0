@@ -127,7 +127,7 @@
   }
   else {
     //message shown to receiver
-    messageText = [NSString stringWithFormat:message, [initiator objectForKey:@"username"], @"your"];
+    messageText = [NSString stringWithFormat:message, [self getFirstName:initiator], @"your"];
   }
   return messageText;
 }
@@ -142,11 +142,11 @@
   //receiver sends initiator a bid
   if ([self isInitiator:user forTrade:trade]) {
     //Shikha sent you a bid
-    messageText = [NSString stringWithFormat:message, [self getFirstNameOwnerFormat:receiver], @"you"];
+    messageText = [NSString stringWithFormat:message, [self getFirstName:receiver], @"you"];
   }
   else {
     //message shown to receiver
-    messageText = [NSString stringWithFormat:message, @"You", [initiator objectForKey:@"username"]];
+    messageText = [NSString stringWithFormat:message, @"You", [self getFirstName:initiator]];
   }
   return messageText;
 }
