@@ -115,7 +115,7 @@
 }
 
 + (NSString*) getTradeUnavailableMessage:(PFObject*) trade forUser:(PFUser*) user {
-  return @"Items no longer unavailable";
+  return @"Item(s) no longer available";
 }
 
 + (NSString*) getTradeCancelledMessage:(PFObject*) trade forUser:(PFUser*) user {
