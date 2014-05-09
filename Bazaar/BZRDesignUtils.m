@@ -22,7 +22,7 @@
 }
 
 + (UIColor*) buttonDisabledColor {
-  return [UIColor grayColor];
+  return [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
 }
 
 + (UIColor*) newNotificationColor {
@@ -43,7 +43,7 @@
 }
 
 + (UIColor*) placeHolderColor {
-  return [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1];
+  return [UIColor colorWithRed:191/255.0 green:191/255.0 blue:191/255.0 alpha:1];
 }
 
 + (UIColor*) profileBackgroundColor {

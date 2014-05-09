@@ -21,7 +21,6 @@
       NSLog(@"canceled trade");
       // Do something with the found objects
       for (PFObject *object in objects) {
-//        [object deleteInBackground];
           object[@"status"] = @"cancelled";
           [object saveInBackground];
       }
@@ -46,9 +45,13 @@
     else {
       [imageView setImage:nil];
       if (i < limit) {
-        [imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
-        if (i == 0) {
-          imageView.image = [UIImage imageNamed:@"upload_placeholder.png"];
+        //no images selected and at the first index.
+        if (i == 0 && size == 0) {
+          imageView.image = [UIImage imageNamed:@"camera placeholder.png"];
+          [imageView setBackgroundColor:[UIColor clearColor]];
+        }
+        else {
+          [imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
         }
       }
       else {
@@ -124,14 +127,18 @@
 
 + (NSString*) getTradeCompleteMessage:(PFObject*) trade forUser:(PFUser*) user {
   PFUser *initiator = [trade objectForKey:@"initiator"];
-  NSString *message = @"%@ accepted %@ bid";
+  PFUser *receiver = [trade objectForKey:@"owner"];
+  PFObject* item = [trade objectForKey:@"item"];
+  NSString* messageForReceiver = @"Your trade with %@ for %@ was accepted";
+  NSString* messageForInitiator = @"Your trade with %@ is complete";
   NSString *messageText = @"";
   if ([self isInitiator:user forTrade:trade]) {
-    messageText = @"Success: Trade Complete!";
+    messageText = [NSString stringWithFormat:messageForInitiator, [self getFirstName:receiver]];
   }
   else {
     //message shown to receiver
-    messageText = [NSString stringWithFormat:message, [self getFirstName:initiator], @"your"];
+    messageText = [NSString stringWithFormat:messageForReceiver, [self getFirstName:initiator],
+                   [item objectForKey:@"name"]];
   }
   return messageText;
 }

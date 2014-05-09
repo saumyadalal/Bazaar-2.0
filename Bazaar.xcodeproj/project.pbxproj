@@ -83,6 +83,7 @@
 		A7DE719818DDFA1200EE7F9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DE718018DDFA1200EE7F9A /* UIKit.framework */; };
 		A7DE71A018DDFA1200EE7F9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7DE719E18DDFA1200EE7F9A /* InfoPlist.strings */; };
 		A7DE71A218DDFA1200EE7F9A /* BazaarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */; };
+		A7E25A5B191D594E00DB63EE /* send message-24.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E25A5A191D594E00DB63EE /* send message-24.png */; };
 		A7F6694B1919EF7A00A06FBB /* BZRTradeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -120,7 +121,7 @@
 		0EDC7F8A190C762900EB4FF6 /* notifs30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notifs30.1.png; sourceTree = "<group>"; };
 		0EDF5B96191311300024A9F6 /* bazaar TITLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bazaar TITLE.png"; sourceTree = "<group>"; };
 		0EF26739191D484000E92ED6 /* facebook button-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook button-22.png"; sourceTree = "<group>"; };
-		0EF2673E191D49BC00E92ED6 /* camera placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera placeholder.png"; path = "Bazaar/camera placeholder.png"; sourceTree = "<group>"; };
+		0EF2673E191D49BC00E92ED6 /* camera placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera placeholder.png"; sourceTree = "<group>"; };
 		2205168D1919A30200119B92 /* 1399426766_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426766_icon-camera.png"; sourceTree = "<group>"; };
 		2205168E1919A30200119B92 /* 1399426832_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426832_icon-camera.png"; sourceTree = "<group>"; };
 		22051691191A9DB800119B92 /* BZRSuccessfulTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRSuccessfulTradeViewController.h; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		A7DE719D18DDFA1200EE7F9A /* BazaarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BazaarTests-Info.plist"; sourceTree = "<group>"; };
 		A7DE719F18DDFA1200EE7F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BazaarTests.m; sourceTree = "<group>"; };
+		A7E25A5A191D594E00DB63EE /* send message-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send message-24.png"; sourceTree = "<group>"; };
 		A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRTradeUtils.h; sourceTree = "<group>"; };
 		A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTradeUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +286,8 @@
 		22E2C13819030C8D0098D279 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
+				A7E25A5A191D594E00DB63EE /* send message-24.png */,
 				0EF26739191D484000E92ED6 /* facebook button-22.png */,
 				A7851CA3191CEAEA0087C5BE /* facebook.png */,
 				A7851CA1191CC23E0087C5BE /* upload_placeholder.jpeg */,
@@ -424,7 +428,6 @@
 		A7DE717018DDFA1200EE7F9A = {
 			isa = PBXGroup;
 			children = (
-				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
 				A7DE718218DDFA1200EE7F9A /* Bazaar */,
 				A7DE719B18DDFA1200EE7F9A /* BazaarTests */,
 				A7DE717B18DDFA1200EE7F9A /* Frameworks */,
@@ -654,6 +657,7 @@
 				79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */,
 				A7851C9E191CABBC0087C5BE /* NSDateTimeAgo.bundle in Resources */,
 				0E7A5C83191BF3D20015F60E /* 1399586533_icon-ios7-plus-empty.png in Resources */,
+				A7E25A5B191D594E00DB63EE /* send message-24.png in Resources */,
 				0EAFF895191C6CB200C35AD8 /* bazaarb-19.png in Resources */,
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
 				A79C87701916091200BB0C68 /* TagReferences in Resources */,

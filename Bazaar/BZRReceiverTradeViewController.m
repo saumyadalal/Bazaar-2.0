@@ -43,13 +43,11 @@
   [BZRTradeUtils loadCircularImage:self.initiatorImage fromObject:initiator];
   [self setUsersLabel];
   [self setFont];
-  [self setStyle];
-
 }
 
 - (void) setFont {
   self.cancelTradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
-  self.sendButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+  self.sendButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:13];
   self.selectButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
   self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
   self.greyOverlay.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
@@ -64,12 +62,6 @@
   NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
   NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
   [self.usersLabel setText:combined];
-}
-
-- (void) setStyle {
-  for(UIImageView* view in self.itemImageViews) {
-    [view setBackgroundColor:[BZRDesignUtils placeHolderColor]];
-  }
 }
 
 /******************

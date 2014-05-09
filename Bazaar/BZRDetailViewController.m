@@ -77,19 +77,21 @@ static NSString * const cellIdentifier = @"detailViewCell";
   [self configureFavoriteLabel:item];
 }
 
+//to indicate trades that the current user is involved in
 - (void) loadTrades: (PFObject*) item{
     PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"Trade"];
     [initiatorQuery whereKey:@"initiator" equalTo:[PFUser currentUser]];
     [initiatorQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             self.trades = objects;
-            for (PFObject *tradeItems in self.trades){
-                if([[item objectId] isEqual:[[tradeItems objectForKey:@"item"] objectId]] && ![[tradeItems objectForKey:@"status"] isEqual: @"cancelled"]){
+            for (PFObject *trade in self.trades){
+                //if the trade is pending
+                if([[item objectId] isEqualToString:[[trade objectForKey:@"item"] objectId]]
+                   && ![[trade objectForKey:@"status"] isEqualToString: @"cancelled"]){
                     [self.tradeButton setTitle:@"Trading" forState:UIControlStateNormal];
-                    self.tradeButton.backgroundColor = [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
+                    self.tradeButton.backgroundColor = [BZRDesignUtils buttonDisabledColor];
                     self.tradeButton.titleLabel.textColor = [UIColor darkGrayColor];
                     [self.tradeButton setEnabled:NO];
-                    break;
                 }
                 else {
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
@@ -153,6 +155,8 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.favoriteButton = (UIButton *) [cell viewWithTag:407];
   self.tradeButton = (UIButton *) [cell viewWithTag:406];
   self.selectButton = (UIButton *) [cell viewWithTag:408];
+  self.tradeButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:14];
+  self.favoriteButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:14];
     UIImageView *backArrow = (UIImageView *)[cell viewWithTag:409];
     UIImageView *forwardArrow = (UIImageView *)[cell viewWithTag:410];
     self.item = [self.items objectAtIndex:indexPath.item];
