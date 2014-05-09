@@ -26,7 +26,7 @@
 }
 
 + (UIColor*) newNotificationColor {
-  return [UIColor colorWithRed:243/255.0 green:236/255.0 blue:213/255.0 alpha:0.8];
+  return [UIColor colorWithRed:151/255.0 green:157/255.0 blue:230/255.0 alpha:0.1];
 }
 
 + (void) showSeenStatus:(BOOL)seen forCell:(UITableViewCell*) cell {
@@ -37,5 +37,10 @@
     [cell setBackgroundColor:nil];
   }
 }
+
++ (UIColor*) dateTimeColor {
+  return [UIColor grayColor];
+}
+
 
 @end

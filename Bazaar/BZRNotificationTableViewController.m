@@ -12,13 +12,15 @@
 #import "BZRInitiatorTradeViewController.h"
 #import "BZRTradeUtils.h"
 #import "BZRDesignUtils.h"
+#import "NSDate+TimeAgo.h"
 #import <Parse/Parse.h>
 
 @interface BZRNotificationTableViewController ()
-@property (nonatomic, strong) NSArray* trades;
+@property (nonatomic, strong) NSMutableArray* trades;
 @end
 
 static NSString * const cellIdentifier = @"NotificationCell";
+static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
 
 @implementation BZRNotificationTableViewController
 
@@ -50,7 +52,8 @@ static NSString * const cellIdentifier = @"NotificationCell";
   [query includeKey:@"initiator"];
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
-      self.trades = objects;
+      self.trades = [[NSMutableArray alloc] initWithArray:objects];
+      [self orderTradesByTime:self.trades];
       [self.tableView reloadData];
     } else {
       // Log details of the failure
@@ -59,6 +62,13 @@ static NSString * const cellIdentifier = @"NotificationCell";
   }];
 }
 
+- (void) orderTradesByTime:(NSMutableArray*)trades {
+  [trades sortUsingComparator:^NSComparisonResult(PFObject *trade1, PFObject *trade2) {
+    NSDate* date1 = [trade1 updatedAt];
+    NSDate* date2 = [trade2 updatedAt];
+    return [date2 compare:date1];
+  }];
+}
 
 #pragma mark - Table view data source
 
@@ -82,8 +92,11 @@ static NSString * const cellIdentifier = @"NotificationCell";
   
     UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:301];
     UILabel *messageLabel = (UILabel *)[cell.contentView viewWithTag:302];
-
+    UILabel *dateLabel = (UILabel *)[cell.contentView viewWithTag:303];
+  
     PFObject* trade = [self.trades objectAtIndex:indexPath.row];
+    NSDate* date = [trade updatedAt];
+    NSString* formattedDate = [date timeAgoWithLimit:weekInterval dateFormat:NSDateFormatterMediumStyle andTimeFormat:NSDateFormatterShortStyle];
     PFObject* item = [trade objectForKey:@"item"];
     NSDictionary* seen = [trade objectForKey:@"seen"];
     NSString* wasSeen = [seen objectForKey:[[PFUser currentUser] objectId]];
@@ -93,6 +106,10 @@ static NSString * const cellIdentifier = @"NotificationCell";
     [self setMessage:messageLabel forTrade:trade];
     [BZRTradeUtils loadImage:itemImageView fromItem:item];
   
+    //DateLabel
+    [dateLabel setText:formattedDate];
+    [dateLabel setFont:[UIFont fontWithName:@"Gotham-Book" size:12]];
+    [dateLabel setTextColor:[BZRDesignUtils dateTimeColor]];
     return cell;
 }
 

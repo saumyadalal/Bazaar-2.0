@@ -14,5 +14,6 @@
 + (UIColor*) offWhiteColor;
 + (UIColor*) buttonDisabledColor;
 + (UIColor*) newNotificationColor;
++ (UIColor*) dateTimeColor;
 + (void) showSeenStatus:(BOOL)isNew forCell:(UITableViewCell*) cell;
 @end
