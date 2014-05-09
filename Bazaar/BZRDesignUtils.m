@@ -22,7 +22,7 @@
 }
 
 + (UIColor*) buttonDisabledColor {
-  return [UIColor grayColor];
+  return [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
 }
 
 + (UIColor*) newNotificationColor {
