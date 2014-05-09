@@ -8,9 +8,9 @@
 
 #import "BZRFavoritesTableViewController.h"
 #import "BZRDetailViewController.h"
+#import "BZRTradeUtils.h"
 
 @interface BZRFavoritesTableViewController ()
-@property (nonatomic, strong) NSArray *items;
 @end
 
 static NSString * const cellIdentifier = @"favoriteItemCell";
@@ -54,7 +54,6 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    NSLog(@"appear");
     [super viewWillAppear:animated];
     [self refreshData];
 }
@@ -68,25 +67,23 @@ static NSString * const cellIdentifier = @"favoriteItemCell";
 
 - (void)loadItemData: (PFObject*) item forCell:(UITableViewCell*) cell{
   UILabel *itemName = (UILabel *)[cell.contentView viewWithTag:502];
+  UILabel *itemStatus = (UILabel *)[cell.contentView viewWithTag:503];
+  itemName.font = [UIFont fontWithName:@"Gotham-Book" size:14];
+  itemStatus.font = [UIFont fontWithName:@"Gotham-Book" size:13];
+  itemStatus.textColor = [UIColor grayColor];
   UIImageView *itemImageView = (UIImageView *)[cell.contentView viewWithTag:501];
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
-      PFFile *imageFile = [object objectForKey:@"imageFile"];
-      [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-          itemImageView.image = [UIImage imageWithData:data];
-          itemName.text = [object objectForKey:@"name"];
-        }
-        else {
-          NSLog(@"error fetching image");
-        }
-      }];
+      itemName.text = [item objectForKey:@"name"];
+      itemStatus.text = [item objectForKey:@"status"];
+      [BZRTradeUtils loadImage:itemImageView fromItem:item];
     }
     else {
-      NSLog(@"error fetching data");
+      NSLog(@"error fetching item data");
     }
   }];
 }
+
 
 //instantiate detail view controller here since the segue in storyboard doesn't seem to work
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -59,6 +59,11 @@
 		A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AFF190C809500319AF4 /* BZRBazaarController.m */; };
 		A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737B06190F37FB00319AF4 /* BZRTabBarController.m */; };
 		A7851C96191C4E550087C5BE /* BZRDesignUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7851C95191C4E550087C5BE /* BZRDesignUtils.m */; };
+		A7851C9C191CA3C20087C5BE /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = A7851C9B191CA3C20087C5BE /* NSDate+TimeAgo.m */; };
+		A7851C9E191CABBC0087C5BE /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7851C9D191CABBC0087C5BE /* NSDateTimeAgo.bundle */; };
+		A7851CA0191CC0DE0087C5BE /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A7851C9F191CC0DE0087C5BE /* camera.png */; };
+		A7851CA2191CC23E0087C5BE /* upload_placeholder.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A7851CA1191CC23E0087C5BE /* upload_placeholder.jpeg */; };
+		A7851CA4191CEAEA0087C5BE /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = A7851CA3191CEAEA0087C5BE /* facebook.png */; };
 		A79C876A1916015F00BB0C68 /* BZRReceiverTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */; };
 		A79C876E1916018300BB0C68 /* BZRInitiatorTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C876D1916018300BB0C68 /* BZRInitiatorTradeViewController.m */; };
 		A79C87701916091200BB0C68 /* TagReferences in Resources */ = {isa = PBXBuildFile; fileRef = A79C876F1916091200BB0C68 /* TagReferences */; };
@@ -155,6 +160,12 @@
 		A7737B06190F37FB00319AF4 /* BZRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTabBarController.m; sourceTree = "<group>"; };
 		A7851C94191C4E550087C5BE /* BZRDesignUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRDesignUtils.h; sourceTree = "<group>"; };
 		A7851C95191C4E550087C5BE /* BZRDesignUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRDesignUtils.m; sourceTree = "<group>"; };
+		A7851C9A191CA3C20087C5BE /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		A7851C9B191CA3C20087C5BE /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
+		A7851C9D191CABBC0087C5BE /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
+		A7851C9F191CC0DE0087C5BE /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		A7851CA1191CC23E0087C5BE /* upload_placeholder.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = upload_placeholder.jpeg; sourceTree = "<group>"; };
+		A7851CA3191CEAEA0087C5BE /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		A79C87681916015F00BB0C68 /* BZRReceiverTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRReceiverTradeViewController.h; sourceTree = "<group>"; };
 		A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRReceiverTradeViewController.m; sourceTree = "<group>"; };
 		A79C876C1916018300BB0C68 /* BZRInitiatorTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRInitiatorTradeViewController.h; sourceTree = "<group>"; };
@@ -267,6 +278,9 @@
 		22E2C13819030C8D0098D279 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A7851CA3191CEAEA0087C5BE /* facebook.png */,
+				A7851CA1191CC23E0087C5BE /* upload_placeholder.jpeg */,
+				A7851C9F191CC0DE0087C5BE /* camera.png */,
 				0EAFF89A191C6E9600C35AD8 /* new trade icon-21-21.png */,
 				0EAFF896191C6D9C00C35AD8 /* bazaarhomepng-20.png */,
 				0EAFF897191C6D9C00C35AD8 /* new trade icon-21.png */,
@@ -373,6 +387,15 @@
 			name = "Design Utils";
 			sourceTree = "<group>";
 		};
+		A7851C99191CA3AA0087C5BE /* Date Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				A7851C9A191CA3C20087C5BE /* NSDate+TimeAgo.h */,
+				A7851C9B191CA3C20087C5BE /* NSDate+TimeAgo.m */,
+			);
+			name = "Date Formatter";
+			sourceTree = "<group>";
+		};
 		A79C876B1916016E00BB0C68 /* Initiator Trade View */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +436,7 @@
 		A7DE717B18DDFA1200EE7F9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7851C9D191CABBC0087C5BE /* NSDateTimeAgo.bundle */,
 				A7737AF5190B025000319AF4 /* FacebookSDK.framework */,
 				A7737AF3190B01F600319AF4 /* Parse.framework */,
 				A725CD4118F0926B00EC3719 /* StoreKit.framework */,
@@ -435,6 +459,7 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				A7851C99191CA3AA0087C5BE /* Date Formatter */,
 				A7851C93191C4E400087C5BE /* Design Utils */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A7F669481919EEFC00A06FBB /* Trade Detail Views */,
@@ -607,12 +632,15 @@
 				0E7A5C7F191BE6080015F60E /* 1399583194_forward.png in Resources */,
 				0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */,
 				0E1F0C8F191956D500124864 /* Gotham-Book.otf in Resources */,
+				A7851CA4191CEAEA0087C5BE /* facebook.png in Resources */,
 				0EAFF898191C6D9C00C35AD8 /* bazaarhomepng-20.png in Resources */,
+				A7851CA0191CC0DE0087C5BE /* camera.png in Resources */,
 				0E1F0C8E191956D500124864 /* Gotham-Medium.otf in Resources */,
 				0E4E2A89191A9DA8005161C8 /* Gotham-Light.otf in Resources */,
 				0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */,
 				0EDC7F8B190C762900EB4FF6 /* ptofile 30.1.png in Resources */,
 				79ADDAD718F218730031CA5E /* Storyboard.storyboard in Resources */,
+				A7851C9E191CABBC0087C5BE /* NSDateTimeAgo.bundle in Resources */,
 				0E7A5C83191BF3D20015F60E /* 1399586533_icon-ios7-plus-empty.png in Resources */,
 				0EAFF895191C6CB200C35AD8 /* bazaarb-19.png in Resources */,
 				A725CD1A18EB6E8400EC3719 /* BZRLoginViewController.xib in Resources */,
@@ -623,6 +651,7 @@
 				0EAFF899191C6D9C00C35AD8 /* new trade icon-21.png in Resources */,
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
 				0E7A5C81191BEF4C0015F60E /* 1399586289_menu-alt.png in Resources */,
+				A7851CA2191CC23E0087C5BE /* upload_placeholder.jpeg in Resources */,
 				0EAFF894191C6CB200C35AD8 /* bazaar icon-19.png in Resources */,
 				0EAFF89B191C6E9600C35AD8 /* new trade icon-21-21.png in Resources */,
 				0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */,
@@ -664,6 +693,7 @@
 				A725CD4E18F0A90D00EC3719 /* BZRFilterViewController.m in Sources */,
 				A79C876A1916015F00BB0C68 /* BZRReceiverTradeViewController.m in Sources */,
 				79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */,
+				A7851C9C191CA3C20087C5BE /* NSDate+TimeAgo.m in Sources */,
 				22051693191A9DB800119B92 /* BZRSuccessfulTradeViewController.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
 				A7851C96191C4E550087C5BE /* BZRDesignUtils.m in Sources */,

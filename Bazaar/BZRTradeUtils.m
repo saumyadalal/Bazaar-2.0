@@ -7,6 +7,7 @@
 //
 
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 
 @implementation BZRTradeUtils
 
@@ -45,7 +46,10 @@
     else {
       [imageView setImage:nil];
       if (i < limit) {
-        [imageView setBackgroundColor:[UIColor lightGrayColor]];
+        [imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
+        if (i == 0) {
+          imageView.image = [UIImage imageNamed:@"upload_placeholder.jpeg"];
+        }
       }
       else {
         [imageView setBackgroundColor:[UIColor clearColor]];
@@ -111,10 +115,16 @@
 }
 
 + (NSString*) getTradeUnavailableMessage:(PFObject*) trade forUser:(PFUser*) user {
-  return @"This item is no longer unavailable";
+  return @"Items no longer unavailable";
 }
 
 + (NSString*) getTradeCancelledMessage:(PFObject*) trade forUser:(PFUser*) user {
+  NSString* message = @"Cancelled trade request for %@ %@";
+  PFUser* receiver = [trade objectForKey:@"owner"];
+  PFObject* item = [trade objectForKey:@"item"];
+  NSString* messageText = [NSString stringWithFormat:message,
+                   [self getFirstNameOwnerFormat:receiver],
+                   [item objectForKey:@"name"]];
   return @"This trade has been cancelled";
 }
 
@@ -181,6 +191,35 @@
   return NO;
 }
 
++ (void) updateSeenStatus:(BOOL)wasSeen forTrade:(PFObject*)trade forSelf:(BOOL)userSelf {
+  PFUser* user;
+  if (userSelf) {
+    user = [PFUser currentUser];
+  }
+  else {
+    user = [self getReceiverUser:trade];
+  }
+  NSDictionary* seen = trade[@"seen"];
+  if (wasSeen) {
+      [seen setValue:@"yes" forKey:[user objectId]];
+  }
+  else {
+    [seen setValue:@"no" forKey:[user objectId]];
+  }
+  [trade saveInBackground];
+}
+
++ (PFUser*) getReceiverUser:(PFObject*)trade {
+  PFUser* initiator = [trade objectForKey:@"initiator"];
+  PFUser* receiver = [trade objectForKey:@"owner"];
+  PFUser* currentUser = [PFUser currentUser];
+  if ([[currentUser objectId] isEqualToString:[initiator objectId]]) {
+    return receiver;
+  }
+  else {
+    return initiator;
+  }
+}
 
 
 @end

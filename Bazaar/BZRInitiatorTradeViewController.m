@@ -39,6 +39,7 @@
   [BZRTradeUtils loadCircularImage:self.initiatorImage fromObject:initiator];
   [self setUsersLabel];
   [self setFont];
+  [self setStyle];
   
 }
 
@@ -59,6 +60,12 @@
   NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
   NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
   [self.usersLabel setText:combined];
+}
+
+- (void) setStyle {
+  for(UIImageView* view in self.itemImageViews) {
+    [view setBackgroundColor:[BZRDesignUtils placeHolderColor]];
+  }
 }
 
 /******************
@@ -107,18 +114,21 @@
   }
   // trade is cancelled
   if ([status isEqualToString:@"cancelled"]) {
-    [self inactivateTrade];
+    [self inactivateTrade:@"Trade has been cancelled"];
+  }
+  else if ([status isEqualToString:@"unavailable"]) {
+    [self inactivateTrade:@"Items no longer available"];
   }
 }
 
 
-- (void) inactivateTrade {
+- (void) inactivateTrade:(NSString*)message {
   [self.bidStatusLabel setHidden:YES];
   [self.acceptButton setHidden:YES];
   [self.cancelTradeButton setHidden:YES];
   [self.greyOverlay setHidden:NO];
   [self.greyOverlay setBackgroundColor:[BZRDesignUtils greyOverlayColor]];
-  [self.greyOverlay setText:@"This trade has been cancelled"];
+  [self.greyOverlay setText:message];
   [self.view setUserInteractionEnabled:NO];
 }
 
@@ -136,11 +146,13 @@
 - (IBAction)cancelTrade:(id)sender {
   self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
-  [self.navigationController popViewControllerAnimated:YES];
+  [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
+  [self inactivateTrade:@"Trade has been cancelled"];
 }
 
 - (IBAction)acceptTrade:(id)sender {
     self.trade[@"status"] = @"complete";
+    [BZRTradeUtils updateSeenStatus:NO forTrade:self.trade forSelf:NO];
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved updated trade status");
@@ -152,66 +164,68 @@
     }];
     [self.acceptButton setHidden:YES];
     [self.cancelTradeButton setHidden:YES];
-    
-    //Updating the numTrades for owner and initiator
-    PFUser *owner = [self.trade objectForKey:@"owner"];
-    PFUser *initiator = [self.trade objectForKey:@"initiator"];
-    
-    PFQuery *ownerQuery = [PFQuery queryWithClassName:@"numTrades"];
-    [ownerQuery whereKey:@"user" equalTo:owner];
-    PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"numTrades"];
-    [initiatorQuery whereKey:@"user" equalTo:initiator];
-    PFQuery *numTradesQuery = [PFQuery orQueryWithSubqueries:@[initiatorQuery, ownerQuery]];
-    [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-        for (PFObject *user in users) {
-            [user incrementKey:@"numTrades"];
-            [user saveInBackground];
-            NSLog(@"new numtrades: %@", [user objectForKey:@"numTrades"]);
-        }
-    }];
-    
+    [self cancelOtherTrades];
+
     UINavigationController *navController = self.navigationController;
     [navController popViewControllerAnimated:NO];
-    
-    //cancel all trades involving traded items
-    PFObject *item = self.trade[@"item"];
-    NSArray *returnItems = self.trade[@"returnItems"];
-    PFQuery *query = [PFQuery queryWithClassName:@"Trade"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *otherTrades, NSError *error) {
-        if (!error) {
-            for (PFObject *otherTrade in otherTrades) {
-                PFObject *tradeItem = otherTrade[@"item"];
-                NSArray *tradeReturnItems = otherTrade[@"returnItems"];
-                if (![[otherTrade objectId] isEqualToString:[self.trade objectId]]) {
-                    if ([tradeItem isEqual: item]) {
-                        otherTrade[@"status"] = @"unavailable";
-                    }
-                    else {
-                        for (PFObject* returnItem in returnItems) {
-                            if ([returnItem isEqual:tradeItem]) {
-                                otherTrade[@"status"] = @"unavailable";
-                            }
-                            for (PFObject* tradeReturnItem in tradeReturnItems) {
-                                if ([returnItem isEqual:tradeReturnItem]) {
-                                    otherTrade[@"status"] = @"unavailable";
-                                }
-                            }
-                        }
-                    }
-                    [otherTrade saveInBackground];
-                }
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"error cancelling other trades after accept");
-        }
-    }];
-
-    
     //create the trade complete view
     BZRSuccessfulTradeViewController* tradeCompleteView = (BZRSuccessfulTradeViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"tradeCompleteView"];
     tradeCompleteView.trade = self.trade;
     [navController pushViewController:tradeCompleteView animated:YES];
+}
+
+- (void) updateNumTrades {
+  //Updating the numTrades for owner and initiator
+  PFUser *owner = [self.trade objectForKey:@"owner"];
+  PFUser *initiator = [self.trade objectForKey:@"initiator"];
+  PFQuery *ownerQuery = [PFQuery queryWithClassName:@"TradeUser"];
+  [ownerQuery whereKey:@"user" equalTo:owner];
+  PFQuery *initiatorQuery = [PFQuery queryWithClassName:@"TradeUser"];
+  [initiatorQuery whereKey:@"user" equalTo:initiator];
+  PFQuery *numTradesQuery = [PFQuery orQueryWithSubqueries:@[initiatorQuery, ownerQuery]];
+  [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+    if (!error) {
+      for (PFObject *user in users) {
+        [user incrementKey:@"numTrades"];
+        [user saveInBackground];
+        NSLog(@"new numtrades: %@", [user objectForKey:@"numTrades"]);
+      }
+    }
+    else {
+      NSLog(@"error fetching users");
+    }
+  }];
+}
+
+- (void) cancelOtherTrades {
+  //cancel all trades involving traded items
+  PFObject *item = self.trade[@"item"];
+  NSArray *returnItems = self.trade[@"returnItems"];
+  PFQuery *query = [PFQuery queryWithClassName:@"Trade"];
+  [query findObjectsInBackgroundWithBlock:^(NSArray *otherTrades, NSError *error) {
+    if (!error) {
+      for (PFObject *otherTrade in otherTrades) {
+        [self changeAvailabilityStatus:item forTrade:otherTrade];
+        for (PFObject* returnItem in returnItems) {
+          [self changeAvailabilityStatus:returnItem forTrade:otherTrade];
+        }
+      }
+    } else {
+      // Log details of the failure
+      NSLog(@"error find all trade object in cancel");
+    }
+  }];
+  [self changeTradedItemsStatus];
+}
+
+
+- (void) changeAvailabilityStatus:(PFObject*)tradedItem forTrade:(PFObject*)trade {
+  PFObject *item = trade[@"item"];
+  NSArray *returnItems = trade[@"returnItems"];
+  if ([tradedItem isEqual: item] || [returnItems containsObject:tradedItem]) {
+    trade[@"status"] = @"unavailable";
+  }
+  [trade saveInBackground];
 }
 
 

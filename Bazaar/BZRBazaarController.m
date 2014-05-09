@@ -126,13 +126,13 @@ static NSString * const cellIdentifier = @"ItemCell";
     return cell;
 }
 
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
   if([[segue identifier] isEqualToString:@"detailView"]) //look for specific segue
   {
     BZRDetailViewController *detailViewBazaar = (BZRDetailViewController *) segue.destinationViewController; //set destination
     NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0]; //look for object index of selected item
     detailViewBazaar.items = self.items; //give item to destination controller
-      
     detailViewBazaar.currentIndexPath = selectedIndexPath;
   }
 

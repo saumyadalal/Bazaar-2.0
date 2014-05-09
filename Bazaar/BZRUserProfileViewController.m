@@ -9,24 +9,18 @@
 #import "BZRUserProfileViewController.h"
 #import "BZRUserMarketPlaceViewController.h"
 #import "SWRevealViewController.h"
+#import "BZRDesignUtils.h"
+#import "BZRTradeUtils.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface BZRUserProfileViewController () <BZRUserMarketPlaceDelegate>
+@property (strong, nonatomic) UIView* containerView;
 @end
 
 @implementation BZRUserProfileViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = @"Profile";
-        self.tabBarItem.title = self.title;
-    }
-    return self;
-}
 
 -(void) viewWillAppear:(BOOL)animated {
     [self loadUserInfo];
@@ -35,13 +29,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:15]; //make font of username bold
-    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //logout button font
+    [self setFont];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
     [self loadUserInfo];
+}
+
+- (void) setFont {
+  NSString* fontName = @"Gotham-Book";
+  [self.itemsLabel setFont:[UIFont fontWithName:fontName size:13]];
+  //[self.itemsLabel setTextColor:[BZRDesignUtils dateTimeColor]];
+  [self.tradesLabel setFont:[UIFont fontWithName:fontName size:13]];
+  //[self.tradesLabel setTextColor:[BZRDesignUtils dateTimeColor]];
+  [self.numItems setFont:[UIFont fontWithName:fontName size:14]];
+  [self.numTrades setFont:[UIFont fontWithName:fontName size:14]];
+  self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  self.logoutButton.titleLabel.font = [UIFont fontWithName:fontName size:13];
+  [self.view setBackgroundColor:[BZRDesignUtils profileBackgroundColor]];
+  //[self.containerView.layer setShadowOffset:CGSizeMake(5, 5)];
+  //[self.containerView.layer setShadowColor:[[UIColor grayColor] CGColor]];
 }
 
 
@@ -50,27 +57,19 @@
     self.user = [PFUser currentUser];
   }
   PFUser *user = self.user;
-  PFFile *imageFile = [user objectForKey:@"imageFile"];
-  [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-    if (!error) {
-      self.profilePicture.image = [UIImage imageWithData:data];
-      self.username.text = [user objectForKey:@"username"];
-      self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
-      self.profilePicture.clipsToBounds = YES;
-      PFQuery *numTradesQuery = [PFQuery queryWithClassName:@"numTrades"];
-      [numTradesQuery whereKey:@"user" equalTo:self.user];
-      [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-          for (PFObject *user in users) {
-              
-              self.numTrades.text = [user[@"numTrades"] stringValue];
-              NSLog(@"user: %@", user);
-              NSLog(@"numTrades: %@", self.numTrades.text);
-          }
-      }];
+  self.username.text = [user objectForKey:@"username"];
+  [BZRTradeUtils loadCircularImage:self.profilePicture fromObject:user];
+  [self loadNumTrades];
+}
 
-    }
-    else {
-      NSLog(@"error fetching image");
+- (void) loadNumTrades {
+  PFQuery *numTradesQuery = [PFQuery queryWithClassName:@"TradeUser"];
+  [numTradesQuery whereKey:@"user" equalTo:self.user];
+  [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+    for (PFObject *user in users) {
+      self.numTrades.text = [user[@"numTrades"] stringValue];
+      NSLog(@"user: %@", user);
+      NSLog(@"numTrades: %@", self.numTrades.text);
     }
   }];
 }
@@ -82,6 +81,7 @@
     marketPlaceView.user = self.user;
     marketPlaceView.inSelectionMode = NO;
     marketPlaceView.delegate = self;
+    self.containerView = marketPlaceView.view;
   }
 }
 

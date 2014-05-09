@@ -9,6 +9,7 @@
 #import "BZRDetailViewController.h"
 #import "BZRTradeViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 #import "BZRUserMarketPlaceViewController.h"
 #import "BZRUserProfileViewController.h"
 #import <Parse/Parse.h>
@@ -39,7 +40,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
     layout.minimumInteritemSpacing = 0;
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
-    [self.collectionView setShowsHorizontalScrollIndicator:YES];
+    [self.collectionView setShowsHorizontalScrollIndicator:NO];
 }
 
 
@@ -89,9 +90,9 @@ static NSString * const cellIdentifier = @"detailViewCell";
                     [self.tradeButton setEnabled:NO];
                     break;
                 }
-                else{
+                else {
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
-                    self.tradeButton.backgroundColor = [UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1];
+                    self.tradeButton.backgroundColor = [BZRDesignUtils purpleColor];
                     [self.tradeButton setEnabled:YES];
                 }
             }
@@ -152,9 +153,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
   self.selectButton = (UIButton *) [cell viewWithTag:408];
     UIImageView *backArrow = (UIImageView *)[cell viewWithTag:409];
     UIImageView *forwardArrow = (UIImageView *)[cell viewWithTag:410];
-  self.item = [self.items objectAtIndex:indexPath.item];
-    NSLog(@"count: %lu",(unsigned long)self.items.count);
-    NSLog(@"index: %ld",(long)indexPath.item);
+    self.item = [self.items objectAtIndex:indexPath.item];
     if(indexPath.item == 0){
         backArrow.hidden = YES;
         forwardArrow.hidden = NO;

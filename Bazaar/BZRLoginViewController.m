@@ -12,6 +12,7 @@
 #import "SWRevealViewController.h"
 #import "BZRFilterViewController.h"
 #import "BZRTabBarController.h"
+#import "BZRDesignUtils.h"
 
 @interface BZRLoginViewController () <FBLoginViewDelegate, NSURLConnectionDelegate>
 @property (strong, nonatomic) SWRevealViewController *revealController;
@@ -23,14 +24,6 @@
 static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&height=200&type=normal&width=200";
 
 @implementation BZRLoginViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
 
 
 - (void)viewDidLoad
@@ -44,6 +37,9 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
 //Place this in viewDidAppear since the reveal controller cannot be presented yet in
 //viewDidLoad
 - (void)viewDidAppear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+  [self.loginButton.titleLabel setTextColor:[UIColor whiteColor]];
+  [self.loginButton.titleLabel setFont:[UIFont fontWithName:@"Gotham-Medium" size:20]];
   /* After a user logs in, Parse will automatically cache the Facebook and Parse sessions in the currentUser object.
    By pass login screen if logged in*/
   if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
@@ -114,10 +110,10 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
       NSLog(@"%@", error);
     }
   }];
-    PFObject *numTrades = [PFObject objectWithClassName:@"numTrades"];
-    numTrades[@"user"]=[PFUser currentUser];
-    numTrades[@"numTrades"]=@0;
-    [numTrades saveInBackground];
+  PFObject *numTrades = [PFObject objectWithClassName:@"TradeUser"];
+  numTrades[@"user"]=[PFUser currentUser];
+  numTrades[@"numTrades"]=@0;
+  [numTrades saveInBackground];
 }
 
 // Called every time a chunk of the data is received

@@ -59,12 +59,16 @@
 
 - (IBAction)sendButton:(id)sender {
   PFObject *trade = [PFObject objectWithClassName:@"Trade"];
+  PFUser *initiator = [PFUser currentUser];
+  PFUser *receiver = [self.item objectForKey:@"owner"];
   trade[@"item"] = self.item;
-  trade[@"owner"] = [self.item objectForKey:@"owner"];
-  trade[@"initiator"] = [PFUser currentUser];
+  trade[@"owner"] = receiver;
+  trade[@"initiator"] = initiator;
   trade[@"status"] = @"initiated";
   trade[@"numItems"] = [NSNumber numberWithInt:self.numItems];
   trade[@"returnItems"] = @[];
+  NSDictionary* seen = @{[initiator objectId] : @"no" , [receiver objectId] : @"no"};
+  trade[@"seen"] = seen;
   self.sendButtonItem.hidden = true;
   self.sendButtonItem.enabled = false;
   [trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
