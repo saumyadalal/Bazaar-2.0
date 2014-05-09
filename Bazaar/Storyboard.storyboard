@@ -901,15 +901,22 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYi-KU-fPx">
-                                <rect key="frame" x="0.0" y="121" width="320" height="405"/>
+                                <rect key="frame" x="0.0" y="146" width="320" height="380"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="GAn-NS-KXG" kind="embed" identifier="receiverEmbedMarketPlace" id="rNQ-86-kpl"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select upto 3 items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZD-NC-H9B">
-                                <rect key="frame" x="59" y="92" width="202" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-fj-mIO">
+                                <rect key="frame" x="0.0" y="62" width="320" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select upto 3 items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KB-Hw-RPv">
+                                <rect key="frame" x="54" y="91" width="202" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -931,7 +938,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="itemSelectionMessage" destination="gZD-NC-H9B" id="gUA-t5-Sbd"/>
+                        <outlet property="header" destination="FmY-fj-mIO" id="9Z7-AQ-hcM"/>
+                        <outlet property="itemSelectionMessage" destination="0KB-Hw-RPv" id="wxp-0r-Rxa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MmR-9O-Ivr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1162,7 +1170,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="userMarketPlaceSegue" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GAn-NS-KXG" customClass="BZRUserMarketPlaceViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="48z-L4-t1e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="351"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zZF-kX-jPp">
                             <size key="itemSize" width="103" height="103"/>
@@ -1223,8 +1231,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="rNQ-86-kpl"/>
         <segue reference="5gf-aY-sNS"/>
         <segue reference="pk8-C4-UF8"/>
-        <segue reference="e2z-SB-aSX"/>
     </inferredMetricsTieBreakers>
 </document>

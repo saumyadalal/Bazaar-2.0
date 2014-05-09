@@ -47,7 +47,8 @@
 }
 
 + (UIColor*) profileBackgroundColor {
-  return [UIColor colorWithRed:0/255.0 green:221/255.0 blue:221/255.0 alpha:0.8];
+  return [UIColor colorWithRed:216/255.0 green:216/255.0 blue:216/255.0 alpha:0.5];
+
 }
 
 

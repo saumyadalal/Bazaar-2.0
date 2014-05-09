@@ -444,13 +444,13 @@
 			name = "Initiator Trade View";
 			sourceTree = "<group>";
 		};
-		A79C87711916D8C900BB0C68 /* Trade Return Item Selection */ = {
+		A79C87711916D8C900BB0C68 /* Selection View */ = {
 			isa = PBXGroup;
 			children = (
 				A79C87721916D8F000BB0C68 /* BZRSelectionViewController.h */,
 				A79C87731916D8F000BB0C68 /* BZRSelectionViewController.m */,
 			);
-			name = "Trade Return Item Selection";
+			name = "Selection View";
 			sourceTree = "<group>";
 		};
 		A7DE717018DDFA1200EE7F9A = {
@@ -503,7 +503,7 @@
 				A7851C93191C4E400087C5BE /* Design Utils */,
 				A7F669481919EEFC00A06FBB /* Trade Detail Views */,
 				0E1F0C90191956D800124864 /* Fonts */,
-				A79C87711916D8C900BB0C68 /* Trade Return Item Selection */,
+				A79C87711916D8C900BB0C68 /* Selection View */,
 				A724FB921915C49700D4120A /* Detail View  */,
 				A7737B01190F372E00319AF4 /* Tabs */,
 				0E60182A190C18C900CA324F /* Bazaar */,

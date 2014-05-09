@@ -8,6 +8,7 @@
 
 #import "BZRSelectionViewController.h"
 #import "BZRUserMarketPlaceViewController.h"
+#import "BZRDesignUtils.h"
 
 @interface BZRSelectionViewController ()
 @property (nonatomic, strong) BZRUserMarketPlaceViewController *marketPlaceView;
@@ -19,6 +20,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.header.backgroundColor = [BZRDesignUtils profileBackgroundColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

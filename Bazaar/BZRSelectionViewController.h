@@ -15,4 +15,5 @@
 @property (strong, nonatomic) PFObject* trade;
 - (IBAction)cancelPressed:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *itemSelectionMessage;
+@property (strong, nonatomic) IBOutlet UILabel *header;
 @end
