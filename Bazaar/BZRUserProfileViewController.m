@@ -68,8 +68,6 @@
   [numTradesQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
     for (PFObject *user in users) {
       self.numTrades.text = [user[@"numTrades"] stringValue];
-      NSLog(@"user: %@", user);
-      NSLog(@"numTrades: %@", self.numTrades.text);
     }
   }];
 }

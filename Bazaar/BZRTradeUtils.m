@@ -119,12 +119,6 @@
 }
 
 + (NSString*) getTradeCancelledMessage:(PFObject*) trade forUser:(PFUser*) user {
-  NSString* message = @"Cancelled trade request for %@ %@";
-  PFUser* receiver = [trade objectForKey:@"owner"];
-  PFObject* item = [trade objectForKey:@"item"];
-  NSString* messageText = [NSString stringWithFormat:message,
-                   [self getFirstNameOwnerFormat:receiver],
-                   [item objectForKey:@"name"]];
   return @"This trade has been cancelled";
 }
 
