@@ -86,14 +86,6 @@
 - (void) updateContent {
   [self.tradeLabel setText:self.tradeMessage];
   [self updateDisplay];
-  //load return item images
-  if ([self.trade[@"status"] isEqualToString:@"responded"]) {
-    [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
-  }
-  else {
-    //display no images yet
-    [self.acceptButton setHidden:YES];
-  }
 }
 
 - (void) updateDisplay {
@@ -102,6 +94,7 @@
     [self.acceptButton setHidden:NO];
     [self.bidStatusLabel setHidden:YES];
     [self.bidMessageLabel setText:@"Bid request received"];
+    [BZRTradeUtils loadReturnItemImages:self.itemImageViews forTrade:self.trade];
   }
   else {
     //no bids available yet
@@ -117,7 +110,7 @@
     [self inactivateTrade:@"Trade has been cancelled"];
   }
   else if ([status isEqualToString:@"unavailable"]) {
-    [self inactivateTrade:@"Items no longer available"];
+    [self inactivateTrade:@"Item(s) no longer available"];
   }
 }
 

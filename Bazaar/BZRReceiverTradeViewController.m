@@ -50,6 +50,7 @@
   self.sendButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:13];
   self.selectButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
   self.bidLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
+  self.bidLabel.textColor = [BZRDesignUtils placeHolderLightGrey];
   self.greyOverlay.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
   self.usersLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
   [self.greyOverlay setHidden: YES];
@@ -106,7 +107,7 @@
     [self inactivateTrade:@"Trade has been cancelled"];
   }
   else if ([status isEqualToString:@"unavailable"]) {
-    [self inactivateTrade:@"Items no longer available"];
+    [self inactivateTrade:@"Item(s) no longer available"];
   }
 }
 

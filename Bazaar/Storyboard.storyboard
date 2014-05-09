@@ -434,7 +434,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="1R0-Pr-g68">
-                                <rect key="frame" x="20" y="84" width="90" height="90"/>
+                                <rect key="frame" x="29" y="84" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -1178,6 +1178,13 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <label key="backgroundView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No items available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sjp-vC-dSN">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserItemCell" id="Us1-g1-QHg">
                                 <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
@@ -1208,6 +1215,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Iu6-tS-tPX"/>
+                    <connections>
+                        <outlet property="noItemsLabel" destination="Sjp-vC-dSN" id="xWw-X3-XRc"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBQ-od-4Ur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

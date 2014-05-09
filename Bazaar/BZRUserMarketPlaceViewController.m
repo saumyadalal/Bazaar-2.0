@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "BZRDetailViewController.h"
 #import "BZRTradeUtils.h"
+#import "BZRDesignUtils.h"
 
 
 @interface BZRUserMarketPlaceViewController () <BZRItemDelegate>
@@ -104,6 +105,8 @@ static NSString * const cellIdentifier = @"UserItemCell";
 	// to populate self.items
     [self loadMarketPlace];
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    [self.noItemsLabel setTextColor:[BZRDesignUtils placeHolderLightGrey]];
+    [self.noItemsLabel setFont:[UIFont fontWithName:@"Gotham-Book" size:16]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,6 +145,12 @@ static NSString * const cellIdentifier = @"UserItemCell";
       if ([objects count] > oldCount) {
         self.items = [[NSMutableArray alloc] initWithArray:objects];
         [self.collectionView reloadData];
+        if ([self.items count] == 0) {
+          [self.noItemsLabel setHidden:NO];
+        }
+        else {
+          [self.noItemsLabel setHidden:YES];
+        }
       }
       //to udpate number of items on profile
       [self.delegate updateNumItems:[self.items count]];

@@ -504,7 +504,7 @@
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A7851C99191CA3AA0087C5BE /* Date Formatter */,
 				A7851C93191C4E400087C5BE /* Design Utils */,
-				A7F669481919EEFC00A06FBB /* Trade Detail Views */,
+				A7F669481919EEFC00A06FBB /* Trade Detail */,
 				0E1F0C90191956D800124864 /* Fonts */,
 				A79C87711916D8C900BB0C68 /* Selection View */,
 				A724FB921915C49700D4120A /* Detail View  */,
@@ -578,7 +578,7 @@
 			name = "New Post";
 			sourceTree = "<group>";
 		};
-		A7F669481919EEFC00A06FBB /* Trade Detail Views */ = {
+		A7F669481919EEFC00A06FBB /* Trade Detail */ = {
 			isa = PBXGroup;
 			children = (
 				A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */,
@@ -587,7 +587,7 @@
 				A724FB96191600B300D4120A /* Receiver Trade View */,
 				22051694191A9DC500119B92 /* Successful Trade */,
 			);
-			name = "Trade Detail Views";
+			name = "Trade Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

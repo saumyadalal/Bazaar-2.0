@@ -32,6 +32,10 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
 }
 
 - (IBAction)changeSection:(id)sender {
+  [self loadNotifications];
+}
+
+- (void) loadNotifications {
   if ([self.segment selectedSegmentIndex] == 0) {
     [self loadNotificationsByStatus:nil];
   }
@@ -42,7 +46,7 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadNotificationsByStatus:nil];
+    [self loadNotifications];
     self.title = @"Trades";
 }
 

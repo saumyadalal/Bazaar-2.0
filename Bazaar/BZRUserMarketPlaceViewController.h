@@ -18,6 +18,7 @@
 
 
 @interface BZRUserMarketPlaceViewController : UICollectionViewController
+@property (strong, nonatomic) IBOutlet UILabel *noItemsLabel;
 @property (nonatomic, strong) PFUser* user;
 @property (nonatomic, assign) BOOL inSelectionMode;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
