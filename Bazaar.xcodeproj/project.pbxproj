@@ -94,6 +94,7 @@
 		A7DE71A218DDFA1200EE7F9A /* BazaarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DE71A118DDFA1200EE7F9A /* BazaarTests.m */; };
 		A7E25A5B191D594E00DB63EE /* send message-24.png in Resources */ = {isa = PBXBuildFile; fileRef = A7E25A5A191D594E00DB63EE /* send message-24.png */; };
 		A7F6694B1919EF7A00A06FBB /* BZRTradeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */; };
+		DEDB1860191D71AA0000A741 /* send message.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDB185F191D71AA0000A741 /* send message.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +218,7 @@
 		A7E25A5A191D594E00DB63EE /* send message-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send message-24.png"; sourceTree = "<group>"; };
 		A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRTradeUtils.h; sourceTree = "<group>"; };
 		A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTradeUtils.m; sourceTree = "<group>"; };
+		DEDB185F191D71AA0000A741 /* send message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send message.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 			children = (
 				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
 				A7E25A5A191D594E00DB63EE /* send message-24.png */,
+				DEDB185F191D71AA0000A741 /* send message.png */,
 				0EF26750191D5DF800E92ED6 /* new icon.png */,
 				0EF2674C191D59F100E92ED6 /* new icons-30.png */,
 				0EF2674D191D59F100E92ED6 /* new icons-29.png */,
@@ -701,6 +704,7 @@
 				A7DE718718DDFA1200EE7F9A /* InfoPlist.strings in Resources */,
 				0E1F0C981919811D00124864 /* user_male2-25.png in Resources */,
 				0EAFF899191C6D9C00C35AD8 /* new trade icon-21.png in Resources */,
+				DEDB1860191D71AA0000A741 /* send message.png in Resources */,
 				0EDC7F86190C748400EB4FF6 /* camera30.png in Resources */,
 				0E7A5C81191BEF4C0015F60E /* 1399586289_menu-alt.png in Resources */,
 				A7851CA2191CC23E0087C5BE /* upload_placeholder.jpeg in Resources */,
