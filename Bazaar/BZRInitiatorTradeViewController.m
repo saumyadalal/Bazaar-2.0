@@ -64,7 +64,7 @@
 
 - (void) setStyle {
   for(UIImageView* view in self.itemImageViews) {
-    [view setBackgroundColor:[BZRDesignUtils placeHolderColor]];
+    [view setBackgroundColor:[UIColor clearColor]];
   }
 }
 
@@ -104,6 +104,7 @@
     NSString* baseStr = @"%@ can choose upto %d items from your marketplace";
     [self.bidMessageLabel setText:[NSString stringWithFormat:baseStr, firstName, limit]];
     [self.acceptButton setHidden:YES];
+    [self setStyle];
   }
   // trade is cancelled
   if ([status isEqualToString:@"cancelled"]) {
