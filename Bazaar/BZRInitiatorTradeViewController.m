@@ -156,6 +156,7 @@
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved updated trade status");
+            [self updateNumTrades];
             [self changeTradedItemsStatus];
         }
         else {
