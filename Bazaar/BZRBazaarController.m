@@ -33,7 +33,7 @@ static NSString * const cellIdentifier = @"ItemCell";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.navigationItem.title = self.currentFilter;
-    self.currentFilter = @"Bazaar";
+    self.currentFilter = @"All";
 }
 
 
@@ -67,7 +67,7 @@ static NSString * const cellIdentifier = @"ItemCell";
 - (void)loadMarketPlace
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    if (![self.currentFilter isEqualToString:@"Bazaar"]) {
+    if (![self.currentFilter isEqualToString:@"All"]) {
         [query whereKey:@"category" equalTo:self.currentFilter];
     }
     [self.navigationController.navigationBar.topItem setTitle:self.currentFilter];
