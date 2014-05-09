@@ -25,7 +25,7 @@
                         <action selector="loginUser:" destination="-1" eventType="touchUpInside" id="SyT-2M-fUb"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bazaar TITLE.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTv-aC-pHh">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bazaarhomepng-20.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTv-aC-pHh">
                     <rect key="frame" x="44" y="112" width="232" height="106"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -36,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bazaar TITLE.png" width="233" height="108"/>
+        <image name="bazaarhomepng-20.png" width="750" height="338"/>
     </resources>
 </document>

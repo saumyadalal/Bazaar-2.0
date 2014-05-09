@@ -194,13 +194,11 @@
             </objects>
             <point key="canvasLocation" x="526" y="-526"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Bazaar-->
         <scene sceneID="RaY-Z8-Fhm">
             <objects>
                 <navigationController definesPresentationContext="YES" id="X0N-c0-bLY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="bazaar30.1.png" id="7ix-Pg-tD9">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Bazaar" image="bazaar icon-19.png" id="7ix-Pg-tD9"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3fJ-VJ-jNF">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -265,7 +263,7 @@
             </objects>
             <point key="canvasLocation" x="1576" y="-1803"/>
         </scene>
-        <!--Detail View Controller - Title-->
+        <!--Detail View Controller-->
         <scene sceneID="3QO-AK-hlo">
             <objects>
                 <collectionViewController storyboardIdentifier="detailViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLe-B3-6qf" customClass="BZRDetailViewController" sceneMemberID="viewController">
@@ -381,7 +379,7 @@
                             <outlet property="delegate" destination="iLe-B3-6qf" id="Aek-ST-Nao"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="9nO-Y9-cDp"/>
+                    <navigationItem key="navigationItem" id="9nO-Y9-cDp"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fF4-7q-zCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -715,11 +713,11 @@
                                 <color key="backgroundColor" red="0.4089140094" green="0.68045605279999999" blue="0.95017408290000005" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S1-HD-gqL">
-                                <rect key="frame" x="18" y="362" width="89" height="89"/>
+                                <rect key="frame" x="16" y="362" width="93" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.23650084120000001" green="0.68852210199999997" blue="0.72870669160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" image="add_icon.png">
+                                <state key="normal" image="1399586533_icon-ios7-plus-empty.png">
                                     <color key="titleColor" red="0.86033033288043481" green="0.86033033288043481" blue="0.86033033288043481" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -746,11 +744,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73z-Lr-BfZ">
-                                <rect key="frame" x="66" y="78" width="60" height="60"/>
+                                <rect key="frame" x="54" y="78" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usersTrading" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="151" translatesAutoresizingMaskIntoConstraints="NO" id="euE-qj-gWu">
-                                <rect key="frame" x="149" y="78" width="151" height="56"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usersTrading" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="171" translatesAutoresizingMaskIntoConstraints="NO" id="euE-qj-gWu">
+                                <rect key="frame" x="129" y="78" width="171" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -848,7 +846,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="reV-nX-Tgy">
-                                <rect key="frame" x="39" y="70" width="60" height="60"/>
+                                <rect key="frame" x="42" y="70" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usersTrading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKl-Ca-3hZ">
@@ -959,7 +957,9 @@
         <scene sceneID="731-pl-HUb">
             <objects>
                 <navigationController title="Notifications" definesPresentationContext="YES" id="L0c-tP-lMY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trades" image="trade.png" id="JDL-G3-Z7Y"/>
+                    <tabBarItem key="tabBarItem" title="Trades" image="new trade icon-21-21.png" id="JDL-G3-Z7Y">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q5b-fV-e7X">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1101,11 +1101,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5h-N6-hT0">
-                                <rect key="frame" x="66" y="76" width="60" height="60"/>
+                                <rect key="frame" x="53" y="76" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usersTrading" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="2ag-qS-AW0">
-                                <rect key="frame" x="150" y="80" width="150" height="52"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usersTrading" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="171" translatesAutoresizingMaskIntoConstraints="NO" id="2ag-qS-AW0">
+                                <rect key="frame" x="130" y="80" width="171" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1197,10 +1197,10 @@
         <image name="1399583194_back.png" width="20" height="20"/>
         <image name="1399583194_forward.png" width="42" height="41"/>
         <image name="1399586289_menu-alt.png" width="20" height="20"/>
-        <image name="add_icon.png" width="128" height="128"/>
-        <image name="bazaar30.1.png" width="26" height="32"/>
+        <image name="1399586533_icon-ios7-plus-empty.png" width="48" height="48"/>
+        <image name="bazaar icon-19.png" width="28" height="29"/>
         <image name="camera30.png" width="30" height="22"/>
-        <image name="trade.png" width="35" height="31"/>
+        <image name="new trade icon-21-21.png" width="28" height="30"/>
         <image name="user_male2-25.png" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
