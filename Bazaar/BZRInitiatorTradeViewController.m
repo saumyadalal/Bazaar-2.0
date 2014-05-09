@@ -156,6 +156,7 @@
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"saved updated trade status");
+            [self updateNumTrades];
             [self changeTradedItemsStatus];
         }
         else {
@@ -197,6 +198,7 @@
   }];
 }
 
+//cancel trades involving the main item or any of the return items.
 - (void) cancelOtherTrades {
   //cancel all trades involving traded items
   PFObject *item = self.trade[@"item"];
@@ -205,9 +207,9 @@
   [query findObjectsInBackgroundWithBlock:^(NSArray *otherTrades, NSError *error) {
     if (!error) {
       for (PFObject *otherTrade in otherTrades) {
-        [self changeAvailabilityStatus:item forTrade:otherTrade];
+        [self cancelPendingTrade:otherTrade ifContainsItem:item];
         for (PFObject* returnItem in returnItems) {
-          [self changeAvailabilityStatus:returnItem forTrade:otherTrade];
+          [self cancelPendingTrade:otherTrade ifContainsItem:returnItem];
         }
       }
     } else {
@@ -218,14 +220,29 @@
   [self changeTradedItemsStatus];
 }
 
-
-- (void) changeAvailabilityStatus:(PFObject*)tradedItem forTrade:(PFObject*)trade {
-  PFObject *item = trade[@"item"];
-  NSArray *returnItems = trade[@"returnItems"];
-  if ([tradedItem isEqual: item] || [returnItems containsObject:tradedItem]) {
-    trade[@"status"] = @"unavailable";
+//need to compare objectIds not objects.
+- (void) cancelPendingTrade:(PFObject*)trade ifContainsItem:(PFObject*)tradedItem {
+  PFObject *pendingTradeItem = trade[@"item"];
+  NSArray *pendingReturnItems = trade[@"returnItems"];
+  NSString* status = trade[@"status"];
+  //if the trade is pending
+  if ([status isEqualToString:@"initiated"] || [status isEqualToString:@"responded"]) {
+    //if traded item is one of the pending trade items
+    if ([[tradedItem objectId] isEqualToString:[pendingTradeItem objectId]] ||
+        [self containsTradedItem:tradedItem inItems:pendingReturnItems]) {
+      trade[@"status"] = @"unavailable";
+    }
   }
   [trade saveInBackground];
+}
+
+- (BOOL) containsTradedItem:(PFObject*)tradedItem inItems:(NSArray*)returnItems {
+  for (PFObject* item in returnItems) {
+    if ([[item objectId] isEqualToString:[tradedItem objectId]]) {
+      return YES;
+    }
+  }
+  return NO;
 }
 
 

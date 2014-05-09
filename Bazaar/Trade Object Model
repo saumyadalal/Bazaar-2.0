@@ -1,0 +1,19 @@
+Trade Statuses:
+
+//Pending Trades
+initiated
+responded
+
+//Cancelled by user
+cancelled
+
+//Trade success
+completed
+
+//Unavailable since items have been traded already
+unavailable
+
+Item Statuses:
+
+available
+traded
