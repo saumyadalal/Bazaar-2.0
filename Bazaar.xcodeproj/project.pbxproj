@@ -29,6 +29,8 @@
 		0EDC7F8B190C762900EB4FF6 /* ptofile 30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F89190C762900EB4FF6 /* ptofile 30.1.png */; };
 		0EDC7F8C190C762900EB4FF6 /* notifs30.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDC7F8A190C762900EB4FF6 /* notifs30.1.png */; };
 		0EDF5B97191311300024A9F6 /* bazaar TITLE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EDF5B96191311300024A9F6 /* bazaar TITLE.png */; };
+		0EF2673B191D484000E92ED6 /* facebook button-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF26739191D484000E92ED6 /* facebook button-22.png */; };
+		0EF2673F191D49BC00E92ED6 /* camera placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF2673E191D49BC00E92ED6 /* camera placeholder.png */; };
 		0EFF9BD91919A6A8005B49B1 /* 1399426766_icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2205168D1919A30200119B92 /* 1399426766_icon-camera.png */; };
 		0EFF9BDA1919A6A8005B49B1 /* 1399426832_icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2205168E1919A30200119B92 /* 1399426832_icon-camera.png */; };
 		22051693191A9DB800119B92 /* BZRSuccessfulTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22051692191A9DB800119B92 /* BZRSuccessfulTradeViewController.m */; };
@@ -117,6 +119,8 @@
 		0EDC7F89190C762900EB4FF6 /* ptofile 30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptofile 30.1.png"; sourceTree = "<group>"; };
 		0EDC7F8A190C762900EB4FF6 /* notifs30.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notifs30.1.png; sourceTree = "<group>"; };
 		0EDF5B96191311300024A9F6 /* bazaar TITLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bazaar TITLE.png"; sourceTree = "<group>"; };
+		0EF26739191D484000E92ED6 /* facebook button-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook button-22.png"; sourceTree = "<group>"; };
+		0EF2673E191D49BC00E92ED6 /* camera placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera placeholder.png"; path = "Bazaar/camera placeholder.png"; sourceTree = "<group>"; };
 		2205168D1919A30200119B92 /* 1399426766_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426766_icon-camera.png"; sourceTree = "<group>"; };
 		2205168E1919A30200119B92 /* 1399426832_icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1399426832_icon-camera.png"; sourceTree = "<group>"; };
 		22051691191A9DB800119B92 /* BZRSuccessfulTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRSuccessfulTradeViewController.h; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		22E2C13819030C8D0098D279 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0EF26739191D484000E92ED6 /* facebook button-22.png */,
 				A7851CA3191CEAEA0087C5BE /* facebook.png */,
 				A7851CA1191CC23E0087C5BE /* upload_placeholder.jpeg */,
 				A7851C9F191CC0DE0087C5BE /* camera.png */,
@@ -419,6 +424,7 @@
 		A7DE717018DDFA1200EE7F9A = {
 			isa = PBXGroup;
 			children = (
+				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
 				A7DE718218DDFA1200EE7F9A /* Bazaar */,
 				A7DE719B18DDFA1200EE7F9A /* BazaarTests */,
 				A7DE717B18DDFA1200EE7F9A /* Frameworks */,
@@ -637,8 +643,10 @@
 				0E1F0C8F191956D500124864 /* Gotham-Book.otf in Resources */,
 				A7851CA4191CEAEA0087C5BE /* facebook.png in Resources */,
 				0EAFF898191C6D9C00C35AD8 /* bazaarhomepng-20.png in Resources */,
+				0EF2673F191D49BC00E92ED6 /* camera placeholder.png in Resources */,
 				A7851CA0191CC0DE0087C5BE /* camera.png in Resources */,
 				A7851CA6191D3F050087C5BE /* Trade Object Model in Resources */,
+				0EF2673B191D484000E92ED6 /* facebook button-22.png in Resources */,
 				0E1F0C8E191956D500124864 /* Gotham-Medium.otf in Resources */,
 				0E4E2A89191A9DA8005161C8 /* Gotham-Light.otf in Resources */,
 				0EDC7F84190C747900EB4FF6 /* favorites30.png in Resources */,

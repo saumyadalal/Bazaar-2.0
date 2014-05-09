@@ -48,7 +48,7 @@
       if (i < limit) {
         [imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
         if (i == 0) {
-          imageView.image = [UIImage imageNamed:@"upload_placeholder.jpeg"];
+          imageView.image = [UIImage imageNamed:@"upload_placeholder.png"];
         }
       }
       else {
