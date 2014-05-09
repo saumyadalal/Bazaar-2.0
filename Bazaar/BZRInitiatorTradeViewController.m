@@ -25,7 +25,6 @@
   [self loadContent];
   [self.itemImage1.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   [self.itemImage1 setTintColor:[UIColor grayColor]];
-  
 }
 
 /******************
