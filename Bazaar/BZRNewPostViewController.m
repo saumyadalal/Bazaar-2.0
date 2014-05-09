@@ -63,6 +63,8 @@
                                             [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil]
                                                 forState:UIControlStateNormal];
   [self.description setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+  [self.itemName setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+  [self.category setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
   [self.imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
   [self.addObject setTintColor:[UIColor whiteColor]];
 }
