@@ -73,6 +73,12 @@
   }];
 }
 
++ (void) loadCircularImage:(UIImageView*)imageView fromObject:(PFObject*)object {
+  imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+  imageView.clipsToBounds = YES;
+  [self loadImage:imageView fromItem:object];
+}
+
 + (NSString *) getFirstNameOwnerFormat: (PFUser*) user {
   return [NSString stringWithFormat:@"%@'s", [self getFirstName:user]];
 }

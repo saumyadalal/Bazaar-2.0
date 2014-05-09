@@ -53,6 +53,7 @@
 		A7737AFA190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */; };
 		A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737AFF190C809500319AF4 /* BZRBazaarController.m */; };
 		A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7737B06190F37FB00319AF4 /* BZRTabBarController.m */; };
+		A7851C96191C4E550087C5BE /* BZRDesignUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7851C95191C4E550087C5BE /* BZRDesignUtils.m */; };
 		A79C876A1916015F00BB0C68 /* BZRReceiverTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */; };
 		A79C876E1916018300BB0C68 /* BZRInitiatorTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79C876D1916018300BB0C68 /* BZRInitiatorTradeViewController.m */; };
 		A79C87701916091200BB0C68 /* TagReferences in Resources */ = {isa = PBXBuildFile; fileRef = A79C876F1916091200BB0C68 /* TagReferences */; };
@@ -142,6 +143,8 @@
 		A7737AFF190C809500319AF4 /* BZRBazaarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRBazaarController.m; sourceTree = "<group>"; };
 		A7737B05190F37FA00319AF4 /* BZRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRTabBarController.h; sourceTree = "<group>"; };
 		A7737B06190F37FB00319AF4 /* BZRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRTabBarController.m; sourceTree = "<group>"; };
+		A7851C94191C4E550087C5BE /* BZRDesignUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRDesignUtils.h; sourceTree = "<group>"; };
+		A7851C95191C4E550087C5BE /* BZRDesignUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRDesignUtils.m; sourceTree = "<group>"; };
 		A79C87681916015F00BB0C68 /* BZRReceiverTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRReceiverTradeViewController.h; sourceTree = "<group>"; };
 		A79C87691916015F00BB0C68 /* BZRReceiverTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRReceiverTradeViewController.m; sourceTree = "<group>"; };
 		A79C876C1916018300BB0C68 /* BZRInitiatorTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRInitiatorTradeViewController.h; sourceTree = "<group>"; };
@@ -346,6 +349,15 @@
 			name = Tabs;
 			sourceTree = "<group>";
 		};
+		A7851C93191C4E400087C5BE /* Design Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A7851C94191C4E550087C5BE /* BZRDesignUtils.h */,
+				A7851C95191C4E550087C5BE /* BZRDesignUtils.m */,
+			);
+			name = "Design Utils";
+			sourceTree = "<group>";
+		};
 		A79C876B1916016E00BB0C68 /* Initiator Trade View */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +420,7 @@
 		A7DE718218DDFA1200EE7F9A /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				A7851C93191C4E400087C5BE /* Design Utils */,
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
 				A7F669481919EEFC00A06FBB /* Trade Detail Views */,
 				0E1F0C90191956D800124864 /* Fonts */,
@@ -633,6 +646,7 @@
 				79ADDAD018F212AF0031CA5E /* SWRevealViewController.m in Sources */,
 				22051693191A9DB800119B92 /* BZRSuccessfulTradeViewController.m in Sources */,
 				22E2C137190305470098D279 /* BZRNotificationTableViewController.m in Sources */,
+				A7851C96191C4E550087C5BE /* BZRDesignUtils.m in Sources */,
 				A7737B07190F37FB00319AF4 /* BZRTabBarController.m in Sources */,
 				A7737B00190C809500319AF4 /* BZRBazaarController.m in Sources */,
 				A79C876E1916018300BB0C68 /* BZRInitiatorTradeViewController.m in Sources */,

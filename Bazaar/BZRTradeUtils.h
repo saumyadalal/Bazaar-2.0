@@ -14,6 +14,7 @@
 + (void) cancelTrade:(PFObject*) trade;
 + (void) loadReturnItemImages:(NSArray*)imageViews forTrade:(PFObject *)trade;
 + (void) loadImage:(UIImageView*)imageView fromItem:(PFObject*)item;
++ (void) loadCircularImage:(UIImageView*)imageView fromObject:(PFObject*)object;
 + (NSString *) getFirstName: (PFUser *) user;
 + (NSString *) getFirstNameOwnerFormat: (PFUser*) user;
 + (NSString *) getStatusMessage:(PFObject*)trade forUser:(PFUser*)user;

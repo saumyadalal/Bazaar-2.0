@@ -137,8 +137,8 @@
   self.greyOverlay.hidden = false;
   [BZRTradeUtils cancelTrade:self.trade];
   [self.navigationController popViewControllerAnimated:YES];
-   [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
 }
+
 - (IBAction)acceptTrade:(id)sender {
     self.trade[@"status"] = @"complete";
     [self.trade saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
