@@ -7,6 +7,7 @@
 //
 
 #import "BZRTradeViewController.h"
+#import "BZRTradeUtils.h"
 
 @interface BZRTradeViewController ()
 @property (nonatomic, assign) NSInteger numItems;
@@ -21,13 +22,17 @@
     self.numReturn.text = @"1";
     self.numItems = 1;
     [self loadTradeData];
+    self.itemOwner.font = [UIFont fontWithName:@"Gotham-Medium" size:13];
+    self.numReturn.font = [UIFont fontWithName:@"Gotham-Medium" size:15];
 }
 
 - (void) loadTradeData {
   PFUser* owner = [self.item objectForKey:@"owner"];
   [owner fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
-        self.itemOwner.text = [owner objectForKey:@"username"];
+        NSString* firstName = [BZRTradeUtils getFirstName:[self.item objectForKey:@"owner"]];
+        NSString* baseStr = @"%@'s";
+        [self.itemOwner setText:[NSString stringWithFormat:baseStr, firstName]];
     }
     else {
       NSLog(@"item owner fetch error");

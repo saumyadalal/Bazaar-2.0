@@ -20,4 +20,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *numItems;
 @property (strong, nonatomic) IBOutlet UILabel *tradesLabel;
 @property (strong, nonatomic) IBOutlet UILabel *itemsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *behindProfileColor;
 @end
