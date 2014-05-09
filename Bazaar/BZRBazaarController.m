@@ -34,6 +34,8 @@ static NSString * const cellIdentifier = @"ItemCell";
     self.collectionView.dataSource = self;
     self.navigationItem.title = self.currentFilter;
     self.currentFilter = @"All";
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
 }
 
 
