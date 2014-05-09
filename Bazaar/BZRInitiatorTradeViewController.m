@@ -223,7 +223,8 @@
 - (void) changeAvailabilityStatus:(PFObject*)tradedItem forTrade:(PFObject*)trade {
   PFObject *item = trade[@"item"];
   NSArray *returnItems = trade[@"returnItems"];
-  if ([tradedItem isEqual: item] || [returnItems containsObject:tradedItem]) {
+    NSLog(@"objectIds are equal: %hhd", [[tradedItem objectId] isEqualToString:[item objectId]]);
+  if ([[tradedItem objectId] isEqualToString:[item objectId]] || [returnItems containsObject:tradedItem]) {
     trade[@"status"] = @"unavailable";
   }
   [trade saveInBackground];
