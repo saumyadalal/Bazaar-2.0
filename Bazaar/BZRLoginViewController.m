@@ -117,6 +117,7 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
     PFObject *numTrades = [PFObject objectWithClassName:@"numTrades"];
     numTrades[@"user"]=[PFUser currentUser];
     numTrades[@"numTrades"]=@0;
+    [numTrades saveInBackground];
 }
 
 // Called every time a chunk of the data is received
