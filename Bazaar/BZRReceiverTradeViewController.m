@@ -41,6 +41,7 @@
   [BZRTradeUtils loadCircularImage:self.initiatorImage fromObject:initiator];
   [self setUsersLabel];
   [self setFont];
+  [self setStyle];
 
 }
 
@@ -61,6 +62,12 @@
   NSString *initiatorName = [BZRTradeUtils getFirstName:initiator];
   NSString *combined = [NSString stringWithFormat:@"%@ & %@", initiatorName, ownerName];
   [self.usersLabel setText:combined];
+}
+
+- (void) setStyle {
+  for(UIImageView* view in self.itemImageViews) {
+    [view setBackgroundColor:[BZRDesignUtils placeHolderColor]];
+  }
 }
 
 /******************

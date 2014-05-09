@@ -42,5 +42,13 @@
   return [UIColor grayColor];
 }
 
++ (UIColor*) placeHolderColor {
+  return [UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:0.9];
+}
+
++ (UIColor*) profileBackgroundColor {
+  return [UIColor colorWithRed:237/255.0 green:232/255.0 blue:228/255.0 alpha:0.9];
+}
+
 
 @end

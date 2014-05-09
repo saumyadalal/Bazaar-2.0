@@ -9,24 +9,17 @@
 #import "BZRUserProfileViewController.h"
 #import "BZRUserMarketPlaceViewController.h"
 #import "SWRevealViewController.h"
+#import "BZRDesignUtils.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface BZRUserProfileViewController () <BZRUserMarketPlaceDelegate>
+@property (strong, nonatomic) UIView* containerView;
 @end
 
 @implementation BZRUserProfileViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = @"Profile";
-        self.tabBarItem.title = self.title;
-    }
-    return self;
-}
 
 -(void) viewWillAppear:(BOOL)animated {
     [self loadUserInfo];
@@ -35,13 +28,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:15]; //make font of username bold
-    self.logoutButton.titleLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13]; //logout button font
+    [self setFont];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
     [self loadUserInfo];
+}
+
+- (void) setFont {
+  NSString* fontName = @"Gotham-Book";
+  [self.itemsLabel setFont:[UIFont fontWithName:fontName size:13]];
+  //[self.itemsLabel setTextColor:[BZRDesignUtils dateTimeColor]];
+  [self.tradesLabel setFont:[UIFont fontWithName:fontName size:13]];
+  //[self.tradesLabel setTextColor:[BZRDesignUtils dateTimeColor]];
+  [self.numItems setFont:[UIFont fontWithName:fontName size:14]];
+  [self.numTrades setFont:[UIFont fontWithName:fontName size:14]];
+  self.username.font = [UIFont fontWithName:@"Gotham-Medium" size:17];
+  self.logoutButton.titleLabel.font = [UIFont fontWithName:fontName size:13];
+  [self.view setBackgroundColor:[BZRDesignUtils profileBackgroundColor]];
+  //[self.containerView.layer setShadowOffset:CGSizeMake(5, 5)];
+  //[self.containerView.layer setShadowColor:[[UIColor grayColor] CGColor]];
 }
 
 
@@ -82,6 +88,7 @@
     marketPlaceView.user = self.user;
     marketPlaceView.inSelectionMode = NO;
     marketPlaceView.delegate = self;
+    self.containerView = marketPlaceView.view;
   }
 }
 

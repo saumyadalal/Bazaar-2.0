@@ -40,7 +40,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
     layout.minimumInteritemSpacing = 0;
     //set the intitial current item
     self.item = [self.items objectAtIndex:self.currentIndexPath.row];
-    [self.collectionView setShowsHorizontalScrollIndicator:YES];
+    [self.collectionView setShowsHorizontalScrollIndicator:NO];
 }
 
 

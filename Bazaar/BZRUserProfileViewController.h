@@ -18,4 +18,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *numTrades;
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 @property (strong, nonatomic) IBOutlet UILabel *numItems;
+@property (strong, nonatomic) IBOutlet UILabel *tradesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *itemsLabel;
 @end

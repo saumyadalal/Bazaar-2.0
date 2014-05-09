@@ -8,6 +8,7 @@
 #import "BZRNewPostViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
+#import "BZRDesignUtils.h"
 
 @interface BZRNewPostViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSArray *categories;
@@ -29,14 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-  [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]]; //font of labels
-  [self.postButton setTitleTextAttributes:
-  [NSDictionary dictionaryWithObjectsAndKeys:
-  [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil] forState:UIControlStateNormal]; //font of post button
-  [self.clearButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil] forState:UIControlStateNormal]; //font of clear button
-  [self.description setFont:[UIFont fontWithName:@"Gotham-Book" size:14]];
-    
     self.imagePicked = NO;
     self.categories = [NSArray arrayWithObjects: @"Books", @"Clothes & Shoes", @"Accessories", @"Entertainment", @"Electronics", @"Food", @"Furniture", @"Household", @"Other", nil];
     //set category input as picker
@@ -51,26 +44,35 @@
     self.navigationItem.rightBarButtonItem.action = @selector(postPressed:);
     self.imageSavedView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Image Uploaded Successfully" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     self.incompleteView = [[UIAlertView alloc] initWithTitle:@"New Post" message:@"Please complete all fields!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    //change border color of text boxes
-    self.itemName.layer.cornerRadius=6.0f;
-    self.itemName.layer.masksToBounds=YES;
-    self.itemName.layer.borderColor=[[UIColor grayColor]CGColor];
-    self.itemName.layer.borderWidth= 1.0f;
-    self.category.layer.cornerRadius=6.0f;
-    self.category.layer.masksToBounds=YES;
-    self.category.layer.borderColor=[[UIColor grayColor]CGColor];
-    self.category.layer.borderWidth= 1.0f;
-    self.description.layer.cornerRadius=6.0f;
-    self.description.layer.masksToBounds=YES;
-    self.description.layer.borderColor=[[UIColor grayColor]CGColor];
-    self.description.layer.borderWidth= 1.0f;
     self.navigationItem.rightBarButtonItem.enabled = YES;
     self.navigationItem.leftBarButtonItem.enabled = YES;
-    
     //or this can also be set in the storyboard.
     self.description.delegate = self;
+    [self setFont];
+    [self setStyle:self.itemName];
+    [self setStyle:self.category];
+    [self setStyle:self.description];
 }
 
+- (void) setFont {
+  [[UILabel appearance] setFont:[UIFont fontWithName:@"Gotham-Book" size:14.0]];
+  [self.postButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil]
+                                                forState:UIControlStateNormal];
+  [self.clearButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"Gotham-Medium" size:17], NSFontAttributeName,nil]
+                                                forState:UIControlStateNormal];
+  [self.description setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+  [self.imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
+  [self.addObject setTintColor:[UIColor whiteColor]];
+}
+
+- (void) setStyle : (UIView*) view {
+  view.layer.cornerRadius=6.0f;
+  view.layer.masksToBounds=YES;
+  view.layer.borderColor= [[BZRDesignUtils placeHolderColor] CGColor];
+  view.layer.borderWidth= 1.0f;
+}
 
 //accessing self.description.text = @"" does not work
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
@@ -100,7 +102,7 @@
   self.description.text = @"Description";
   self.description.textColor = [UIColor lightGrayColor];
   self.category.text = @"";
-  self.imageView.image = nil;
+  self.imageView.image = [UIImage imageNamed:@"upload_placeholder.jpeg"];
   self.addObject.hidden = NO;
   self.navigationItem.leftBarButtonItem.enabled = YES;
   self.navigationItem.rightBarButtonItem.enabled = YES;
