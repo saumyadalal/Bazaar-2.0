@@ -47,7 +47,7 @@
 }
 
 + (UIColor*) placeHolderLightGrey {
-  return [UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1];
+  return [UIColor colorWithRed:218/255.0 green:218/255.0 blue:218/255.0 alpha:0.9];
 }
 
 

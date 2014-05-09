@@ -23,8 +23,6 @@
   [super viewDidLoad];
   self.itemImageViews = @[self.itemImage1, self.itemImage2, self.itemImage3];
   [self loadContent];
-  [self.itemImage1.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-  [self.itemImage1 setTintColor:[UIColor grayColor]];
 }
 
 /******************

@@ -47,10 +47,6 @@
       if (i < limit) {
         //no images selected and at the first index.
         if (i == 0 && size == 0) {
-          imageView.image = [UIImage imageNamed:@"camera placeholder.png"];
-          [imageView setBackgroundColor:[UIColor clearColor]];
-        }
-        else {
           [imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
         }
       }
@@ -129,16 +125,17 @@
   PFUser *initiator = [trade objectForKey:@"initiator"];
   PFUser *receiver = [trade objectForKey:@"owner"];
   PFObject* item = [trade objectForKey:@"item"];
-  NSString* messageForReceiver = @"Your trade with %@ for %@ was accepted";
-  NSString* messageForInitiator = @"Your trade with %@ is complete";
+  NSString* messageForInitiator = @"Your trade with %@ for %@ was accepted";
+  NSString* messageForReceiver = @"Your trade with %@ is complete";
   NSString *messageText = @"";
   if ([self isInitiator:user forTrade:trade]) {
-    messageText = [NSString stringWithFormat:messageForInitiator, [self getFirstName:receiver]];
+    messageText = [NSString stringWithFormat:messageForInitiator, [self getFirstName:receiver],
+                   [item objectForKey:@"name"]];
   }
   else {
     //message shown to receiver
-    messageText = [NSString stringWithFormat:messageForReceiver, [self getFirstName:initiator],
-                   [item objectForKey:@"name"]];
+    messageText = [NSString stringWithFormat:messageForReceiver, [self getFirstName:initiator]];
+
   }
   return messageText;
 }
