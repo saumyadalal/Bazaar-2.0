@@ -243,7 +243,7 @@
                                             <rect key="frame" x="0.0" y="-6" width="103" height="109"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Au-qP-uWu">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="103" translatesAutoresizingMaskIntoConstraints="NO" id="1Au-qP-uWu">
                                             <rect key="frame" x="0.0" y="70" width="103" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.84665845788043481" green="0.84665845788043481" blue="0.84665845788043481" alpha="0.82000000000000006" colorSpace="calibratedRGB"/>
@@ -438,31 +438,31 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qnQ-z9-9uh">
+                            <textField opaque="NO" clipsSubviews="YES" tag="601" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qnQ-z9-9uh">
                                 <rect key="frame" x="140" y="84" width="148" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="titleField:" destination="jy5-bs-R24" eventType="editingDidEnd" id="1IT-Ru-saE"/>
+                                    <outlet property="delegate" destination="jy5-bs-R24" id="eg3-ur-gxC"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="601" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" keyboardDismissMode="interactive" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="JYl-A8-JY3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="602" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" keyboardDismissMode="interactive" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="JYl-A8-JY3">
                                 <rect key="frame" x="29" y="196" width="259" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.70104449729999996" green="0.70104449729999996" blue="0.70104449729999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jy5-bs-R24" id="wYk-SL-R1T"/>
+                                </connections>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oCv-PE-bcS">
                                 <rect key="frame" x="140" y="128" width="148" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="categoryField:" destination="jy5-bs-R24" eventType="editingDidEnd" id="23W-NF-9hu"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f8-Xq-9RI">
                                 <rect key="frame" x="0.0" y="284" width="320" height="103"/>
@@ -485,8 +485,10 @@
                         <outlet property="category" destination="oCv-PE-bcS" id="FtP-sn-1v6"/>
                         <outlet property="clearButton" destination="8vh-VX-9Yc" id="Y1N-DJ-23K"/>
                         <outlet property="description" destination="JYl-A8-JY3" id="mGj-kz-7w6"/>
+                        <outlet property="descriptionInput" destination="JYl-A8-JY3" id="MTx-6d-0eb"/>
                         <outlet property="imageView" destination="1R0-Pr-g68" id="ibh-9L-tW8"/>
                         <outlet property="itemName" destination="qnQ-z9-9uh" id="JYq-Gz-cd2"/>
+                        <outlet property="nameInput" destination="qnQ-z9-9uh" id="nUH-NL-RQT"/>
                         <outlet property="postButton" destination="xG2-HD-2Iz" id="s5O-ho-t4P"/>
                     </connections>
                 </viewController>
@@ -1201,7 +1203,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8l-4x-OXk">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="103" translatesAutoresizingMaskIntoConstraints="NO" id="W8l-4x-OXk">
                                             <rect key="frame" x="0.0" y="72" width="103" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.92573879076086962" green="0.92573879076086962" blue="0.92573879076086962" alpha="0.82000000000000006" colorSpace="calibratedRGB"/>

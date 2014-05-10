@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "BZRDetailViewController.h"
 #import "BZRFilterViewController.h"
+#import "BZRDesignUtils.h"
 
 @interface BZRBazaarController ()
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
@@ -115,6 +116,7 @@ static NSString * const cellIdentifier = @"ItemCell";
                 if (!error) {
                     itemImageView.image = [UIImage imageWithData:data];
                     itemName.text = [object objectForKey:@"name"];
+                    [BZRDesignUtils fitTextInLabel:itemName];
                 }
                 else {
                     NSLog(@"error fetching image");

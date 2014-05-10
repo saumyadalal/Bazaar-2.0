@@ -56,6 +56,10 @@
 
 }
 
++ (void) fitTextInLabel:(UILabel*) label {
+  label.font = [UIFont fontWithName:@"Gotham-Book" size:12];
+}
+
 
 
 @end

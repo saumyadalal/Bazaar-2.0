@@ -193,6 +193,7 @@ static NSString * const cellIdentifier = @"UserItemCell";
   [item fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
     if (!error) {
       itemName.text = [object objectForKey:@"name"];
+      [BZRDesignUtils fitTextInLabel:itemName];
       [BZRTradeUtils loadImage:itemImageView fromItem:item];
     }
     else {

@@ -18,5 +18,6 @@
 + (UIColor*) profileBackgroundColor;
 + (UIColor*) placeHolderColor;
 + (UIColor*) placeHolderLightGrey;
++ (void) fitTextInLabel:(UILabel*) label;
 + (void) showSeenStatus:(BOOL)isNew forCell:(UITableViewCell*) cell;
 @end

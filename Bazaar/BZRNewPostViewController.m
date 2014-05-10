@@ -10,12 +10,15 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BZRDesignUtils.h"
 
-@interface BZRNewPostViewController () <UITextViewDelegate>
+@interface BZRNewPostViewController () <UITextViewDelegate, UITextFieldDelegate>
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) UIAlertView *imageSavedView;
 @property (strong, nonatomic) UIAlertView *incompleteView;
 @property (nonatomic) BOOL imagePicked;
 @end
+
+static NSUInteger const nameSizeLimit = 22;
+static NSUInteger const descriptionSizeLimit = 70;
 
 @implementation BZRNewPostViewController
 
@@ -66,7 +69,6 @@
   [self.itemName setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
   [self.category setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
   [self.imageView setBackgroundColor:[BZRDesignUtils placeHolderColor]];
-  [self.addObject setTintColor:[UIColor whiteColor]];
 }
 
 - (void) setStyle : (UIView*) view {
@@ -105,9 +107,21 @@
   self.description.textColor = [UIColor lightGrayColor];
   self.category.text = @"";
   self.imageView.image = [UIImage imageNamed:@"camera placeholder.png"];
-  self.addObject.hidden = NO;
   self.navigationItem.leftBarButtonItem.enabled = YES;
   self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+
+//to limit characters in text field
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  return [textField.text length] + [string length] - range.length <= nameSizeLimit;
+}
+
+//limit characters in description
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
+  replacementText:(NSString *)text
+{
+  return textView.text.length + (text.length - range.length) <= descriptionSizeLimit;
 }
 
 - (void)postPressed:(id)sender {
@@ -118,8 +132,8 @@
         PFObject *newItem = [PFObject objectWithClassName:@"Item"];
         NSData *imageData = UIImagePNGRepresentation(self.imageView.image);
         PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-        newItem[@"name"] = self.itemName.text;
-        newItem[@"description"] = self.description.text;
+        newItem[@"name"] = [self.itemName.text capitalizedString];
+        newItem[@"description"] = [self.description.text capitalizedString];
         newItem[@"category"] = self.category.text;
         newItem[@"imageFile"] = imageFile;
         newItem[@"owner"] = [PFUser currentUser];
@@ -156,14 +170,10 @@
 {
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   [self dismissViewControllerAnimated:YES completion:nil];
-    if (self.imagePicked == NO) {
-        self.addObject.hidden = NO;
-    }
 }
 
 
 - (IBAction)editPicture:(id)sender {
-    self.addObject.hidden = YES;
     UIImagePickerController *imagePicker =[[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -203,9 +213,5 @@
    self.imagePicked = NO;
 }
 
-- (IBAction)titleField:(id)sender {
-}
 
-- (IBAction)categoryField:(id)sender {
-}
 @end
