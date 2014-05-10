@@ -133,16 +133,14 @@ static NSString * const cellIdentifier = @"UserItemCell";
   if (self.user == nil) {
     self.user = [PFUser currentUser];
   }
+
   PFUser *user = self.user;
   PFQuery *query = [PFQuery queryWithClassName:@"Item"];
   [query whereKey:@"owner" equalTo:user];
   [query whereKey:@"status" equalTo:@"available"];
   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     if (!error) {
-      // The find succeeded.
-      NSUInteger oldCount = [self.items count];
-      //refresh only if new items have been added
-      if ([objects count] > oldCount) {
+      // The find succeeded
         self.items = [[NSMutableArray alloc] initWithArray:objects];
         [self.collectionView reloadData];
         if ([self.items count] == 0) {
@@ -151,7 +149,6 @@ static NSString * const cellIdentifier = @"UserItemCell";
         else {
           [self.noItemsLabel setHidden:YES];
         }
-      }
       //to udpate number of items on profile
       [self.delegate updateNumItems:[self.items count]];
     } else {
