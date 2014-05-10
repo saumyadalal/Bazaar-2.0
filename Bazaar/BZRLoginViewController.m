@@ -69,6 +69,7 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
     }
     else {
       if (user.isNew) {
+          [self createNewTradeUser];
           NSLog(@"User with facebook signed up and logged in!");
           user[@"favorites"] = [NSMutableArray array];
           [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -110,10 +111,21 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
       NSLog(@"%@", error);
     }
   }];
-  PFObject *numTrades = [PFObject objectWithClassName:@"TradeUser"];
-  numTrades[@"user"]=[PFUser currentUser];
-  numTrades[@"numTrades"]=@0;
-  [numTrades saveInBackground];
+
+}
+
+- (void)createNewTradeUser {
+  PFObject *tradeUser = [PFObject objectWithClassName:@"TradeUser"];
+  tradeUser[@"user"]=[PFUser currentUser];
+  tradeUser[@"numTrades"]=@0;
+  [tradeUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if(!error) {
+      NSLog(@"created new TradeUser object for new user");
+    }
+    else {
+      NSLog(@"error creating tradeUser object for new user");
+    }
+  }];
 }
 
 // Called every time a chunk of the data is received
