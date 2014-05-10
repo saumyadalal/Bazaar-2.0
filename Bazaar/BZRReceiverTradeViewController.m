@@ -213,22 +213,25 @@
   }];
   self.sendButton.hidden = true;
   self.selectButton.hidden = true;
-
   [self.sentBidView show];
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+//*** call [item fetch] to make sure we have the most up to date
+//information on the item!!!!!
 - (BOOL) isAvailableReturnItems {
   BOOL available = YES;
-  NSMutableArray* returnItems = self.trade[@"returnItems"];
+  NSMutableArray* returnItems = [self.trade objectForKey:@"returnItems"];
   for (PFObject* item in returnItems) {
-    if ([item[@"status"] isEqualToString:@"traded"]) {
+    [item fetch];
+    if ([[item objectForKey:@"status"] isEqualToString:@"traded"]) {
       [returnItems removeObject:item];
       available = NO;
     }
   }
   return available;
 }
+
 
 
 

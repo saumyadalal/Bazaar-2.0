@@ -33,7 +33,6 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.leftBarButtonItem.target = self.tabBarController.revealViewController;
     self.navigationItem.leftBarButtonItem.action = @selector(revealToggle:);
-    [self loadUserInfo];
 }
 
 - (void) setFont {
@@ -53,6 +52,10 @@
 - (void) loadUserInfo {
   if (self.user == nil) {
     self.user = [PFUser currentUser];
+    [self.logoutButton setHidden:YES];
+  }
+  else {
+    [self.logoutButton setHidden:NO];
   }
   PFUser *user = self.user;
   self.username.text = [user objectForKey:@"username"];

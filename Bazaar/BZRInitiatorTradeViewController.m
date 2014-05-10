@@ -199,9 +199,12 @@
   [query findObjectsInBackgroundWithBlock:^(NSArray *otherTrades, NSError *error) {
     if (!error) {
       for (PFObject *otherTrade in otherTrades) {
-        [self cancelPendingTrade:otherTrade ifContainsItem:item];
-        for (PFObject* returnItem in returnItems) {
-          [self cancelPendingTrade:otherTrade ifContainsItem:returnItem];
+        //ignore current trade
+        if (![[otherTrade objectId] isEqualToString:[self.trade objectId]]) {
+          [self cancelPendingTrade:otherTrade ifContainsItem:item];
+          for (PFObject* returnItem in returnItems) {
+            [self cancelPendingTrade:otherTrade ifContainsItem:returnItem];
+          }
         }
       }
     } else {
