@@ -31,6 +31,7 @@
   }];
 }
 
+
 + (void) loadReturnItemImages:(NSArray*)imageViews forTrade:(PFObject *)trade {
   NSArray *items = [trade objectForKey:@"returnItems"];
   NSUInteger limit = [[trade objectForKey:@"numItems"] intValue];
@@ -195,7 +196,7 @@
     user = [PFUser currentUser];
   }
   else {
-    user = [self getReceiverUser:trade];
+    user = [self getOtherUser:trade];
   }
   NSDictionary* seen = trade[@"seen"];
   if (wasSeen) {
@@ -207,7 +208,7 @@
   [trade saveInBackground];
 }
 
-+ (PFUser*) getReceiverUser:(PFObject*)trade {
++ (PFUser*) getOtherUser:(PFObject*)trade {
   PFUser* initiator = [trade objectForKey:@"initiator"];
   PFUser* receiver = [trade objectForKey:@"owner"];
   PFUser* currentUser = [PFUser currentUser];
