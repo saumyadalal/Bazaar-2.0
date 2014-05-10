@@ -52,10 +52,10 @@
 - (void) loadUserInfo {
   if (self.user == nil) {
     self.user = [PFUser currentUser];
-    [self.logoutButton setHidden:YES];
+    [self.logoutButton setHidden:NO];
   }
   else {
-    [self.logoutButton setHidden:NO];
+    [self.logoutButton setHidden:YES];
   }
   PFUser *user = self.user;
   self.username.text = [user objectForKey:@"username"];
