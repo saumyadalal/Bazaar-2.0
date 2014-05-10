@@ -52,7 +52,7 @@
 }
 
 - (void) setFont {
-    self.usersLabel.font = [UIFont fontWithName:@"Gotham-Book" size:14];
+    self.usersLabel.font = [UIFont fontWithName:@"Gotham-Book" size:13];
     self.successLabel.font = [UIFont fontWithName:@"Gotham-Medium" size:30];
 }
 
