@@ -24,6 +24,10 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
 
 @implementation BZRNotificationTableViewController
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
