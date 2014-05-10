@@ -213,7 +213,6 @@
   }];
   self.sendButton.hidden = true;
   self.selectButton.hidden = true;
-
   [self.sentBidView show];
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
