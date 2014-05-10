@@ -745,8 +745,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RG7-f5-6nJ">
-                                <rect key="frame" x="-2" y="61" width="322" height="472"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-l2-NoE">
+                                <rect key="frame" x="16" y="424" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8745814732142857" green="0.8745814732142857" blue="0.8745814732142857" alpha="0.71999999999999997" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FG5-eR-Dt3">
+                                <rect key="frame" x="-2" y="61" width="322" height="468"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="This trade has been cancelled.">
@@ -759,13 +766,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-l2-NoE">
-                                <rect key="frame" x="16" y="424" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.8745814732142857" green="0.8745814732142857" blue="0.8745814732142857" alpha="0.71999999999999997" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -773,7 +773,7 @@
                     <connections>
                         <outlet property="bidMessageLabel" destination="U7N-0P-yZd" id="B05-nU-z1j"/>
                         <outlet property="cancelTradeButton" destination="7ih-F1-TJr" id="t27-rG-mqq"/>
-                        <outlet property="greyOverlay" destination="RG7-f5-6nJ" id="3y5-Ci-Zer"/>
+                        <outlet property="greyOverlay" destination="FG5-eR-Dt3" id="QV3-Xv-clz"/>
                         <outlet property="initiatorImage" destination="JxG-kh-MZK" id="4d9-Dm-j7G"/>
                         <outlet property="itemImage" destination="acI-6S-zTQ" id="c5Y-1Y-mdx"/>
                         <outlet property="itemImage1" destination="Lac-ma-1WB" id="5kt-xs-7es"/>
@@ -965,7 +965,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cay-zL-Sof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2915" y="88"/>
+            <point key="canvasLocation" x="2910" y="198"/>
         </scene>
         <!--Navigation Controller - Notifications-->
         <scene sceneID="731-pl-HUb">
