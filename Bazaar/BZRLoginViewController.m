@@ -141,14 +141,12 @@ static NSString* const URLformat = @"https://graph.facebook.com/%@/picture?&heig
   user[@"imageFile"] = imageFile;
   user[@"username"] = self.username;
   user[@"facebookID"] = self.facebookID;
-  user[@"numTrades"] = @0;
-    user[@"numItems"] = @0;
   [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!error) {
-      NSLog(@"successfully saved new user info");
+      NSLog(@"successfully saved image info");
     }
     else {
-      NSLog(@"error saving new user info");
+      NSLog(@"error saving image info");
     }
   }];
 }
