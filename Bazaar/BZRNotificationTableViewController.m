@@ -42,9 +42,11 @@ static NSTimeInterval weekInterval = (NSTimeInterval) 604800;
 - (void) loadNotifications {
   if ([self.segment selectedSegmentIndex] == 0) {
     [self loadNotificationsByStatus:nil];
+    [self.segment setTitle:@"All" forSegmentAtIndex:0];
   }
   else {
     [self loadNotificationsByStatus:@"complete"];
+    [self.segment setTitle:@"Complete" forSegmentAtIndex:1];
   }
 }
 
