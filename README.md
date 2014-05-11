@@ -4,8 +4,9 @@ Trade with Friends
 
 Check out Bazaar & meet the creators here!
 
-http://youtube/YLAwUHBaDKE
+http://www.youtube.com/watch?v=YWIOBahjrb8
 
-http://youtube/iJetWdejPI8 
+https://www.youtube.com/watch?v=iJetWdejPI8
+
 
 
