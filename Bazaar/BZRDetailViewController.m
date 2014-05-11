@@ -92,8 +92,10 @@ static NSString * const cellIdentifier = @"detailViewCell";
                     self.tradeButton.backgroundColor = [BZRDesignUtils buttonDisabledColor];
                     self.tradeButton.titleLabel.textColor = [UIColor darkGrayColor];
                     [self.tradeButton setEnabled:NO];
+                    break;
                 }
                 else {
+                    NSLog(@"here");
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [BZRDesignUtils purpleColor];
                     self.tradeButton.titleLabel.textColor = [UIColor whiteColor];
