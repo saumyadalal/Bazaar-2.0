@@ -95,7 +95,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
                     break;
                 }
                 else {
-                    NSLog(@"here");
                     [self.tradeButton setTitle:@"Trade" forState:UIControlStateNormal];
                     self.tradeButton.backgroundColor = [BZRDesignUtils purpleColor];
                     self.tradeButton.titleLabel.textColor = [UIColor whiteColor];
@@ -206,12 +205,12 @@ static NSString * const cellIdentifier = @"detailViewCell";
   if ([self.delegate didReachLimit] && !isSelected) {
     [button setEnabled:NO];
     [button setBackgroundColor:[UIColor grayColor]];
-    return;
   }
   else {
+    [button setBackgroundColor:[BZRDesignUtils purpleColor]];
     [button setEnabled:YES];
-    [self toggleButton:button onSelection:isSelected];
   }
+  [self toggleButton:button onSelection:isSelected];
 }
 
 - (void) hideSelectButtons:(BOOL)isHidden {
@@ -219,7 +218,6 @@ static NSString * const cellIdentifier = @"detailViewCell";
 }
 
 - (void) toggleButton:(UIButton*)button onSelection:(BOOL)isSelected  {
-  [button setBackgroundColor:[UIColor colorWithRed:79/255.0 green:44/255.0 blue:112/255.0 alpha:1]];
   if (isSelected) {
     [button setTitle:@"Added to Bid" forState:UIControlStateNormal];
   }
@@ -306,7 +304,7 @@ static NSString * const cellIdentifier = @"detailViewCell";
     //update labels
     if (![indexPath isEqual:self.currentIndexPath]) {
       self.currentIndexPath = indexPath;
-      self.item = [self.items objectAtIndex:self.currentIndexPath.row];
+      self.item = [self.items objectAtIndex:indexPath.row];
       //set the current select button and favorite buttons
       self.selectButton = (UIButton*) [currentCell viewWithTag:408];
       self.favoriteButton = (UIButton*)[currentCell viewWithTag:407];

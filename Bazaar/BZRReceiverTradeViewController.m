@@ -217,13 +217,13 @@
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-//*** call [item fetch] to make sure we have the most up to date
+//*** call [item refresh] to make sure we have the most up to date
 //information on the item!!!!!
 - (BOOL) isAvailableReturnItems {
   BOOL available = YES;
   NSMutableArray* returnItems = [self.trade objectForKey:@"returnItems"];
   for (PFObject* item in returnItems) {
-    [item fetch];
+    [item refresh];
     if ([[item objectForKey:@"status"] isEqualToString:@"traded"]) {
       [returnItems removeObject:item];
       available = NO;

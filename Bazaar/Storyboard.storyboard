@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ixW-Uc-S9m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ixW-Uc-S9m">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQc-gh-J2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128" y="-342"/>
+            <point key="canvasLocation" x="1060" y="-566"/>
         </scene>
         <!--User Profile View Controller - Profile-->
         <scene sceneID="mqo-dw-pdE">
@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWJ-Ue-ltQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="-348"/>
+            <point key="canvasLocation" x="1524" y="-538"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="qTZ-BS-TP2">
@@ -175,7 +175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul2-wX-PK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="-1669"/>
+            <point key="canvasLocation" x="539" y="-1477"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vDD-no-8l5">
@@ -200,7 +200,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4R-Yo-7hz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="-526"/>
+            <point key="canvasLocation" x="530" y="-774"/>
         </scene>
         <!--Navigation Controller - Bazaar-->
         <scene sceneID="RaY-Z8-Fhm">
@@ -223,7 +223,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="6gq-dJ-A7P" customClass="BZRBazaarController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="O5k-wV-1dr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Hn-cX-Bqd">
                             <size key="itemSize" width="103" height="103"/>
@@ -277,7 +277,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="detailViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLe-B3-6qf" customClass="BZRDetailViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="f5N-kG-4o4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mdR-4b-v3h">
                             <size key="itemSize" width="320" height="450"/>
@@ -392,7 +392,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fF4-7q-zCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013" y="-1773"/>
+            <point key="canvasLocation" x="2137" y="-1335"/>
         </scene>
         <!--Navigation Controller - Upload-->
         <scene sceneID="gTa-bm-pzt">
@@ -409,7 +409,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRb-qN-shs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="-1077"/>
+            <point key="canvasLocation" x="1080" y="-1235"/>
         </scene>
         <!--New Post View Controller-->
         <scene sceneID="4Ld-oQ-ljH">
@@ -494,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpp-zr-VjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1597" y="-1089"/>
+            <point key="canvasLocation" x="1605" y="-1259"/>
         </scene>
         <!--Trade View Controller - Trade-->
         <scene sceneID="QoE-ci-mbI">
@@ -505,11 +505,11 @@
                         <viewControllerLayoutGuide type="bottom" id="8qn-3f-8Gj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ti0-ey-hBX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="1" minimumValue="1" maximumValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZJy-bI-Etp">
-                                <rect key="frame" x="113" y="337" width="94" height="29"/>
+                                <rect key="frame" x="113" y="386" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="tintColor" red="0.30980392159999998" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -583,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dK-BO-IUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2535" y="-1783"/>
+            <point key="canvasLocation" x="2633" y="-1483"/>
         </scene>
         <!--Navigation Controller - Favorites-->
         <scene sceneID="m56-cN-Saj">
@@ -599,7 +599,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3m-S6-Z26" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1140" y="376"/>
+            <point key="canvasLocation" x="330" y="424"/>
         </scene>
         <!--Favorites Table View Controller - Favorites-->
         <scene sceneID="Zeu-zO-NXy">
@@ -647,7 +647,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca8-1w-hP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="364"/>
+            <point key="canvasLocation" x="628" y="884"/>
         </scene>
         <!--Receiver Trade View Controller-->
         <scene sceneID="JBo-k2-YaY">
@@ -788,7 +788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vjh-Wa-d3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2095" y="661"/>
+            <point key="canvasLocation" x="1663" y="621"/>
         </scene>
         <!--Successful Trade View Controller-->
         <scene sceneID="9VC-Ik-7oB">
@@ -892,7 +892,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrC-N3-jpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671" y="990"/>
+            <point key="canvasLocation" x="2087" y="1032"/>
         </scene>
         <!--Selection View Controller-->
         <scene sceneID="JtK-zl-Ddz">
@@ -950,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MmR-9O-Ivr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2325" y="-19"/>
+            <point key="canvasLocation" x="1973" y="-211"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="shw-Bx-I2o">
@@ -965,7 +965,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cay-zL-Sof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2910" y="198"/>
+            <point key="canvasLocation" x="2492" y="424"/>
         </scene>
         <!--Navigation Controller - Notifications-->
         <scene sceneID="731-pl-HUb">
@@ -983,7 +983,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIn-U0-k8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1140" y="1084"/>
+            <point key="canvasLocation" x="728" y="130"/>
         </scene>
         <!--Notification Table View Controller-->
         <scene sceneID="OoE-AJ-4qX">
@@ -1050,7 +1050,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1i-ii-qpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="1146"/>
+            <point key="canvasLocation" x="1202" y="927"/>
         </scene>
         <!--Initiator Trade View Controller-->
         <scene sceneID="or4-1B-HRf">
@@ -1169,7 +1169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fa-1P-B1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2103" y="1524"/>
+            <point key="canvasLocation" x="1679" y="1350"/>
         </scene>
         <!--User Market Place View Controller-->
         <scene sceneID="AIT-Vr-yNa">
@@ -1227,7 +1227,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBQ-od-4Ur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2910" y="-319"/>
+            <point key="canvasLocation" x="2447" y="-538"/>
         </scene>
     </scenes>
     <resources>
@@ -1247,8 +1247,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5gf-aY-sNS"/>
+        <segue reference="ney-sS-UDE"/>
         <segue reference="rNQ-86-kpl"/>
-        <segue reference="pk8-C4-UF8"/>
+        <segue reference="GTM-8L-pF9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -267,22 +267,22 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		0E60182A190C18C900CA324F /* Bazaar */ = {
+		0E60182A190C18C900CA324F /* MarketPlace Collection View */ = {
 			isa = PBXGroup;
 			children = (
 				A7737AFE190C809500319AF4 /* BZRBazaarController.h */,
 				A7737AFF190C809500319AF4 /* BZRBazaarController.m */,
 			);
-			name = Bazaar;
+			name = "MarketPlace Collection View";
 			sourceTree = "<group>";
 		};
-		22051694191A9DC500119B92 /* Successful Trade */ = {
+		22051694191A9DC500119B92 /* Successful Trade View */ = {
 			isa = PBXGroup;
 			children = (
 				22051691191A9DB800119B92 /* BZRSuccessfulTradeViewController.h */,
 				22051692191A9DB800119B92 /* BZRSuccessfulTradeViewController.m */,
 			);
-			name = "Successful Trade";
+			name = "Successful Trade View";
 			sourceTree = "<group>";
 		};
 		22E2C133190302230098D279 /* Send Trade */ = {
@@ -294,16 +294,16 @@
 			name = "Send Trade";
 			sourceTree = "<group>";
 		};
-		22E2C134190305180098D279 /* Notifications */ = {
+		22E2C134190305180098D279 /* Notification Table View */ = {
 			isa = PBXGroup;
 			children = (
 				22E2C135190305470098D279 /* BZRNotificationTableViewController.h */,
 				22E2C136190305470098D279 /* BZRNotificationTableViewController.m */,
 			);
-			name = Notifications;
+			name = "Notification Table View";
 			sourceTree = "<group>";
 		};
-		22E2C13819030C8D0098D279 /* images */ = {
+		22E2C13819030C8D0098D279 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				0EF2673E191D49BC00E92ED6 /* camera placeholder.png */,
@@ -345,25 +345,25 @@
 				0EDC7F85190C748400EB4FF6 /* camera30.png */,
 				0EDC7F80190C747900EB4FF6 /* favorites30.png */,
 			);
-			name = images;
+			name = Images;
 			sourceTree = "<group>";
 		};
-		22E2C13F19031B650098D279 /* Favorites */ = {
+		22E2C13F19031B650098D279 /* Favorites Tab */ = {
 			isa = PBXGroup;
 			children = (
 				22E2C14319031BFB0098D279 /* BZRFavoritesTableViewController.h */,
 				22E2C14419031BFB0098D279 /* BZRFavoritesTableViewController.m */,
 			);
-			name = Favorites;
+			name = "Favorites Tab";
 			sourceTree = "<group>";
 		};
-		A724FB921915C49700D4120A /* Detail View  */ = {
+		A724FB921915C49700D4120A /* Item Detail View  */ = {
 			isa = PBXGroup;
 			children = (
 				A724FB931915C4B800D4120A /* BZRDetailViewController.h */,
 				A724FB941915C4B800D4120A /* BZRDetailViewController.m */,
 			);
-			name = "Detail View ";
+			name = "Item Detail View ";
 			sourceTree = "<group>";
 		};
 		A724FB96191600B300D4120A /* Receiver Trade View */ = {
@@ -375,49 +375,140 @@
 			name = "Receiver Trade View";
 			sourceTree = "<group>";
 		};
-		A725CD1B18EF415700EC3719 /* User Profile */ = {
+		A7253D5E191F278B00B88272 /* Trade Status & Tag Referenes (.txt) */ = {
 			isa = PBXGroup;
 			children = (
-				A725CD1C18EF445C00EC3719 /* BZRUserProfileViewController.h */,
-				A725CD1D18EF445C00EC3719 /* BZRUserProfileViewController.m */,
+				A79C876F1916091200BB0C68 /* TagReferences */,
+				A7851CA5191D3F050087C5BE /* Trade Object Model */,
 			);
-			name = "User Profile";
+			name = "Trade Status & Tag Referenes (.txt)";
 			sourceTree = "<group>";
 		};
-		A725CD4718F0A20000EC3719 /* Library */ = {
+		A7253D5F191F27A900B88272 /* Trade Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */,
+				A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */,
+			);
+			name = "Trade Utils";
+			sourceTree = "<group>";
+		};
+		A7253D60191F27C200B88272 /* Reveal View Controller (Sidebar) */ = {
 			isa = PBXGroup;
 			children = (
 				79ADDACE18F212AF0031CA5E /* SWRevealViewController.h */,
 				79ADDACF18F212AF0031CA5E /* SWRevealViewController.m */,
 			);
+			name = "Reveal View Controller (Sidebar)";
+			sourceTree = "<group>";
+		};
+		A7253D61191F27D800B88272 /* Date Formatter (Time Relative to Now) */ = {
+			isa = PBXGroup;
+			children = (
+				A7851C9A191CA3C20087C5BE /* NSDate+TimeAgo.h */,
+				A7851C9B191CA3C20087C5BE /* NSDate+TimeAgo.m */,
+			);
+			name = "Date Formatter (Time Relative to Now)";
+			sourceTree = "<group>";
+		};
+		A7253D62191F284C00B88272 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A7DE718B18DDFA1200EE7F9A /* BZRAppDelegate.h */,
+				A7DE718C18DDFA1200EE7F9A /* BZRAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		A7253D63191F286F00B88272 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				22E2C13819030C8D0098D279 /* Images */,
+				0E1F0C90191956D800124864 /* Fonts */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		A7253D64191F28A300B88272 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A7253D5F191F27A900B88272 /* Trade Utils */,
+				A7851C93191C4E400087C5BE /* Design Utils */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		A7253D65191F2A0B00B88272 /* Trade Notifications Tab  */ = {
+			isa = PBXGroup;
+			children = (
+				A79C87711916D8C900BB0C68 /* Return Item Selection View */,
+				A7F669481919EEFC00A06FBB /* Trade Notification Detail */,
+				22E2C134190305180098D279 /* Notification Table View */,
+			);
+			name = "Trade Notifications Tab ";
+			sourceTree = "<group>";
+		};
+		A7253D66191F2A4A00B88272 /* User Profile Tab  */ = {
+			isa = PBXGroup;
+			children = (
+				A725CD1B18EF415700EC3719 /* User Profile Header  */,
+				A7737AF7190B09EE00319AF4 /* User MarketPlace Collection View */,
+			);
+			name = "User Profile Tab ";
+			sourceTree = "<group>";
+		};
+		A7253D67191F2A8400B88272 /* Bazaar Tab  */ = {
+			isa = PBXGroup;
+			children = (
+				0E60182A190C18C900CA324F /* MarketPlace Collection View */,
+				22E2C133190302230098D279 /* Send Trade */,
+			);
+			name = "Bazaar Tab ";
+			sourceTree = "<group>";
+		};
+		A725CD1B18EF415700EC3719 /* User Profile Header  */ = {
+			isa = PBXGroup;
+			children = (
+				A725CD1C18EF445C00EC3719 /* BZRUserProfileViewController.h */,
+				A725CD1D18EF445C00EC3719 /* BZRUserProfileViewController.m */,
+			);
+			name = "User Profile Header ";
+			sourceTree = "<group>";
+		};
+		A725CD4718F0A20000EC3719 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				A7253D61191F27D800B88272 /* Date Formatter (Time Relative to Now) */,
+				A7253D60191F27C200B88272 /* Reveal View Controller (Sidebar) */,
+			);
 			name = Library;
 			sourceTree = "<group>";
 		};
-		A725CD4B18F0A8EC00EC3719 /* Filters */ = {
+		A725CD4B18F0A8EC00EC3719 /* Filters SideBar */ = {
 			isa = PBXGroup;
 			children = (
 				A725CD4C18F0A90D00EC3719 /* BZRFilterViewController.h */,
 				A725CD4D18F0A90D00EC3719 /* BZRFilterViewController.m */,
 			);
-			name = Filters;
+			name = "Filters SideBar";
 			sourceTree = "<group>";
 		};
-		A7737AF7190B09EE00319AF4 /* User MarketPlace */ = {
+		A7737AF7190B09EE00319AF4 /* User MarketPlace Collection View */ = {
 			isa = PBXGroup;
 			children = (
 				A7737AF8190B0A1200319AF4 /* BZRUserMarketPlaceViewController.h */,
 				A7737AF9190B0A1200319AF4 /* BZRUserMarketPlaceViewController.m */,
 			);
-			name = "User MarketPlace";
+			name = "User MarketPlace Collection View";
 			sourceTree = "<group>";
 		};
-		A7737B01190F372E00319AF4 /* Tabs */ = {
+		A7737B01190F372E00319AF4 /* Tab View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A7737B05190F37FA00319AF4 /* BZRTabBarController.h */,
 				A7737B06190F37FB00319AF4 /* BZRTabBarController.m */,
 			);
-			name = Tabs;
+			name = "Tab View Controller";
 			sourceTree = "<group>";
 		};
 		A7851C93191C4E400087C5BE /* Design Utils */ = {
@@ -429,15 +520,6 @@
 			name = "Design Utils";
 			sourceTree = "<group>";
 		};
-		A7851C99191CA3AA0087C5BE /* Date Formatter */ = {
-			isa = PBXGroup;
-			children = (
-				A7851C9A191CA3C20087C5BE /* NSDate+TimeAgo.h */,
-				A7851C9B191CA3C20087C5BE /* NSDate+TimeAgo.m */,
-			);
-			name = "Date Formatter";
-			sourceTree = "<group>";
-		};
 		A79C876B1916016E00BB0C68 /* Initiator Trade View */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,13 +529,13 @@
 			name = "Initiator Trade View";
 			sourceTree = "<group>";
 		};
-		A79C87711916D8C900BB0C68 /* Selection View */ = {
+		A79C87711916D8C900BB0C68 /* Return Item Selection View */ = {
 			isa = PBXGroup;
 			children = (
 				A79C87721916D8F000BB0C68 /* BZRSelectionViewController.h */,
 				A79C87731916D8F000BB0C68 /* BZRSelectionViewController.m */,
 			);
-			name = "Selection View";
+			name = "Return Item Selection View";
 			sourceTree = "<group>";
 		};
 		A7DE717018DDFA1200EE7F9A = {
@@ -502,30 +584,22 @@
 			isa = PBXGroup;
 			children = (
 				79ADDAD618F218730031CA5E /* Storyboard.storyboard */,
-				A7851C99191CA3AA0087C5BE /* Date Formatter */,
-				A7851C93191C4E400087C5BE /* Design Utils */,
-				A7F669481919EEFC00A06FBB /* Trade Detail */,
-				0E1F0C90191956D800124864 /* Fonts */,
-				A79C87711916D8C900BB0C68 /* Selection View */,
-				A724FB921915C49700D4120A /* Detail View  */,
-				A7737B01190F372E00319AF4 /* Tabs */,
-				0E60182A190C18C900CA324F /* Bazaar */,
-				A7737AF7190B09EE00319AF4 /* User MarketPlace */,
-				22E2C13819030C8D0098D279 /* images */,
-				22E2C13F19031B650098D279 /* Favorites */,
-				22E2C133190302230098D279 /* Send Trade */,
-				22E2C134190305180098D279 /* Notifications */,
-				A725CD4B18F0A8EC00EC3719 /* Filters */,
-				A725CD4718F0A20000EC3719 /* Library */,
-				A725CD1B18EF415700EC3719 /* User Profile */,
-				A7DE71AC18DDFAB000EE7F9A /* New Post */,
+				A7253D67191F2A8400B88272 /* Bazaar Tab  */,
+				22E2C13F19031B650098D279 /* Favorites Tab */,
+				A7DE71AC18DDFAB000EE7F9A /* New Post Tab */,
+				A7253D66191F2A4A00B88272 /* User Profile Tab  */,
+				A7253D65191F2A0B00B88272 /* Trade Notifications Tab  */,
+				A7253D62191F284C00B88272 /* App Delegate */,
+				A7253D63191F286F00B88272 /* Assets */,
+				A724FB921915C49700D4120A /* Item Detail View  */,
+				A725CD4B18F0A8EC00EC3719 /* Filters SideBar */,
 				A7DE71AB18DDFA9A00EE7F9A /* Login */,
-				A7DE718B18DDFA1200EE7F9A /* BZRAppDelegate.h */,
-				A7DE718C18DDFA1200EE7F9A /* BZRAppDelegate.m */,
+				A7737B01190F372E00319AF4 /* Tab View Controller */,
+				A7253D64191F28A300B88272 /* Utilities */,
+				A725CD4718F0A20000EC3719 /* Library */,
 				A7DE718E18DDFA1200EE7F9A /* Images.xcassets */,
+				A7253D5E191F278B00B88272 /* Trade Status & Tag Referenes (.txt) */,
 				A7DE718318DDFA1200EE7F9A /* Supporting Files */,
-				A79C876F1916091200BB0C68 /* TagReferences */,
-				A7851CA5191D3F050087C5BE /* Trade Object Model */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -569,25 +643,23 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
-		A7DE71AC18DDFAB000EE7F9A /* New Post */ = {
+		A7DE71AC18DDFAB000EE7F9A /* New Post Tab */ = {
 			isa = PBXGroup;
 			children = (
 				79ADDAD318F216DD0031CA5E /* BZRNewPostViewController.h */,
 				79ADDAD418F216DD0031CA5E /* BZRNewPostViewController.m */,
 			);
-			name = "New Post";
+			name = "New Post Tab";
 			sourceTree = "<group>";
 		};
-		A7F669481919EEFC00A06FBB /* Trade Detail */ = {
+		A7F669481919EEFC00A06FBB /* Trade Notification Detail */ = {
 			isa = PBXGroup;
 			children = (
-				A7F669491919EF7A00A06FBB /* BZRTradeUtils.h */,
-				A7F6694A1919EF7A00A06FBB /* BZRTradeUtils.m */,
 				A79C876B1916016E00BB0C68 /* Initiator Trade View */,
 				A724FB96191600B300D4120A /* Receiver Trade View */,
-				22051694191A9DC500119B92 /* Successful Trade */,
+				22051694191A9DC500119B92 /* Successful Trade View */,
 			);
-			name = "Trade Detail";
+			name = "Trade Notification Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
